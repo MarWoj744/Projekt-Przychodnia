@@ -1,0 +1,61 @@
+# Ignorowanie plików binarnych
+bin/
+obj/
+wwwroot/
+
+# Ignorowanie plików generowanych przez build
+.vs/
+.idea/
+.vscode/
+
+# Ignorowanie plików zależności NuGet
+project.lock.json
+project.fragment.lock.json
+packages/
+
+# Ignorowanie plików systemowych
+.DS_Store
+Thumbs.db
+
+# Ignorowanie plików generowanych przez IDE
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Ignorowanie plików tymczasowych
+*.log
+*.tmp
+*.bak
+*.swp
+
+# Ignorowanie plików bazy danych w przypadku migracji (np. SQLite)
+*.mdf
+*.ldf
+
+# Ignorowanie plików kompilacji
+*.dll
+*.exe
+*.pdb
+*.o
+*.so
+*.a
+
+# Ignorowanie plików Excel (nie chcesz trzymać plików Excel w repozytorium)
+*.xls
+*.xlsx
+*.xlsm
+
+# Ignorowanie plików backupowych
+*.bak
+*.tmp
+*.swp
+*.swo
+
+# Ignorowanie plików wynikowych i generowanych
+*.cache
+*.vspscc
+.vsconfig
+
+# Ignorowanie plików testowych (jeśli masz osobne testy)
+testresults/
