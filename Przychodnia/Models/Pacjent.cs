@@ -1,18 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Przychodnia.Models
 {
+    [Index(nameof(PESEL), IsUnique = true)]
     public class Pacjent : Osoba
     {
         [Required]
-        [StringLength(30)]
-        public string Login { get; set; }
+        [RegularExpression(@"^\d{11}$", ErrorMessage = "błędna długość numeru PESEL")]
+ 
+        public string PESEL { get; set; }
 
-        [Required]
-        [StringLength(100)]
-        public string Haslo { get; set; }
-
-        public ICollection<Wizyta> Wizyty { get; set; }
+        public ICollection<Wizyta> Wizyty { get; set; } = new List<Wizyta>();
     }
 }

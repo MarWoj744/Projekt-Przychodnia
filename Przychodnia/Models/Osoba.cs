@@ -2,6 +2,14 @@
 
 namespace Przychodnia.Models
 {
+
+    public enum Rola
+    {
+        Pacjent,
+        Recepcjonistka,
+        Lekarz
+    }
+
     public abstract class Osoba
     {
         [Key]
@@ -20,14 +28,19 @@ namespace Przychodnia.Models
         public string Adres { get; set; }
 
         [Required]
-        [RegularExpression(@"^\d{11}$", ErrorMessage = "błędna długość numeru PESEL")]
-        public string PESEL { get; set; }
-
-        [Required]
         [EmailAddress]
         public string Email { get; set; }
 
         [Phone]
         public string Telefon { get; set; }
+
+        [Required]
+        public string Login { get; set; }
+
+        [Required]
+        public string Haslo { get; set; }
+
+        [Required]
+        public Rola Rola { get; set; }
     }
 }

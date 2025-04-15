@@ -6,12 +6,12 @@ namespace Przychodnia.Models
     public class Lekarz : Osoba
     {
         [Required]
-        [StringLength(30)]
-        public string Login { get; set; }
+        [StringLength(10)]
+        public string Tytul { get; set; }
 
         [Required]
-        [StringLength(100)]
-        public string Haslo { get; set; }
+        [StringLength(50)]
+        public string Specjalizacja { get; set; }
 
         public ICollection<Wizyta> Wizyty { get; set; }
     }
