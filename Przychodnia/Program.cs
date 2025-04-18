@@ -1,11 +1,14 @@
-using Przychodnia.Models;
 using Przychodnia.Services;
+using Przychodnia.Models;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<DbPrzychodnia>();
+builder.Services.AddScoped<IWizytaService, WizytaService>();
+builder.Services.AddScoped<IWykonaneBadanieService, WykonaneBadaniaService>();
 builder.Services.AddScoped<IOsobaService, OsobaService>();
 var app = builder.Build();
 
