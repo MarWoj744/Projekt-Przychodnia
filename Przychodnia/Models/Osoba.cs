@@ -37,6 +37,7 @@ namespace Przychodnia.Models
         [Required]
         public string Login { get; set; }
 
+        //Haslo bedzie hashowane algorytmem bcrypt
         [Required]
         public string Haslo { get; set; }
 

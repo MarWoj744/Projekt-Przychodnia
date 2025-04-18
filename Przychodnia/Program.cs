@@ -1,8 +1,12 @@
+using Przychodnia.Models;
+using Przychodnia.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddDbContext<DbPrzychodnia>();
+builder.Services.AddScoped<IOsobaService, OsobaService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
