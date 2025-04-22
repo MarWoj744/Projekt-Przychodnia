@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Http.HttpResults;
 using Przychodnia.Models;
+using Przychodnia.Repositories;
 using System.Text.RegularExpressions;
 
 namespace Przychodnia.Services
@@ -7,11 +8,11 @@ namespace Przychodnia.Services
     public class OsobaService : IOsobaService
     {
         //Dodaæ repozytorium
-        //private readonly OsobaRepository _osobaRepository;
+        private readonly OsobaRepository _osobaRepository;
 
-        public OsobaService(/*OsobaRepository osobaRepository*/)
+        public OsobaService(OsobaRepository osobaRepository)
         {
-            /*_osobaRepository = osobaRepository;*/
+            _osobaRepository = osobaRepository;
         }
 
 
@@ -31,17 +32,17 @@ namespace Przychodnia.Services
 
             // Sprawdzenie, czy login jest ju¿ w bazie danych
             //Dodac metode do repozytorium GetOsobaByLogin
-            /*if (_osobaRepository.GetOsobaByLogin(osoba.Login) != null)
+            if (_osobaRepository.GetOsobaByLogin(osoba.Login) != null)
             {
                 return "Login zajety.";
-            }*/
+            }
 
             // Sprawdzenie, czy email jest ju¿ w bazie danych
             //Dodac metode do repozytorium GetOsobaByEmail
-            /*if (_osobaRepository.GetOsobaByEmail(osoba.Email) != null)
+            if (_osobaRepository.GetOsobaByEmail(osoba.Email) != null)
             {
                 return "Email jest zajety.";
-            }*/
+            }
 
 
             // Walidacja numeru telefonu
@@ -52,10 +53,10 @@ namespace Przychodnia.Services
 
             // Sprawdzenie, czy numer telefonu jest ju¿ w bazie danych
             //Dodac metode do repozytorium GetOsobaByPhoneNumber
-            /*if (_osobaRepository.GetOsobaByPhoneNumber(osoba.Telefon) != null)
+            if (_osobaRepository.GetOsobaByPhoneNumber(osoba.Telefon) != null)
             {
                 return "Numer telefonu zajêty.";
-            }*/
+            }
 
             return "Walidacja zakoñczona sukcesem.";
         }

@@ -1,6 +1,7 @@
 using Przychodnia.Services;
 using Przychodnia.Models;
 using Microsoft.EntityFrameworkCore;
+using Przychodnia.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,10 @@ builder.Services.AddDbContext<DbPrzychodnia>();
 builder.Services.AddScoped<IWizytaService, WizytaService>();
 builder.Services.AddScoped<IWykonaneBadanieService, WykonaneBadaniaService>();
 builder.Services.AddScoped<IOsobaService, OsobaService>();
+builder.Services.AddScoped<IWizytaRepository, WizytaRepository>();
+builder.Services.AddScoped<IWykonaneBadaniaRepository, WykonaneBadaniaRepository>();
+builder.Services.AddScoped<IOsobaRepository, OsobaRepository>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
