@@ -1,30 +1,31 @@
 using System;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Przychodnia.DTOs;
 using Przychodnia.Models;
+using Przychodnia.Repositories;
 
 namespace Przychodnia.Services
 {
     public class WykonaneBadaniaService : IWykonaneBadanieService
     {
-        private readonly DbPrzychodnia _context;
+        private readonly IWykonaneBadaniaRepository _badaniaRepo;
 
-        public WykonaneBadaniaService(DbPrzychodnia context)
+        public WykonaneBadaniaService(IWykonaneBadaniaRepository badaniaRepo)
         {
-            _context = context;
+            _badaniaRepo = badaniaRepo;
         }
 
         public async Task DodajWykonaneBadanieAsync(WykonaneBadaniaDTO dto)
         {
             //sprawdzanie czy wizyta oraz badanie istnieja
-            var wizyta = await _context.Wizyty.FindAsync(dto.WizytaId);
+            var wizyta = await _badaniaRepo.GetWizytaByIdAsync(dto.WizytaId);
+
             if (wizyta == null)
             {
                 throw new Exception("Wizyta nie istnieje.");
             }
 
-            var badanie = await _context.Badania.FindAsync(dto.BadanieId);
+            var badanie = await _badaniaRepo.GetBadanieByIdAsync(dto.BadanieId);
             if (badanie == null)
             {
                 throw new Exception("Badanie nie istnieje.");
@@ -44,8 +45,7 @@ namespace Przychodnia.Services
                 Wyniki = dto.Wyniki
             };
 
-            _context.WykonaneBadania.Add(wykonane);
-            await _context.SaveChangesAsync();
+            await _badaniaRepo.DodajAsync(wykonane);
         }
     }
 }

@@ -2,18 +2,18 @@ using Przychodnia.DTOs;
 using Przychodnia.Models;
 using System;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Przychodnia.Repositories;
 
 namespace Przychodnia.Services
 {
     public class WizytaService : IWizytaService
     {
-        private readonly DbPrzychodnia _context;
+        private readonly IWizytaRepository _wizytaRepo;
 
-        public WizytaService(DbPrzychodnia context)
+        public WizytaService(IWizytaRepository wizytaRepo)
         {
-            _context = context;
+            _wizytaRepo = wizytaRepo;
         }
 
         public async Task<bool> ZarejestrujWizyteAsync(RejestracjaWizytyDTO dto)
@@ -22,9 +22,10 @@ namespace Przychodnia.Services
             if (dto.DataWizyty < DateTime.Now)
                 throw new Exception("Podane b³êdn¹ datê");
 
-            var lekarzZajety = await _context.Wizyty.AnyAsync(w =>
-                w.LekarzId == dto.LekarzId &&
-                w.Data == dto.DataWizyty);
+            var lekarzZajety = await _wizytaRepo.CzyLekarzMaZajetyTerminAsync(
+                dto.LekarzId, 
+                dto.DataWizyty
+            );
 
             if (lekarzZajety)
                 throw new Exception("Termin zajêty.");
@@ -39,19 +40,14 @@ namespace Przychodnia.Services
                 Opis = dto.Opis
             };
 
-            _context.Wizyty.Add(wizyta);
-            await _context.SaveChangesAsync();
+            await _wizytaRepo.DodajWizyteAsync(wizyta);
 
             return true;
         }
 
         public async Task<List<Wizyta>> GetAllAsync()
         {
-            return await _context.Wizyty
-                .Include(w => w.Pacjent)
-                .Include(w => w.Lekarz)
-                .Include(w => w.Recepcjonistka)
-                .ToListAsync();
+            return await _wizytaRepo.PobierzWszystkieAsync();
         }
     }
 }

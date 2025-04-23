@@ -1,6 +1,5 @@
 using Przychodnia.DTOs;
 using Przychodnia.Models;
-using System.Threading.Tasks;
 
 namespace Przychodnia.Services
 {
