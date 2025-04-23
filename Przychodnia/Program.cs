@@ -14,6 +14,9 @@ builder.Services.AddScoped<IOsobaService, OsobaService>();
 builder.Services.AddScoped<IWizytaRepository, WizytaRepository>();
 builder.Services.AddScoped<IWykonaneBadaniaRepository, WykonaneBadaniaRepository>();
 builder.Services.AddScoped<IOsobaRepository, OsobaRepository>();
+builder.Services.AddScoped<IPacjentService, PacjentService>();
+
+
 
 var app = builder.Build();
 

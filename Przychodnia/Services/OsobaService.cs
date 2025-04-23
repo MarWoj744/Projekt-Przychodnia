@@ -8,18 +8,14 @@ namespace Przychodnia.Services
     public class OsobaService : IOsobaService
     {
         //Dodaæ repozytorium
-        private readonly OsobaRepository _osobaRepository;
-
-        public OsobaService(OsobaRepository osobaRepository)
+        private readonly IOsobaRepository _osobaRepository;
+        public OsobaService(IOsobaRepository osobaRepository)
         {
             _osobaRepository = osobaRepository;
         }
 
-
         public string ValidateData(Osoba osoba)
         {
-
-
             if (osoba == null)
             {
                 return "Osoba jest nullem.";
@@ -51,6 +47,10 @@ namespace Przychodnia.Services
                 return "Numer telefonu nie prawid³owy.";
             }
 
+            if (!IsValidEmail(osoba.Email))
+            {
+                return "Email jest nieprawid³owy";
+            }
             // Sprawdzenie, czy numer telefonu jest ju¿ w bazie danych
             //Dodac metode do repozytorium GetOsobaByPhoneNumber
             if (_osobaRepository.GetOsobaByPhoneNumber(osoba.Telefon) != null)
@@ -65,6 +65,15 @@ namespace Przychodnia.Services
         {
             // Numer telefonu powinien mieæ 9 cyfr i nie mo¿e zawieraæ liter
             return Regex.IsMatch(phoneNumber, @"^\d{9}$");
+        }
+
+        private bool IsValidEmail(string email)
+        {
+            //validacja emaila czy ma strukture nazwa@email.pl
+            if (string.IsNullOrWhiteSpace(email)) { return false; }
+            return Regex.IsMatch(email,
+                @"^[^@\s]+@[^@\s]+\.[^@\s]+$",
+                RegexOptions.IgnoreCase);
         }
     }
 }
