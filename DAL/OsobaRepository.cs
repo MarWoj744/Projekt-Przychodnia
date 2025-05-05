@@ -10,47 +10,57 @@ namespace Przychodnia.Repositories
         {
             _context = context;
         }
-        public Osoba GetOsobaByLogin(string login)
-        {
-            return _context.Osoby.FirstOrDefault(o => o.Login == login);
-        }
-        public Osoba GetOsobaByEmail(string email)
-        {
-            return _context.Osoby.FirstOrDefault(o => o.Email == email);
-        }
-        public Osoba GetOsobaByPhoneNumber(string phoneNumber)
-        {
-            return _context.Osoby.FirstOrDefault(o => o.Telefon == phoneNumber);
-        }
 
         public IQueryable<Osoba> PobierzWszystkie()
         {
-            throw new NotImplementedException();
+            return _context.Osoby;
         }
 
         public Osoba GetOsobaById(int id)
         {
-            throw new NotImplementedException();
+            return _context.Osoby.FirstOrDefault(o => o.Id == id);
+        }
+
+        public Osoba GetOsobaByLogin(string login)
+        {
+            return _context.Osoby.FirstOrDefault(o => o.Login == login);
+        }
+
+        public Osoba GetOsobaByEmail(string email)
+        {
+            return _context.Osoby.FirstOrDefault(o => o.Email == email);
+        }
+
+        public Osoba GetOsobaByPhoneNumber(string phoneNumber)
+        {
+            return _context.Osoby.FirstOrDefault(o => o.PhoneNumber == phoneNumber);
         }
 
         public void Dodaj(Osoba osoba)
         {
-            throw new NotImplementedException();
+            _context.Osoby.Add(osoba);
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            var osoba = GetOsobaById(id);
+            if (osoba != null)
+            {
+                _context.Osoby.Remove(osoba);
+            }
         }
 
         public void Update(Osoba osoba)
         {
-            throw new NotImplementedException();
+            _context.Osoby.Update(osoba);
         }
-
-        public void save()
+       public void save()
         {
-            throw new NotImplementedException();
+            _context.SaveChanges();
         }
     }
 }
+
+
+
+        

@@ -6,59 +6,44 @@ namespace Przychodnia.Repositories
     public class WizytaRepository : IWizytaRepository
     {
         private readonly DbPrzychodnia _context;
+
         public WizytaRepository(DbPrzychodnia context)
         {
             _context = context;
         }
-        public async Task<bool> CzyLekarzMaZajetyTerminAsync(int lekarzId, DateTime data)
-        {
-            return await _context.Wizyty.AnyAsync(w =>
-                w.LekarzId == lekarzId && w.Data == data);
-        }
 
-        public void delete(int id)
+        public IQueryable<Wizyta> PobierzWszystkie()
         {
-            throw new NotImplementedException();
-        }
-
-        public void dodaj(Wizyta wizyta)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task DodajWizyteAsync(Wizyta wizyta)
-        {
-            _context.Wizyty.Add(wizyta);
-            await _context.SaveChangesAsync();
+            return _context.Wizyty;
         }
 
         public Wizyta getWizytaById(int id)
         {
-            throw new NotImplementedException();
+            return _context.Wizyty.FirstOrDefault(w => w.Id == id);
         }
 
-        public IQueryable<Wizyta> PobierzWszystkie()
+        public void dodaj(Wizyta wizyta)
         {
-            throw new NotImplementedException();
+            _context.Wizyty.Add(wizyta);
         }
 
-        public async Task<List<Wizyta>> PobierzWszystkieAsync()
+        public void delete(int id)
         {
-            return await _context.Wizyty
-                .Include(w => w.Pacjent)
-                .Include(w => w.Lekarz)
-                .Include(w => w.Recepcjonistka)
-                .ToListAsync();
-        }
-
-        public void save()
-        {
-            throw new NotImplementedException();
+            var wizyta = getWizytaById(id);
+            if (wizyta != null)
+            {
+                _context.Wizyty.Remove(wizyta);
+            }
         }
 
         public void update(Wizyta wizyta)
         {
-            throw new NotImplementedException();
+            _context.Wizyty.Update(wizyta);
+        }
+
+        public void save()
+        {
+            _context.SaveChanges();
         }
     }
 }

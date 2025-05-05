@@ -6,53 +6,44 @@ namespace Przychodnia.Repositories
     public class WykonaneBadaniaRepository : IWykonaneBadaniaRepository
     {
         private readonly DbPrzychodnia _context;
- public WykonaneBadaniaRepository(DbPrzychodnia context)
+
+        public WykonaneBadaniaRepository(DbPrzychodnia context)
         {
-            _context = context; 
-        }
-        public async Task<Wizyta?> GetWizytaByIdAsync(int id)
-        {
-            return await _context.Wizyty
-                .Include(w => w.Lekarz)
-                .FirstOrDefaultAsync(w => w.Id == id);}
-public async Task<Badanie?> GetBadanieByIdAsync(int id)
-        {
-            return await _context.Badania.FindAsync(id);
-        }
-        public async Task DodajAsync(WykonaneBadania wykonaneBadania)
-        {
-            _context.WykonaneBadania.Add(wykonaneBadania);
-            await _context.SaveChangesAsync();
+            _context = context;
         }
 
         public IQueryable<WykonaneBadania> GetAll()
         {
-            throw new NotImplementedException();
+            return _context.WykonaneBadania;
         }
 
         public WykonaneBadania GetWykonaneBadaniaById(int id)
         {
-            throw new NotImplementedException();
+            return _context.WykonaneBadania.FirstOrDefault(b => b.Id == id);
         }
 
         public void dodaj(WykonaneBadania badania)
         {
-            throw new NotImplementedException();
+            _context.WykonaneBadania.Add(badania);
         }
 
         public void update(WykonaneBadania badania)
         {
-            throw new NotImplementedException();
+            _context.WykonaneBadania.Update(badania);
         }
 
         public void delete(int id)
         {
-            throw new NotImplementedException();
+            var badanie = GetWykonaneBadaniaById(id);
+            if (badanie != null)
+            {
+                _context.WykonaneBadania.Remove(badanie);
+            }
         }
 
         public void save()
         {
-            throw new NotImplementedException();
+            _context.SaveChanges();
         }
     }
 }
