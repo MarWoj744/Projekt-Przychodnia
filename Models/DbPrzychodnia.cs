@@ -11,6 +11,10 @@ namespace Models
 {
     public class DbPrzychodnia : DbContext
     {
+
+        public DbPrzychodnia(DbContextOptions<DbPrzychodnia> options) : base(options)
+        {
+        }
         public DbSet<Osoba> Osoby { get; set; }
         public DbSet<Pacjent> Pacjenci { get; set; }
         public DbSet<Lekarz> Lekarze { get; set; }
