@@ -8,8 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Models\Models.csproj" />
-    <ProjectReference Include="..\Przychodnia\Przychodnia.csproj" />
+    <ProjectReference Include="..\IBLL\IBLL.csproj" />
+    <ProjectReference Include="..\IDAL\IDAL.csproj" />
   </ItemGroup>
 
 </Project>

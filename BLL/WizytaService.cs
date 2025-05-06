@@ -1,11 +1,14 @@
-using Przychodnia.DTOs;
-using Przychodnia.Models;
-using System;
+ï»¿using System;
+using System.Collections.Generic;
 using System.Linq;
-using Microsoft.EntityFrameworkCore;
+using System.Text;
+using System.Threading.Tasks;
+using DTOs;
+using IBLL;
+using Models;
 using Przychodnia.Repositories;
 
-namespace Przychodnia.Services
+namespace BLL
 {
     public class WizytaService : IWizytaService
     {
@@ -20,15 +23,7 @@ namespace Przychodnia.Services
         {
             //walidacje
             if (dto.DataWizyty < DateTime.Now)
-                throw new Exception("Podane b³êdn¹ datê");
-
-            var lekarzZajety = await _wizytaRepo.CzyLekarzMaZajetyTerminAsync(
-                dto.LekarzId, 
-                dto.DataWizyty
-            );
-
-            if (lekarzZajety)
-                throw new Exception("Termin zajêty.");
+                throw new Exception("Podane bÅ‚Ä™dnÄ… datÄ™");
 
             //utworzenie wizyty
             var wizyta = new Wizyta
@@ -40,14 +35,14 @@ namespace Przychodnia.Services
                 Opis = dto.Opis
             };
 
-            await _wizytaRepo.DodajWizyteAsync(wizyta);
+            _wizytaRepo.dodaj(wizyta);
 
             return true;
         }
 
-        public async Task<List<Wizyta>> GetAllAsync()
+        public IQueryable<Wizyta> GetAll()
         {
-            return await _wizytaRepo.PobierzWszystkieAsync();
+            return _wizytaRepo.PobierzWszystkie();
         }
     }
 }

@@ -1,13 +1,18 @@
-using Microsoft.AspNetCore.Http.HttpResults;
-using Przychodnia.Models;
+ï»¿using IBLL;
+using Models;
 using Przychodnia.Repositories;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 
-namespace Przychodnia.Services
+namespace BLL
 {
     public class OsobaService : IOsobaService
     {
-        //Dodaæ repozytorium
+        //DodaÄ‡ repozytorium
         private readonly IOsobaRepository _osobaRepository;
         public OsobaService(IOsobaRepository osobaRepository)
         {
@@ -21,19 +26,19 @@ namespace Przychodnia.Services
                 return "Osoba jest nullem.";
             }
 
-            if( string.IsNullOrEmpty(osoba.Login) || string.IsNullOrEmpty(osoba.Haslo))
+            if (string.IsNullOrEmpty(osoba.Login) || string.IsNullOrEmpty(osoba.Haslo))
             {
-                return "Login lub has³o jest nullem.";
+                return "Login lub hasÅ‚o jest nullem.";
             }
 
-            // Sprawdzenie, czy login jest ju¿ w bazie danych
+            // Sprawdzenie, czy login jest juÅ¼ w bazie danych
             //Dodac metode do repozytorium GetOsobaByLogin
             if (_osobaRepository.GetOsobaByLogin(osoba.Login) != null)
             {
                 return "Login zajety.";
             }
 
-            // Sprawdzenie, czy email jest ju¿ w bazie danych
+            // Sprawdzenie, czy email jest juÅ¼ w bazie danych
             //Dodac metode do repozytorium GetOsobaByEmail
             if (_osobaRepository.GetOsobaByEmail(osoba.Email) != null)
             {
@@ -44,30 +49,30 @@ namespace Przychodnia.Services
             // Walidacja numeru telefonu
             if (!IsValidPhoneNumber(osoba.Telefon))
             {
-                return "Numer telefonu nie prawid³owy.";
+                return "Numer telefonu nie prawidÅ‚owy.";
             }
 
             if (!IsValidEmail(osoba.Email))
             {
-                return "Email jest nieprawid³owy";
+                return "Email jest nieprawidÅ‚owy";
             }
-            // Sprawdzenie, czy numer telefonu jest ju¿ w bazie danych
+            // Sprawdzenie, czy numer telefonu jest juÅ¼ w bazie danych
             //Dodac metode do repozytorium GetOsobaByPhoneNumber
             if (_osobaRepository.GetOsobaByPhoneNumber(osoba.Telefon) != null)
             {
-                return "Numer telefonu zajêty.";
+                return "Numer telefonu zajÄ™ty.";
             }
 
-            return "Walidacja zakoñczona sukcesem.";
+            return "Walidacja zakoÅ„czona sukcesem.";
         }
 
-        private bool IsValidPhoneNumber(string phoneNumber)
+        public bool IsValidPhoneNumber(string phoneNumber)
         {
-            // Numer telefonu powinien mieæ 9 cyfr i nie mo¿e zawieraæ liter
+            // Numer telefonu powinien mieÄ‡ 9 cyfr i nie moÅ¼e zawieraÄ‡ liter
             return Regex.IsMatch(phoneNumber, @"^\d{9}$");
         }
 
-        private bool IsValidEmail(string email)
+        public bool IsValidEmail(string email)
         {
             //validacja emaila czy ma strukture nazwa@email.pl
             if (string.IsNullOrWhiteSpace(email)) { return false; }

@@ -1,6 +1,13 @@
-using Przychodnia.Models;
+ï»¿using IBLL;
+using Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
-namespace Przychodnia.Services
+using System.Threading.Tasks;
+
+namespace BLL
 {
     public class PacjentService : IPacjentService
     {
@@ -8,21 +15,21 @@ namespace Przychodnia.Services
         {
             if (pacjent == null || string.IsNullOrWhiteSpace(pacjent.PESEL))
             {
-                return "PESEL nie mo¿e byæ pusty.";
+                return "PESEL nie moÅ¼e byÄ‡ pusty.";
             }
 
             if (!IsValidPesel(pacjent.PESEL))
             {
-                return "Nieprawid³owy numer PESEL.";
+                return "NieprawidÅ‚owy numer PESEL.";
             }
 
             return "PESEL jest poprawny.";
         }
 
-        private bool IsValidPesel(string pesel)
+        public bool IsValidPesel(string pesel)
         {
             if (!Regex.IsMatch(pesel, @"^\d{11}$")) { return false; }
-                
+
 
             int[] weights = { 1, 3, 7, 9, 1, 3, 7, 9, 1, 3 };
             int sum = 0;

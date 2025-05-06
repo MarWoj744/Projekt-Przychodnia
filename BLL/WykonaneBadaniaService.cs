@@ -1,38 +1,44 @@
-using System;
-using Microsoft.EntityFrameworkCore;
-using Przychodnia.DTOs;
-using Przychodnia.Models;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using IBLL;
 using Przychodnia.Repositories;
+using DTOs;
+using Models;
 
-namespace Przychodnia.Services
+namespace BLL
 {
     public class WykonaneBadaniaService : IWykonaneBadanieService
     {
         private readonly IWykonaneBadaniaRepository _badaniaRepo;
+        private readonly IWizytaRepository _wiztaRepo;
 
-        public WykonaneBadaniaService(IWykonaneBadaniaRepository badaniaRepo)
+        public WykonaneBadaniaService(IWykonaneBadaniaRepository badaniaRepo, IWizytaRepository wiztaRepo)
         {
             _badaniaRepo = badaniaRepo;
+            _wiztaRepo = wiztaRepo;
         }
 
         public async Task DodajWykonaneBadanieAsync(WykonaneBadaniaDTO dto)
         {
             //sprawdzanie czy wizyta oraz badanie istnieja
-            var wizyta = await _badaniaRepo.GetWizytaByIdAsync(dto.WizytaId);
+            var wizyta = _wiztaRepo.getWizytaById(dto.WizytaId);
 
             if (wizyta == null)
             {
                 throw new Exception("Wizyta nie istnieje.");
             }
 
-            var badanie = await _badaniaRepo.GetBadanieByIdAsync(dto.BadanieId);
+            var badanie = _badaniaRepo.GetWykonaneBadaniaById(dto.BadanieId);
             if (badanie == null)
             {
                 throw new Exception("Badanie nie istnieje.");
             }
 
             //specjalizacja lekarza
-            if (wizyta.Lekarz.Specjalizacja != badanie.Specjalizacja)
+            if (wizyta.Lekarz.Specjalizacja != badanie.Badanie.Nazwa)
             {
                 throw new Exception("Specjalizacja lekarza nie odpowiada badaniu.");
             }
@@ -45,7 +51,7 @@ namespace Przychodnia.Services
                 Wyniki = dto.Wyniki
             };
 
-            await _badaniaRepo.DodajAsync(wykonane);
+            _badaniaRepo.dodaj(wykonane);
         }
     }
 }

@@ -1,7 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Przychodnia.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection.Emit;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Przychodnia.Models
+
+namespace Models
 {
     public class DbPrzychodnia : DbContext
     {
@@ -65,5 +71,3 @@ namespace Przychodnia.Models
         }
     }
 }
-
-

@@ -1,4 +1,4 @@
-﻿using Przychodnia.Models;
+﻿using Models;
 
 namespace Przychodnia.Repositories
 {
