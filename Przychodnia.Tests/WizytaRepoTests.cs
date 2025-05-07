@@ -12,7 +12,7 @@ namespace Przychodnia.Tests
         private DbPrzychodnia GetInMemoryDbContext(string dbName)
         {
             var options = new DbContextOptionsBuilder<DbPrzychodnia>()
-                .UseInMemoryDatabase(databaseName: dbName)
+                 .UseInMemoryDatabase(databaseName: dbName)
                 .Options;
 
             return new DbPrzychodnia(options);

@@ -12,7 +12,7 @@ namespace Przychodnia.Tests
         private DbPrzychodnia GetInMemoryDbContext(string dbName)
         {
             var options = new DbContextOptionsBuilder<DbPrzychodnia>()
-                .UseInMemoryDatabase(databaseName: dbName) 
+                .UseInMemoryDatabase(databaseName: dbName)
                 .Options;
 
             return new DbPrzychodnia(options);
@@ -46,7 +46,7 @@ namespace Przychodnia.Tests
             // Assert
             var result = repo.GetAll().FirstOrDefault();
             Assert.NotNull(result);
-            Assert.Equal("Morfologia", badanie?.Badanie?.Nazwa);
+            Assert.Equal("Morfologia", result?.Badanie?.Nazwa);
         }
 
         [Fact]
@@ -57,6 +57,7 @@ namespace Przychodnia.Tests
             var repo = new WykonaneBadaniaRepository(context);
             var badanie = new WykonaneBadania
             {
+                Id = 1,
                 Data = DateTime.Now,
                 Wyniki = "Pozytywne",
                 WizytaId = 1,
@@ -74,11 +75,11 @@ namespace Przychodnia.Tests
             context.SaveChanges();
 
             // Act
-            repo.delete(2);
+            repo.delete(1);
             repo.save();
 
             // Assert
-            var result = repo.GetAll().FirstOrDefault(b => b.Id == 2);
+            var result = repo.GetWykonaneBadaniaById(1);
             Assert.Null(result);
         }
     }

@@ -26,12 +26,13 @@ namespace Przychodnia.Tests
             var repo = new OsobaRepository(context);
             var osoba = new Pacjent
             {
+                Id = 1,
                 Imie = "Jan",
                 Nazwisko = "Kowalski",
                 Adres = "ul. Przykładowa 1",
                 Email = "jan@example.com",
                 Telefon = "123456789",
-                Login = "jan.kowalski",
+                Login = "test",
                 Haslo = "haslo123",
                 Rola = Rola.Pacjent,
                 PhoneNumber = "123456789",
@@ -54,12 +55,13 @@ namespace Przychodnia.Tests
             var context = GetInMemoryDbContext(nameof(UsunOsobe_UsuwaPoprawnie));
             var osoba = new Pacjent
             {
+                Id = 1,
                 Imie = "Jan",
                 Nazwisko = "Kowalski",
                 Adres = "ul. Przykładowa 1",
                 Email = "jan@example.com",
                 Telefon = "123456789",
-                Login = "jan.kowalski",
+                Login = "test",
                 Haslo = "haslo123",
                 Rola = Rola.Pacjent,
                 PhoneNumber = "123456789",
@@ -71,12 +73,12 @@ namespace Przychodnia.Tests
             var repo = new OsobaRepository(context);
 
             // Act
-            repo.Delete(2);
+            repo.Delete(1);
             
             repo.save();
 
             // Assert
-            var result = repo.GetOsobaById(2);
+            var result = repo.GetOsobaById(1);
             Assert.Null(result);
         }
     }
