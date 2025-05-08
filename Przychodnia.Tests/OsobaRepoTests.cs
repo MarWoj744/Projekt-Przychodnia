@@ -81,5 +81,81 @@ namespace Przychodnia.Tests
             var result = repo.GetOsobaById(1);
             Assert.Null(result);
         }
+        [Fact]
+        public void GetOsobaByLogin_ZwracaPoprawnaOsobe()
+        {
+            var context = GetInMemoryDbContext(nameof(GetOsobaByLogin_ZwracaPoprawnaOsobe));
+            var osoba = new Pacjent { Id = 1, Login = "login1", Email = "a@a.pl", PhoneNumber = "111", Rola = Rola.Pacjent };
+            context.Osoby.Add(osoba);
+            context.SaveChanges();
+
+            var repo = new OsobaRepository(context);
+            var result = repo.GetOsobaByLogin("login1");
+
+            Assert.NotNull(result);
+            Assert.Equal("login1", result.Login);
+        }
+
+        [Fact]
+        public void GetOsobaByEmail_ZwracaPoprawnaOsobe()
+        {
+            var context = GetInMemoryDbContext(nameof(GetOsobaByEmail_ZwracaPoprawnaOsobe));
+            var osoba = new Pacjent { Id = 1, Login = "login1", Email = "email@example.com", PhoneNumber = "111", Rola = Rola.Pacjent };
+            context.Osoby.Add(osoba);
+            context.SaveChanges();
+
+            var repo = new OsobaRepository(context);
+            var result = repo.GetOsobaByEmail("email@example.com");
+
+            Assert.NotNull(result);
+            Assert.Equal("email@example.com", result.Email);
+        }
+
+        [Fact]
+        public void GetOsobaByPhoneNumber_ZwracaPoprawnaOsobe()
+        {
+            var context = GetInMemoryDbContext(nameof(GetOsobaByPhoneNumber_ZwracaPoprawnaOsobe));
+            var osoba = new Pacjent { Id = 1, Login = "login1", Email = "email@example.com", PhoneNumber = "123456789", Rola = Rola.Pacjent };
+            context.Osoby.Add(osoba);
+            context.SaveChanges();
+
+            var repo = new OsobaRepository(context);
+            var result = repo.GetOsobaByPhoneNumber("123456789");
+
+            Assert.NotNull(result);
+            Assert.Equal("123456789", result.PhoneNumber);
+        }
+
+        [Fact]
+        public void UpdateOsoba_AktualizujePoprawnie()
+        {
+            var context = GetInMemoryDbContext(nameof(UpdateOsoba_AktualizujePoprawnie));
+            var osoba = new Pacjent { Id = 1, Imie = "Jan", Login = "login1", Email = "email@example.com", PhoneNumber = "111", Rola = Rola.Pacjent };
+            context.Osoby.Add(osoba);
+            context.SaveChanges();
+
+            var repo = new OsobaRepository(context);
+            osoba.Imie = "Adam";
+            repo.Update(osoba);
+            repo.save();
+
+            var result = repo.GetOsobaById(1);
+            Assert.Equal("Adam", result.Imie);
+        }
+
+        [Fact]
+        public void PobierzWszystkie_ZwracaWszystkieOsoby()
+        {
+            var context = GetInMemoryDbContext(nameof(PobierzWszystkie_ZwracaWszystkieOsoby));
+            context.Osoby.Add(new Pacjent { Id = 1, Login = "l1", Rola = Rola.Pacjent });
+            context.Osoby.Add(new Pacjent { Id = 2, Login = "l2", Rola = Rola.Pacjent });
+            context.SaveChanges();
+
+            var repo = new OsobaRepository(context);
+            var result = repo.PobierzWszystkie().ToList();
+
+            Assert.Equal(2, result.Count);
+        }
+
     }
 }

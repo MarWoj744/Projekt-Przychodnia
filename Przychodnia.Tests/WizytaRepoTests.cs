@@ -53,5 +53,64 @@ namespace Przychodnia.Tests
             var result = repo.getWizytaById(2);
             Assert.Null(result);
         }
+
+        [Fact]
+        public void PobierzWszystkie_ZwracaWszystkieWizyty()
+        {
+            var context = GetInMemoryDbContext(nameof(PobierzWszystkie_ZwracaWszystkieWizyty));
+            context.Wizyty.Add(new Wizyta { Id = 5, Opis = "W1" });
+            context.Wizyty.Add(new Wizyta { Id = 6, Opis = "W2" });
+            context.SaveChanges();
+
+            var repo = new WizytaRepository(context);
+
+            // Act
+            var result = repo.PobierzWszystkie().ToList();
+
+            // Assert
+            Assert.Equal(2, result.Count);
+            Assert.Contains(result, w => w.Opis == "W1");
+            Assert.Contains(result, w => w.Opis == "W2");
+        }
+
+        [Fact]
+        public void GetWizytaById_ZwracaPoprawnaWizyte()
+        {
+            var context = GetInMemoryDbContext(nameof(GetWizytaById_ZwracaPoprawnaWizyte));
+            var wizyta = new Wizyta { Id = 4, Opis = "Wizyta testowa" };
+            context.Wizyty.Add(wizyta);
+            context.SaveChanges();
+
+            var repo = new WizytaRepository(context);
+
+            // Act
+            var result = repo.getWizytaById(4);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.Equal("Wizyta testowa", result.Opis);
+        }
+
+        [Fact]
+        public void UpdateWizyta_AktualizujePoprawnie()
+        {
+            var context = GetInMemoryDbContext(nameof(UpdateWizyta_AktualizujePoprawnie));
+            var wizyta = new Wizyta { Id = 3, Opis = "Stary opis" };
+            context.Wizyty.Add(wizyta);
+            context.SaveChanges();
+
+            var repo = new WizytaRepository(context);
+
+            // Act
+            wizyta.Opis = "Nowy opis";
+            repo.update(wizyta);
+            repo.save();
+
+            var result = repo.getWizytaById(3);
+
+            // Assert
+            Assert.Equal("Nowy opis", result.Opis);
+        }
+
     }
 }
