@@ -1,7 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using IDAL_;
+using Microsoft.EntityFrameworkCore;
 using Models;
 
-namespace Przychodnia.Repositories
+namespace DAL
 {
     public class OsobaRepository:IOsobaRepository
     {

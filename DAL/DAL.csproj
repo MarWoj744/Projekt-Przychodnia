@@ -12,8 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\IDAL\IDAL.csproj" />
-    <ProjectReference Include="..\Przychodnia\Przychodnia.csproj" />
+    <ProjectReference Include="..\IDAL_\IDAL_.csproj" />
   </ItemGroup>
 
 </Project>

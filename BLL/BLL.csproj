@@ -8,12 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="9.0.4" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\IBLL\IBLL.csproj" />
-    <ProjectReference Include="..\IDAL\IDAL.csproj" />
+    <ProjectReference Include="..\IDAL_\IDAL_.csproj" />
   </ItemGroup>
 
 </Project>

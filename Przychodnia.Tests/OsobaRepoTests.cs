@@ -1,9 +1,8 @@
 ﻿using Xunit;
 using Microsoft.EntityFrameworkCore;
-
-using Przychodnia.Repositories;
 using System.Linq;
 using Models;
+using DAL;
 
 namespace Przychodnia.Tests
 {

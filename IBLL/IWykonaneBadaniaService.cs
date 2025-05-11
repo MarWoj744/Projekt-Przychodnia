@@ -1,14 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using DTOs;
 
 namespace IBLL
 {
     public interface IWykonaneBadanieService
     {
-        Task DodajWykonaneBadanieAsync(WykonaneBadaniaDTO dto);
+        IEnumerable<WykonaneBadaniaDTO> GetAll();
+        WykonaneBadaniaDTO GetById(int id);
+        void Dodaj(WykonaneBadaniaDTO badanieDto);
+        void Update(WykonaneBadaniaDTO badanieDto);
+        void Delete(int id);
+        void Save();
     }
 }

@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using DTOs;
 using IBLL;
+using IDAL_;
 using Models;
-using Przychodnia.Repositories;
 
 namespace BLL
 {
@@ -21,11 +19,11 @@ namespace BLL
 
         public async Task<bool> ZarejestrujWizyteAsync(RejestracjaWizytyDTO dto)
         {
-            //walidacje
+            // Walidacje
             if (dto.DataWizyty < DateTime.Now)
-                throw new Exception("Podane błędną datę");
+                throw new Exception("Podano błędną datę");
 
-            //utworzenie wizyty
+            // Utworzenie wizyty
             var wizyta = new Wizyta
             {
                 PacjentId = dto.PacjentId,
@@ -35,7 +33,9 @@ namespace BLL
                 Opis = dto.Opis
             };
 
+            // Dodanie wizyty do repozytorium
             _wizytaRepo.dodaj(wizyta);
+            _wizytaRepo.save(); // Zapisanie zmian
 
             return true;
         }
@@ -43,6 +43,25 @@ namespace BLL
         public IQueryable<Wizyta> GetAll()
         {
             return _wizytaRepo.PobierzWszystkie();
+        }
+
+        public Wizyta GetWizytaById(int id)
+        {
+            return _wizytaRepo.getWizytaById(id);
+        }
+
+        public async Task<bool> UpdateWizytaAsync(Wizyta wizyta)
+        {
+            _wizytaRepo.update(wizyta);
+            _wizytaRepo.save(); // Zapisanie zmian
+            return true;
+        }
+
+        public async Task<bool> DeleteWizytaAsync(int id)
+        {
+            _wizytaRepo.delete(id);
+            _wizytaRepo.save(); // Zapisanie zmian
+            return true;
         }
     }
 }

@@ -1,7 +1,11 @@
-﻿
-using Models;
+﻿using Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Przychodnia.Repositories
+namespace IDAL_
 {
     public interface IWykonaneBadaniaRepository
     {

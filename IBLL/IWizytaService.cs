@@ -1,9 +1,6 @@
 ﻿using DTOs;
 using Models;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace IBLL
@@ -12,5 +9,8 @@ namespace IBLL
     {
         Task<bool> ZarejestrujWizyteAsync(RejestracjaWizytyDTO dto);
         IQueryable<Wizyta> GetAll();
+        Wizyta GetWizytaById(int id);
+        Task<bool> UpdateWizytaAsync(Wizyta wizyta);
+        Task<bool> DeleteWizytaAsync(int id);
     }
 }

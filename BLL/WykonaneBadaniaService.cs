@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using IBLL;
-using Przychodnia.Repositories;
 using DTOs;
 using Models;
+using IDAL_;
 
 namespace BLL
 {
@@ -21,37 +18,66 @@ namespace BLL
             _wiztaRepo = wiztaRepo;
         }
 
-        public async Task DodajWykonaneBadanieAsync(WykonaneBadaniaDTO dto)
+        public IEnumerable<WykonaneBadaniaDTO> GetAll()
         {
-            //sprawdzanie czy wizyta oraz badanie istnieja
-            var wizyta = _wiztaRepo.getWizytaById(dto.WizytaId);
+            return _badaniaRepo.GetAll()
+                .Select(b => new WykonaneBadaniaDTO
+                {
+                    WizytaId = b.WizytaId,
+                    BadanieId = b.BadanieId,
+                    Data = b.Data,
+                    Wyniki = b.Wyniki
+                });
+        }
 
-            if (wizyta == null)
+        public WykonaneBadaniaDTO GetById(int id)
+        {
+            var badanie = _badaniaRepo.GetWykonaneBadaniaById(id);
+            if (badanie == null) return null;
+
+            return new WykonaneBadaniaDTO
             {
-                throw new Exception("Wizyta nie istnieje.");
-            }
+                WizytaId = badanie.WizytaId,
+                BadanieId = badanie.BadanieId,
+                Data = badanie.Data,
+                Wyniki = badanie.Wyniki
+            };
+        }
 
-            var badanie = _badaniaRepo.GetWykonaneBadaniaById(dto.BadanieId);
-            if (badanie == null)
-            {
-                throw new Exception("Badanie nie istnieje.");
-            }
-
-            //specjalizacja lekarza
-            if (wizyta.Lekarz.Specjalizacja != badanie.Badanie.Nazwa)
-            {
-                throw new Exception("Specjalizacja lekarza nie odpowiada badaniu.");
-            }
-
-            var wykonane = new WykonaneBadania
+        public void Dodaj(WykonaneBadaniaDTO dto)
+        {
+            var badanie = new WykonaneBadania
             {
                 WizytaId = dto.WizytaId,
                 BadanieId = dto.BadanieId,
                 Data = dto.Data,
                 Wyniki = dto.Wyniki
             };
+            _badaniaRepo.dodaj(badanie);
+        }
 
-            _badaniaRepo.dodaj(wykonane);
+        public void Update(WykonaneBadaniaDTO dto)
+        {
+            var badanie = _badaniaRepo.GetAll()
+                .FirstOrDefault(b => b.WizytaId == dto.WizytaId && b.BadanieId == dto.BadanieId);
+
+            if (badanie != null)
+            {
+                badanie.Data = dto.Data;
+                badanie.Wyniki = dto.Wyniki;
+
+                _badaniaRepo.update(badanie);
+            }
+        }
+
+        public void Delete(int id)
+        {
+            _badaniaRepo.delete(id);
+        }
+
+        public void Save()
+        {
+            _badaniaRepo.save();
         }
     }
 }
