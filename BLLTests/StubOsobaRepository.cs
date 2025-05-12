@@ -2,6 +2,7 @@
 using IDAL_;
 using Models;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream:BLLTests/StubOsobaService.cs
 using System;
 using System.Collections.Generic;
@@ -14,11 +15,15 @@ using System.ComponentModel.DataAnnotations;
 =======
 using System.ComponentModel.DataAnnotations;
 >>>>>>> Stashed changes
+=======
+using System.ComponentModel.DataAnnotations;
+>>>>>>> Stashed changes
 
 namespace BLLTests
 {
     class StubOsobaRepository : IOsobaRepository
     {
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream:BLLTests/StubOsobaService.cs
         private readonly string _validationResult;
@@ -52,6 +57,14 @@ namespace BLLTests
         public void save() { }
 >>>>>>> Stashed changes
 
+=======
+        private readonly List<Osoba> _osoby;
+        public StubOsobaRepository(List<Osoba> osoby = null)
+        {
+            _osoby = osoby ?? new List<Osoba>();
+        }
+
+>>>>>>> Stashed changes
         public void save() { }
 
         public Osoba GetOsobaById(int id)
