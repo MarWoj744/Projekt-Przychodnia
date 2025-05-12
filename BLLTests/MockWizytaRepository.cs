@@ -1,7 +1,6 @@
-﻿using DTOs;
-using IBLL;
-using IDAL_;
+﻿using IDAL_;
 using Models;
+using Przychodnia.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BLLTests
 {
-    class MockWizytaRepository : IWizytaRepository
+    class MockWizytaRepository:IWizytaRepository
     {
         public bool AddCalled { get; private set; } = false;
         public bool SaveCalled { get; private set; } = false;

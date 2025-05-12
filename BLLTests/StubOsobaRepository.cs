@@ -1,9 +1,10 @@
-﻿using IDAL;
+﻿using IDAL_;
 using Models;
+using Przychodnia.Repositories;
 
 namespace BLLTests
 {
-    class StubOsobaRepository : IOsobaRepository
+    class StubOsobaRepository:IOsobaRepository
     {
         private readonly List<Osoba> _osoby;
         public StubOsobaRepository(List<Osoba> osoby = null) => _osoby = osoby ?? new List<Osoba>();
@@ -47,5 +48,6 @@ namespace BLLTests
         {
             
         }
+        public void save() { }
     }
 }

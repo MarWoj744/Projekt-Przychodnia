@@ -1,7 +1,6 @@
-﻿
-using IBLL;
-using IDAL_;
+﻿using IDAL_;
 using Models;
+using Przychodnia.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
