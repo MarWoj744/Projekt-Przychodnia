@@ -1,6 +1,7 @@
 ﻿using IBLL;
 using IDAL_;
 using Models;
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream:BLLTests/StubOsobaService.cs
 using System;
 using System.Collections.Generic;
@@ -10,11 +11,15 @@ using System.Threading.Tasks;
 =======
 using System.ComponentModel.DataAnnotations;
 >>>>>>> Stashed changes:BLLTests/StubOsobaRepository.cs
+=======
+using System.ComponentModel.DataAnnotations;
+>>>>>>> Stashed changes
 
 namespace BLLTests
 {
     class StubOsobaRepository : IOsobaRepository
     {
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream:BLLTests/StubOsobaService.cs
         private readonly string _validationResult;
 
@@ -37,6 +42,15 @@ namespace BLLTests
         {
             _osoby = osoby ?? new List<Osoba>();
         }
+=======
+        private readonly List<Osoba> _osoby;
+        public StubOsobaRepository(List<Osoba> osoby = null)
+        {
+            _osoby = osoby ?? new List<Osoba>();
+        }
+
+        public void save() { }
+>>>>>>> Stashed changes
 
         public void save() { }
 
