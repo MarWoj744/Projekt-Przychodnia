@@ -8,7 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="FakesAssemblies\**" />
+    <EmbeddedResource Remove="FakesAssemblies\**" />
+    <None Remove="FakesAssemblies\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.13.0" />
+    <PackageReference Include="Microsoft.QualityTools.Testing.Fakes" Version="17.5.0-beta.23060.1" />
     <PackageReference Include="Moq" Version="4.20.72" />
     <PackageReference Include="xunit" Version="2.9.3" />
     <PackageReference Include="xunit.runner.visualstudio" Version="3.1.0">
@@ -18,10 +25,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DTOs\DTOs.csproj" />
-    <ProjectReference Include="..\IBLL\IBLL.csproj" />
-    <ProjectReference Include="..\IDAL_\IDAL_.csproj" />
+    <ProjectReference Include="..\IDAL\IDAL.csproj" />
     <ProjectReference Include="..\Models\Models.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalDesignTimeBuildInput Remove="FakesAssemblies\**" />
   </ItemGroup>
 
 </Project>
