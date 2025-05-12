@@ -10,7 +10,7 @@ using Models;
 
 namespace BLL
 {
-    public class WykonaneBadaniaService : IWykonaneBadanieService
+    public class WykonaneBadaniaService : IWykonaneBadanieRepository
     {
         private readonly IWykonaneBadaniaRepository _badaniaRepo;
         private readonly IWizytaRepository _wiztaRepo;

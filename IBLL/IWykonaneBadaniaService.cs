@@ -7,7 +7,7 @@ using DTOs;
 
 namespace IBLL
 {
-    public interface IWykonaneBadanieService
+    public interface IWykonaneBadanieRepository
     {
         Task DodajWykonaneBadanieAsync(WykonaneBadaniaDTO dto);
     }
