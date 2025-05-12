@@ -7,8 +7,10 @@ namespace BLLTests
     class StubOsobaRepository:IOsobaRepository
     {
         private readonly List<Osoba> _osoby;
-        public StubOsobaRepository(List<Osoba> osoby = null) => _osoby = osoby ?? new List<Osoba>();
-
+        public StubOsobaRepository(List<Osoba> osoby = null)
+        {
+            _osoby = osoby ?? new List<Osoba>();
+        }
         public Osoba GetOsobaById(int id)
         {
             return _osoby.FirstOrDefault(o => o.Id == id);
