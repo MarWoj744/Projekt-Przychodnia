@@ -11,5 +11,11 @@ namespace IBLL
     {
         string ValidatePesel(Pacjent pacjent);
         bool IsValidPesel(string pesel);
+        IQueryable<Pacjent> PobierzWszystkie();
+        Pacjent GetPacjentById(int id);
+        void Dodaj(Pacjent pacjent);
+        void Delete(int id);
+        void Update(Pacjent pacjent);
+        void save();
     }
 }
