@@ -3,7 +3,7 @@ using DTOs;
 
 namespace IBLL
 {
-    public interface IWykonaneBadanieService
+    public interface IWykonaneBadanieRepository
     {
         IEnumerable<WykonaneBadaniaDTO> GetAll();
         WykonaneBadaniaDTO GetById(int id);
