@@ -26,7 +26,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BLLTests", "BLLTests\BLLTes
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IDAL_", "IDAL_\IDAL_.csproj", "{70FD32FB-8C33-4742-8375-D0B1F58ED363}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Przychodnia.API", "Przychodnia.API\Przychodnia.API.csproj", "{A11AB6FB-9256-41D6-830E-F50DF6361079}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Przychodnia.API", "Przychodnia.API\Przychodnia.API.csproj", "{A11AB6FB-9256-41D6-830E-F50DF6361079}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Przychodnia.API.Tests", "Przychodnia.API.Tests\Przychodnia.API.Tests.csproj", "{595BA9BA-E7D4-4180-9D15-B19F47129D65}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -70,6 +72,10 @@ Global
 		{A11AB6FB-9256-41D6-830E-F50DF6361079}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A11AB6FB-9256-41D6-830E-F50DF6361079}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A11AB6FB-9256-41D6-830E-F50DF6361079}.Release|Any CPU.Build.0 = Release|Any CPU
+		{595BA9BA-E7D4-4180-9D15-B19F47129D65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{595BA9BA-E7D4-4180-9D15-B19F47129D65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{595BA9BA-E7D4-4180-9D15-B19F47129D65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{595BA9BA-E7D4-4180-9D15-B19F47129D65}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
