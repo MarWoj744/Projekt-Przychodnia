@@ -1,0 +1,5 @@
+@Przychodnia_API_HostAddress = http://localhost:5261
+
+### Pobierz wszystkie badania
+GET {{Przychodnia_API_HostAddress}}/api/Badanie
+Accept: application/json

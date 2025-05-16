@@ -19,15 +19,9 @@ namespace Models
         public DbSet<Pacjent> Pacjenci { get; set; }
         public DbSet<Lekarz> Lekarze { get; set; }
         public DbSet<Recepcjonistka> Recepcjonistki { get; set; }
-
         public DbSet<Badanie> Badania { get; set; }
         public DbSet<Wizyta> Wizyty { get; set; }
         public DbSet<WykonaneBadania> WykonaneBadania { get; set; }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Przychodnia;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
-        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

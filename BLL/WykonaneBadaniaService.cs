@@ -7,7 +7,7 @@ using IDAL_;
 
 namespace BLL
 {
-    public class WykonaneBadaniaService : IWykonaneBadanieRepository
+    public class WykonaneBadaniaService : IWykonaneBadanieService
     {
         private readonly IWykonaneBadaniaRepository _badaniaRepo;
         private readonly IWizytaRepository _wiztaRepo;
