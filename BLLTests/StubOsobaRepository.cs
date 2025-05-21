@@ -1,6 +1,6 @@
 ﻿using IDAL_;
 using Models;
-using Przychodnia.Repositories;
+//using Przychodnia.Repositories;
 
 namespace BLLTests
 {
