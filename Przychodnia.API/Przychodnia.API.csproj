@@ -16,6 +16,7 @@
     <ProjectReference Include="..\IBLL\IBLL.csproj" />
     <ProjectReference Include="..\IDAL_\IDAL_.csproj" />
     <ProjectReference Include="..\Models\Models.csproj" />
+    <ProjectReference Include="..\DTOs\DTOs.csproj" />
   </ItemGroup>
 
 </Project>
