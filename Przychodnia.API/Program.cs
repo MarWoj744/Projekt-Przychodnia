@@ -43,11 +43,7 @@ using (var scope = app.Services.CreateScope())
     var services = scope.ServiceProvider;
     var context = services.GetRequiredService<DbPrzychodnia>();
 
-    Console.WriteLine("Connection string used:");
-    Console.WriteLine(context.Database.GetDbConnection().ConnectionString);
-
     context.Database.Migrate();
-    DbInitializer.Seed(context);
 }
 
 // Configure the HTTP request pipeline.
