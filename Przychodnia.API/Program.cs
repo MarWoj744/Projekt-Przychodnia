@@ -44,6 +44,7 @@ using (var scope = app.Services.CreateScope())
     var context = services.GetRequiredService<DbPrzychodnia>();
 
     context.Database.Migrate();
+    DbInit.Seed(context);
 }
 
 // Configure the HTTP request pipeline.
