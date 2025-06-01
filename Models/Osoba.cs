@@ -47,6 +47,5 @@ namespace Models
 
         [Required]
         public Rola Rola { get; set; }
-        public string PhoneNumber { get; set; }
     }
 }

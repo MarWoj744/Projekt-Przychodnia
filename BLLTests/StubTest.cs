@@ -24,7 +24,6 @@ namespace BLLTests
                 Login = "anowak",
                 Haslo = "tajne123",
                 Rola = Rola.Pacjent,
-                PhoneNumber = "123456789",
                 PESEL = "99010212345"
             };
 

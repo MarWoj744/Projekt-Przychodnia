@@ -34,7 +34,7 @@ namespace DAL
 
         public Osoba GetOsobaByPhoneNumber(string phoneNumber)
         {
-            return _context.Osoby.FirstOrDefault(o => o.PhoneNumber == phoneNumber);
+            return _context.Osoby.FirstOrDefault(o => o.Telefon == phoneNumber);
         }
 
         public void Dodaj(Osoba osoba)

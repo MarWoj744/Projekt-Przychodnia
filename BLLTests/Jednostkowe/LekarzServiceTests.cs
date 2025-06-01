@@ -29,7 +29,6 @@ namespace BLLTests.Jednostkowe
                 Adres = "ul. Zdrowa 10",
                 Email = "adam.nowak@example.com",
                 Telefon = "123456789",
-                PhoneNumber = "123456789",
                 Login = "alekarz",
                 Haslo = "tajnehaslo",
                 Rola = Rola.Lekarz,

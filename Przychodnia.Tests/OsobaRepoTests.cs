@@ -34,7 +34,6 @@ namespace Przychodnia.Tests
                 Login = "test",
                 Haslo = "haslo123",
                 Rola = Rola.Pacjent,
-                PhoneNumber = "123456789",
                 PESEL = "12345678901" 
             };
 
@@ -63,7 +62,6 @@ namespace Przychodnia.Tests
                 Login = "test",
                 Haslo = "haslo123",
                 Rola = Rola.Pacjent,
-                PhoneNumber = "123456789",
                 PESEL = "12345678901" 
             };
             context.Osoby.Add(osoba);
@@ -84,7 +82,7 @@ namespace Przychodnia.Tests
         public void GetOsobaByLogin_ZwracaPoprawnaOsobe()
         {
             var context = GetInMemoryDbContext(nameof(GetOsobaByLogin_ZwracaPoprawnaOsobe));
-            var osoba = new Pacjent { Id = 1, Login = "login1", Email = "a@a.pl", PhoneNumber = "111", Rola = Rola.Pacjent };
+            var osoba = new Pacjent { Id = 1, Login = "login1", Email = "a@a.pl", Telefon = "111", Rola = Rola.Pacjent };
             context.Osoby.Add(osoba);
             context.SaveChanges();
 
@@ -99,7 +97,7 @@ namespace Przychodnia.Tests
         public void GetOsobaByEmail_ZwracaPoprawnaOsobe()
         {
             var context = GetInMemoryDbContext(nameof(GetOsobaByEmail_ZwracaPoprawnaOsobe));
-            var osoba = new Pacjent { Id = 1, Login = "login1", Email = "email@example.com", PhoneNumber = "111", Rola = Rola.Pacjent };
+            var osoba = new Pacjent { Id = 1, Login = "login1", Email = "email@example.com", Telefon = "111", Rola = Rola.Pacjent };
             context.Osoby.Add(osoba);
             context.SaveChanges();
 
@@ -114,7 +112,7 @@ namespace Przychodnia.Tests
         public void GetOsobaByPhoneNumber_ZwracaPoprawnaOsobe()
         {
             var context = GetInMemoryDbContext(nameof(GetOsobaByPhoneNumber_ZwracaPoprawnaOsobe));
-            var osoba = new Pacjent { Id = 1, Login = "login1", Email = "email@example.com", PhoneNumber = "123456789", Rola = Rola.Pacjent };
+            var osoba = new Pacjent { Id = 1, Login = "login1", Email = "email@example.com", Telefon = "123456789", Rola = Rola.Pacjent };
             context.Osoby.Add(osoba);
             context.SaveChanges();
 
@@ -122,14 +120,14 @@ namespace Przychodnia.Tests
             var result = repo.GetOsobaByPhoneNumber("123456789");
 
             Assert.NotNull(result);
-            Assert.Equal("123456789", result.PhoneNumber);
+            Assert.Equal("123456789", result.Telefon);
         }
 
         [Fact]
         public void UpdateOsoba_AktualizujePoprawnie()
         {
             var context = GetInMemoryDbContext(nameof(UpdateOsoba_AktualizujePoprawnie));
-            var osoba = new Pacjent { Id = 1, Imie = "Jan", Login = "login1", Email = "email@example.com", PhoneNumber = "111", Rola = Rola.Pacjent };
+            var osoba = new Pacjent { Id = 1, Imie = "Jan", Login = "login1", Email = "email@example.com", Telefon = "111", Rola = Rola.Pacjent };
             context.Osoby.Add(osoba);
             context.SaveChanges();
 
