@@ -101,7 +101,7 @@
               "type": "Microsoft.ApiManagement/service/apis",
               "name": "przychodnia/PrzychodniaAPI",
               "properties": {
-                "displayName": "PrzychodniaAPI",
+                "displayName": "Przychodnia.API",
                 "apiRevision": "1",
                 "description": null,
                 "subscriptionRequired": true,
