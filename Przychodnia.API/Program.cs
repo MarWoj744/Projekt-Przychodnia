@@ -40,11 +40,10 @@ var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
 {
-    var services = scope.ServiceProvider;
-    var context = services.GetRequiredService<DbPrzychodnia>();
+    var db = scope.ServiceProvider.GetRequiredService<DbPrzychodnia>();
 
-    context.Database.Migrate();
-    DbInit.Seed(context);
+    db.Database.Migrate();
+    DbInit.Seed(db);
 }
 
 // Configure the HTTP request pipeline.
