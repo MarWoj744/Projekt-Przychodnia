@@ -1,58 +1,51 @@
-# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
-# More GitHub Actions for Azure: https://github.com/Azure/actions
-
-name: Build and deploy ASP.Net Core app to Azure Web App - przychodnia
+name: Build and Deploy ASP.NET Core API with Swagger
 
 on:
   push:
     branches:
       - main
-  workflow_dispatch:
 
 jobs:
-  build:
-    runs-on: windows-latest
-    permissions:
-      contents: read #This is required for actions/checkout
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    env:
+      AZURE_WEBAPP_NAME: przychodnia
+      AZURE_WEBAPP_PACKAGE_PATH: ./Przychodnia.API/publish
+      CONFIGURATION: Release
+      DOTNET_VERSION: '8.0.x'
+      SWAGGER_DLL: ./Przychodnia.API/bin/Release/net8.0/Przychodnia.API.dll
+      SWAGGER_OUTPUT: ./Przychodnia.API/publish/swagger.json
+      SWAGGER_VERSION: v1
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repo
+        uses: actions/checkout@v3
 
-      - name: Set up .NET Core
+      - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '3.1'
+          dotnet-version: ${{ env.DOTNET_VERSION }}
 
-      - name: Build with dotnet
-        run: dotnet build --configuration Release
+      - name: Restore dependencies
+        run: dotnet restore
 
-      - name: dotnet publish
-        run: dotnet publish -c Release -o "${{env.DOTNET_ROOT}}/myapp"
+      - name: Build
+        run: dotnet build --configuration ${{ env.CONFIGURATION }} --no-restore
 
-      - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v4
-        with:
-          name: .net-app
-          path: ${{env.DOTNET_ROOT}}/myapp
+      - name: Publish
+        run: dotnet publish Przychodnia.API/Przychodnia.API.csproj -c ${{ env.CONFIGURATION }} -o ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
 
-  deploy:
-    runs-on: windows-latest
-    needs: build
-    environment:
-      name: 'Production'
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-    
-    steps:
-      - name: Download artifact from build job
-        uses: actions/download-artifact@v4
-        with:
-          name: .net-app
-      
+      - name: Install Swashbuckle CLI
+        run: dotnet tool install --global Swashbuckle.AspNetCore.Cli --version 6.5.0
+
+      - name: Generate Swagger
+        run: |
+          swagger tofile --output "${{ env.SWAGGER_OUTPUT }}" "${{ env.SWAGGER_DLL }}" "${{ env.SWAGGER_VERSION }}"
+
       - name: Deploy to Azure Web App
-        id: deploy-to-webapp
-        uses: azure/webapps-deploy@v3
+        uses: azure/webapps-deploy@v2
         with:
-          app-name: 'przychodnia'
-          slot-name: 'Production'
-          package: .
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_24DD2EA359594FE0B8F8CEB4288CC14E }}
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
