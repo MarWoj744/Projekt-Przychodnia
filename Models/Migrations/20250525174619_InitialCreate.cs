@@ -40,7 +40,7 @@ namespace Models.Migrations
                     Login = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Haslo = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Rola = table.Column<int>(type: "int", nullable: false),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                   // PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Tytul = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: true),
                     Specjalizacja = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     PESEL = table.Column<string>(type: "nvarchar(450)", nullable: true)
