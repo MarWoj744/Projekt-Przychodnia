@@ -1,4 +1,5 @@
-﻿using Models;
+﻿using DTOs;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +10,11 @@ namespace IBLL
 {
     public interface IBadanieService
     {
-        IQueryable<Badanie> PobierzWszystkie();
-        Badanie GetBadanieById(int id);
-        void Dodaj(Badanie badanie);
+        IQueryable<WykonaneBadaniaDTO> PobierzWszystkie();
+        WykonaneBadaniaDTO GetBadanieById(int id);
+        void Dodaj(WykonaneBadaniaDTO badanie);
         void Delete(int id);
-        void Update(Badanie badanie);
+        void Update(WykonaneBadaniaDTO badanie);
         void save();
     }
 }

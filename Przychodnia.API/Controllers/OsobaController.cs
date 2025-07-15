@@ -1,4 +1,5 @@
-﻿using IBLL;
+﻿using DTOs;
+using IBLL;
 using Microsoft.AspNetCore.Mvc;
 using Models;
 using System;
@@ -38,7 +39,7 @@ namespace API.Controllers
 
 
         [HttpPost]
-        public IActionResult Create([FromBody] Osoba osoba)
+        public IActionResult Create([FromBody] OsobaDTO osoba)
         {
             if (osoba == null)
                 return BadRequest("Obiekt Osoba jest pusty.");
@@ -54,7 +55,7 @@ namespace API.Controllers
 
 
         [HttpPut("{id}")]
-        public IActionResult Update(int id, [FromBody] Osoba osoba)
+        public IActionResult Update(int id, [FromBody] OsobaDTO osoba)
         {
             if (osoba == null || osoba.Id != id)
                 return BadRequest("Niepoprawne dane.");

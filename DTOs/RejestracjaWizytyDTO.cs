@@ -9,6 +9,9 @@ namespace DTOs
 {
     public class RejestracjaWizytyDTO
     {
+        [Key]
+        public int Id { get; set; }
+
         [Required]
         public int PacjentId { get; set; }
 

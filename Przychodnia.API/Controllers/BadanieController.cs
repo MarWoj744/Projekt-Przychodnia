@@ -1,4 +1,5 @@
-﻿using IBLL;
+﻿using DTOs;
+using IBLL;
 using Microsoft.AspNetCore.Mvc;
 using Models;
 
@@ -17,7 +18,7 @@ namespace WebAPI.Controllers
 
 
         [HttpGet]
-        public ActionResult<IQueryable<Badanie>> GetAll()
+        public ActionResult<IQueryable<WykonaneBadaniaDTO>> GetAll()
         {
             var badania = _badanieService.PobierzWszystkie();
             return Ok(badania);
@@ -25,7 +26,7 @@ namespace WebAPI.Controllers
 
 
         [HttpGet("{id}")]
-        public ActionResult<Badanie> GetById(int id)
+        public ActionResult<WykonaneBadaniaDTO> GetById(int id)
         {
             var badanie = _badanieService.GetBadanieById(id);
             if (badanie == null)
@@ -36,7 +37,7 @@ namespace WebAPI.Controllers
 
 
         [HttpPost]
-        public ActionResult Create([FromBody] Badanie badanie)
+        public ActionResult Create([FromBody] WykonaneBadaniaDTO badanie)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -49,7 +50,7 @@ namespace WebAPI.Controllers
 
 
         [HttpPut("{id}")]
-        public ActionResult Update(int id, [FromBody] Badanie badanie)
+        public ActionResult Update(int id, [FromBody] WykonaneBadaniaDTO badanie)
         {
             if (id != badanie.Id)
                 return BadRequest("Id nie pasuje do obiektu");

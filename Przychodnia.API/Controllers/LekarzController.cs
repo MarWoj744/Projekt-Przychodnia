@@ -1,4 +1,5 @@
-﻿using IBLL;
+﻿using DTOs;
+using IBLL;
 using Microsoft.AspNetCore.Mvc;
 using Models;
 
@@ -36,7 +37,7 @@ namespace Przychodnia.API.Controllers
 
 
         [HttpPost]
-        public IActionResult Create([FromBody] Lekarz lekarz)
+        public IActionResult Create([FromBody] LekarzDTO lekarz)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -49,7 +50,7 @@ namespace Przychodnia.API.Controllers
 
 
         [HttpPut("{id}")]
-        public IActionResult Update(int id, [FromBody] Lekarz lekarz)
+        public IActionResult Update(int id, [FromBody] LekarzDTO lekarz)
         {
             if (id != lekarz.Id)
                 return BadRequest("ID w URL i obiekcie się różnią");
