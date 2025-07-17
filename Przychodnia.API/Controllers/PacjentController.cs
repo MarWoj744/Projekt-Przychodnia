@@ -1,4 +1,5 @@
-﻿using DTOs;
+﻿using BLL;
+using DTOs;
 using IBLL;
 using Microsoft.AspNetCore.Mvc;
 using Models;
@@ -79,6 +80,13 @@ namespace Przychodnia.API.Controllers
             _service.save();
 
             return NoContent();
+        }
+
+        [HttpGet("historia-wizyt/{pacjentId}")]
+        public IActionResult PobierzHistorieWizyt(int pacjentId)
+        {
+            var pdfBytes = _service.GenerujHistorieWizytPdf(pacjentId);
+            return File(pdfBytes, "application/pdf", "historia_wizyt.pdf");
         }
     }
 }

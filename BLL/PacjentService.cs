@@ -7,6 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
+using System.Xml.Linq;
+using PdfSharp.Drawing;
+using PdfSharp.Pdf;
 
 namespace BLL
 {
@@ -75,6 +79,56 @@ namespace BLL
             int lastDigit = pesel[10] - '0';
 
             return checksum == lastDigit;
+        }
+
+        public byte[] GenerujHistorieWizytPdf(int pacjentId)
+        {
+            var pacjent = _pacjentRepo.GetPacjentById(pacjentId);
+
+            if (pacjent == null)
+                throw new Exception("Nie znaleziono pacjenta.");
+
+            var wizyty = pacjent.Wizyty.OrderByDescending(w => w.Data).ToList();
+
+            var document = new PdfDocument();
+            document.Info.Title = $"Historia wizyt - {pacjent.Imie} {pacjent.Nazwisko}";
+
+            var page = document.AddPage();
+            var gfx = XGraphics.FromPdfPage(page);
+            var font = new XFont("Verdana", 12);
+
+            double yPoint = 40;
+
+            gfx.DrawString($"Historia wizyt pacjenta: {pacjent.Imie} {pacjent.Nazwisko}", font, XBrushes.Black,
+                new XRect(0, yPoint, page.Width, page.Height), XStringFormats.TopCenter);
+            yPoint += 40;
+
+            foreach (var wizyta in wizyty)
+            {
+                string lekarz = $"{wizyta.Lekarz?.Tytul} {wizyta.Lekarz?.Imie} {wizyta.Lekarz?.Nazwisko} ({wizyta.Lekarz?.Specjalizacja})";
+                string opis = string.IsNullOrEmpty(wizyta.Opis) ? "Brak opisu" : wizyta.Opis;
+
+                gfx.DrawString($"Data: {wizyta.Data:yyyy-MM-dd HH:mm}", font, XBrushes.Black, 40, yPoint);
+                yPoint += 20;
+                gfx.DrawString($"Lekarz: {lekarz}", font, XBrushes.Black, 40, yPoint);
+                yPoint += 20;
+                gfx.DrawString($"Opis: {opis}", font, XBrushes.Black, 40, yPoint);
+                yPoint += 40;
+
+                // nowa strona, jeśli za mało miejsca
+                if (yPoint > page.Height - 100)
+                {
+                    page = document.AddPage();
+                    gfx = XGraphics.FromPdfPage(page);
+                    yPoint = 40;
+                }
+            }
+
+            using (var stream = new MemoryStream())
+            {
+                document.Save(stream, false);
+                return stream.ToArray();
+            }
         }
     }
 }

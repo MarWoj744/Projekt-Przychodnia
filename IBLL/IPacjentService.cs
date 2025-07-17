@@ -17,5 +17,6 @@ namespace IBLL
         void Delete(int id);
         void Update(Pacjent pacjent);
         void save();
+        byte[] GenerujHistorieWizytPdf(int pacjentId);
     }
 }
