@@ -4,6 +4,7 @@ using Models;
 using DTOs;
 using System.Threading.Tasks;
 using System.Linq;
+using Models.Mapper;
 
 namespace Przychodnia.API.Controllers
 {
@@ -12,6 +13,7 @@ namespace Przychodnia.API.Controllers
     public class WizytaController : ControllerBase
     {
         private readonly IWizytaService _service;
+        private readonly Mapper map;
 
         public WizytaController(IWizytaService service)
         {
@@ -38,10 +40,11 @@ namespace Przychodnia.API.Controllers
         [HttpPost("zarejestruj")]
         public async Task<IActionResult> Register([FromBody] RejestracjaWizytyDTO dto)
         {
+            Wizyta wiz = map.WizytaToEntity(dto);
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var result = await _service.ZarejestrujWizyteAsync(dto);
+            var result = await _service.ZarejestrujWizyteAsync(wiz);
             if (!result)
                 return BadRequest("Nie udało się zarejestrować wizyty.");
 
@@ -49,12 +52,13 @@ namespace Przychodnia.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, [FromBody] Wizyta wizyta)
+        public async Task<IActionResult> Update(int id, [FromBody] RejestracjaWizytyDTO dto)
         {
-            if (id != wizyta.Id)
+            Wizyta wiz = map.WizytaToEntity(dto);
+            if (id != wiz.Id)
                 return BadRequest();
 
-            var result = await _service.UpdateWizytaAsync(wizyta);
+            var result = await _service.UpdateWizytaAsync(wiz);
             if (!result)
                 return NotFound();
 

@@ -1,6 +1,8 @@
-﻿using IBLL;
+﻿using DTOs;
+using IBLL;
 using Microsoft.AspNetCore.Mvc;
 using Models;
+using Models.Mapper;
 
 namespace Przychodnia.API.Controllers
 {
@@ -9,6 +11,7 @@ namespace Przychodnia.API.Controllers
     public class PacjentController : ControllerBase
     {
         private readonly IPacjentService _service;
+        private readonly Mapper map;
 
         public PacjentController(IPacjentService service)
         {
@@ -33,35 +36,37 @@ namespace Przychodnia.API.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] Pacjent pacjent)
+        public IActionResult Create([FromBody] PacjentDTO pacjent)
         {
+            Pacjent pac = map.pacjentToEntity(pacjent);
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var validationResult = _service.ValidatePesel(pacjent);
+            var validationResult = _service.ValidatePesel(pac);
             if (!string.IsNullOrEmpty(validationResult))
                 return BadRequest(validationResult);
 
-            _service.Dodaj(pacjent);
+            _service.Dodaj(pac);
             _service.save();
 
-            return CreatedAtAction(nameof(GetById), new { id = pacjent.Id }, pacjent);
+            return CreatedAtAction(nameof(GetById), new { id = pac.Id }, pac);
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(int id, [FromBody] Pacjent pacjent)
+        public IActionResult Update(int id, [FromBody] PacjentDTO pacjent)
         {
-            if (id != pacjent.Id)
+            Pacjent pac = map.pacjentToEntity(pacjent);
+            if (id != pac.Id)
                 return BadRequest();
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var validationResult = _service.ValidatePesel(pacjent);
+            var validationResult = _service.ValidatePesel(pac);
             if (!string.IsNullOrEmpty(validationResult))
                 return BadRequest(validationResult);
 
-            _service.Update(pacjent);
+            _service.Update(pac);
             _service.save();
 
             return NoContent();

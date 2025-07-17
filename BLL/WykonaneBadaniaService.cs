@@ -18,10 +18,10 @@ namespace BLL
             _wiztaRepo = wiztaRepo;
         }
 
-        public IEnumerable<WykonaneBadaniaDTO> GetAll()
+        public IEnumerable<WykonaneBadania> GetAll()
         {
             return _badaniaRepo.GetAll()
-                .Select(b => new WykonaneBadaniaDTO
+                .Select(b => new WykonaneBadania
                 {
                     WizytaId = b.WizytaId,
                     BadanieId = b.BadanieId,
@@ -30,12 +30,12 @@ namespace BLL
                 });
         }
 
-        public WykonaneBadaniaDTO GetById(int id)
+        public WykonaneBadania GetById(int id)
         {
             var badanie = _badaniaRepo.GetWykonaneBadaniaById(id);
             if (badanie == null) return null;
 
-            return new WykonaneBadaniaDTO
+            return new WykonaneBadania
             {
                 WizytaId = badanie.WizytaId,
                 BadanieId = badanie.BadanieId,
@@ -44,7 +44,7 @@ namespace BLL
             };
         }
 
-        public void Dodaj(WykonaneBadaniaDTO dto)
+        public void Dodaj(WykonaneBadania dto)
         {
             var badanie = new WykonaneBadania
             {
@@ -56,7 +56,7 @@ namespace BLL
             _badaniaRepo.dodaj(badanie);
         }
 
-        public void Update(WykonaneBadaniaDTO dto)
+        public void Update(WykonaneBadania dto)
         {
             var badanie = _badaniaRepo.GetAll()
                 .FirstOrDefault(b => b.WizytaId == dto.WizytaId && b.BadanieId == dto.BadanieId);

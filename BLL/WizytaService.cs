@@ -17,10 +17,10 @@ namespace BLL
             _wizytaRepo = wizytaRepo;
         }
 
-        public async Task<bool> ZarejestrujWizyteAsync(RejestracjaWizytyDTO dto)
+        public async Task<bool> ZarejestrujWizyteAsync(Wizyta dto)
         {
             // Walidacje
-            if (dto.DataWizyty < DateTime.Now)
+            if (dto.Data < DateTime.Now)
                 throw new Exception("Podano błędną datę");
 
             // Utworzenie wizyty
@@ -29,7 +29,7 @@ namespace BLL
                 PacjentId = dto.PacjentId,
                 LekarzId = dto.LekarzId,
                 RecepcjonistkaId = dto.RecepcjonistkaId,
-                Data = dto.DataWizyty,
+                Data = dto.Data,
                 Opis = dto.Opis
             };
 

@@ -2,6 +2,7 @@
 using IBLL;
 using Microsoft.AspNetCore.Mvc;
 using Models;
+using Models.Mapper;
 
 namespace WebAPI.Controllers
 {
@@ -10,6 +11,7 @@ namespace WebAPI.Controllers
     public class BadanieController : ControllerBase
     {
         private readonly IBadanieService _badanieService;
+        private readonly Mapper map;
 
         public BadanieController(IBadanieService badanieService)
         {
@@ -39,27 +41,29 @@ namespace WebAPI.Controllers
         [HttpPost]
         public ActionResult Create([FromBody] WykonaneBadaniaDTO badanie)
         {
+            WykonaneBadania wykonaneBadania = map.WykonaneBadaniaToEntity(badanie);
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            _badanieService.Dodaj(badanie);
+            _badanieService.Dodaj(wykonaneBadania);
             _badanieService.save();
 
-            return CreatedAtAction(nameof(GetById), new { id = badanie.Id }, badanie);
+            return CreatedAtAction(nameof(GetById), new { id = wykonaneBadania.BadanieId }, wykonaneBadania);
         }
 
 
         [HttpPut("{id}")]
         public ActionResult Update(int id, [FromBody] WykonaneBadaniaDTO badanie)
         {
-            if (id != badanie.Id)
+            WykonaneBadania wykonaneBadania = map.WykonaneBadaniaToEntity(badanie);
+            if (id != wykonaneBadania.BadanieId)
                 return BadRequest("Id nie pasuje do obiektu");
 
             var istnieje = _badanieService.GetBadanieById(id);
             if (istnieje == null)
                 return NotFound();
 
-            _badanieService.Update(badanie);
+            _badanieService.Update(wykonaneBadania);
             _badanieService.save();
 
             return NoContent();

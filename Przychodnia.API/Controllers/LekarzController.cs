@@ -2,6 +2,7 @@
 using IBLL;
 using Microsoft.AspNetCore.Mvc;
 using Models;
+using Models.Mapper;
 
 namespace Przychodnia.API.Controllers
 {
@@ -10,6 +11,7 @@ namespace Przychodnia.API.Controllers
     public class LekarzController : ControllerBase
     {
         private readonly ILekarzService _lekarzService;
+        private readonly Mapper map;
 
         public LekarzController(ILekarzService lekarzService)
         {
@@ -39,27 +41,29 @@ namespace Przychodnia.API.Controllers
         [HttpPost]
         public IActionResult Create([FromBody] LekarzDTO lekarz)
         {
+            Lekarz lek = map.LekarzToEntity(lekarz);
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            _lekarzService.Dodaj(lekarz);
+            _lekarzService.Dodaj(lek);
             _lekarzService.save();
 
-            return CreatedAtAction(nameof(GetById), new { id = lekarz.Id }, lekarz);
+            return CreatedAtAction(nameof(GetById), new { id = lek.Id }, lek);
         }
 
 
         [HttpPut("{id}")]
         public IActionResult Update(int id, [FromBody] LekarzDTO lekarz)
         {
-            if (id != lekarz.Id)
+            Lekarz lek = map.LekarzToEntity(lekarz);
+            if (id != lek.Id)
                 return BadRequest("ID w URL i obiekcie się różnią");
 
             var istnieje = _lekarzService.GetLekarzById(id);
             if (istnieje == null)
                 return NotFound();
 
-            _lekarzService.Update(lekarz);
+            _lekarzService.Update(lek);
             _lekarzService.save();
 
             return NoContent();

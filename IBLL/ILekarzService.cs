@@ -10,11 +10,11 @@ namespace IBLL
 {
     public interface ILekarzService
     {
-        LekarzDTO GetLekarzById(int id);
-        IQueryable<LekarzDTO> PobierzWszystkie();
-        void Dodaj(LekarzDTO lekarz);
+        Lekarz GetLekarzById(int id);
+        IQueryable<Lekarz> PobierzWszystkie();
+        void Dodaj(Lekarz lekarz);
         void Delete(int id);
-        void Update(LekarzDTO lekarz);
+        void Update(Lekarz lekarz);
         void save();
     }
 }

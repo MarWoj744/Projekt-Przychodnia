@@ -1,6 +1,8 @@
-﻿using IBLL;
+﻿using DTOs;
+using IBLL;
 using Microsoft.AspNetCore.Mvc;
 using Models;
+using Models.Mapper;
 
 namespace Przychodnia.API.Controllers
 {
@@ -9,6 +11,7 @@ namespace Przychodnia.API.Controllers
     public class RecepcjonistkaController : ControllerBase
     {
         private readonly IRecepcjonistkaService _service;
+        private readonly Mapper map;
 
         public RecepcjonistkaController(IRecepcjonistkaService service)
         {
@@ -33,24 +36,26 @@ namespace Przychodnia.API.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] Recepcjonistka recepcjonistka)
+        public IActionResult Create([FromBody] RecepcjonistkaDTO recepcjonistka)
         {
+            Recepcjonistka rec = map.RecepcjonistkaToEntity(recepcjonistka);
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            _service.Dodaj(recepcjonistka);
+            _service.Dodaj(rec);
             _service.save();
 
-            return CreatedAtAction(nameof(GetById), new { id = recepcjonistka.Id }, recepcjonistka);
+            return CreatedAtAction(nameof(GetById), new { id = rec.Id }, rec);
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(int id, [FromBody] Recepcjonistka recepcjonistka)
+        public IActionResult Update(int id, [FromBody] RecepcjonistkaDTO recepcjonistka)
         {
+            Recepcjonistka rec = map.RecepcjonistkaToEntity(recepcjonistka);
             if (id != recepcjonistka.Id)
                 return BadRequest();
 
-            _service.Update(recepcjonistka);
+            _service.Update(rec);
             _service.save();
 
             return NoContent();

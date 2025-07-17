@@ -2,6 +2,7 @@
 using IBLL;
 using Microsoft.AspNetCore.Mvc;
 using Models;
+using Models.Mapper;
 using System;
 using System.Linq;
 
@@ -12,6 +13,7 @@ namespace API.Controllers
     public class OsobaController : ControllerBase
     {
         private readonly IOsobaService _osobaService;
+        private readonly Mapper map;
 
         public OsobaController(IOsobaService osobaService)
         {
@@ -41,30 +43,33 @@ namespace API.Controllers
         [HttpPost]
         public IActionResult Create([FromBody] OsobaDTO osoba)
         {
-            if (osoba == null)
+
+            Osoba os = map.osobaToEntity(osoba);
+            if (os == null)
                 return BadRequest("Obiekt Osoba jest pusty.");
 
-            var validation = _osobaService.ValidateData(osoba);
+            var validation = _osobaService.ValidateData(os);
             if (validation != "Walidacja zakończona sukcesem.")
                 return BadRequest(validation);
 
-            _osobaService.Dodaj(osoba);
+            _osobaService.Dodaj(os);
             _osobaService.Save();
-            return CreatedAtAction(nameof(GetById), new { id = osoba.Id }, osoba);
+            return CreatedAtAction(nameof(GetById), new { id = os.Id }, os);
         }
 
 
         [HttpPut("{id}")]
         public IActionResult Update(int id, [FromBody] OsobaDTO osoba)
         {
-            if (osoba == null || osoba.Id != id)
+            Osoba os = map.osobaToEntity(osoba);
+            if (os == null || os.Id != id)
                 return BadRequest("Niepoprawne dane.");
 
             var existing = _osobaService.GetOsobaById(id);
             if (existing == null)
                 return NotFound();
 
-            _osobaService.Update(osoba);
+            _osobaService.Update(os);
             _osobaService.Save();
             return NoContent();
         }

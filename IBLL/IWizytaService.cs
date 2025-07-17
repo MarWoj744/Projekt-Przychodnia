@@ -7,7 +7,7 @@ namespace IBLL
 {
     public interface IWizytaService
     {
-        Task<bool> ZarejestrujWizyteAsync(RejestracjaWizytyDTO dto);
+        Task<bool> ZarejestrujWizyteAsync(Wizyta dto);
         IQueryable<Wizyta> GetAll();
         Wizyta GetWizytaById(int id);
         Task<bool> UpdateWizytaAsync(Wizyta wizyta);

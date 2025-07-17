@@ -10,11 +10,11 @@ namespace IBLL
 {
     public interface IBadanieService
     {
-        IQueryable<WykonaneBadaniaDTO> PobierzWszystkie();
-        WykonaneBadaniaDTO GetBadanieById(int id);
-        void Dodaj(WykonaneBadaniaDTO badanie);
+        IQueryable<WykonaneBadania> PobierzWszystkie();
+        WykonaneBadania GetBadanieById(int id);
+        void Dodaj(WykonaneBadania badanie);
         void Delete(int id);
-        void Update(WykonaneBadaniaDTO badanie);
+        void Update(WykonaneBadania badanie);
         void save();
     }
 }

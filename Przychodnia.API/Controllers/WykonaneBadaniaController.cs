@@ -3,6 +3,7 @@ using DTOs;
 using IBLL;
 using Microsoft.AspNetCore.Mvc;
 using Models;
+using Models.Mapper;
 using System.Threading.Tasks;
 
 namespace Przychodnia.API.Controllers
@@ -12,6 +13,7 @@ namespace Przychodnia.API.Controllers
     public class WykonaneBadaniaController : Controller
     {
         private readonly IWykonaneBadanieService _service;
+        private readonly Mapper map;
 
         public WykonaneBadaniaController(IWykonaneBadanieService service)
         {
@@ -38,21 +40,23 @@ namespace Przychodnia.API.Controllers
         [HttpPost]
         public IActionResult Create([FromBody] WykonaneBadaniaDTO badanieDto)
         {
+            WykonaneBadania wykBad = map.WykonaneBadaniaToEntity(badanieDto);
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            _service.Dodaj(badanieDto);
+            _service.Dodaj(wykBad);
             _service.Save();
-            return CreatedAtAction(nameof(GetById), new { id = badanieDto.BadanieId }, badanieDto);
+            return CreatedAtAction(nameof(GetById), new { id = wykBad.BadanieId }, wykBad);
         }
 
         [HttpPut("{id}")]
         public IActionResult Update(int id, [FromBody] WykonaneBadaniaDTO badanieDto)
         {
-            if (id != badanieDto.BadanieId)
+            WykonaneBadania wykBad = map.WykonaneBadaniaToEntity(badanieDto);
+            if (id != wykBad.BadanieId)
                 return BadRequest();
 
-            _service.Update(badanieDto);
+            _service.Update(wykBad);
             _service.Save();
             return NoContent();
         }

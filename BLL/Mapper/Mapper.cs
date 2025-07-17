@@ -54,8 +54,12 @@ namespace Models.Mapper
             pacjentDTO.Email = pacjent.Email;
             pacjentDTO.Haslo = pacjent.Haslo;
             pacjentDTO.Login = pacjent.Login;
-
-
+            ICollection<RejestracjaWizytyDTO> wykonaneBadania = new List<RejestracjaWizytyDTO>();
+            foreach (Wizyta badanie in pacjent.Wizyty)
+            {
+                wykonaneBadania.Add(this.WizytaToDTO(badanie));
+            }
+            pacjentDTO.Wizyty = wykonaneBadania;
             return pacjentDTO;
         }
 
@@ -73,11 +77,12 @@ namespace Models.Mapper
             pacjent.Haslo = pacjentdto.Haslo;
             pacjent.Login = pacjentdto.Login;
             pacjent.PESEL = pacjentdto.PESEL;
-            foreach (Wizyta wiz in pacjentdto.Wizyty)
+            ICollection<Wizyta> wykonaneBadania = new List<Wizyta>();
+            foreach (RejestracjaWizytyDTO badanie in pacjentdto.Wizyty)
             {
-
+                wykonaneBadania.Add(this.WizytaToEntity(badanie));
             }
-            pacjent.Wizyty.Add() = pacjentdto.Wizyty;
+            pacjent.Wizyty = wykonaneBadania;
             return pacjent;
         }
 
@@ -95,6 +100,12 @@ namespace Models.Mapper
             lekarzDTO.Login = lekarz.Login;
             lekarzDTO.Tytul = lekarz.Tytul;
             lekarzDTO.Specjalizacja = lekarz.Specjalizacja;
+            ICollection<RejestracjaWizytyDTO> wykonaneBadania = new List<RejestracjaWizytyDTO>();
+            foreach (Wizyta badanie in lekarz.Wizyty)
+            {
+                wykonaneBadania.Add(this.WizytaToDTO(badanie));
+            }
+            lekarzDTO.Wizyty = wykonaneBadania;
             return lekarzDTO;
         }
 
@@ -112,6 +123,12 @@ namespace Models.Mapper
             lekarz.Login = dto.Login;
             lekarz.Tytul = dto.Tytul;
             lekarz.Specjalizacja = dto.Specjalizacja;
+            ICollection<Wizyta> wykonaneBadania = new List<Wizyta>();
+            foreach (RejestracjaWizytyDTO badanie in dto.Wizyty)
+            {
+                wykonaneBadania.Add(this.WizytaToEntity(badanie));
+            }
+            lekarz.Wizyty = wykonaneBadania;
             return lekarz;
         }
 
@@ -127,6 +144,12 @@ namespace Models.Mapper
             dto.Email = rec.Email;
             dto.Haslo = rec.Haslo;
             dto.Login = rec.Login;
+            ICollection<RejestracjaWizytyDTO> wizyty = new List<RejestracjaWizytyDTO>();
+            foreach (Wizyta badanie in rec.WizytyZarejestrowane)
+            {
+                wizyty.Add(this.WizytaToDTO(badanie));
+            }
+            dto.WizytyZarejestrowane = wizyty;
             return dto;
         }
 
@@ -142,6 +165,12 @@ namespace Models.Mapper
             rec.Email = dto.Email;
             rec.Haslo = dto.Haslo;
             rec.Login = dto.Login;
+            ICollection<Wizyta> wizyty = new List<Wizyta>();
+            foreach (RejestracjaWizytyDTO badanie in dto.WizytyZarejestrowane)
+            {
+                wizyty.Add(this.WizytaToEntity(badanie));
+            }
+            rec.WizytyZarejestrowane = wizyty;
             return rec;
         }
 
