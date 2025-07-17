@@ -115,7 +115,6 @@ namespace BLL
                 gfx.DrawString($"Opis: {opis}", font, XBrushes.Black, 40, yPoint);
                 yPoint += 40;
 
-                // nowa strona, jeśli za mało miejsca
                 if (yPoint > page.Height - 100)
                 {
                     page = document.AddPage();
