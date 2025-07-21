@@ -6,16 +6,20 @@ using Przychodnia.API.Controllers;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
+using Models.Mapper;
+using DTOs;
 
 public class PacjentControllerTests
 {
     private readonly Mock<IPacjentService> _mockService;
     private readonly PacjentController _controller;
+    private readonly Mapper map;
 
     public PacjentControllerTests()
     {
         _mockService = new Mock<IPacjentService>();
         _controller = new PacjentController(_mockService.Object);
+        map = new Mapper();
     }
 
     [Fact]
@@ -50,7 +54,7 @@ public class PacjentControllerTests
     {
         _controller.ModelState.AddModelError("PESEL", "Required");
 
-        var result = _controller.Create(new Pacjent());
+        var result = _controller.Create(new PacjentDTO());
 
         Assert.IsType<BadRequestObjectResult>(result);
     }
@@ -59,9 +63,10 @@ public class PacjentControllerTests
     public void Create_ReturnsBadRequest_WhenPeselInvalid()
     {
         var pacjent = new Pacjent { PESEL = "123" };
-        _mockService.Setup(s => s.ValidatePesel(pacjent)).Returns("Błędny PESEL");
+        _mockService.Setup(s => s.ValidatePesel(It.IsAny<Pacjent>())).Returns("Błędny PESEL");
 
-        var result = _controller.Create(pacjent);
+        PacjentDTO pacjentDTO = map.PacjentToDTO(pacjent);
+        var result = _controller.Create(pacjentDTO);
 
         var badRequest = Assert.IsType<BadRequestObjectResult>(result);
         Assert.Equal("Błędny PESEL", badRequest.Value);
@@ -73,9 +78,13 @@ public class PacjentControllerTests
         var pacjent = new Pacjent { Id = 1, PESEL = "12345678901" };
         _mockService.Setup(s => s.ValidatePesel(pacjent)).Returns(string.Empty);
 
-        var result = _controller.Create(pacjent);
+        PacjentDTO pacjentDTO = map.PacjentToDTO(pacjent);
+
+        var result = _controller.Create(pacjentDTO);
 
         var createdResult = Assert.IsType<CreatedAtActionResult>(result);
-        Assert.Equal(pacjent, createdResult.Value);
+        var createdPacjent = Assert.IsType<Pacjent>(createdResult.Value);
+        Assert.Equal(pacjentDTO.Id, createdPacjent.Id);
+        Assert.Equal(pacjentDTO.PESEL, createdPacjent.PESEL);
     }
 }

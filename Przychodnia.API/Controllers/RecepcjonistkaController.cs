@@ -16,6 +16,7 @@ namespace Przychodnia.API.Controllers
         public RecepcjonistkaController(IRecepcjonistkaService service)
         {
             _service = service;
+            map = new Mapper();
         }
 
         [HttpGet]

@@ -8,16 +8,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
+using Models.Mapper;
 
 public class WizytaControllerTests
 {
     private readonly Mock<IWizytaService> _mockService;
     private readonly WizytaController _controller;
+    private readonly Mapper map;
 
     public WizytaControllerTests()
     {
         _mockService = new Mock<IWizytaService>();
         _controller = new WizytaController(_mockService.Object);
+        map = new Mapper();
     }
 
     [Fact]
@@ -61,7 +64,7 @@ public class WizytaControllerTests
     [Fact]
     public async Task Register_ReturnsBadRequest_WhenServiceFails()
     {
-        _mockService.Setup(s => s.ZarejestrujWizyteAsync(It.IsAny<RejestracjaWizytyDTO>())).ReturnsAsync(false);
+        _mockService.Setup(s => s.ZarejestrujWizyteAsync(It.IsAny<Wizyta>())).ReturnsAsync(false);
 
         var result = await _controller.Register(new RejestracjaWizytyDTO());
 
@@ -72,7 +75,7 @@ public class WizytaControllerTests
     [Fact]
     public async Task Register_ReturnsOk_WhenSuccess()
     {
-        _mockService.Setup(s => s.ZarejestrujWizyteAsync(It.IsAny<RejestracjaWizytyDTO>())).ReturnsAsync(true);
+        _mockService.Setup(s => s.ZarejestrujWizyteAsync(It.IsAny<Wizyta>())).ReturnsAsync(true);
 
         var result = await _controller.Register(new RejestracjaWizytyDTO());
 
@@ -85,7 +88,9 @@ public class WizytaControllerTests
     {
         var wizyta = new Wizyta { Id = 2 };
 
-        var result = await _controller.Update(1, wizyta);
+        RejestracjaWizytyDTO wizDTO = map.WizytaToDTO(wizyta);
+
+        var result = await _controller.Update(1, wizDTO);
 
         Assert.IsType<BadRequestResult>(result);
     }
@@ -96,7 +101,9 @@ public class WizytaControllerTests
         var wizyta = new Wizyta { Id = 1 };
         _mockService.Setup(s => s.UpdateWizytaAsync(wizyta)).ReturnsAsync(false);
 
-        var result = await _controller.Update(1, wizyta);
+        RejestracjaWizytyDTO wizDTO = map.WizytaToDTO(wizyta);
+
+        var result = await _controller.Update(1, wizDTO);
 
         Assert.IsType<NotFoundResult>(result);
     }

@@ -18,6 +18,7 @@ namespace API.Controllers
         public OsobaController(IOsobaService osobaService)
         {
             _osobaService = osobaService;
+            map = new Mapper();
         }
 
 

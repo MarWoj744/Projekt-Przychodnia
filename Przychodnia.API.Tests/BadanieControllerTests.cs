@@ -7,6 +7,8 @@ using Przychodnia.API.Controllers;
 using System.Collections.Generic;
 using System.Linq;
 using WebAPI.Controllers;
+using Models.Mapper;
+using DTOs;
 
 namespace Przychodnia.API.Tests
 {
@@ -14,11 +16,13 @@ namespace Przychodnia.API.Tests
     {
         private readonly Mock<IBadanieService> _mockService;
         private readonly BadanieController _controller;
+        private readonly Mapper map;
 
         public BadanieControllerTest()
         {
             _mockService = new Mock<IBadanieService>();
             _controller = new BadanieController(_mockService.Object);
+            map = new Mapper();
         }
 
         [Fact]
@@ -67,7 +71,10 @@ namespace Przychodnia.API.Tests
         {
             var badanie = new Badanie { Id = 1, Nazwa = "Badanie A" };
 
-            var result = _controller.Create(badanie);
+            BadanieDTO bDTO = new BadanieDTO();
+            bDTO = map.BadanieToDTO(badanie);
+
+            var result = _controller.Create(bDTO);
 
             var createdAtActionResult = Assert.IsType<CreatedAtActionResult>(result);
             var returnBadanie = Assert.IsType<Badanie>(createdAtActionResult.Value);
@@ -80,7 +87,9 @@ namespace Przychodnia.API.Tests
             var badanie = new Badanie { Id = 1, Nazwa = "Badanie A" };
             _mockService.Setup(s => s.GetBadanieById(1)).Returns(badanie);
 
-            var result = _controller.Update(1, badanie);
+            BadanieDTO bDTO = map.BadanieToDTO(badanie);
+
+            var result = _controller.Update(1, bDTO);
 
             Assert.IsType<NoContentResult>(result);
         }
@@ -91,7 +100,9 @@ namespace Przychodnia.API.Tests
             var badanie = new Badanie { Id = 99, Nazwa = "Badanie X" };
             _mockService.Setup(s => s.GetBadanieById(99)).Returns((Badanie)null);
 
-            var result = _controller.Update(99, badanie);
+            BadanieDTO bDTO = map.BadanieToDTO(badanie);
+
+            var result = _controller.Update(99, bDTO);
 
             Assert.IsType<NotFoundResult>(result);
         }

@@ -17,6 +17,7 @@ namespace Przychodnia.API.Controllers
         public PacjentController(IPacjentService service)
         {
             _service = service;
+            map = new Mapper();
         }
 
         [HttpGet]

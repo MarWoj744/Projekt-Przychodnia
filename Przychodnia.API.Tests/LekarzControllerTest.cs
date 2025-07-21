@@ -6,6 +6,8 @@ using IBLL;
 using Models;
 using System.Collections.Generic;
 using System.Linq;
+using Models.Mapper;
+using DTOs;
 
 namespace Przychodnia.API.Tests
 {
@@ -13,11 +15,13 @@ namespace Przychodnia.API.Tests
     {
         private readonly Mock<ILekarzService> _mockService;
         private readonly LekarzController _controller;
+        private readonly Mapper map;
 
         public LekarzControllerTest()
         {
             _mockService = new Mock<ILekarzService>();
             _controller = new LekarzController(_mockService.Object);
+            map = new Mapper();
         }
 
         [Fact]
@@ -67,7 +71,9 @@ namespace Przychodnia.API.Tests
         {
             var lekarz = new Lekarz { Id = 1, Imie = "Jan", Nazwisko = "Kowalski" };
 
-            var result = _controller.Create(lekarz);
+            LekarzDTO lDTO = map.LekarzToDTO(lekarz);
+
+            var result = _controller.Create(lDTO);
 
             var createdAtActionResult = Assert.IsType<CreatedAtActionResult>(result);
             var returnLekarz = Assert.IsType<Lekarz>(createdAtActionResult.Value);
@@ -83,7 +89,9 @@ namespace Przychodnia.API.Tests
             _controller.ModelState.AddModelError("Imie", "Required");
             var lekarz = new Lekarz();
 
-            var result = _controller.Create(lekarz);
+            LekarzDTO lDTO = map.LekarzToDTO(lekarz);
+
+            var result = _controller.Create(lDTO);
 
             Assert.IsType<BadRequestObjectResult>(result);
             _mockService.Verify(s => s.Dodaj(It.IsAny<Lekarz>()), Times.Never);
@@ -96,7 +104,9 @@ namespace Przychodnia.API.Tests
             var lekarz = new Lekarz { Id = 1, Imie = "Jan", Nazwisko = "Kowalski" };
             _mockService.Setup(s => s.GetLekarzById(1)).Returns(lekarz);
 
-            var result = _controller.Update(1, lekarz);
+            LekarzDTO lDTO = map.LekarzToDTO(lekarz);
+
+            var result = _controller.Update(1, lDTO);
 
             Assert.IsType<NoContentResult>(result);
             _mockService.Verify(s => s.Update(lekarz), Times.Once);
@@ -108,7 +118,9 @@ namespace Przychodnia.API.Tests
         {
             var lekarz = new Lekarz { Id = 2, Imie = "Jan", Nazwisko = "Kowalski" };
 
-            var result = _controller.Update(1, lekarz);
+            LekarzDTO lDTO = map.LekarzToDTO(lekarz);
+
+            var result = _controller.Update(1, lDTO);
 
             var badRequest = Assert.IsType<BadRequestObjectResult>(result);
             Assert.Equal("ID w URL i obiekcie się różnią", badRequest.Value);
@@ -122,7 +134,9 @@ namespace Przychodnia.API.Tests
             var lekarz = new Lekarz { Id = 1, Imie = "Jan", Nazwisko = "Kowalski" };
             _mockService.Setup(s => s.GetLekarzById(1)).Returns((Lekarz)null);
 
-            var result = _controller.Update(1, lekarz);
+            LekarzDTO lDTO = map.LekarzToDTO(lekarz);
+
+            var result = _controller.Update(1, lDTO);
 
             Assert.IsType<NotFoundResult>(result);
             _mockService.Verify(s => s.Update(It.IsAny<Lekarz>()), Times.Never);

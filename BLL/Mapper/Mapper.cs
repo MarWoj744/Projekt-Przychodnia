@@ -13,74 +13,97 @@ namespace Models.Mapper
     {
         public OsobaDTO OsobaToDTO(Osoba osoba)
         {
-            OsobaDTO osobaDTO = new OsobaDTO();
-            osobaDTO.Id = osoba.Id;
-            osobaDTO.Adres = osoba.Adres;
-            osobaDTO.Rola = osoba.Rola;
-            osobaDTO.Nazwisko = osoba.Nazwisko;
-            osobaDTO.Imie = osoba.Imie;
-            osobaDTO.Telefon = osoba.Telefon;
-            osobaDTO.Email = osoba.Email;
-            osobaDTO.Haslo = osoba.Haslo;
-            osobaDTO.Login = osoba.Login;
+            if (osoba == null) return null;
 
-            return osobaDTO;
+            return new OsobaDTO
+            {
+                Id = osoba.Id,
+                Adres = osoba.Adres,
+                Rola = osoba.Rola,
+                Nazwisko = osoba.Nazwisko,
+                Imie = osoba.Imie,
+                Telefon = osoba.Telefon,
+                Email = osoba.Email,
+                Haslo = osoba.Haslo,
+                Login = osoba.Login
+            };
         }
 
         public Osoba osobaToEntity(OsobaDTO osobadto)
         {
-            Osoba osoba = new Pacjent();
-            osoba.Id = osobadto.Id;
-            osoba.Adres = osobadto.Adres;
-            osoba.Rola = osobadto.Rola;
-            osoba.Nazwisko = osobadto.Nazwisko;
-            osoba.Imie = osobadto.Imie;
-            osoba.Telefon = osobadto.Telefon;
-            osoba.Email = osobadto.Email;
-            osoba.Haslo = osobadto.Haslo;
-            osoba.Login = osobadto.Login;
+            if (osobadto == null) return null;
+
+            Osoba osoba = new Pacjent
+            {
+                Id = osobadto.Id,
+                Adres = osobadto.Adres,
+                Rola = osobadto.Rola,
+                Nazwisko = osobadto.Nazwisko,
+                Imie = osobadto.Imie,
+                Telefon = osobadto.Telefon,
+                Email = osobadto.Email,
+                Haslo = osobadto.Haslo,
+                Login = osobadto.Login
+            };
             return osoba;
         }
 
         public PacjentDTO PacjentToDTO(Pacjent pacjent)
         {
-            PacjentDTO pacjentDTO = new PacjentDTO();
-            pacjentDTO.Id = pacjent.Id;
-            pacjentDTO.Adres = pacjent.Adres;
-            pacjentDTO.Rola = pacjent.Rola;
-            pacjentDTO.Nazwisko = pacjent.Nazwisko;
-            pacjentDTO.Imie = pacjent.Imie;
-            pacjentDTO.Telefon = pacjent.Telefon;
-            pacjentDTO.Email = pacjent.Email;
-            pacjentDTO.Haslo = pacjent.Haslo;
-            pacjentDTO.Login = pacjent.Login;
-            ICollection<RejestracjaWizytyDTO> wykonaneBadania = new List<RejestracjaWizytyDTO>();
-            foreach (Wizyta badanie in pacjent.Wizyty)
+            if (pacjent == null) return null;
+
+            var pacjentDTO = new PacjentDTO
             {
-                wykonaneBadania.Add(this.WizytaToDTO(badanie));
+                Id = pacjent.Id,
+                Adres = pacjent.Adres,
+                Rola = pacjent.Rola,
+                Nazwisko = pacjent.Nazwisko,
+                Imie = pacjent.Imie,
+                Telefon = pacjent.Telefon,
+                Email = pacjent.Email,
+                Haslo = pacjent.Haslo,
+                Login = pacjent.Login
+            };
+
+            var wykonaneBadania = new List<RejestracjaWizytyDTO>();
+            if (pacjent.Wizyty != null)
+            {
+                foreach (var badanie in pacjent.Wizyty)
+                {
+                    var dto = WizytaToDTO(badanie);
+                    if (dto != null) wykonaneBadania.Add(dto);
+                }
             }
             pacjentDTO.Wizyty = wykonaneBadania;
             return pacjentDTO;
         }
 
-
         public Pacjent pacjentToEntity(PacjentDTO pacjentdto)
         {
-            Pacjent pacjent = new Pacjent();
-            pacjent.Id = pacjentdto.Id;
-            pacjent.Adres = pacjentdto.Adres;
-            pacjent.Rola = pacjentdto.Rola;
-            pacjent.Nazwisko = pacjentdto.Nazwisko;
-            pacjent.Imie = pacjentdto.Imie;
-            pacjent.Telefon = pacjentdto.Telefon;
-            pacjent.Email = pacjentdto.Email;
-            pacjent.Haslo = pacjentdto.Haslo;
-            pacjent.Login = pacjentdto.Login;
-            pacjent.PESEL = pacjentdto.PESEL;
-            ICollection<Wizyta> wykonaneBadania = new List<Wizyta>();
-            foreach (RejestracjaWizytyDTO badanie in pacjentdto.Wizyty)
+            if (pacjentdto == null) return null;
+
+            var pacjent = new Pacjent
             {
-                wykonaneBadania.Add(this.WizytaToEntity(badanie));
+                Id = pacjentdto.Id,
+                Adres = pacjentdto.Adres,
+                Rola = pacjentdto.Rola,
+                Nazwisko = pacjentdto.Nazwisko,
+                Imie = pacjentdto.Imie,
+                Telefon = pacjentdto.Telefon,
+                Email = pacjentdto.Email,
+                Haslo = pacjentdto.Haslo,
+                Login = pacjentdto.Login,
+                PESEL = pacjentdto.PESEL
+            };
+
+            var wykonaneBadania = new List<Wizyta>();
+            if (pacjentdto.Wizyty != null)
+            {
+                foreach (var badanie in pacjentdto.Wizyty)
+                {
+                    var entity = WizytaToEntity(badanie);
+                    if (entity != null) wykonaneBadania.Add(entity);
+                }
             }
             pacjent.Wizyty = wykonaneBadania;
             return pacjent;
@@ -88,45 +111,63 @@ namespace Models.Mapper
 
         public LekarzDTO LekarzToDTO(Lekarz lekarz)
         {
-            LekarzDTO lekarzDTO = new LekarzDTO();
-            lekarzDTO.Id = lekarz.Id;
-            lekarzDTO.Adres = lekarz.Adres;
-            lekarzDTO.Rola = lekarz.Rola;
-            lekarzDTO.Nazwisko = lekarz.Nazwisko;
-            lekarzDTO.Imie = lekarz.Imie;
-            lekarzDTO.Telefon = lekarz.Telefon;
-            lekarzDTO.Email = lekarz.Email;
-            lekarzDTO.Haslo = lekarz.Haslo;
-            lekarzDTO.Login = lekarz.Login;
-            lekarzDTO.Tytul = lekarz.Tytul;
-            lekarzDTO.Specjalizacja = lekarz.Specjalizacja;
-            ICollection<RejestracjaWizytyDTO> wykonaneBadania = new List<RejestracjaWizytyDTO>();
-            foreach (Wizyta badanie in lekarz.Wizyty)
+            if (lekarz == null) return null;
+
+            var dto = new LekarzDTO
             {
-                wykonaneBadania.Add(this.WizytaToDTO(badanie));
+                Id = lekarz.Id,
+                Adres = lekarz.Adres,
+                Rola = lekarz.Rola,
+                Nazwisko = lekarz.Nazwisko,
+                Imie = lekarz.Imie,
+                Telefon = lekarz.Telefon,
+                Email = lekarz.Email,
+                Haslo = lekarz.Haslo,
+                Login = lekarz.Login,
+                Tytul = lekarz.Tytul,
+                Specjalizacja = lekarz.Specjalizacja
+            };
+
+            var wykonaneBadania = new List<RejestracjaWizytyDTO>();
+            if (lekarz.Wizyty != null)
+            {
+                foreach (var badanie in lekarz.Wizyty)
+                {
+                    var b = WizytaToDTO(badanie);
+                    if (b != null) wykonaneBadania.Add(b);
+                }
             }
-            lekarzDTO.Wizyty = wykonaneBadania;
-            return lekarzDTO;
+            dto.Wizyty = wykonaneBadania;
+            return dto;
         }
 
         public Lekarz LekarzToEntity(LekarzDTO dto)
         {
-            Lekarz lekarz = new Lekarz();
-            lekarz.Id = dto.Id;
-            lekarz.Adres = dto.Adres;
-            lekarz.Rola = dto.Rola;
-            lekarz.Nazwisko = dto.Nazwisko;
-            lekarz.Imie = dto.Imie;
-            lekarz.Telefon = dto.Telefon;
-            lekarz.Email = dto.Email;
-            lekarz.Haslo = dto.Haslo;
-            lekarz.Login = dto.Login;
-            lekarz.Tytul = dto.Tytul;
-            lekarz.Specjalizacja = dto.Specjalizacja;
-            ICollection<Wizyta> wykonaneBadania = new List<Wizyta>();
-            foreach (RejestracjaWizytyDTO badanie in dto.Wizyty)
+            if (dto == null) return null;
+
+            var lekarz = new Lekarz
             {
-                wykonaneBadania.Add(this.WizytaToEntity(badanie));
+                Id = dto.Id,
+                Adres = dto.Adres,
+                Rola = dto.Rola,
+                Nazwisko = dto.Nazwisko,
+                Imie = dto.Imie,
+                Telefon = dto.Telefon,
+                Email = dto.Email,
+                Haslo = dto.Haslo,
+                Login = dto.Login,
+                Tytul = dto.Tytul,
+                Specjalizacja = dto.Specjalizacja
+            };
+
+            var wykonaneBadania = new List<Wizyta>();
+            if (dto.Wizyty != null)
+            {
+                foreach (var badanie in dto.Wizyty)
+                {
+                    var w = WizytaToEntity(badanie);
+                    if (w != null) wykonaneBadania.Add(w);
+                }
             }
             lekarz.Wizyty = wykonaneBadania;
             return lekarz;
@@ -134,20 +175,29 @@ namespace Models.Mapper
 
         public RecepcjonistkaDTO RecepcjonistkaToDTO(Recepcjonistka rec)
         {
-            RecepcjonistkaDTO dto = new RecepcjonistkaDTO();
-            dto.Id = rec.Id;
-            dto.Adres = rec.Adres;
-            dto.Rola = rec.Rola;
-            dto.Nazwisko = rec.Nazwisko;
-            dto.Imie = rec.Imie;
-            dto.Telefon = rec.Telefon;
-            dto.Email = rec.Email;
-            dto.Haslo = rec.Haslo;
-            dto.Login = rec.Login;
-            ICollection<RejestracjaWizytyDTO> wizyty = new List<RejestracjaWizytyDTO>();
-            foreach (Wizyta badanie in rec.WizytyZarejestrowane)
+            if (rec == null) return null;
+
+            var dto = new RecepcjonistkaDTO
             {
-                wizyty.Add(this.WizytaToDTO(badanie));
+                Id = rec.Id,
+                Adres = rec.Adres,
+                Rola = rec.Rola,
+                Nazwisko = rec.Nazwisko,
+                Imie = rec.Imie,
+                Telefon = rec.Telefon,
+                Email = rec.Email,
+                Haslo = rec.Haslo,
+                Login = rec.Login
+            };
+
+            var wizyty = new List<RejestracjaWizytyDTO>();
+            if (rec.WizytyZarejestrowane != null)
+            {
+                foreach (var badanie in rec.WizytyZarejestrowane)
+                {
+                    var b = WizytaToDTO(badanie);
+                    if (b != null) wizyty.Add(b);
+                }
             }
             dto.WizytyZarejestrowane = wizyty;
             return dto;
@@ -155,20 +205,29 @@ namespace Models.Mapper
 
         public Recepcjonistka RecepcjonistkaToEntity(RecepcjonistkaDTO dto)
         {
-            Recepcjonistka rec = new Recepcjonistka();
-            rec.Id = dto.Id;
-            rec.Adres = dto.Adres;
-            rec.Rola = dto.Rola;
-            rec.Nazwisko = dto.Nazwisko;
-            rec.Imie = dto.Imie;
-            rec.Telefon = dto.Telefon;
-            rec.Email = dto.Email;
-            rec.Haslo = dto.Haslo;
-            rec.Login = dto.Login;
-            ICollection<Wizyta> wizyty = new List<Wizyta>();
-            foreach (RejestracjaWizytyDTO badanie in dto.WizytyZarejestrowane)
+            if (dto == null) return null;
+
+            var rec = new Recepcjonistka
             {
-                wizyty.Add(this.WizytaToEntity(badanie));
+                Id = dto.Id,
+                Adres = dto.Adres,
+                Rola = dto.Rola,
+                Nazwisko = dto.Nazwisko,
+                Imie = dto.Imie,
+                Telefon = dto.Telefon,
+                Email = dto.Email,
+                Haslo = dto.Haslo,
+                Login = dto.Login
+            };
+
+            var wizyty = new List<Wizyta>();
+            if (dto.WizytyZarejestrowane != null)
+            {
+                foreach (var badanie in dto.WizytyZarejestrowane)
+                {
+                    var b = WizytaToEntity(badanie);
+                    if (b != null) wizyty.Add(b);
+                }
             }
             rec.WizytyZarejestrowane = wizyty;
             return rec;
@@ -176,6 +235,8 @@ namespace Models.Mapper
 
         public RejestracjaWizytyDTO WizytaToDTO(Wizyta wizyta)
         {
+            if (wizyta == null) return null;
+
             return new RejestracjaWizytyDTO
             {
                 Id = wizyta.Id,
@@ -183,25 +244,29 @@ namespace Models.Mapper
                 Opis = wizyta.Opis,
                 PacjentId = wizyta.PacjentId,
                 LekarzId = wizyta.LekarzId,
-                RecepcjonistkaId = wizyta.RecepcjonistkaId,
+                RecepcjonistkaId = wizyta.RecepcjonistkaId
             };
         }
 
-        public Wizyta WizytaToEntity(RejestracjaWizytyDTO wizytaDTO)
+        public Wizyta WizytaToEntity(RejestracjaWizytyDTO dto)
         {
+            if (dto == null) return null;
+
             return new Wizyta
             {
-                Id = wizytaDTO.Id,
-                Data = wizytaDTO.DataWizyty,
-                Opis = wizytaDTO.Opis,
-                PacjentId = wizytaDTO.PacjentId,
-                LekarzId = wizytaDTO.LekarzId,
-                RecepcjonistkaId = wizytaDTO.RecepcjonistkaId,
+                Id = dto.Id,
+                Data = dto.DataWizyty,
+                Opis = dto.Opis,
+                PacjentId = dto.PacjentId,
+                LekarzId = dto.LekarzId,
+                RecepcjonistkaId = dto.RecepcjonistkaId
             };
         }
 
         public WykonaneBadaniaDTO WykonaneBadaniaToDTO(WykonaneBadania badanie)
         {
+            if (badanie == null) return null;
+
             return new WykonaneBadaniaDTO
             {
                 WizytaId = badanie.WizytaId,
@@ -213,6 +278,8 @@ namespace Models.Mapper
 
         public WykonaneBadania WykonaneBadaniaToEntity(WykonaneBadaniaDTO dto)
         {
+            if (dto == null) return null;
+
             return new WykonaneBadania
             {
                 WizytaId = dto.WizytaId,
@@ -224,11 +291,18 @@ namespace Models.Mapper
 
         public BadanieDTO BadanieToDTO(Badanie badanie)
         {
-            ICollection<WykonaneBadaniaDTO> wykonaneBadaniadto = new List<WykonaneBadaniaDTO>();
-            foreach (WykonaneBadania dto in badanie.Wykonane)
+            if (badanie == null) return null;
+
+            var wykonaneBadaniadto = new List<WykonaneBadaniaDTO>();
+            if (badanie.Wykonane != null)
             {
-                wykonaneBadaniadto.Add(this.WykonaneBadaniaToDTO(dto));
+                foreach (var dto in badanie.Wykonane)
+                {
+                    var b = WykonaneBadaniaToDTO(dto);
+                    if (b != null) wykonaneBadaniadto.Add(b);
+                }
             }
+
             return new BadanieDTO
             {
                 Nazwa = badanie.Nazwa,
@@ -240,11 +314,18 @@ namespace Models.Mapper
 
         public Badanie BadanieToEntity(BadanieDTO dto)
         {
-            ICollection<WykonaneBadania> wykonaneBadania = new List<WykonaneBadania>();
-            foreach (WykonaneBadaniaDTO badanie in dto.Wykonane)
+            if (dto == null) return null;
+
+            var wykonaneBadania = new List<WykonaneBadania>();
+            if (dto.Wykonane != null)
             {
-                wykonaneBadania.Add(this.WykonaneBadaniaToEntity(badanie));
+                foreach (var b in dto.Wykonane)
+                {
+                    var entity = WykonaneBadaniaToEntity(b);
+                    if (entity != null) wykonaneBadania.Add(entity);
+                }
             }
+
             return new Badanie
             {
                 Nazwa = dto.Nazwa,
@@ -253,7 +334,5 @@ namespace Models.Mapper
                 Wykonane = wykonaneBadania
             };
         }
-
-
     }
 }

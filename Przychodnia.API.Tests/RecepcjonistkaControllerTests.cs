@@ -6,16 +6,20 @@ using Przychodnia.API.Controllers;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
+using Models.Mapper;
+using DTOs;
 
 public class RecepcjonistkaControllerTests
 {
     private readonly Mock<IRecepcjonistkaService> _mockService;
     private readonly RecepcjonistkaController _controller;
+    private readonly Mapper map;
 
     public RecepcjonistkaControllerTests()
     {
         _mockService = new Mock<IRecepcjonistkaService>();
         _controller = new RecepcjonistkaController(_mockService.Object);
+        map = new Mapper();
     }
 
     [Fact]
@@ -50,7 +54,7 @@ public class RecepcjonistkaControllerTests
     public void Create_ReturnsBadRequest_WhenModelInvalid()
     {
         _controller.ModelState.AddModelError("Error", "Error");
-        var obj = new Recepcjonistka();
+        var obj = new RecepcjonistkaDTO();
 
         var result = _controller.Create(obj);
 
@@ -60,18 +64,19 @@ public class RecepcjonistkaControllerTests
     [Fact]
     public void Create_ReturnsCreatedAtAction_WhenValid()
     {
-        var obj = new Recepcjonistka { Id = 1 };
+        var obj = new RecepcjonistkaDTO { Id = 1 };
 
         var result = _controller.Create(obj);
 
         var createdResult = Assert.IsType<CreatedAtActionResult>(result);
-        Assert.Equal(obj, createdResult.Value);
+        var createdRecepcjonistka = Assert.IsType<Recepcjonistka>(createdResult.Value);
+        Assert.Equal(obj.Id, createdRecepcjonistka.Id);
     }
 
     [Fact]
     public void Update_ReturnsBadRequest_WhenIdMismatch()
     {
-        var obj = new Recepcjonistka { Id = 2 };
+        var obj = new RecepcjonistkaDTO { Id = 2 };
 
         var result = _controller.Update(1, obj);
 

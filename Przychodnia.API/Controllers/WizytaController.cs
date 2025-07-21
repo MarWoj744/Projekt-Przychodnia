@@ -18,6 +18,7 @@ namespace Przychodnia.API.Controllers
         public WizytaController(IWizytaService service)
         {
             _service = service;
+            map = new Mapper();
         }
 
         [HttpGet]

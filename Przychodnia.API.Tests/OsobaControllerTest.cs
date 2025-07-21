@@ -6,6 +6,8 @@ using Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
+using Models.Mapper;
+using DTOs;
 
 namespace Przychodnia.API.Tests
 {
@@ -13,11 +15,13 @@ namespace Przychodnia.API.Tests
     {
         private readonly Mock<IOsobaService> _mockService;
         private readonly OsobaController _controller;
+        private readonly Mapper map;
 
         public OsobaControllerTest()
         {
             _mockService = new Mock<IOsobaService>();
             _controller = new OsobaController(_mockService.Object);
+            map = new Mapper();
         }
 
         [Fact]
@@ -80,11 +84,13 @@ namespace Przychodnia.API.Tests
             _mockService.Setup(s => s.Dodaj(osoba));
             _mockService.Setup(s => s.Save());
 
-            var result = _controller.Create(osoba);
+            OsobaDTO oDTO = map.OsobaToDTO(osoba);
+
+            var result = _controller.Create(oDTO);
 
             var createdAtActionResult = Assert.IsType<CreatedAtActionResult>(result);
             Assert.Equal(nameof(OsobaController.GetById), createdAtActionResult.ActionName);
-            Assert.Equal(osoba.Id, ((Osoba)createdAtActionResult.Value).Id);
+            Assert.Equal(oDTO.Id, ((OsobaDTO)createdAtActionResult.Value).Id);
         }
 
         [Fact]
@@ -104,7 +110,9 @@ namespace Przychodnia.API.Tests
 
             _mockService.Setup(s => s.ValidateData(osoba)).Returns("Nieprawidłowy email");
 
-            var result = _controller.Create(osoba);
+            OsobaDTO oDTO = map.OsobaToDTO(osoba);
+
+            var result = _controller.Create(oDTO);
 
             var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);
             Assert.Equal("Nieprawidłowy email", badRequestResult.Value);
@@ -129,7 +137,10 @@ namespace Przychodnia.API.Tests
             _mockService.Setup(s => s.Update(osoba));
             _mockService.Setup(s => s.Save());
 
-            var result = _controller.Update(osoba.Id, osoba);
+            OsobaDTO oDTO = map.OsobaToDTO(osoba);
+
+
+            var result = _controller.Update(oDTO.Id, oDTO);
 
             Assert.IsType<NoContentResult>(result);
         }
@@ -149,7 +160,9 @@ namespace Przychodnia.API.Tests
                 Adres = "zabrze"
             };
 
-            var result = _controller.Update(999, osoba);
+            OsobaDTO oDTO = map.OsobaToDTO(osoba);
+
+            var result = _controller.Update(999, oDTO);
 
             var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);
             Assert.Equal("Niepoprawne dane.", badRequestResult.Value);
@@ -172,7 +185,9 @@ namespace Przychodnia.API.Tests
 
             _mockService.Setup(s => s.GetOsobaById(osoba.Id)).Returns((Osoba)null);
 
-            var result = _controller.Update(osoba.Id, osoba);
+            OsobaDTO oDTO = map.OsobaToDTO(osoba);
+
+            var result = _controller.Update(oDTO.Id, oDTO);
 
             Assert.IsType<NotFoundResult>(result);
         }

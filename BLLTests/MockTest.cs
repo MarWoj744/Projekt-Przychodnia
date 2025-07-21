@@ -1,5 +1,6 @@
 ﻿using DTOs;
 using IBLL;
+using Models;
 using Moq;
 using System;
 using System.Collections.Generic;
@@ -16,16 +17,18 @@ namespace BLLTests
         public async Task Mock_VerifyMethodWasCalled()
         {
             var mock = new Mock<IWizytaService>();
-            var dto = new RejestracjaWizytyDTO
+            var dto = new Wizyta
             {
                 PacjentId = 1,
-                DataWizyty = DateTime.Now.AddDays(1),
+                Data = DateTime.Now.AddDays(1),
                 LekarzId = 101,
                 Opis = "Konsultacja"
             };
 
+
+
             // Sprawdzamy, czy mock poprawnie ustawi metodę ZarejestrujWizyteAsync
-            mock.Setup(m => m.ZarejestrujWizyteAsync(It.IsAny<RejestracjaWizytyDTO>()))
+            mock.Setup(m => m.ZarejestrujWizyteAsync(It.IsAny<Wizyta>()))
                 .ReturnsAsync(true);
 
             var result = await mock.Object.ZarejestrujWizyteAsync(dto);
@@ -35,9 +38,9 @@ namespace BLLTests
             Assert.Equal("Konsultacja", dto.Opis);
             mock.Verify(m => m.ZarejestrujWizyteAsync(dto), Times.Once);
 
-            var anotherResult = await mock.Object.ZarejestrujWizyteAsync(new RejestracjaWizytyDTO());
+            var anotherResult = await mock.Object.ZarejestrujWizyteAsync(new Wizyta());
             Assert.True(anotherResult);
-            mock.Verify(m => m.ZarejestrujWizyteAsync(It.IsAny<RejestracjaWizytyDTO>()), Times.Exactly(2));
+            mock.Verify(m => m.ZarejestrujWizyteAsync(It.IsAny<Wizyta>()), Times.Exactly(2));
         }
     }
 }

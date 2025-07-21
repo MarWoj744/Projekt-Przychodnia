@@ -16,6 +16,7 @@ namespace Przychodnia.API.Controllers
         public LekarzController(ILekarzService lekarzService)
         {
             _lekarzService = lekarzService;
+            map = new Mapper();
         }
 
 

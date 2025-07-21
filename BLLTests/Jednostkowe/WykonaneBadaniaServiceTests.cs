@@ -2,6 +2,7 @@
 using DTOs;
 using IDAL_;
 using Models;
+using Models.Mapper;
 using Moq;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,12 +15,14 @@ namespace BLLTests.Jednostkowe
         private Mock<IWykonaneBadaniaRepository> _mockBadaniaRepo;
         private Mock<IWizytaRepository> _mockWiztaRepo;
         private WykonaneBadaniaService _service;
+        private readonly Mapper map;
 
         public WykonaneBadaniaServiceTests()
         {
             _mockBadaniaRepo = new Mock<IWykonaneBadaniaRepository>();
             _mockWiztaRepo = new Mock<IWizytaRepository>();
             _service = new WykonaneBadaniaService(_mockBadaniaRepo.Object, _mockWiztaRepo.Object);
+            map = new Mapper();
         }
 
         private List<WykonaneBadania> GetFakeWykonaneBadania()
@@ -69,8 +72,10 @@ namespace BLLTests.Jednostkowe
             // Arrange
             var dto = new WykonaneBadaniaDTO { WizytaId = 1, BadanieId = 1, Data = DateTime.Now, Wyniki = "Wynik 1" };
 
+            WykonaneBadania wyk = new WykonaneBadania();
+            wyk = map.WykonaneBadaniaToEntity(dto);
             // Act
-            _service.Dodaj(dto);
+            _service.Dodaj(wyk);
 
             // Assert
             _mockBadaniaRepo.Verify(repo => repo.dodaj(It.IsAny<WykonaneBadania>()), Times.Once);
@@ -85,8 +90,9 @@ namespace BLLTests.Jednostkowe
 
             var dto = new WykonaneBadaniaDTO { WizytaId = 1, BadanieId = 1, Data = DateTime.Now.AddDays(1), Wyniki = "Zaktualizowany wynik" };
 
+            WykonaneBadania wyk = map.WykonaneBadaniaToEntity(dto);
             // Act
-            _service.Update(dto);
+            _service.Update(wyk);
 
             // Assert
             Assert.Equal("Zaktualizowany wynik", existingBadanie.Wyniki);

@@ -2,6 +2,7 @@
 using DTOs;
 using IDAL_;
 using Models;
+using Models.Mapper;
 using Moq;
 using System;
 using System.Collections.Generic;
@@ -15,11 +16,13 @@ namespace BLLTests.Jednostkowe
     {
         private readonly Mock<IWizytaRepository> _mockRepo;
         private readonly WizytaService _service;
+        private readonly Mapper map;
 
         public WizytaServiceTests()
         {
             _mockRepo = new Mock<IWizytaRepository>();
             _service = new WizytaService(_mockRepo.Object);
+            map = new Mapper();
         }
 
         private List<Wizyta> GetFakeWizyty()
@@ -45,7 +48,8 @@ namespace BLLTests.Jednostkowe
             };
 
             // Act
-            var result = await _service.ZarejestrujWizyteAsync(dto);
+            Wizyta wiz = map.WizytaToEntity(dto);
+            var result = await _service.ZarejestrujWizyteAsync(wiz);
 
             // Assert
             Assert.True(result);
@@ -66,8 +70,10 @@ namespace BLLTests.Jednostkowe
                 Opis = "Nieprawidlowa wizyta"
             };
 
+            Wizyta wiz = map.WizytaToEntity(dto);
+
             // Act & Assert
-            await Assert.ThrowsAsync<Exception>(() => _service.ZarejestrujWizyteAsync(dto));
+            await Assert.ThrowsAsync<Exception>(() => _service.ZarejestrujWizyteAsync(wiz));
             _mockRepo.Verify(r => r.dodaj(It.IsAny<Wizyta>()), Times.Never);
             _mockRepo.Verify(r => r.save(), Times.Never);
         }
