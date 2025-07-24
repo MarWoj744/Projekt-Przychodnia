@@ -59,6 +59,30 @@ namespace DAL
         {
             _context.SaveChanges();
         }
+        public Osoba GetOsobaByRefreshToken(string refreshToken)
+        {
+            return _context.Osoby.FirstOrDefault(o => o.RefreshToken == refreshToken);
+        }
+
+        public void UpdateRefreshToken(int userId, string refreshToken)
+        {
+            var osoba = GetOsobaById(userId);
+            if (osoba != null)
+            {
+                osoba.RefreshToken = refreshToken;
+                Update(osoba);
+            }
+        }
+
+        public void ClearRefreshToken(int userId)
+        {
+            var osoba = GetOsobaById(userId);
+            if (osoba != null)
+            {
+                osoba.RefreshToken = null;
+                Update(osoba);
+            }
+        }
     }
 }
 

@@ -32,6 +32,7 @@ namespace BLL
         }
         public void Dodaj(Pacjent pacjent)
         {
+            pacjent.Haslo = PasswordHasher.HashPassword(pacjent.Haslo);
             _pacjentRepo.Dodaj(pacjent);
         }
         public void Delete(int id)

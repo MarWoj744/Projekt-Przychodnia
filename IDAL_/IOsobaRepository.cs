@@ -18,5 +18,8 @@ namespace IDAL_
         void Delete(int id);
         void Update(Osoba osoba);
         void save();
+        Osoba GetOsobaByRefreshToken(string refreshToken);
+        void UpdateRefreshToken(int userId, string refreshToken);
+        void ClearRefreshToken(int userId);
     }
 }

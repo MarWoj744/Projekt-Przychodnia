@@ -1,5 +1,6 @@
 ﻿using DTOs;
 using IBLL;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Models;
 using Models.Mapper;
@@ -20,6 +21,7 @@ namespace Przychodnia.API.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Recepcjonistka,Lekarz")]
         public IActionResult GetAll()
         {
             var recepcjonistki = _service.PobierzWszystkie();
@@ -27,6 +29,7 @@ namespace Przychodnia.API.Controllers
         }
 
         [HttpGet("{id}")]
+        [Authorize(Roles = "Recepcjonistka,Lekarz")]
         public IActionResult GetById(int id)
         {
             var recepcjonistka = _service.GetRecepcjonistkaById(id);
@@ -37,6 +40,7 @@ namespace Przychodnia.API.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Recepcjonistka")]
         public IActionResult Create([FromBody] RecepcjonistkaDTO recepcjonistka)
         {
             Recepcjonistka rec = map.RecepcjonistkaToEntity(recepcjonistka);
@@ -50,6 +54,7 @@ namespace Przychodnia.API.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "Recepcjonistka")]
         public IActionResult Update(int id, [FromBody] RecepcjonistkaDTO recepcjonistka)
         {
             Recepcjonistka rec = map.RecepcjonistkaToEntity(recepcjonistka);
@@ -63,6 +68,7 @@ namespace Przychodnia.API.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Recepcjonistka")]
         public IActionResult Delete(int id)
         {
             _service.Delete(id);

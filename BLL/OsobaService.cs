@@ -115,5 +115,24 @@ namespace BLL
         {
             _osobaRepository.save();
         }
+        public Osoba GetOsobaByRefreshToken(string refreshToken)
+        {
+            return _osobaRepository.GetOsobaByRefreshToken(refreshToken);
+        }
+
+        public void UpdateRefreshToken(int userId, string refreshToken)
+        {
+            _osobaRepository.UpdateRefreshToken(userId, refreshToken);
+        }
+
+        public void ClearRefreshToken(int userId)
+        {
+            _osobaRepository.ClearRefreshToken(userId);
+        }
+
+        public bool VerifyPassword(string password, string hashedPassword)
+        {
+            return PasswordHasher.VerifyPassword(password, hashedPassword);
+        }
     }
 }

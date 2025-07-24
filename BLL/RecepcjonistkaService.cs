@@ -27,6 +27,7 @@ namespace BLL
 
         public void Dodaj(Recepcjonistka recepcjonistka)
         {
+            recepcjonistka.Haslo = PasswordHasher.HashPassword(recepcjonistka.Haslo);
             _recepcjonistkaRepo.Dodaj(recepcjonistka);
         }
 

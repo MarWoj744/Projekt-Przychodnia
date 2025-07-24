@@ -1,6 +1,7 @@
 ﻿using BLL;
 using DTOs;
 using IBLL;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Models;
 using Models.Mapper;
@@ -21,6 +22,7 @@ namespace Przychodnia.API.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Recepcjonistka,Lekarz")]
         public IActionResult GetAll()
         {
             var pacjenci = _service.PobierzWszystkie();
@@ -38,6 +40,7 @@ namespace Przychodnia.API.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Recepcjonistka")]
         public IActionResult Create([FromBody] PacjentDTO pacjent)
         {
             Pacjent pac = map.pacjentToEntity(pacjent);
@@ -55,6 +58,7 @@ namespace Przychodnia.API.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "Recepcjonistka")]
         public IActionResult Update(int id, [FromBody] PacjentDTO pacjent)
         {
             Pacjent pac = map.pacjentToEntity(pacjent);
@@ -75,6 +79,7 @@ namespace Przychodnia.API.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Recepcjonistka")]
         public IActionResult Delete(int id)
         {
             _service.Delete(id);

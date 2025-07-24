@@ -1,5 +1,6 @@
 ﻿using DTOs;
 using IBLL;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Models;
 using Models.Mapper;
@@ -40,6 +41,7 @@ namespace Przychodnia.API.Controllers
 
 
         [HttpPost]
+        [Authorize(Roles = "Recepcjonistka")]
         public IActionResult Create([FromBody] LekarzDTO lekarz)
         {
             Lekarz lek = map.LekarzToEntity(lekarz);
@@ -54,6 +56,7 @@ namespace Przychodnia.API.Controllers
 
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "Lekarz,Recepcjonistka")]
         public IActionResult Update(int id, [FromBody] LekarzDTO lekarz)
         {
             Lekarz lek = map.LekarzToEntity(lekarz);
@@ -72,6 +75,7 @@ namespace Przychodnia.API.Controllers
 
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Recepcjonistka")]
         public IActionResult Delete(int id)
         {
             var lekarz = _lekarzService.GetLekarzById(id);

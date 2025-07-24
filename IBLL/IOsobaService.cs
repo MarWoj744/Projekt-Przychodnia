@@ -16,5 +16,9 @@ namespace IBLL
         void Delete(int id);
         void Update(Osoba osoba);
         void Save();
+        Osoba GetOsobaByRefreshToken(string refreshToken);
+        void UpdateRefreshToken(int userId, string refreshToken);
+        void ClearRefreshToken(int userId);
+        bool VerifyPassword(string password, string hashedPassword);
     }
 }

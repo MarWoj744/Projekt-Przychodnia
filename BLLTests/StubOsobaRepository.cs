@@ -51,5 +51,20 @@ namespace BLLTests
             
         }
         public void save() { }
+
+        public Osoba GetOsobaByRefreshToken(string refreshToken)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateRefreshToken(int userId, string refreshToken)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ClearRefreshToken(int userId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

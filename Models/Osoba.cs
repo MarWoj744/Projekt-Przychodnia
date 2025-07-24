@@ -11,7 +11,8 @@ namespace Models
     {
         Pacjent,
         Recepcjonistka,
-        Lekarz
+        Lekarz,
+        Administrator
     }
 
     public abstract class Osoba
@@ -47,5 +48,10 @@ namespace Models
 
         [Required]
         public Rola Rola { get; set; }
+        [Required]
+        public bool IsActive { get; set; } = true;
+        [StringLength(500)]
+        public string? RefreshToken { get; set; }
+
     }
 }

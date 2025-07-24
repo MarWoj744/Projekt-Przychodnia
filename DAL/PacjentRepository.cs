@@ -22,7 +22,7 @@ namespace DAL
             var pacjent = GetPacjentById(id);
             if (pacjent != null)
             {
-                _context.Osoby.Remove(pacjent);
+                _context.Pacjenci.Remove(pacjent);
             }
         }
 

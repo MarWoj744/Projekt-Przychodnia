@@ -26,6 +26,7 @@ namespace BLL
 
         public void Dodaj(Lekarz lekarz)
         {
+            lekarz.Haslo = PasswordHasher.HashPassword(lekarz.Haslo);
             _lekarzRepo.Dodaj(lekarz);
         }
 
