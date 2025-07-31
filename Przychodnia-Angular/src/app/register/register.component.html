@@ -1,0 +1,84 @@
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="imie">Imię:</label>
+    <input id="imie" formControlName="imie" />
+    <div *ngIf="registerForm.get('imie')?.invalid && registerForm.get('imie')?.touched" style="color:red">
+      Imię jest wymagane.
+    </div>
+  </div>
+
+  <div>
+    <label for="nazwisko">Nazwisko:</label>
+    <input id="nazwisko" formControlName="nazwisko" />
+    <div *ngIf="registerForm.get('nazwisko')?.invalid && registerForm.get('nazwisko')?.touched" style="color:red">
+      Nazwisko jest wymagane.
+    </div>
+  </div>
+
+  <div>
+    <label for="pesel">PESEL:</label>
+    <input id="pesel" formControlName="pesel" />
+    <div *ngIf="registerForm.get('pesel')?.invalid && registerForm.get('pesel')?.touched" style="color:red">
+      PESEL musi mieć 11 cyfr.
+    </div>
+  </div>
+
+  <div>
+    <label for="adres">Adres:</label>
+    <input id="adres" formControlName="adres" />
+    <div *ngIf="registerForm.get('adres')?.invalid && registerForm.get('adres')?.touched" style="color:red">
+      Adres jest wymagany.
+    </div>
+  </div>
+
+  <div>
+    <label for="telefon">Telefon:</label>
+    <input id="telefon" formControlName="telefon" />
+    <div *ngIf="registerForm.get('telefon')?.invalid && registerForm.get('telefon')?.touched" style="color:red">
+      Telefon musi mieć 9 cyfr.
+    </div>
+  </div>
+
+  <div>
+    <label for="email">Email:</label>
+    <input id="email" formControlName="email" />
+    <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" style="color:red">
+      Wprowadź poprawny adres email.
+    </div>
+  </div>
+
+  <div>
+    <label for="login">Login:</label>
+    <input id="login" formControlName="login" />
+    <div *ngIf="registerForm.get('login')?.invalid && registerForm.get('login')?.touched" style="color:red">
+      Login jest wymagany.
+    </div>
+  </div>
+
+  <div>
+    <label for="haslo">Hasło:</label>
+    <input id="haslo" type="password" formControlName="haslo" />
+    <div *ngIf="registerForm.get('haslo')?.invalid && registerForm.get('haslo')?.touched" style="color:red">
+      Hasło jest wymagane, minimum 6 znaków.
+    </div>
+  </div>
+
+  <div>
+    <label for="potwierdzHaslo">Potwierdź hasło:</label>
+    <input id="potwierdzHaslo" type="password" formControlName="potwierdzHaslo" />
+    <div *ngIf="registerForm.hasError('mismatch') && registerForm.get('potwierdzHaslo')?.touched" style="color:red">
+      Hasła muszą być takie same.
+    </div>
+  </div>
+
+  <div>
+    <label for="rola">Rola:</label>
+    <select id="rola" formControlName="rola">
+      <option value="Pacjent">Pacjent</option>
+      <option value="Lekarz">Lekarz</option>
+      <option value="Recepcjonistka">Recepcjonistka</option>
+    </select>
+  </div>
+
+  <button type="submit" [disabled]="registerForm.invalid">Zarejestruj się</button>
+</form>
