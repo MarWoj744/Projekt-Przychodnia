@@ -66,7 +66,6 @@ builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddDbContext<DbPrzychodnia>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddEndpointsApiExplorer();
 
 
 builder.Services.AddCors(corsBuilder =>
@@ -118,3 +117,7 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+
+//dotnet ef migrations add NewMigrationName --project Models --startup-project Przychodnia.API
+//dotnet ef database update --project Models --startup-project Przychodnia.API

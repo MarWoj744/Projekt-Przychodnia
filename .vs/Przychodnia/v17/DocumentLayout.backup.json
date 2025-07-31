@@ -1,0 +1,988 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A11AB6FB-9256-41D6-830E-F50DF6361079}|Przychodnia.API\\Przychodnia.API.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\przychodnia.api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A11AB6FB-9256-41D6-830E-F50DF6361079}|Przychodnia.API\\Przychodnia.API.csproj|solutionrelative:przychodnia.api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A11AB6FB-9256-41D6-830E-F50DF6361079}|Przychodnia.API\\Przychodnia.API.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\przychodnia.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A11AB6FB-9256-41D6-830E-F50DF6361079}|Przychodnia.API\\Przychodnia.API.csproj|solutionrelative:przychodnia.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A11AB6FB-9256-41D6-830E-F50DF6361079}|Przychodnia.API\\Przychodnia.API.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\przychodnia.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A11AB6FB-9256-41D6-830E-F50DF6361079}|Przychodnia.API\\Przychodnia.API.csproj|solutionrelative:przychodnia.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A11AB6FB-9256-41D6-830E-F50DF6361079}|Przychodnia.API\\Przychodnia.API.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\przychodnia.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A11AB6FB-9256-41D6-830E-F50DF6361079}|Przychodnia.API\\Przychodnia.API.csproj|solutionrelative:przychodnia.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A11AB6FB-9256-41D6-830E-F50DF6361079}|Przychodnia.API\\Przychodnia.API.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\przychodnia.api\\controllers\\wykonanebadaniacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A11AB6FB-9256-41D6-830E-F50DF6361079}|Przychodnia.API\\Przychodnia.API.csproj|solutionrelative:przychodnia.api\\controllers\\wykonanebadaniacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A11AB6FB-9256-41D6-830E-F50DF6361079}|Przychodnia.API\\Przychodnia.API.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\przychodnia.api\\controllers\\wizytacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A11AB6FB-9256-41D6-830E-F50DF6361079}|Przychodnia.API\\Przychodnia.API.csproj|solutionrelative:przychodnia.api\\controllers\\wizytacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A11AB6FB-9256-41D6-830E-F50DF6361079}|Przychodnia.API\\Przychodnia.API.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\przychodnia.api\\controllers\\recepcjonistkacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A11AB6FB-9256-41D6-830E-F50DF6361079}|Przychodnia.API\\Przychodnia.API.csproj|solutionrelative:przychodnia.api\\controllers\\recepcjonistkacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A11AB6FB-9256-41D6-830E-F50DF6361079}|Przychodnia.API\\Przychodnia.API.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\przychodnia.api\\controllers\\pacjentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A11AB6FB-9256-41D6-830E-F50DF6361079}|Przychodnia.API\\Przychodnia.API.csproj|solutionrelative:przychodnia.api\\controllers\\pacjentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A11AB6FB-9256-41D6-830E-F50DF6361079}|Przychodnia.API\\Przychodnia.API.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\przychodnia.api\\controllers\\osobacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A11AB6FB-9256-41D6-830E-F50DF6361079}|Przychodnia.API\\Przychodnia.API.csproj|solutionrelative:przychodnia.api\\controllers\\osobacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A11AB6FB-9256-41D6-830E-F50DF6361079}|Przychodnia.API\\Przychodnia.API.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\przychodnia.api\\controllers\\lekarzcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A11AB6FB-9256-41D6-830E-F50DF6361079}|Przychodnia.API\\Przychodnia.API.csproj|solutionrelative:przychodnia.api\\controllers\\lekarzcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A11AB6FB-9256-41D6-830E-F50DF6361079}|Przychodnia.API\\Przychodnia.API.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\przychodnia.api\\controllers\\badaniecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A11AB6FB-9256-41D6-830E-F50DF6361079}|Przychodnia.API\\Przychodnia.API.csproj|solutionrelative:przychodnia.api\\controllers\\badaniecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{370EB632-0810-4F9C-9C80-3F71D24D480E}|DTOs\\DTOs.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\dtos\\wykonanebadaniadto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{370EB632-0810-4F9C-9C80-3F71D24D480E}|DTOs\\DTOs.csproj|solutionrelative:dtos\\wykonanebadaniadto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{370EB632-0810-4F9C-9C80-3F71D24D480E}|DTOs\\DTOs.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\dtos\\rejestracjawizytydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{370EB632-0810-4F9C-9C80-3F71D24D480E}|DTOs\\DTOs.csproj|solutionrelative:dtos\\rejestracjawizytydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{370EB632-0810-4F9C-9C80-3F71D24D480E}|DTOs\\DTOs.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\dtos\\registerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{370EB632-0810-4F9C-9C80-3F71D24D480E}|DTOs\\DTOs.csproj|solutionrelative:dtos\\registerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{370EB632-0810-4F9C-9C80-3F71D24D480E}|DTOs\\DTOs.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\dtos\\recepcjonistkadto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{370EB632-0810-4F9C-9C80-3F71D24D480E}|DTOs\\DTOs.csproj|solutionrelative:dtos\\recepcjonistkadto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{370EB632-0810-4F9C-9C80-3F71D24D480E}|DTOs\\DTOs.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\dtos\\pacjentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{370EB632-0810-4F9C-9C80-3F71D24D480E}|DTOs\\DTOs.csproj|solutionrelative:dtos\\pacjentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{370EB632-0810-4F9C-9C80-3F71D24D480E}|DTOs\\DTOs.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\dtos\\osobadto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{370EB632-0810-4F9C-9C80-3F71D24D480E}|DTOs\\DTOs.csproj|solutionrelative:dtos\\osobadto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{370EB632-0810-4F9C-9C80-3F71D24D480E}|DTOs\\DTOs.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\dtos\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{370EB632-0810-4F9C-9C80-3F71D24D480E}|DTOs\\DTOs.csproj|solutionrelative:dtos\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{370EB632-0810-4F9C-9C80-3F71D24D480E}|DTOs\\DTOs.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\dtos\\lekarzdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{370EB632-0810-4F9C-9C80-3F71D24D480E}|DTOs\\DTOs.csproj|solutionrelative:dtos\\lekarzdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{370EB632-0810-4F9C-9C80-3F71D24D480E}|DTOs\\DTOs.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\dtos\\changepassworddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{370EB632-0810-4F9C-9C80-3F71D24D480E}|DTOs\\DTOs.csproj|solutionrelative:dtos\\changepassworddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{370EB632-0810-4F9C-9C80-3F71D24D480E}|DTOs\\DTOs.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\dtos\\badaniedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{370EB632-0810-4F9C-9C80-3F71D24D480E}|DTOs\\DTOs.csproj|solutionrelative:dtos\\badaniedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{370EB632-0810-4F9C-9C80-3F71D24D480E}|DTOs\\DTOs.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\dtos\\authresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{370EB632-0810-4F9C-9C80-3F71D24D480E}|DTOs\\DTOs.csproj|solutionrelative:dtos\\authresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84DBB930-7514-4D0C-ABAB-91685DF394C7}|BLL\\BLL.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\bll\\wykonanebadaniaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84DBB930-7514-4D0C-ABAB-91685DF394C7}|BLL\\BLL.csproj|solutionrelative:bll\\wykonanebadaniaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84DBB930-7514-4D0C-ABAB-91685DF394C7}|BLL\\BLL.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\bll\\wizytaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84DBB930-7514-4D0C-ABAB-91685DF394C7}|BLL\\BLL.csproj|solutionrelative:bll\\wizytaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84DBB930-7514-4D0C-ABAB-91685DF394C7}|BLL\\BLL.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\bll\\recepcjonistkaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84DBB930-7514-4D0C-ABAB-91685DF394C7}|BLL\\BLL.csproj|solutionrelative:bll\\recepcjonistkaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84DBB930-7514-4D0C-ABAB-91685DF394C7}|BLL\\BLL.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\bll\\passwordhasher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84DBB930-7514-4D0C-ABAB-91685DF394C7}|BLL\\BLL.csproj|solutionrelative:bll\\passwordhasher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84DBB930-7514-4D0C-ABAB-91685DF394C7}|BLL\\BLL.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\bll\\pacjentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84DBB930-7514-4D0C-ABAB-91685DF394C7}|BLL\\BLL.csproj|solutionrelative:bll\\pacjentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84DBB930-7514-4D0C-ABAB-91685DF394C7}|BLL\\BLL.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\bll\\osobaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84DBB930-7514-4D0C-ABAB-91685DF394C7}|BLL\\BLL.csproj|solutionrelative:bll\\osobaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84DBB930-7514-4D0C-ABAB-91685DF394C7}|BLL\\BLL.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\bll\\lekarzservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84DBB930-7514-4D0C-ABAB-91685DF394C7}|BLL\\BLL.csproj|solutionrelative:bll\\lekarzservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84DBB930-7514-4D0C-ABAB-91685DF394C7}|BLL\\BLL.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\bll\\badanieservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84DBB930-7514-4D0C-ABAB-91685DF394C7}|BLL\\BLL.csproj|solutionrelative:bll\\badanieservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84DBB930-7514-4D0C-ABAB-91685DF394C7}|BLL\\BLL.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\bll\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84DBB930-7514-4D0C-ABAB-91685DF394C7}|BLL\\BLL.csproj|solutionrelative:bll\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84DBB930-7514-4D0C-ABAB-91685DF394C7}|BLL\\BLL.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\bll\\mapper\\mapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84DBB930-7514-4D0C-ABAB-91685DF394C7}|BLL\\BLL.csproj|solutionrelative:bll\\mapper\\mapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9EFD5126-86FB-422A-923B-45305167C477}|IBLL\\IBLL.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\ibll\\iwykonanebadaniaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9EFD5126-86FB-422A-923B-45305167C477}|IBLL\\IBLL.csproj|solutionrelative:ibll\\iwykonanebadaniaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9EFD5126-86FB-422A-923B-45305167C477}|IBLL\\IBLL.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\ibll\\iwizytaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9EFD5126-86FB-422A-923B-45305167C477}|IBLL\\IBLL.csproj|solutionrelative:ibll\\iwizytaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9EFD5126-86FB-422A-923B-45305167C477}|IBLL\\IBLL.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\ibll\\irecepcjonistkaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9EFD5126-86FB-422A-923B-45305167C477}|IBLL\\IBLL.csproj|solutionrelative:ibll\\irecepcjonistkaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9EFD5126-86FB-422A-923B-45305167C477}|IBLL\\IBLL.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\ibll\\ipacjentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9EFD5126-86FB-422A-923B-45305167C477}|IBLL\\IBLL.csproj|solutionrelative:ibll\\ipacjentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9EFD5126-86FB-422A-923B-45305167C477}|IBLL\\IBLL.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\ibll\\iosobaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9EFD5126-86FB-422A-923B-45305167C477}|IBLL\\IBLL.csproj|solutionrelative:ibll\\iosobaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9EFD5126-86FB-422A-923B-45305167C477}|IBLL\\IBLL.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\ibll\\ilekarzservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9EFD5126-86FB-422A-923B-45305167C477}|IBLL\\IBLL.csproj|solutionrelative:ibll\\ilekarzservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9EFD5126-86FB-422A-923B-45305167C477}|IBLL\\IBLL.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\ibll\\ibadanieservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9EFD5126-86FB-422A-923B-45305167C477}|IBLL\\IBLL.csproj|solutionrelative:ibll\\ibadanieservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9EFD5126-86FB-422A-923B-45305167C477}|IBLL\\IBLL.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\ibll\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9EFD5126-86FB-422A-923B-45305167C477}|IBLL\\IBLL.csproj|solutionrelative:ibll\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6629858-A158-46DF-8055-4600E8C5E526}|DAL\\DAL.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\dal\\wizytarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B6629858-A158-46DF-8055-4600E8C5E526}|DAL\\DAL.csproj|solutionrelative:dal\\wizytarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6629858-A158-46DF-8055-4600E8C5E526}|DAL\\DAL.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\dal\\recepcjonistkarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B6629858-A158-46DF-8055-4600E8C5E526}|DAL\\DAL.csproj|solutionrelative:dal\\recepcjonistkarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6629858-A158-46DF-8055-4600E8C5E526}|DAL\\DAL.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\dal\\osobarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B6629858-A158-46DF-8055-4600E8C5E526}|DAL\\DAL.csproj|solutionrelative:dal\\osobarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6629858-A158-46DF-8055-4600E8C5E526}|DAL\\DAL.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\dal\\lekarzrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B6629858-A158-46DF-8055-4600E8C5E526}|DAL\\DAL.csproj|solutionrelative:dal\\lekarzrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6629858-A158-46DF-8055-4600E8C5E526}|DAL\\DAL.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\dal\\dbinit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B6629858-A158-46DF-8055-4600E8C5E526}|DAL\\DAL.csproj|solutionrelative:dal\\dbinit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6629858-A158-46DF-8055-4600E8C5E526}|DAL\\DAL.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\dal\\badanierepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B6629858-A158-46DF-8055-4600E8C5E526}|DAL\\DAL.csproj|solutionrelative:dal\\badanierepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{70FD32FB-8C33-4742-8375-D0B1F58ED363}|IDAL_\\IDAL_.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\idal_\\iwykonanebadaniarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{70FD32FB-8C33-4742-8375-D0B1F58ED363}|IDAL_\\IDAL_.csproj|solutionrelative:idal_\\iwykonanebadaniarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{70FD32FB-8C33-4742-8375-D0B1F58ED363}|IDAL_\\IDAL_.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\idal_\\iwizytarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{70FD32FB-8C33-4742-8375-D0B1F58ED363}|IDAL_\\IDAL_.csproj|solutionrelative:idal_\\iwizytarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{70FD32FB-8C33-4742-8375-D0B1F58ED363}|IDAL_\\IDAL_.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\idal_\\irecepcjonistkarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{70FD32FB-8C33-4742-8375-D0B1F58ED363}|IDAL_\\IDAL_.csproj|solutionrelative:idal_\\irecepcjonistkarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{70FD32FB-8C33-4742-8375-D0B1F58ED363}|IDAL_\\IDAL_.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\idal_\\ipacjentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{70FD32FB-8C33-4742-8375-D0B1F58ED363}|IDAL_\\IDAL_.csproj|solutionrelative:idal_\\ipacjentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{70FD32FB-8C33-4742-8375-D0B1F58ED363}|IDAL_\\IDAL_.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\idal_\\iosobarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{70FD32FB-8C33-4742-8375-D0B1F58ED363}|IDAL_\\IDAL_.csproj|solutionrelative:idal_\\iosobarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{70FD32FB-8C33-4742-8375-D0B1F58ED363}|IDAL_\\IDAL_.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\idal_\\ilekarzrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{70FD32FB-8C33-4742-8375-D0B1F58ED363}|IDAL_\\IDAL_.csproj|solutionrelative:idal_\\ilekarzrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{70FD32FB-8C33-4742-8375-D0B1F58ED363}|IDAL_\\IDAL_.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\idal_\\ibadanierepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{70FD32FB-8C33-4742-8375-D0B1F58ED363}|IDAL_\\IDAL_.csproj|solutionrelative:idal_\\ibadanierepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC3FBC0F-DA17-43DC-8A2F-FBD3BCC75F06}|Models\\Models.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\models\\wykonanebadania.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC3FBC0F-DA17-43DC-8A2F-FBD3BCC75F06}|Models\\Models.csproj|solutionrelative:models\\wykonanebadania.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC3FBC0F-DA17-43DC-8A2F-FBD3BCC75F06}|Models\\Models.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\models\\recepcjonistka.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC3FBC0F-DA17-43DC-8A2F-FBD3BCC75F06}|Models\\Models.csproj|solutionrelative:models\\recepcjonistka.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC3FBC0F-DA17-43DC-8A2F-FBD3BCC75F06}|Models\\Models.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\models\\pacjent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC3FBC0F-DA17-43DC-8A2F-FBD3BCC75F06}|Models\\Models.csproj|solutionrelative:models\\pacjent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC3FBC0F-DA17-43DC-8A2F-FBD3BCC75F06}|Models\\Models.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\models\\osoba.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC3FBC0F-DA17-43DC-8A2F-FBD3BCC75F06}|Models\\Models.csproj|solutionrelative:models\\osoba.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC3FBC0F-DA17-43DC-8A2F-FBD3BCC75F06}|Models\\Models.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\models\\lekarz.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC3FBC0F-DA17-43DC-8A2F-FBD3BCC75F06}|Models\\Models.csproj|solutionrelative:models\\lekarz.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC3FBC0F-DA17-43DC-8A2F-FBD3BCC75F06}|Models\\Models.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\models\\dbprzychodnia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC3FBC0F-DA17-43DC-8A2F-FBD3BCC75F06}|Models\\Models.csproj|solutionrelative:models\\dbprzychodnia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC3FBC0F-DA17-43DC-8A2F-FBD3BCC75F06}|Models\\Models.csproj|c:\\users\\macie\\documents\\github\\projekt-przychodnia\\models\\badanie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC3FBC0F-DA17-43DC-8A2F-FBD3BCC75F06}|Models\\Models.csproj|solutionrelative:models\\badanie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0174dea2-fdbe-4ef1-8f99-c0beae78880f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\Przychodnia.API\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "Przychodnia.API\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\Przychodnia.API\\Properties\\launchSettings.json",
+              "RelativeToolTip": "Przychodnia.API\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-07-31T14:39:12.747Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "WykonaneBadaniaDTO.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\DTOs\\WykonaneBadaniaDTO.cs",
+              "RelativeDocumentMoniker": "DTOs\\WykonaneBadaniaDTO.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\DTOs\\WykonaneBadaniaDTO.cs",
+              "RelativeToolTip": "DTOs\\WykonaneBadaniaDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T19:24:22.015Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "RejestracjaWizytyDTO.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\DTOs\\RejestracjaWizytyDTO.cs",
+              "RelativeDocumentMoniker": "DTOs\\RejestracjaWizytyDTO.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\DTOs\\RejestracjaWizytyDTO.cs",
+              "RelativeToolTip": "DTOs\\RejestracjaWizytyDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T19:24:17.554Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "RecepcjonistkaDTO.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\DTOs\\RecepcjonistkaDTO.cs",
+              "RelativeDocumentMoniker": "DTOs\\RecepcjonistkaDTO.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\DTOs\\RecepcjonistkaDTO.cs",
+              "RelativeToolTip": "DTOs\\RecepcjonistkaDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T19:24:08.845Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\Przychodnia.API\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "Przychodnia.API\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\Przychodnia.API\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "Przychodnia.API\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAD0AAAAAAAAAAAAuwGIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-24T16:04:24.705Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "BadanieController.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\Przychodnia.API\\Controllers\\BadanieController.cs",
+              "RelativeDocumentMoniker": "Przychodnia.API\\Controllers\\BadanieController.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\Przychodnia.API\\Controllers\\BadanieController.cs",
+              "RelativeToolTip": "Przychodnia.API\\Controllers\\BadanieController.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAAmwFcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-24T16:04:26.107Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\Przychodnia.API\\Program.cs",
+              "RelativeDocumentMoniker": "Przychodnia.API\\Program.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\Przychodnia.API\\Program.cs",
+              "RelativeToolTip": "Przychodnia.API\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHoAAABOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-24T15:06:12.782Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\Przychodnia.API\\appsettings.json",
+              "RelativeDocumentMoniker": "Przychodnia.API\\appsettings.json",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\Przychodnia.API\\appsettings.json",
+              "RelativeToolTip": "Przychodnia.API\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-07-30T18:24:02.622Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "OsobaController.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\Przychodnia.API\\Controllers\\OsobaController.cs",
+              "RelativeDocumentMoniker": "Przychodnia.API\\Controllers\\OsobaController.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\Przychodnia.API\\Controllers\\OsobaController.cs",
+              "RelativeToolTip": "Przychodnia.API\\Controllers\\OsobaController.cs",
+              "ViewState": "AgIAAFYAAAAAAAAAAAAcwHkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T19:25:06.26Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "WizytaController.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\Przychodnia.API\\Controllers\\WizytaController.cs",
+              "RelativeDocumentMoniker": "Przychodnia.API\\Controllers\\WizytaController.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\Przychodnia.API\\Controllers\\WizytaController.cs",
+              "RelativeToolTip": "Przychodnia.API\\Controllers\\WizytaController.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAmwE4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T19:25:18.596Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "WykonaneBadaniaController.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\Przychodnia.API\\Controllers\\WykonaneBadaniaController.cs",
+              "RelativeDocumentMoniker": "Przychodnia.API\\Controllers\\WykonaneBadaniaController.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\Przychodnia.API\\Controllers\\WykonaneBadaniaController.cs",
+              "RelativeToolTip": "Przychodnia.API\\Controllers\\WykonaneBadaniaController.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAAcwEkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T19:25:22.113Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "PacjentDTO.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\DTOs\\PacjentDTO.cs",
+              "RelativeDocumentMoniker": "DTOs\\PacjentDTO.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\DTOs\\PacjentDTO.cs",
+              "RelativeToolTip": "DTOs\\PacjentDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T19:24:04.908Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "PacjentController.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\Przychodnia.API\\Controllers\\PacjentController.cs",
+              "RelativeDocumentMoniker": "Przychodnia.API\\Controllers\\PacjentController.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\Przychodnia.API\\Controllers\\PacjentController.cs",
+              "RelativeToolTip": "Przychodnia.API\\Controllers\\PacjentController.cs",
+              "ViewState": "AgIAAD0AAAAAAAAAAAA4wGEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-24T16:18:15.027Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "RecepcjonistkaController.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\Przychodnia.API\\Controllers\\RecepcjonistkaController.cs",
+              "RelativeDocumentMoniker": "Przychodnia.API\\Controllers\\RecepcjonistkaController.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\Przychodnia.API\\Controllers\\RecepcjonistkaController.cs",
+              "RelativeToolTip": "Przychodnia.API\\Controllers\\RecepcjonistkaController.cs",
+              "ViewState": "AgIAACsAAAAAAAAAAAA4wE8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-24T16:20:51.683Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "OsobaDTO.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\DTOs\\OsobaDTO.cs",
+              "RelativeDocumentMoniker": "DTOs\\OsobaDTO.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\DTOs\\OsobaDTO.cs",
+              "RelativeToolTip": "DTOs\\OsobaDTO.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAqwCgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T19:24:00.995Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "LekarzDTO.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\DTOs\\LekarzDTO.cs",
+              "RelativeDocumentMoniker": "DTOs\\LekarzDTO.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\DTOs\\LekarzDTO.cs",
+              "RelativeToolTip": "DTOs\\LekarzDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T19:23:52.463Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "BadanieDTO.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\DTOs\\BadanieDTO.cs",
+              "RelativeDocumentMoniker": "DTOs\\BadanieDTO.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\DTOs\\BadanieDTO.cs",
+              "RelativeToolTip": "DTOs\\BadanieDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T19:23:43.516Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "LekarzController.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\Przychodnia.API\\Controllers\\LekarzController.cs",
+              "RelativeDocumentMoniker": "Przychodnia.API\\Controllers\\LekarzController.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\Przychodnia.API\\Controllers\\LekarzController.cs",
+              "RelativeToolTip": "Przychodnia.API\\Controllers\\LekarzController.cs",
+              "ViewState": "AgIAADcAAAAAAAAAAAAmwFsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-24T16:11:42.172Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "WykonaneBadaniaService.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\BLL\\WykonaneBadaniaService.cs",
+              "RelativeDocumentMoniker": "BLL\\WykonaneBadaniaService.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\BLL\\WykonaneBadaniaService.cs",
+              "RelativeToolTip": "BLL\\WykonaneBadaniaService.cs",
+              "ViewState": "AgIAADAAAAAAAAAAAAAcwFMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T19:23:23.469Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "WizytaService.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\BLL\\WizytaService.cs",
+              "RelativeDocumentMoniker": "BLL\\WizytaService.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\BLL\\WizytaService.cs",
+              "RelativeToolTip": "BLL\\WizytaService.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAIwEMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T19:23:19.037Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "RecepcjonistkaService.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\BLL\\RecepcjonistkaService.cs",
+              "RelativeDocumentMoniker": "BLL\\RecepcjonistkaService.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\BLL\\RecepcjonistkaService.cs",
+              "RelativeToolTip": "BLL\\RecepcjonistkaService.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAowDIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T19:23:15.161Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "PasswordHasher.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\BLL\\PasswordHasher.cs",
+              "RelativeDocumentMoniker": "BLL\\PasswordHasher.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\BLL\\PasswordHasher.cs",
+              "RelativeToolTip": "BLL\\PasswordHasher.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T19:23:11.041Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "RegisterDTO.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\DTOs\\RegisterDTO.cs",
+              "RelativeDocumentMoniker": "DTOs\\RegisterDTO.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\DTOs\\RegisterDTO.cs",
+              "RelativeToolTip": "DTOs\\RegisterDTO.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAgwDgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-24T15:44:12.377Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "PacjentService.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\BLL\\PacjentService.cs",
+              "RelativeDocumentMoniker": "BLL\\PacjentService.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\BLL\\PacjentService.cs",
+              "RelativeToolTip": "BLL\\PacjentService.cs",
+              "ViewState": "AgIAAGEAAAAAAAAAAAAAwIYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T19:23:06.679Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "AuthResponseDTO.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\DTOs\\AuthResponseDTO.cs",
+              "RelativeDocumentMoniker": "DTOs\\AuthResponseDTO.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\DTOs\\AuthResponseDTO.cs",
+              "RelativeToolTip": "DTOs\\AuthResponseDTO.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAiwCAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-24T15:45:36.008Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "ChangePasswordDTO.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\DTOs\\ChangePasswordDTO.cs",
+              "RelativeDocumentMoniker": "DTOs\\ChangePasswordDTO.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\DTOs\\ChangePasswordDTO.cs",
+              "RelativeToolTip": "DTOs\\ChangePasswordDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-24T15:45:51.545Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "LoginDTO.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\DTOs\\LoginDTO.cs",
+              "RelativeDocumentMoniker": "DTOs\\LoginDTO.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\DTOs\\LoginDTO.cs",
+              "RelativeToolTip": "DTOs\\LoginDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-24T15:43:02.129Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "OsobaService.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\BLL\\OsobaService.cs",
+              "RelativeDocumentMoniker": "BLL\\OsobaService.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\BLL\\OsobaService.cs",
+              "RelativeToolTip": "BLL\\OsobaService.cs",
+              "ViewState": "AgIAAGkAAAAAAAAAAAAowIoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T19:23:02.753Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "BadanieService.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\BLL\\BadanieService.cs",
+              "RelativeDocumentMoniker": "BLL\\BadanieService.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\BLL\\BadanieService.cs",
+              "RelativeToolTip": "BLL\\BadanieService.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAowC8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T19:22:52.362Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "Mapper.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\BLL\\Mapper\\Mapper.cs",
+              "RelativeDocumentMoniker": "BLL\\Mapper\\Mapper.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\BLL\\Mapper\\Mapper.cs",
+              "RelativeToolTip": "BLL\\Mapper\\Mapper.cs",
+              "ViewState": "AgIAAC0BAAAAAAAAAAAuwFIBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T19:22:40.222Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "IWykonaneBadaniaService.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\IBLL\\IWykonaneBadaniaService.cs",
+              "RelativeDocumentMoniker": "IBLL\\IWykonaneBadaniaService.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\IBLL\\IWykonaneBadaniaService.cs",
+              "RelativeToolTip": "IBLL\\IWykonaneBadaniaService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T19:22:25.034Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "IWizytaService.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\IBLL\\IWizytaService.cs",
+              "RelativeDocumentMoniker": "IBLL\\IWizytaService.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\IBLL\\IWizytaService.cs",
+              "RelativeToolTip": "IBLL\\IWizytaService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T19:22:21.308Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "IRecepcjonistkaService.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\IBLL\\IRecepcjonistkaService.cs",
+              "RelativeDocumentMoniker": "IBLL\\IRecepcjonistkaService.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\IBLL\\IRecepcjonistkaService.cs",
+              "RelativeToolTip": "IBLL\\IRecepcjonistkaService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T19:22:17.598Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "IPacjentService.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\IBLL\\IPacjentService.cs",
+              "RelativeDocumentMoniker": "IBLL\\IPacjentService.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\IBLL\\IPacjentService.cs",
+              "RelativeToolTip": "IBLL\\IPacjentService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T19:22:13.871Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "IOsobaService.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\IBLL\\IOsobaService.cs",
+              "RelativeDocumentMoniker": "IBLL\\IOsobaService.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\IBLL\\IOsobaService.cs",
+              "RelativeToolTip": "IBLL\\IOsobaService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T19:22:09.807Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "ILekarzService.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\IBLL\\ILekarzService.cs",
+              "RelativeDocumentMoniker": "IBLL\\ILekarzService.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\IBLL\\ILekarzService.cs",
+              "RelativeToolTip": "IBLL\\ILekarzService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T19:22:04.999Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "IBadanieService.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\IBLL\\IBadanieService.cs",
+              "RelativeDocumentMoniker": "IBLL\\IBadanieService.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\IBLL\\IBadanieService.cs",
+              "RelativeToolTip": "IBLL\\IBadanieService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T19:22:00.5Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "LekarzService.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\BLL\\LekarzService.cs",
+              "RelativeDocumentMoniker": "BLL\\LekarzService.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\BLL\\LekarzService.cs",
+              "RelativeToolTip": "BLL\\LekarzService.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAowDAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-24T16:00:37.765Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "WizytaRepository.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\DAL\\WizytaRepository.cs",
+              "RelativeDocumentMoniker": "DAL\\WizytaRepository.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\DAL\\WizytaRepository.cs",
+              "RelativeToolTip": "DAL\\WizytaRepository.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAA9wDEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T19:21:35.863Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\BLL\\AuthService.cs",
+              "RelativeDocumentMoniker": "BLL\\AuthService.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\BLL\\AuthService.cs",
+              "RelativeToolTip": "BLL\\AuthService.cs",
+              "ViewState": "AgIAAMcAAAAAAAAAAAAcwOoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-24T15:50:37.196Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "RecepcjonistkaRepository.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\DAL\\RecepcjonistkaRepository.cs",
+              "RelativeDocumentMoniker": "DAL\\RecepcjonistkaRepository.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\DAL\\RecepcjonistkaRepository.cs",
+              "RelativeToolTip": "DAL\\RecepcjonistkaRepository.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAwwDQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T19:21:31.823Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "OsobaRepository.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\DAL\\OsobaRepository.cs",
+              "RelativeDocumentMoniker": "DAL\\OsobaRepository.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\DAL\\OsobaRepository.cs",
+              "RelativeToolTip": "DAL\\OsobaRepository.cs",
+              "ViewState": "AgIAADgAAAAAAAAAAAAIwFoAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T19:21:23.603Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "LekarzRepository.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\DAL\\LekarzRepository.cs",
+              "RelativeDocumentMoniker": "DAL\\LekarzRepository.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\DAL\\LekarzRepository.cs",
+              "RelativeToolTip": "DAL\\LekarzRepository.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAwwDUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T19:21:14.716Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "DbInit.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\DAL\\DbInit.cs",
+              "RelativeDocumentMoniker": "DAL\\DbInit.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\DAL\\DbInit.cs",
+              "RelativeToolTip": "DAL\\DbInit.cs",
+              "ViewState": "AgIAAIYAAAAAAAAAAAAAwKsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T19:21:15.054Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "BadanieRepository.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\DAL\\BadanieRepository.cs",
+              "RelativeDocumentMoniker": "DAL\\BadanieRepository.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\DAL\\BadanieRepository.cs",
+              "RelativeToolTip": "DAL\\BadanieRepository.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAwwDkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T19:21:10.997Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "IWykonaneBadaniaRepository.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\IDAL_\\IWykonaneBadaniaRepository.cs",
+              "RelativeDocumentMoniker": "IDAL_\\IWykonaneBadaniaRepository.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\IDAL_\\IWykonaneBadaniaRepository.cs",
+              "RelativeToolTip": "IDAL_\\IWykonaneBadaniaRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T19:20:54.017Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "IWizytaRepository.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\IDAL_\\IWizytaRepository.cs",
+              "RelativeDocumentMoniker": "IDAL_\\IWizytaRepository.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\IDAL_\\IWizytaRepository.cs",
+              "RelativeToolTip": "IDAL_\\IWizytaRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T19:20:50.048Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "IAuthService.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\IBLL\\IAuthService.cs",
+              "RelativeDocumentMoniker": "IBLL\\IAuthService.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\IBLL\\IAuthService.cs",
+              "RelativeToolTip": "IBLL\\IAuthService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-24T15:48:54.236Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "IRecepcjonistkaRepository.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\IDAL_\\IRecepcjonistkaRepository.cs",
+              "RelativeDocumentMoniker": "IDAL_\\IRecepcjonistkaRepository.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\IDAL_\\IRecepcjonistkaRepository.cs",
+              "RelativeToolTip": "IDAL_\\IRecepcjonistkaRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T19:20:46.258Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "IPacjentRepository.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\IDAL_\\IPacjentRepository.cs",
+              "RelativeDocumentMoniker": "IDAL_\\IPacjentRepository.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\IDAL_\\IPacjentRepository.cs",
+              "RelativeToolTip": "IDAL_\\IPacjentRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T19:20:42.056Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 51,
+              "Title": "ILekarzRepository.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\IDAL_\\ILekarzRepository.cs",
+              "RelativeDocumentMoniker": "IDAL_\\ILekarzRepository.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\IDAL_\\ILekarzRepository.cs",
+              "RelativeToolTip": "IDAL_\\ILekarzRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T19:20:33.493Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 52,
+              "Title": "IBadanieRepository.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\IDAL_\\IBadanieRepository.cs",
+              "RelativeDocumentMoniker": "IDAL_\\IBadanieRepository.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\IDAL_\\IBadanieRepository.cs",
+              "RelativeToolTip": "IDAL_\\IBadanieRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T19:20:28.472Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 53,
+              "Title": "WykonaneBadania.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\Models\\WykonaneBadania.cs",
+              "RelativeDocumentMoniker": "Models\\WykonaneBadania.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\Models\\WykonaneBadania.cs",
+              "RelativeToolTip": "Models\\WykonaneBadania.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAQwCAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T19:20:07.043Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 54,
+              "Title": "Recepcjonistka.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\Models\\Recepcjonistka.cs",
+              "RelativeDocumentMoniker": "Models\\Recepcjonistka.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\Models\\Recepcjonistka.cs",
+              "RelativeToolTip": "Models\\Recepcjonistka.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T19:19:57.125Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 55,
+              "Title": "Pacjent.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\Models\\Pacjent.cs",
+              "RelativeDocumentMoniker": "Models\\Pacjent.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\Models\\Pacjent.cs",
+              "RelativeToolTip": "Models\\Pacjent.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T19:19:52.384Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 57,
+              "Title": "Lekarz.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\Models\\Lekarz.cs",
+              "RelativeDocumentMoniker": "Models\\Lekarz.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\Models\\Lekarz.cs",
+              "RelativeToolTip": "Models\\Lekarz.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T19:19:34.818Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 58,
+              "Title": "DbPrzychodnia.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\Models\\DbPrzychodnia.cs",
+              "RelativeDocumentMoniker": "Models\\DbPrzychodnia.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\Models\\DbPrzychodnia.cs",
+              "RelativeToolTip": "Models\\DbPrzychodnia.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAAAwEsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T18:16:26.573Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
+              "Title": "IOsobaRepository.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\IDAL_\\IOsobaRepository.cs",
+              "RelativeDocumentMoniker": "IDAL_\\IOsobaRepository.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\IDAL_\\IOsobaRepository.cs",
+              "RelativeToolTip": "IDAL_\\IOsobaRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-24T16:00:45.282Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 56,
+              "Title": "Osoba.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\Models\\Osoba.cs",
+              "RelativeDocumentMoniker": "Models\\Osoba.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\Models\\Osoba.cs",
+              "RelativeToolTip": "Models\\Osoba.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAADkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-24T16:11:57.407Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 59,
+              "Title": "Badanie.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\Models\\Badanie.cs",
+              "RelativeDocumentMoniker": "Models\\Badanie.cs",
+              "ToolTip": "C:\\Users\\macie\\Documents\\GitHub\\Projekt-Przychodnia\\Models\\Badanie.cs",
+              "RelativeToolTip": "Models\\Badanie.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T18:16:01.49Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

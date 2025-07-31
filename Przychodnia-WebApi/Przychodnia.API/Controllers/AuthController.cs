@@ -17,19 +17,6 @@ namespace Przychodnia.API.Controllers
             _authService = authService;
         }
 
-        [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody] LoginDTO loginDto)
-        {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
-            var result = await _authService.LoginAsync(loginDto);
-            if (result == null)
-                return Unauthorized("Nieprawidłowe dane logowania");
-
-            return Ok(result);
-        }
-
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterDTO registerDto)
         {
@@ -38,7 +25,7 @@ namespace Przychodnia.API.Controllers
 
             var result = await _authService.RegisterAsync(registerDto);
             if (result == null)
-                return BadRequest("Nie udało się zarejestrować użytkownika. Login lub email już istnieje.");
+                return BadRequest("Rejestracja nie powiodła się. Login lub email mogą być zajęte.");
 
             return Ok(result);
         }
