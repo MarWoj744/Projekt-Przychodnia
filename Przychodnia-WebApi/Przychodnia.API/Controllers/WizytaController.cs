@@ -75,5 +75,13 @@ namespace Przychodnia.API.Controllers
 
             return NoContent();
         }
+
+        [HttpGet("harmonogram/{lekarzId}")]
+        public IActionResult GetHarmonogramLekarza(int lekarzId, [FromQuery] DateTime start, [FromQuery] DateTime end)
+        {
+            var wizyty = _service.GetWizytyLekarza(lekarzId, start, end);
+            return Ok(wizyty);
+        }
+
     }
 }

@@ -19,11 +19,9 @@ namespace BLL
 
         public async Task<bool> ZarejestrujWizyteAsync(Wizyta dto)
         {
-            // Walidacje
             if (dto.Data < DateTime.Now)
                 throw new Exception("Podano błędną datę");
 
-            // Utworzenie wizyty
             var wizyta = new Wizyta
             {
                 PacjentId = dto.PacjentId,
@@ -33,9 +31,8 @@ namespace BLL
                 Opis = dto.Opis
             };
 
-            // Dodanie wizyty do repozytorium
             _wizytaRepo.dodaj(wizyta);
-            _wizytaRepo.save(); // Zapisanie zmian
+            _wizytaRepo.save();
 
             return true;
         }
@@ -53,15 +50,21 @@ namespace BLL
         public async Task<bool> UpdateWizytaAsync(Wizyta wizyta)
         {
             _wizytaRepo.update(wizyta);
-            _wizytaRepo.save(); // Zapisanie zmian
+            _wizytaRepo.save();
             return true;
         }
 
         public async Task<bool> DeleteWizytaAsync(int id)
         {
             _wizytaRepo.delete(id);
-            _wizytaRepo.save(); // Zapisanie zmian
+            _wizytaRepo.save();
             return true;
         }
+
+        public IQueryable<Wizyta> GetWizytyLekarza(int lekarzId, DateTime start, DateTime end)
+        {
+            return _wizytaRepo.PobierzWizytyLekarza(lekarzId, start, end);
+        }
+
     }
 }
