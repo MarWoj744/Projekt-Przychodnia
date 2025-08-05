@@ -137,31 +137,36 @@ namespace DAL
                     Data = DateTime.Now.AddDays(-10),
                     Wyniki = "Wyniki w normie",
                     WizytaId = wizyty[0].Id,
-                    BadanieId = badania[0].Id
+                    BadanieId = badania[0].Id,
+                    Zalecenia = "ograniczyć zbędny wysiłek"
                 },
                 new WykonaneBadania {
                     Data = DateTime.Now.AddDays(-8),
                     Wyniki = "Wyniki dobre",
                     WizytaId = wizyty[1].Id,
-                    BadanieId = badania[1].Id
+                    BadanieId = badania[1].Id,
+                    Zalecenia = "cieszyć się życiem"
                 },
                 new WykonaneBadania {
                     Data = DateTime.Now.AddDays(-7),
                     Wyniki = "Nieprawidłowości niewielkie",
                     WizytaId = wizyty[2].Id,
-                    BadanieId = badania[1].Id
+                    BadanieId = badania[1].Id,
+                    Zalecenia = "wykonać dodatkowe prześwietlenie"
                 },
                 new WykonaneBadania {
                     Data = DateTime.Now.AddDays(-3),
                     Wyniki = "Brak zmian patologicznych",
                     WizytaId = wizyty[3].Id,
-                    BadanieId = badania[3].Id
+                    BadanieId = badania[3].Id,
+                    Zalecenia = "kontrolować co miesiąc przez rok na badaniu"
                 },
                 new WykonaneBadania {
                     Data = DateTime.Now.AddDays(-1),
                     Wyniki = "Delikatne odchylenia",
                     WizytaId = wizyty[4].Id,
-                    BadanieId = badania[4].Id
+                    BadanieId = badania[4].Id,
+                    Zalecenia = "paracetamol dwa razy dziennie"
                 }
             };
             context.WykonaneBadania.AddRange(wykonaneBadania);

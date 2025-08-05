@@ -18,7 +18,7 @@ namespace Models.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nazwa = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Cennik = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Cennik = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false),
                     Specjalizacja = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
@@ -40,7 +40,8 @@ namespace Models.Migrations
                     Login = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Haslo = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Rola = table.Column<int>(type: "int", nullable: false),
-                   // PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    RefreshToken = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
                     Tytul = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: true),
                     Specjalizacja = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     PESEL = table.Column<string>(type: "nvarchar(450)", nullable: true)
@@ -94,7 +95,8 @@ namespace Models.Migrations
                     Data = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Wyniki = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
                     WizytaId = table.Column<int>(type: "int", nullable: false),
-                    BadanieId = table.Column<int>(type: "int", nullable: false)
+                    BadanieId = table.Column<int>(type: "int", nullable: false),
+                    Zalecenia = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
