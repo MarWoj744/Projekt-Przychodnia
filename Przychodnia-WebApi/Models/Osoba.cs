@@ -35,7 +35,7 @@ namespace Models
         [Required]
         [EmailAddress]
         public string Email { get; set; }
-
+        [Required]
         [Phone]
         public string Telefon { get; set; }
 

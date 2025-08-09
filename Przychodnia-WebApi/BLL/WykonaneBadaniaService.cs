@@ -26,7 +26,8 @@ namespace BLL
                     WizytaId = b.WizytaId,
                     BadanieId = b.BadanieId,
                     Data = b.Data,
-                    Wyniki = b.Wyniki
+                    Wyniki = b.Wyniki,
+                    Zalecenia = b.Zalecenia
                 });
         }
 
@@ -40,7 +41,8 @@ namespace BLL
                 WizytaId = badanie.WizytaId,
                 BadanieId = badanie.BadanieId,
                 Data = badanie.Data,
-                Wyniki = badanie.Wyniki
+                Wyniki = badanie.Wyniki,
+                Zalecenia = badanie.Zalecenia
             };
         }
 
@@ -51,7 +53,8 @@ namespace BLL
                 WizytaId = dto.WizytaId,
                 BadanieId = dto.BadanieId,
                 Data = dto.Data,
-                Wyniki = dto.Wyniki
+                Wyniki = dto.Wyniki,
+                Zalecenia = dto.Zalecenia
             };
             _badaniaRepo.dodaj(badanie);
         }
@@ -65,7 +68,7 @@ namespace BLL
             {
                 badanie.Data = dto.Data;
                 badanie.Wyniki = dto.Wyniki;
-
+                badanie.Zalecenia= dto.Zalecenia;
                 _badaniaRepo.update(badanie);
             }
         }
