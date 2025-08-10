@@ -44,5 +44,19 @@ namespace BLL
         {
             _lekarzRepo.save();
         }
+        public IQueryable<Wizyta> PobierzHarmonogramLekarza(int lekarzId)
+        {
+            return _lekarzRepo.GetHarmonogramLekarza(lekarzId);
+        }
+
+        public IQueryable<Wizyta> PobierzAnulowaneWizytyLekarza(int lekarzId)
+        {
+            return _lekarzRepo.GetAnulowaneWizytyLekarza(lekarzId);
+        }
+
+        public void EdytujBadanie(Badanie badanie)
+        {
+            _lekarzRepo.UpdateBadanie(badanie);
+        }
     }
 }

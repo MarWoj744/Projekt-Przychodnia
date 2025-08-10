@@ -11,6 +11,11 @@ namespace IDAL_
     {
         Lekarz GetLekarzById(int id);
         IQueryable<Lekarz> PobierzWszystkie();
+        IQueryable<Wizyta> GetHarmonogramLekarza(int lekarzId);
+        IQueryable<Wizyta> GetAnulowaneWizytyLekarza(int lekarzId);
+        void UpdateBadanie(Badanie badanie);
+      
+
         void Dodaj(Lekarz lekarz);
         void Delete(int id);
         void Update(Lekarz lekarz);

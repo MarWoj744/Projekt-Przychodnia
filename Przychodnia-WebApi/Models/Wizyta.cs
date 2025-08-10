@@ -35,5 +35,8 @@ namespace Models
         public Recepcjonistka Recepcjonistka { get; set; }
 
         public ICollection<WykonaneBadania> Badania { get; set; }
+        [Required]
+        [StringLength(50)]
+        public string Status { get; set; }
     }
 }

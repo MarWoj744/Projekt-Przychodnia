@@ -87,5 +87,36 @@ namespace Przychodnia.API.Controllers
 
             return NoContent();
         }
+        [HttpGet("{id}/harmonogram")]
+        public ActionResult GetHarmonogram(int id)
+        {
+            var wizyty = _lekarzService.PobierzHarmonogramLekarza(id);
+            return Ok(wizyty);
+        }
+
+        [HttpGet("{id}/wizyty/anulowane")]
+        public ActionResult GetAnulowaneWizyty(int id)
+        {
+            var wizyty = _lekarzService.PobierzAnulowaneWizytyLekarza(id);
+            return Ok(wizyty);
+        }
+
+        [HttpPut("{id}/badania/{badanieId}")]
+        public ActionResult EdytujBadanie(int id, int badanieId, [FromBody] BadanieDTO badanieDto)
+        {
+            if (badanieId != badanieDto.Id)
+                return BadRequest("Id badania nie pasuje.");
+
+            var badanie = map.BadanieToEntity(badanieDto);
+
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            _lekarzService.EdytujBadanie(badanie);
+            _lekarzService.save();
+
+            return NoContent();
+        }
+
     }
 }

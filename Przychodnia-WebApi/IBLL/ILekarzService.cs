@@ -16,5 +16,8 @@ namespace IBLL
         void Delete(int id);
         void Update(Lekarz lekarz);
         void save();
+        IQueryable<Wizyta> PobierzHarmonogramLekarza(int lekarzId);
+        IQueryable<Wizyta> PobierzAnulowaneWizytyLekarza(int lekarzId);
+        void EdytujBadanie(Badanie badanie);
     }
 }

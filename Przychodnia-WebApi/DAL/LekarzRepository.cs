@@ -49,5 +49,19 @@ namespace DAL
         {
             _context.Lekarze.Update(lekarz);
         }
+        public IQueryable<Wizyta> GetHarmonogramLekarza(int lekarzId)
+        {
+            return _context.Wizyty.Where(w => w.LekarzId == lekarzId && w.Status != "Anulowana");
+        }
+
+        public IQueryable<Wizyta> GetAnulowaneWizytyLekarza(int lekarzId)
+        {
+            return _context.Wizyty.Where(w => w.LekarzId == lekarzId && w.Status == "Anulowana");
+        }
+
+        public void UpdateBadanie(Badanie badanie)
+        {
+            _context.Badania.Update(badanie);
+        }
     }
 }
