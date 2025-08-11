@@ -66,6 +66,8 @@ builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<PdfGeneratorService>();
 builder.Services.AddDbContext<DbPrzychodnia>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddScoped<IHarmonogramRepository, HarmonogramRepository>();
+builder.Services.AddScoped<HarmonogramService>();
 
 
 

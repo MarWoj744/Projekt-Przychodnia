@@ -22,7 +22,7 @@ namespace Models
         public DbSet<Badanie> Badania { get; set; }
         public DbSet<Wizyta> Wizyty { get; set; }
         public DbSet<WykonaneBadania> WykonaneBadania { get; set; }
-
+        public DbSet<Harmonogram> Harmonogramy { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

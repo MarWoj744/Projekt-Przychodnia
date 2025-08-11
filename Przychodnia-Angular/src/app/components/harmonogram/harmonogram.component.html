@@ -1,0 +1,7 @@
+<h2>Harmonogram lekarza</h2>
+<div *ngIf="error" class="error">{{ error }}</div>
+<ul>
+  <li *ngFor="let h of harmonogram">
+    {{ h.data }}: {{ h.godzinaRozpoczecia }} - {{ h.godzinaZakonczenia }}
+  </li>
+</ul>
