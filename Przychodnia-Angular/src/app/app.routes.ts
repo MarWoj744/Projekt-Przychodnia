@@ -5,16 +5,26 @@ import { BadanieEditComponent } from './components/badanie-edit/badanie-edit.com
 import { HarmonogramComponent } from './components/harmonogram/harmonogram.component';
 import { WizytyAnulowaneComponent } from './components/wizyty-anulowane/wizyty-anulowane.component';
 import { LekarzComponent } from './components/lekarz/lekarz.component';
+import { WizytyComponent } from './components/wizyty/wizyty.component';
+import { BadaniaComponent } from './components/badania/badania.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'lekarz', component: LekarzComponent },
-  { path: '**', redirectTo: '/home' },
-  { path: 'badanie-edytuj/:id', component: BadanieEditComponent },
-  { path: 'harmonogram', component: HarmonogramComponent },
-  { path: 'wizyty-anulowane', component: WizytyAnulowaneComponent },
-  { path: '', redirectTo: '/harmonogram', pathMatch: 'full' },
-  { path: '**', redirectTo: '/harmonogram' }
+
+ 
+ {
+  path: 'lekarz',
+  component: LekarzComponent,
+  children: [
+    { path: '', redirectTo: 'harmonogram', pathMatch: 'full' },
+    { path: 'harmonogram', component: HarmonogramComponent },
+    { path: 'wizyty', component: WizytyComponent },
+    { path: 'wizyty-anulowane', component: WizytyAnulowaneComponent },
+    { path: 'badania', component: BadaniaComponent }
+  ]
+},
+{ path: '**', redirectTo: '/home' }
+
 ];

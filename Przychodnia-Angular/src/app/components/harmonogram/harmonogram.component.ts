@@ -1,24 +1,88 @@
+
 import { Component, OnInit } from '@angular/core';
 import { Harmonogram } from '../../models/harmonogram.model';
 import { HarmonogramService } from '../../services/harmonogram.service';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+
 @Component({
   selector: 'app-harmonogram',
-  imports: [CommonModule],
+  standalone: true,
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './harmonogram.component.html',
   styleUrls: ['./harmonogram.component.css']
 })
 export class HarmonogramComponent implements OnInit {
   harmonogram: Harmonogram[] = [];
   error: string | null = null;
-  lekarzId = 1; 
+
+  
+  aktualnyHarmonogram: Harmonogram = {
+    id: 0,
+    lekarzId: 0,
+    dataOd: '',
+  dataDo: '',
+  opis: ''
+  };
+
+  edycjaTryb: boolean = false; 
 
   constructor(private harmonogramService: HarmonogramService) {}
 
   ngOnInit(): void {
-    this.harmonogramService.getByLekarzId(this.lekarzId).subscribe({
+    this.loadHarmonogram();
+  }
+
+  loadHarmonogram() {
+    this.harmonogramService.getAll().subscribe({
       next: (data) => this.harmonogram = data,
       error: () => this.error = 'Błąd ładowania harmonogramu'
     });
+  }
+
+  rozpocznijEdycje(h: Harmonogram) {
+    this.edycjaTryb = true;
+    this.aktualnyHarmonogram = { ...h }; 
+  }
+
+  anulujEdycje() {
+    this.edycjaTryb = false;
+    this.aktualnyHarmonogram = {
+      id: 0,
+      lekarzId: 0,
+      dataOd: '',
+  dataDo: '',
+  opis: ''
+    };
+  }
+
+  zapisz() {
+    if (this.edycjaTryb) {
+      this.harmonogramService.update(this.aktualnyHarmonogram.id, this.aktualnyHarmonogram).subscribe({
+        next: () => {
+          this.loadHarmonogram();
+          this.anulujEdycje();
+        },
+        error: () => this.error = 'Błąd podczas aktualizacji'
+      });
+    } else {
+      this.harmonogramService.create(this.aktualnyHarmonogram).subscribe({
+        next: () => {
+          this.loadHarmonogram();
+          this.anulujEdycje();
+        },
+        error: () => this.error = 'Błąd podczas tworzenia'
+      });
+    }
+  }
+
+  usun(id: number) {
+    if (confirm('Na pewno chcesz usunąć ten harmonogram?')) {
+      this.harmonogramService.delete(id).subscribe({
+        next: () => this.loadHarmonogram(),
+        error: () => this.error = 'Błąd podczas usuwania'
+      });
+    }
   }
 }

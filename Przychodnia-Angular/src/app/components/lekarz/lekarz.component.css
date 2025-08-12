@@ -1,54 +1,81 @@
-.lekarz-container {
-  max-width: 600px;
-  margin: 40px auto;
-  padding: 30px 40px;
-  background: #f8f9fa;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #333;
-  text-align: center;
-}
-
-.lekarz-container h2 {
-  margin-bottom: 20px;
-  color: #007bff;
-}
-
-.lekarz-container p {
-  font-size: 1.1rem;
-  margin-bottom: 30px;
-}
-
-.actions {
+.panel-lekarza {
   display: flex;
-  justify-content: center;
-  gap: 20px;
+  height: 100vh;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background-color: #f5f9fc;
 }
 
-.btn {
-  padding: 12px 24px;
-  border: none;
+.menu {
+  width: 230px;
+  background: linear-gradient(180deg, #006d77, #83c5be);
+  display: flex;
+  flex-direction: column;
+  padding: 20px 15px;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
+}
+
+.menu a {
+  color: #ffffff;
+  padding: 12px 15px;
+  text-decoration: none;
+  margin-bottom: 12px;
   border-radius: 6px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
-.btn-primary {
-  background-color: #007bff;
+.menu a.active {
+  background-color: #edf6f9;
+  color: #006d77;
+  font-weight: bold;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.menu a:hover {
+  background-color: #edf6f9;
+  color: #006d77;
+  transform: translateX(5px);
+}
+
+.content {
+  flex-grow: 1;
+  padding: 25px;
+  background-color: #ffffff;
+  overflow-y: auto;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.05);
+}
+
+.content h1, 
+.content h2, 
+.content h3 {
+  color: #006d77;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #83c5be;
+  padding-bottom: 5px;
+}
+
+.content table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #f8fafc;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.content table th {
+  background-color: #83c5be;
   color: white;
+  padding: 10px;
+  text-align: left;
 }
 
-.btn-primary:hover {
-  background-color: #0056b3;
+.content table td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
 }
 
-.btn-secondary {
-  background-color: #6c757d;
-  color: white;
-}
-
-.btn-secondary:hover {
-  background-color: #495057;
+.content table tr:hover {
+  background-color: #edf6f9;
 }

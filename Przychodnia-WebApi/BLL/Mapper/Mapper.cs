@@ -337,9 +337,34 @@ namespace Models.Mapper
             };
         }
 
-        public Harmonogram HarmonogramToEntity(HarmonogramDTO harmonogramDto)
+        public HarmonogramDTO HarmonogramToDTO(Harmonogram harmonogram)
         {
-            throw new NotImplementedException();
+            if (harmonogram == null) return null;
+
+            return new HarmonogramDTO
+            {
+                Id = harmonogram.Id,
+                LekarzId = harmonogram.LekarzId,
+                DataOd = harmonogram.DataOd,
+                DataDo = harmonogram.DataDo,
+                Opis = harmonogram.Opis
+            };
         }
+
+        public Harmonogram HarmonogramToEntity(HarmonogramDTO dto)
+        {
+            if (dto == null) return null;
+
+            return new Harmonogram
+            {
+                Id = dto.Id,
+                LekarzId = dto.LekarzId,
+                DataOd = dto.DataOd,
+                DataDo = dto.DataDo,
+                Opis = dto.Opis
+            };
+        }
+
+
     }
 }

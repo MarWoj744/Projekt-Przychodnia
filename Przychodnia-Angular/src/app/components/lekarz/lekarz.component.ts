@@ -1,9 +1,12 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { RouterModule } from "@angular/router";
 
 @Component({
   selector: 'app-lekarz',
-  standalone: true,
   templateUrl: './lekarz.component.html',
-  styleUrls: ['./lekarz.component.css']
+  styleUrls: ['./lekarz.component.css'],
+  standalone: true,
+  imports: [RouterModule, CommonModule],
 })
 export class LekarzComponent {}
