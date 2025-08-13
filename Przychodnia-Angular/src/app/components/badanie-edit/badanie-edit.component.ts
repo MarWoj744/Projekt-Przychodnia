@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Badanie } from '../../models/badanie.model';
 import { BadanieService } from '../../services/badanie.service';
@@ -12,31 +12,21 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./badanie-edit.component.css']
 })
 export class BadanieEditComponent implements OnInit {
-  badanie: Badanie | null = null;
-  error: string | null = null;
+  
+ @Input() badanie!: Badanie;
+  @Output() save = new EventEmitter<void>();
+  @Output() cancel = new EventEmitter<void>();
 
-  constructor(
-    private badanieService: BadanieService,
-    private route: ActivatedRoute,
-    private router: Router
-  ) {}
-
+  constructor(private badanieService: BadanieService) {}
   ngOnInit(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    if (id) {
-      this.badanieService.getById(id).subscribe({
-        next: (b) => this.badanie = b,
-        error: () => this.error = 'Błąd ładowania badania'
-      });
-    }
+    throw new Error('Method not implemented.');
   }
 
-  save(): void {
-    if (!this.badanie) return;
-
-    this.badanieService.update(this.badanie).subscribe({
-      next: () => this.router.navigate(['/badania']),
-      error: () => this.error = 'Błąd zapisu badania'
-    });
+  submitForm(): void {
+    if (this.badanie.id) {
+      this.badanieService.update(this.badanie).subscribe(() => this.save.emit());
+    } else {
+      this.badanieService.create(this.badanie).subscribe(() => this.save.emit());
+    }
   }
 }

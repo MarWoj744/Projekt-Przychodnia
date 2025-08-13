@@ -1,14 +1,18 @@
-<div *ngIf="error" class="error">{{ error }}</div>
-<div *ngIf="badanie">
-  <h2>Edycja badania: {{ badanie.nazwa }}</h2>
-  <label>Nazwa:
-    <input [(ngModel)]="badanie.nazwa" />
-  </label><br/>
-  <label>Opis:
-    <textarea [(ngModel)]="badanie.opis"></textarea>
-  </label><br/>
-  <label>Koszt:
-    <input type="number" [(ngModel)]="badanie.koszt" />
-  </label><br/>
-  <button (click)="save()">Zapisz</button>
+<div class="edit-form">
+  <h3>{{ badanie.id ? 'Edytuj badanie' : 'Dodaj badanie' }}</h3>
+  <form (ngSubmit)="submitForm()">
+    <label>Nazwa:</label>
+    <input [(ngModel)]="badanie.nazwa" name="nazwa" required>
+
+    <label>Cennik:</label>
+    <input type="number" [(ngModel)]="badanie.cennik" name="cennik" required>
+
+    <label>Specjalizacja:</label>
+    <input [(ngModel)]="badanie.specjalizacja" name="specjalizacja" required>
+
+    <div class="actions">
+      <button type="submit">Zapisz</button>
+      <button type="button" (click)="cancel.emit()">Anuluj</button>
+    </div>
+  </form>
 </div>

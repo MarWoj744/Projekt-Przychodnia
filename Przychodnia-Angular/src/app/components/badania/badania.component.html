@@ -1,2 +1,32 @@
+<div class="badania-container"></div>
 <h2>Badania</h2>
-<p>Informacje o badaniach.</p>
+ <table>
+    <thead>
+      <tr>
+        <th>Nazwa</th>
+        <th>Cennik</th>
+        <th>Specjalizacja</th>
+        <th>Akcje</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let b of badania">
+        <td>{{ b.nazwa }}</td>
+        <td>{{ b.cennik | currency:'PLN' }}</td>
+        <td>{{ b.specjalizacja }}</td>
+        <td>
+          <button (click)="edit(b)">Edytuj</button>
+          <button (click)="delete(b.id)">Usuń</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="selectedBadanie">
+    <app-badanie-edit
+      [badanie]="selectedBadanie"
+      (save)="onSave()"
+      (cancel)="onCancel()">
+    </app-badanie-edit>
+  </div>
+

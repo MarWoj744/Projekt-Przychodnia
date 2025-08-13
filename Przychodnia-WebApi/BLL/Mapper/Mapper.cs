@@ -305,7 +305,7 @@ namespace Models.Mapper
 
             return new BadanieDTO
             {
-              
+               
                 Nazwa = badanie.Nazwa,
                 Cennik = badanie.Cennik,
                 Specjalizacja = badanie.Specjalizacja,
@@ -329,7 +329,7 @@ namespace Models.Mapper
 
             return new Badanie
             {
-              
+                Id = dto.Id,
                 Nazwa = dto.Nazwa,
                 Cennik = dto.Cennik,
                 Specjalizacja = dto.Specjalizacja,
