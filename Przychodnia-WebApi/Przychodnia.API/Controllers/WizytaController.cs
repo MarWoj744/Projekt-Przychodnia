@@ -83,6 +83,27 @@ namespace Przychodnia.API.Controllers
             return Ok(wizyty);
         }
 
+        [HttpGet("anulowane")]
+        public IActionResult GetAnulowane()
+        {
+            var result = _service.GetWizytyAnulowane().ToList();
+            return Ok(result);
+        }
+
+        [HttpGet("anulowane/lekarz/{lekarzId}")]
+        public IActionResult GetAnulowaneByLekarz(int lekarzId)
+        {
+            var result = _service.GetWizytyAnulowaneLekarza(lekarzId).ToList();
+            return Ok(result);
+        }
+
+        [HttpPost("{id}/anuluj")]
+        public async Task<IActionResult> AnulujWizyte(int id)
+        {
+            var result = await _service.AnulujWizyteAsync(id);
+            if (!result) return NotFound("Nie znaleziono wizyty.");
+            return Ok("Wizyta została anulowana.");
+        }
 
 
     }

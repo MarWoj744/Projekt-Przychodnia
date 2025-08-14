@@ -45,3 +45,21 @@ th, td {
 tbody tr:nth-child(even) {
   background-color: #f9f9f9;
 }
+tbody td:last-child {
+  width: 100px; 
+}
+
+button {
+  background-color: #e74c3c;
+  border: none;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #c0392b;
+}

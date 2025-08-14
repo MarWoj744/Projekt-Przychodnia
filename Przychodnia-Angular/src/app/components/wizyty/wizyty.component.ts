@@ -25,4 +25,11 @@ export class WizytyComponent  implements OnInit {
       error: err => this.error = 'Błąd wczytywania wizyt'
     });
   }
+  anulujWizyte(id: number) {
+  this.wizytaService.anulujWizyte(id).subscribe({
+    next: () => this.loadWizyty(),
+    error: () => this.error = 'Nie udało się anulować wizyty'
+  });
+}
+
 }

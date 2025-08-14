@@ -65,6 +65,26 @@ namespace BLL
         {
             return _wizytaRepo.PobierzWizytyLekarza(lekarzId, start, end);
         }
+        public IQueryable<Wizyta> GetWizytyAnulowane()
+        {
+            return _wizytaRepo.PobierzWizytyAnulowane();
+        }
+
+        public IQueryable<Wizyta> GetWizytyAnulowaneLekarza(int lekarzId)
+        {
+            return _wizytaRepo.PobierzWizytyAnulowaneLekarza(lekarzId);
+        }
+
+        public async Task<bool> AnulujWizyteAsync(int id)
+        {
+            var wizyta = _wizytaRepo.getWizytaById(id);
+            if (wizyta == null) return false;
+
+            wizyta.Status = StatusWizyty.Anulowana;
+            _wizytaRepo.update(wizyta);
+            _wizytaRepo.save();
+            return true;
+        }
 
     }
 }

@@ -9,6 +9,13 @@ using Microsoft.Identity.Client;
 
 namespace Models
 {
+    public enum StatusWizyty
+    {
+        Zaplanowana,
+        Zrealizowana,
+        Anulowana
+    }
+
     public class Wizyta
     {
         [Key]
@@ -36,7 +43,7 @@ namespace Models
         public Recepcjonistka Recepcjonistka { get; set; }
 
         [Required]
-        public string Status { get; set; } = "Zaplanowana";
+        public StatusWizyty Status { get; set; } = StatusWizyty.Zaplanowana;
 
         public ICollection<WykonaneBadania> Badania { get; set; }
     }

@@ -4,6 +4,6 @@ export interface Wizyta {
   pacjent: string;
   data: string; 
   godzina:  string, 
- status: 'Zaplata' | 'Zrealizowana' | 'Anulowana';
+ status: 'Zaplanowana' | 'Zrealizowana' | 'Anulowana';
   badanie?: string;
 }

@@ -52,5 +52,17 @@ namespace DAL
         {
             _context.SaveChanges();
         }
+
+        public IQueryable<Wizyta> PobierzWizytyAnulowane()
+        {
+            return _context.Wizyty.Where(w => w.Status == StatusWizyty.Anulowana);
+        }
+
+        public IQueryable<Wizyta> PobierzWizytyAnulowaneLekarza(int lekarzId)
+        {
+            return _context.Wizyty
+                .Where(w => w.Status == StatusWizyty.Anulowana && w.LekarzId == lekarzId);
+        }
+
     }
 }

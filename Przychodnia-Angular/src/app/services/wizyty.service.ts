@@ -12,7 +12,7 @@ export class WizytaService {
   constructor(private http: HttpClient) {}
 
   getAnulowaneByLekarzId(lekarzId: number): Observable<Wizyta[]> {
-    return this.http.get<Wizyta[]>(`${this.apiUrl}/Anulowane/Lekarz/${lekarzId}`);
+    return this.http.get<Wizyta[]>(`${this.apiUrl}/anulowane/Lekarz/${lekarzId}`);
   }
    getWizyty(): Observable<Wizyta[]> {
     return this.http.get<Wizyta[]>(`${this.apiUrl}`);
@@ -21,4 +21,13 @@ export class WizytaService {
   getWizytyAnulowane(): Observable<Wizyta[]> {
     return this.http.get<Wizyta[]>(`${this.apiUrl}/anulowane`);
   }
+anulujWizyte(id: number): Observable<any> {
+  return this.http.post(`${this.apiUrl}/${id}/anuluj`, {});
 }
+  
+}
+
+
+
+
+
