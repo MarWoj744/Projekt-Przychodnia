@@ -1,18 +1,20 @@
 <h2>Anulowane wizyty lekarza</h2>
 <div *ngIf="error" class="error">{{ error }}</div>
-<table>
+  <table *ngIf="wizytyAnulowane.length > 0">
   <thead>
     <tr>
-      <th>Pacjent</th>
-      <th>Data</th>
-      <th>Powód anulowania</th>
+         <th>Pacjent</th>
+        <th>Data</th>
+        <th>Godzina</th>
+        <th>Badanie</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let w of wizyty">
-      <td>{{ w.pacjentNazwa }}</td>
-      <td>{{ w.data | date:'short' }}</td>
-      <td>{{ w.powodAnulowania }}</td>
+    <tr *ngFor="let w of wizytyAnulowane">
+        <td>{{ w.pacjent }}</td>
+        <td>{{ w.data }}</td>
+        <td>{{ w.godzina }}</td>
+        <td>{{ w.badanie || '-' }}</td>
     </tr>
   </tbody>
 </table>

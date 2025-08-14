@@ -14,4 +14,11 @@ export class WizytaService {
   getAnulowaneByLekarzId(lekarzId: number): Observable<Wizyta[]> {
     return this.http.get<Wizyta[]>(`${this.apiUrl}/Anulowane/Lekarz/${lekarzId}`);
   }
+   getWizyty(): Observable<Wizyta[]> {
+    return this.http.get<Wizyta[]>(`${this.apiUrl}`);
+  }
+
+  getWizytyAnulowane(): Observable<Wizyta[]> {
+    return this.http.get<Wizyta[]>(`${this.apiUrl}/anulowane`);
+  }
 }

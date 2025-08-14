@@ -1,8 +1,9 @@
 export interface Wizyta {
   id: number;
   lekarzId: number;
-  pacjentNazwa: string;
-  data: string;  
-  status: string; 
-  powodAnulowania?: string;
+  pacjent: string;
+  data: string; 
+  godzina:  string, 
+ status: 'Zaplata' | 'Zrealizowana' | 'Anulowana';
+  badanie?: string;
 }

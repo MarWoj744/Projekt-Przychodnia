@@ -10,16 +10,22 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./wizyty-anulowane.component.css']
 })
 export class WizytyAnulowaneComponent implements OnInit {
-  wizyty: Wizyta[] = [];
+[x: string]: any;
+    wizytyAnulowane: Wizyta[] = [];
   error: string | null = null;
   lekarzId = 1; 
 
   constructor(private wizytyService: WizytaService) {}
 
-  ngOnInit(): void {
-    this.wizytyService.getAnulowaneByLekarzId(this.lekarzId).subscribe({
-      next: (data) => this.wizyty = data,
-      error: () => this.error = 'Błąd ładowania anulowanych wizyt'
+  
+   ngOnInit(): void {
+    this.loadWizytyAnulowane();
+  }
+
+  loadWizytyAnulowane() {
+    this.wizytyService.getWizytyAnulowane().subscribe({
+      next: data => this.wizytyAnulowane = data,
+      error: err => this.error = 'Błąd wczytywania anulowanych wizyt'
     });
   }
 }

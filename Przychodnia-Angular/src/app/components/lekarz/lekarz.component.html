@@ -1,9 +1,12 @@
 <div class="panel-lekarza">
   <nav class="menu">
+    <a routerLink="strona-glowna" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Strona główna</a>
     <a routerLink="harmonogram" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Harmonogram</a>
     <a routerLink="wizyty" routerLinkActive="active">Wizyty</a>
     <a routerLink="badania" routerLinkActive="active">Badania</a>
-  </nav>
+  <a routerLink="historia-badan" routerLinkActive="active">Historia badań</a>
+  
+</nav>
   <section class="content">
     <router-outlet></router-outlet>
   </section>

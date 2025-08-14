@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Identity.Client;
 
 namespace Models
 {
@@ -33,6 +34,9 @@ namespace Models
         public int RecepcjonistkaId { get; set; }
         [ForeignKey("RecepcjonistkaId")]
         public Recepcjonistka Recepcjonistka { get; set; }
+
+        [Required]
+        public string Status { get; set; } = "Zaplanowana";
 
         public ICollection<WykonaneBadania> Badania { get; set; }
     }

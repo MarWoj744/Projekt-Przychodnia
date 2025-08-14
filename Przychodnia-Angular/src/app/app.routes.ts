@@ -7,7 +7,7 @@ import { WizytyAnulowaneComponent } from './components/wizyty-anulowane/wizyty-a
 import { LekarzComponent } from './components/lekarz/lekarz.component';
 import { WizytyComponent } from './components/wizyty/wizyty.component';
 import { BadaniaComponent } from './components/badania/badania.component';
-
+import { LekarzHomeComponent } from './components/lekarz-home/lekarz-home.component';
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
@@ -18,7 +18,9 @@ export const routes: Routes = [
   path: 'lekarz',
   component: LekarzComponent,
   children: [
-    { path: '', redirectTo: 'harmonogram', pathMatch: 'full' },
+     { path: '', redirectTo: 'strona-glowna', pathMatch: 'full' },
+     { path: 'strona-glowna', component: LekarzHomeComponent },
+     //{ path: '', redirectTo: 'harmonogram', pathMatch: 'full' },
     { path: 'harmonogram', component: HarmonogramComponent },
     { path: 'wizyty', component: WizytyComponent },
     { path: 'wizyty-anulowane', component: WizytyAnulowaneComponent },
