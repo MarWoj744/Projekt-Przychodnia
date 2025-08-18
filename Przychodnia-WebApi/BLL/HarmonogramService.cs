@@ -1,6 +1,7 @@
 ﻿using DTOs;
 using IDAL_;
 using Models;
+using IBLL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    public class HarmonogramService
+    public class HarmonogramService : IHarmonogramService
     {
         private readonly IHarmonogramRepository _repo;
 
@@ -17,6 +18,8 @@ namespace BLL
         {
             _repo = repo;
         }
+
+
 
         public IEnumerable<HarmonogramDTO> PobierzWszystkie()
         {
@@ -42,6 +45,7 @@ namespace BLL
             });
         }
 
+
         public HarmonogramDTO PobierzPoId(int id)
         {
             var h = _repo.GetById(id);
@@ -57,6 +61,7 @@ namespace BLL
             };
         }
 
+
         public void Dodaj(HarmonogramDTO dto)
         {
             var h = new Harmonogram
@@ -70,6 +75,7 @@ namespace BLL
             _repo.Dodaj(h);
             _repo.Save();
         }
+
 
         public void Aktualizuj(HarmonogramDTO dto)
         {
@@ -91,5 +97,23 @@ namespace BLL
             _repo.Delete(id);
             _repo.Save();
         }
+
     }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+       
+
+       
+
+      

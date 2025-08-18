@@ -1,4 +1,5 @@
-﻿using Models;
+﻿using DTOs;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,15 +10,16 @@ namespace IBLL
 {
     public interface IHarmonogramService
     {
-        IQueryable<Harmonogram> PobierzWszystkie();
-        IQueryable<Harmonogram> PobierzPoLekarzId(int lekarzId);
-        Harmonogram GetHarmonogramById(int id);
-        void Dodaj(Harmonogram harmonogram);
-        void Update(Harmonogram harmonogram);
-        void Delete(int id);
-        void Save();
+        IEnumerable<HarmonogramDTO> PobierzWszystkie();
+        IEnumerable<HarmonogramDTO> PobierzPoLekarzId(int lekarzId);
+        HarmonogramDTO PobierzPoId(int id);
+        void Dodaj(HarmonogramDTO dto);
+        void Aktualizuj(HarmonogramDTO dto);
+        void Usun(int id);
 
-      
-        bool CzyTerminDostepny(int lekarzId, DateTime dataOd, DateTime dataDo);
+
+     
     }
 }
+
+

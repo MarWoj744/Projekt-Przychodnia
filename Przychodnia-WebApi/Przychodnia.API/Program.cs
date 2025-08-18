@@ -62,12 +62,14 @@ builder.Services.AddScoped<IPacjentService, PacjentService>();
 builder.Services.AddScoped<IRecepcjonistkaService, RecepcjonistkaService>();
 builder.Services.AddScoped<IWizytaService, WizytaService>();
 builder.Services.AddScoped<IWykonaneBadanieService, WykonaneBadaniaService>();
+builder.Services.AddScoped<IHarmonogramService, HarmonogramService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<PdfGeneratorService>();
 builder.Services.AddDbContext<DbPrzychodnia>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddScoped<IHarmonogramRepository, HarmonogramRepository>();
-builder.Services.AddScoped<HarmonogramService>();
+
+
 
 
 

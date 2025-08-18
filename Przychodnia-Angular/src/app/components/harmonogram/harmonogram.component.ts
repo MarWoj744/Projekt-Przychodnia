@@ -85,4 +85,6 @@ export class HarmonogramComponent implements OnInit {
       });
     }
   }
+
+  
 }

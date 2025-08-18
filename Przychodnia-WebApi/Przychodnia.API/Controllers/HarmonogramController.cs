@@ -3,6 +3,7 @@ using IBLL;
 using Microsoft.AspNetCore.Mvc;
 using Models.Mapper;
 using Models;
+using BLL;
 
 namespace Przychodnia.API.Controllers
 {
@@ -11,79 +12,101 @@ namespace Przychodnia.API.Controllers
     public class HarmonogramController : ControllerBase
     {
         private readonly IHarmonogramService _harmonogramService;
-        private readonly Mapper _map;
+       
 
         public HarmonogramController(IHarmonogramService harmonogramService)
         {
             _harmonogramService = harmonogramService;
-            _map = new Mapper();
+            
         }
 
         [HttpGet]
-        public ActionResult<IQueryable<Harmonogram>> GetAll()
-        {
-            var harmonogramy = _harmonogramService.PobierzWszystkie();
-            return Ok(harmonogramy);
-        }
+          public ActionResult<IEnumerable<HarmonogramDTO>> GetAll()
+         {
+             var harmonogramy = _harmonogramService.PobierzWszystkie();
+             return Ok(harmonogramy);
+         }
+
+        
+
 
         [HttpGet("Lekarz/{lekarzId}")]
-        public ActionResult<IQueryable<Harmonogram>> GetByLekarzId(int lekarzId)
+        public ActionResult<IEnumerable<HarmonogramDTO>> GetByLekarzId(int lekarzId)
         {
             var harmonogramy = _harmonogramService.PobierzPoLekarzId(lekarzId);
             return Ok(harmonogramy);
         }
 
+
         [HttpGet("{id}")]
-        public ActionResult<Harmonogram> GetById(int id)
+        public ActionResult<HarmonogramDTO> GetById(int id)
         {
-            var harmonogram = _harmonogramService.GetHarmonogramById(id);
+            var harmonogram = _harmonogramService.PobierzPoId(id);
             if (harmonogram == null)
                 return NotFound();
 
             return Ok(harmonogram);
         }
 
+
+
+
         [HttpPost]
         public ActionResult Create([FromBody] HarmonogramDTO harmonogramDto)
         {
-            Harmonogram harmonogram = _map.HarmonogramToEntity(harmonogramDto);
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            _harmonogramService.Dodaj(harmonogram);
-            _harmonogramService.Save();
+            _harmonogramService.Dodaj(harmonogramDto);
 
-            return CreatedAtAction(nameof(GetById), new { id = harmonogram.Id }, harmonogram);
+            return Ok();
         }
+
 
         [HttpPut("{id}")]
         public ActionResult Update(int id, [FromBody] HarmonogramDTO harmonogramDto)
         {
-            Harmonogram harmonogram = _map.HarmonogramToEntity(harmonogramDto);
-            if (id != harmonogram.Id)
+           
+            if (id != harmonogramDto.Id)
                 return BadRequest("Id nie pasuje do obiektu");
 
-            var istnieje = _harmonogramService.GetHarmonogramById(id);
+            var istnieje = _harmonogramService.PobierzPoId(id);
             if (istnieje == null)
                 return NotFound();
 
-            _harmonogramService.Update(harmonogram);
-            _harmonogramService.Save();
+            _harmonogramService.Aktualizuj(harmonogramDto);
 
             return NoContent();
         }
 
+
+
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
         {
-            var istnieje = _harmonogramService.GetHarmonogramById(id);
+            var istnieje = _harmonogramService.PobierzPoId(id);
             if (istnieje == null)
                 return NotFound();
 
-            _harmonogramService.Delete(id);
-            _harmonogramService.Save();
+            _harmonogramService.Usun(id);
 
             return NoContent();
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
