@@ -49,6 +49,40 @@ namespace Models.Migrations
                     b.ToTable("Badania");
                 });
 
+            modelBuilder.Entity("Models.Harmonogram", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("DataDo")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DataOd")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("LekarzId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Opis")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LekarzId", "DataOd", "DataDo")
+                        .IsUnique()
+                        .HasDatabaseName("IX_Harmonogram_Lekarz_Range");
+
+                    b.ToTable("Harmonogramy", t =>
+                        {
+                            t.HasCheckConstraint("CK_Harmonogram_DataZakres", "[DataDo] > [DataOd]");
+                        });
+                });
+
             modelBuilder.Entity("Models.Osoba", b =>
                 {
                     b.Property<int>("Id")
@@ -130,6 +164,9 @@ namespace Models.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("RecepcjonistkaId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Status")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -217,6 +254,17 @@ namespace Models.Migrations
                     b.HasDiscriminator().HasValue(1);
                 });
 
+            modelBuilder.Entity("Models.Harmonogram", b =>
+                {
+                    b.HasOne("Models.Lekarz", "Lekarz")
+                        .WithMany("Harmonogramy")
+                        .HasForeignKey("LekarzId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Lekarz");
+                });
+
             modelBuilder.Entity("Models.Wizyta", b =>
                 {
                     b.HasOne("Models.Lekarz", "Lekarz")
@@ -275,6 +323,8 @@ namespace Models.Migrations
 
             modelBuilder.Entity("Models.Lekarz", b =>
                 {
+                    b.Navigation("Harmonogramy");
+
                     b.Navigation("Wizyty");
                 });
 

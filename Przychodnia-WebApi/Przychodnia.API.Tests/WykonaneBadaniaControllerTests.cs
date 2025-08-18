@@ -8,17 +8,24 @@ using Xunit;
 using System.Linq;
 using Models.Mapper;
 using Models;
+using BLL;
 
 public class WykonaneBadaniaControllerTests
 {
     private readonly Mock<IWykonaneBadanieService> _mockService;
+    private readonly Mock<IWizytaService> _wizytaService;
+    private readonly Mock<IPacjentService> _pacjentService;
+    private readonly Mock<PdfGeneratorService> _pdfGenerator;
     private readonly WykonaneBadaniaController _controller;
     private readonly Mapper map;
 
     public WykonaneBadaniaControllerTests()
     {
         _mockService = new Mock<IWykonaneBadanieService>();
-        _controller = new WykonaneBadaniaController(_mockService.Object);
+        _wizytaService = new Mock<IWizytaService>();
+        _pacjentService=new Mock<IPacjentService>();
+        _pdfGenerator=new Mock<PdfGeneratorService>();
+        _controller = new WykonaneBadaniaController(_mockService.Object, _wizytaService.Object,_pacjentService.Object,_pdfGenerator.Object);
         map = new Mapper();
     }
 

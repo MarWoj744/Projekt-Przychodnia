@@ -16,7 +16,7 @@ namespace Przychodnia.API.Controllers
         private readonly IWykonaneBadanieService _service;
         private readonly IWizytaService _wizytaService;
         private readonly IPacjentService _pacjentService;
-        private readonly PdfGeneratorService _pdfGenerator;   // wstrzykujemy przez DI
+        private readonly PdfGeneratorService _pdfGenerator;
         private readonly Mapper map;
 
         public WykonaneBadaniaController(IWykonaneBadanieService service, IWizytaService wizytaService, IPacjentService pacjentService, PdfGeneratorService pdfGenerator)

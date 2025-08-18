@@ -52,6 +52,29 @@ namespace Models.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Harmonogramy",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    LekarzId = table.Column<int>(type: "int", nullable: false),
+                    DataOd = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DataDo = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Opis = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Harmonogramy", x => x.Id);
+                    table.CheckConstraint("CK_Harmonogram_DataZakres", "[DataDo] > [DataOd]");
+                    table.ForeignKey(
+                        name: "FK_Harmonogramy_Osoby_LekarzId",
+                        column: x => x.LekarzId,
+                        principalTable: "Osoby",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Wizyty",
                 columns: table => new
                 {
@@ -61,7 +84,8 @@ namespace Models.Migrations
                     Opis = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
                     PacjentId = table.Column<int>(type: "int", nullable: false),
                     LekarzId = table.Column<int>(type: "int", nullable: false),
-                    RecepcjonistkaId = table.Column<int>(type: "int", nullable: false)
+                    RecepcjonistkaId = table.Column<int>(type: "int", nullable: false),
+                    Status = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -116,6 +140,12 @@ namespace Models.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Harmonogram_Lekarz_Range",
+                table: "Harmonogramy",
+                columns: new[] { "LekarzId", "DataOd", "DataDo" },
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Osoby_PESEL",
                 table: "Osoby",
                 column: "PESEL",
@@ -151,6 +181,9 @@ namespace Models.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Harmonogramy");
+
             migrationBuilder.DropTable(
                 name: "WykonaneBadania");
 

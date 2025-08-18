@@ -14,9 +14,10 @@ namespace BLLTests
         private List<Wizyta> _wizyty = new List<Wizyta>();
         public bool AddCalled { get; private set; } = false;
         public bool SaveCalled { get; private set; } = false;
+        public bool DeleteCalled { get; private set; } = false;
         public void delete(int id)
         {
-          
+          DeleteCalled = true;
         }
 
         public void dodaj(Wizyta wizyta)
@@ -49,6 +50,16 @@ namespace BLLTests
         public void update(Wizyta wizyta)
         {
             
+        }
+
+        public IQueryable<Wizyta> PobierzWizytyAnulowane()
+        {
+            return null;
+        }
+
+        public IQueryable<Wizyta> PobierzWizytyAnulowaneLekarza(int lekarzId)
+        {
+            return null;
         }
     }
 }

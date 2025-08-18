@@ -18,5 +18,6 @@ namespace Models
         public string Specjalizacja { get; set; }
 
         public ICollection<Wizyta> Wizyty { get; set; }
+        public ICollection<Harmonogram> Harmonogramy { get; set; }
     }
 }
