@@ -46,9 +46,13 @@ namespace Przychodnia.API.Controllers
         [HttpPost]
         public ActionResult Create([FromBody] HarmonogramDTO harmonogramDto)
         {
-            Harmonogram harmonogram = _map.HarmonogramToEntity(harmonogramDto);
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
+
+            Harmonogram harmonogram = _map.HarmonogramToEntity(harmonogramDto);
+
+            if (!_harmonogramService.CzyTerminDostepny(harmonogram.LekarzId, harmonogram.DataOd, harmonogram.DataDo))
+                return BadRequest("Termin niedostępny");
 
             _harmonogramService.Dodaj(harmonogram);
             _harmonogramService.Save();
@@ -59,13 +63,20 @@ namespace Przychodnia.API.Controllers
         [HttpPut("{id}")]
         public ActionResult Update(int id, [FromBody] HarmonogramDTO harmonogramDto)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
             Harmonogram harmonogram = _map.HarmonogramToEntity(harmonogramDto);
+
             if (id != harmonogram.Id)
                 return BadRequest("Id nie pasuje do obiektu");
 
             var istnieje = _harmonogramService.GetHarmonogramById(id);
             if (istnieje == null)
                 return NotFound();
+
+            if (!_harmonogramService.CzyTerminDostepny(harmonogram.LekarzId, harmonogram.DataOd, harmonogram.DataDo))
+                return BadRequest("Termin niedostępny");
 
             _harmonogramService.Update(harmonogram);
             _harmonogramService.Save();

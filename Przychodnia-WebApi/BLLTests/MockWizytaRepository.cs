@@ -50,5 +50,16 @@ namespace BLLTests
         {
             
         }
+
+        public IQueryable<Wizyta> PobierzWizytyAnulowane()
+        {
+            return new List<Wizyta>().AsQueryable();
+        }
+
+        public IQueryable<Wizyta> PobierzWizytyAnulowaneLekarza(int lekarzId)
+        {
+            return new List<Wizyta>().AsQueryable();
+        }
+
     }
 }

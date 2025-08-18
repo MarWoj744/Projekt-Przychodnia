@@ -127,4 +127,27 @@ public class WizytaControllerTests
 
         Assert.IsType<NoContentResult>(result);
     }
+
+    [Fact]
+    public async Task AnulujWizyte_ReturnsNotFound_WhenServiceFails()
+    {
+        _mockService.Setup(s => s.AnulujWizyteAsync(It.IsAny<int>())).ReturnsAsync(false);
+
+        var result = await _controller.AnulujWizyte(1);
+
+        var notFound = Assert.IsType<NotFoundObjectResult>(result);
+        Assert.Equal("Nie znaleziono wizyty.", notFound.Value);
+    }
+
+    [Fact]
+    public async Task AnulujWizyte_ReturnsOk_WhenSuccess()
+    {
+        _mockService.Setup(s => s.AnulujWizyteAsync(It.IsAny<int>())).ReturnsAsync(true);
+
+        var result = await _controller.AnulujWizyte(1);
+
+        var okResult = Assert.IsType<OkObjectResult>(result);
+        Assert.Equal("Wizyta została anulowana.", okResult.Value);
+    }
+
 }

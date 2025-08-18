@@ -1,24 +1,38 @@
+using BLL;
+using DTOs;
 using IBLL;
 using Microsoft.AspNetCore.Mvc;
+using Models;
+using Models.Mapper;
 using Moq;
-using DTOs;
 using Przychodnia.API.Controllers;
 using System.Collections.Generic;
-using Xunit;
 using System.Linq;
-using Models.Mapper;
-using Models;
+using Xunit;
 
 public class WykonaneBadaniaControllerTests
 {
     private readonly Mock<IWykonaneBadanieService> _mockService;
+    private readonly Mock<IWizytaService> _mockWizytaService;
+    private readonly Mock<IPacjentService> _mockPacjentService;
+    private readonly Mock<PdfGeneratorService> _mockPdfGenerator;
     private readonly WykonaneBadaniaController _controller;
     private readonly Mapper map;
 
     public WykonaneBadaniaControllerTests()
     {
         _mockService = new Mock<IWykonaneBadanieService>();
-        _controller = new WykonaneBadaniaController(_mockService.Object);
+        _mockWizytaService = new Mock<IWizytaService>();
+        _mockPacjentService = new Mock<IPacjentService>();
+        _mockPdfGenerator = new Mock<PdfGeneratorService>();
+
+        _controller = new WykonaneBadaniaController(
+            _mockService.Object,
+            _mockWizytaService.Object,
+            _mockPacjentService.Object,
+            _mockPdfGenerator.Object
+        );
+
         map = new Mapper();
     }
 

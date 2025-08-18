@@ -1,15 +1,12 @@
-﻿using DTOs;
+﻿using IBLL;
 using IDAL_;
 using Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BLL
 {
-    public class HarmonogramService
+    public class HarmonogramService : IHarmonogramService
     {
         private readonly IHarmonogramRepository _repo;
 
@@ -18,78 +15,46 @@ namespace BLL
             _repo = repo;
         }
 
-        public IEnumerable<HarmonogramDTO> PobierzWszystkie()
+        public IQueryable<Harmonogram> PobierzWszystkie()
         {
-            return _repo.GetAll().Select(h => new HarmonogramDTO
-            {
-                Id = h.Id,
-                LekarzId = h.LekarzId,
-                DataOd = h.DataOd,
-                DataDo = h.DataDo,
-                Opis = h.Opis
-            });
+            return _repo.GetAll();
         }
 
-        public IEnumerable<HarmonogramDTO> PobierzPoLekarzId(int lekarzId)
+        public IQueryable<Harmonogram> PobierzPoLekarzId(int lekarzId)
         {
-            return _repo.GetByLekarzId(lekarzId).Select(h => new HarmonogramDTO
-            {
-                Id = h.Id,
-                LekarzId = h.LekarzId,
-                DataOd = h.DataOd,
-                DataDo = h.DataDo,
-                Opis = h.Opis
-            });
+            return _repo.GetByLekarzId(lekarzId);
         }
 
-        public HarmonogramDTO PobierzPoId(int id)
+        public Harmonogram GetHarmonogramById(int id)
         {
-            var h = _repo.GetById(id);
-            if (h == null) return null;
-
-            return new HarmonogramDTO
-            {
-                Id = h.Id,
-                LekarzId = h.LekarzId,
-                DataOd = h.DataOd,
-                DataDo = h.DataDo,
-                Opis = h.Opis
-            };
+            return _repo.GetById(id);
         }
 
-        public void Dodaj(HarmonogramDTO dto)
+        public void Dodaj(Harmonogram harmonogram)
         {
-            var h = new Harmonogram
-            {
-                LekarzId = dto.LekarzId,
-                DataOd = dto.DataOd,
-                DataDo = dto.DataDo,
-                Opis = dto.Opis
-            };
-
-            _repo.Dodaj(h);
-            _repo.Save();
+            _repo.Dodaj(harmonogram);
         }
 
-        public void Aktualizuj(HarmonogramDTO dto)
+        public void Update(Harmonogram harmonogram)
         {
-            var h = _repo.GetById(dto.Id);
-            if (h == null)
-                throw new KeyNotFoundException("Harmonogram nie istnieje");
-
-            h.LekarzId = dto.LekarzId;
-            h.DataOd = dto.DataOd;
-            h.DataDo = dto.DataDo;
-            h.Opis = dto.Opis;
-
-            _repo.Update(h);
-            _repo.Save();
+            _repo.Update(harmonogram);
         }
 
-        public void Usun(int id)
+        public void Delete(int id)
         {
             _repo.Delete(id);
+        }
+
+        public void Save()
+        {
             _repo.Save();
+        }
+
+        public bool CzyTerminDostepny(int lekarzId, DateTime dataOd, DateTime dataDo)
+        {
+            //sprawdzenie czy termin koliduje z istniejącymi harmonogramami
+            return !_repo.GetByLekarzId(lekarzId)
+                         .Any(h => (dataOd < h.DataDo) && (dataDo > h.DataOd));
         }
     }
 }
