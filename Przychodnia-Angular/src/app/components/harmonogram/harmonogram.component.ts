@@ -57,25 +57,37 @@ export class HarmonogramComponent implements OnInit {
     };
   }
 
-  zapisz() {
-    if (this.edycjaTryb) {
-      this.harmonogramService.update(this.aktualnyHarmonogram.id, this.aktualnyHarmonogram).subscribe({
-        next: () => {
-          this.loadHarmonogram();
-          this.anulujEdycje();
-        },
-        error: () => this.error = 'Błąd podczas aktualizacji'
-      });
-    } else {
-      this.harmonogramService.create(this.aktualnyHarmonogram).subscribe({
-        next: () => {
-          this.loadHarmonogram();
-          this.anulujEdycje();
-        },
-        error: () => this.error = 'Błąd podczas tworzenia'
-      });
-    }
+
+    zapisz() {
+  if (this.edycjaTryb) {
+   
+    this.harmonogramService.update(this.aktualnyHarmonogram.id, this.aktualnyHarmonogram).subscribe({
+      next: (response) => {
+        console.log('Odpowiedź z serwera podczas aktualizacji:', response); 
+        this.loadHarmonogram();
+        this.anulujEdycje();
+      },
+      error: (error) => {
+        console.error('Błąd podczas aktualizacji:', error); 
+        this.error = 'Błąd podczas aktualizacji';
+      }
+    });
+  } else {
+  
+    this.harmonogramService.create(this.aktualnyHarmonogram).subscribe({
+      next: (response) => {
+        console.log('Odpowiedź z serwera podczas tworzenia:', response); 
+        this.loadHarmonogram();
+        this.anulujEdycje();
+      },
+      error: (error) => {
+        console.error('Błąd podczas tworzenia:', error); 
+        this.error = 'Błąd podczas tworzenia';
+      }
+    });
   }
+}
+
 
   usun(id: number) {
     if (confirm('Na pewno chcesz usunąć ten harmonogram?')) {

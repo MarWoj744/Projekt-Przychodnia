@@ -19,10 +19,22 @@ export class BadanieEditComponent implements OnInit {
 
   constructor(private badanieService: BadanieService) {}
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    
+     if (this.badanie.id) {
+    this.badanieService.getById(this.badanie.id).subscribe(
+      data => {
+        this.badanie = data;  
+      },
+      error => {
+        console.error('Błąd podczas ładowania badania', error);
+      }
+    );
+  }
   }
 
   submitForm(): void {
+
+   console.log('Dane do wysłania: ', this.badanie);
     if (this.badanie.id) {
       this.badanieService.update(this.badanie).subscribe(() => this.save.emit());
     } else {

@@ -1,18 +1,22 @@
 <div class="edit-form">
   <h3>{{ badanie.id ? 'Edytuj badanie' : 'Dodaj badanie' }}</h3>
-  <form (ngSubmit)="submitForm()">
-    <label>Nazwa:</label>
-    <input [(ngModel)]="badanie.nazwa" name="nazwa" required>
-
-    <label>Cennik:</label>
-    <input type="number" [(ngModel)]="badanie.cennik" name="cennik" required>
-
-    <label>Specjalizacja:</label>
-    <input [(ngModel)]="badanie.specjalizacja" name="specjalizacja" required>
-
-    <div class="actions">
-      <button type="submit">Zapisz</button>
+  <form (ngSubmit)="submitForm()"#badanieForm="ngForm">
+    <label for="nazwa">Nazwa:</label>
+    <input [(ngModel)]="badanie.nazwa" name="nazwa" id="nazwa" required #nazwa="ngModel">
+ <div *ngIf="nazwa.invalid && nazwa.touched">Nazwa jest wymagana!</div>
+   
+ <label for="cennik">Cennik:</label>
+    <input type="number" [(ngModel)]="badanie.cennik" name="cennik" id="cennik" required required #cennik="ngModel">
+ <div *ngIf="cennik.invalid && cennik.touched">Cennik jest wymagany i musi być liczbą!</div>
+   
+ <label for="specjalizacja">Specjalizacja:</label>
+    <input [(ngModel)]="badanie.specjalizacja" name="specjalizacja" id="specjalizacja" required required #specjalizacja="ngModel">
+<div *ngIf="specjalizacja.invalid && specjalizacja.touched">Specjalizacja jest wymagana!</div>
+    
+<div class="actions">
+      <button type="submit" [disabled]="badanieForm.invalid">Zapisz</button>
       <button type="button" (click)="cancel.emit()">Anuluj</button>
     </div>
   </form>
 </div>
+

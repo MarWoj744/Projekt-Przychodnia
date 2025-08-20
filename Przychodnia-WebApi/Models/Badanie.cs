@@ -9,7 +9,7 @@ namespace Models
 {
     public class Badanie
     {
-        [Key]
+       [Key]
         public int Id { get; set; }
 
         [Required]

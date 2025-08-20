@@ -27,6 +27,7 @@ export class BadaniaComponent implements OnInit {
       this.badania = data;
     });
   }
+  
 
   edit(b: Badanie): void {
     this.selectedBadanie = { ...b };

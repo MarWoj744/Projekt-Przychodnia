@@ -2,10 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WizytaService } from '../../services/wizyty.service';
 import { Wizyta } from '../../models/wizyta.model';
+
+import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-wizyty',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,FormsModule],
   templateUrl: './wizyty.component.html',
   styleUrls: ['./wizyty.component.css']
 })
@@ -28,8 +30,10 @@ export class WizytyComponent  implements OnInit {
   anulujWizyte(id: number) {
   this.wizytaService.anulujWizyte(id).subscribe({
     next: () => this.loadWizyty(),
-    error: () => this.error = 'Nie udało się anulować wizyty'
-  });
+    error: (err) => {
+console.error('Błąd anulowania wizyty:', err);
+      this.error = 'Nie udało się anulować wizyty'
+  }});
 }
 
 }

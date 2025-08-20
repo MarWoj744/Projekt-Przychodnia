@@ -24,6 +24,10 @@ export class WizytaService {
 anulujWizyte(id: number): Observable<any> {
   return this.http.post(`${this.apiUrl}/${id}/anuluj`, {});
 }
+
+addWizyta(wizyta: Wizyta): Observable<Wizyta> {
+  return this.http.post<Wizyta>(this.apiUrl, wizyta);
+}
   
 }
 
