@@ -9,7 +9,7 @@ namespace Models
 {
     public class Badanie
     {
-        [Key]
+       [Key]
         public int Id { get; set; }
 
         [Required]
@@ -23,6 +23,8 @@ namespace Models
         [Required]
         [StringLength(50)]
         public string Specjalizacja { get; set; }
+
+        public bool IsDeleted { get; set; } = false;
 
         public ICollection<WykonaneBadania> Wykonane { get; set; }
     }

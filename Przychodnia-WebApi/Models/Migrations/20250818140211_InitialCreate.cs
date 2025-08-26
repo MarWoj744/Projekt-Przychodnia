@@ -18,7 +18,7 @@ namespace Models.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nazwa = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Cennik = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Cennik = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false),
                     Specjalizacja = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
@@ -40,7 +40,8 @@ namespace Models.Migrations
                     Login = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Haslo = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Rola = table.Column<int>(type: "int", nullable: false),
-                   // PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    RefreshToken = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
                     Tytul = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: true),
                     Specjalizacja = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     PESEL = table.Column<string>(type: "nvarchar(450)", nullable: true)
@@ -48,6 +49,29 @@ namespace Models.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Osoby", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Harmonogramy",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    LekarzId = table.Column<int>(type: "int", nullable: false),
+                    DataOd = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DataDo = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Opis = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Harmonogramy", x => x.Id);
+                    table.CheckConstraint("CK_Harmonogram_DataZakres", "[DataDo] > [DataOd]");
+                    table.ForeignKey(
+                        name: "FK_Harmonogramy_Osoby_LekarzId",
+                        column: x => x.LekarzId,
+                        principalTable: "Osoby",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -60,7 +84,8 @@ namespace Models.Migrations
                     Opis = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
                     PacjentId = table.Column<int>(type: "int", nullable: false),
                     LekarzId = table.Column<int>(type: "int", nullable: false),
-                    RecepcjonistkaId = table.Column<int>(type: "int", nullable: false)
+                    RecepcjonistkaId = table.Column<int>(type: "int", nullable: false),
+                    Status = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -94,7 +119,8 @@ namespace Models.Migrations
                     Data = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Wyniki = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
                     WizytaId = table.Column<int>(type: "int", nullable: false),
-                    BadanieId = table.Column<int>(type: "int", nullable: false)
+                    BadanieId = table.Column<int>(type: "int", nullable: false),
+                    Zalecenia = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -112,6 +138,12 @@ namespace Models.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Harmonogram_Lekarz_Range",
+                table: "Harmonogramy",
+                columns: new[] { "LekarzId", "DataOd", "DataDo" },
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Osoby_PESEL",
@@ -149,6 +181,9 @@ namespace Models.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Harmonogramy");
+
             migrationBuilder.DropTable(
                 name: "WykonaneBadania");
 

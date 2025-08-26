@@ -10,6 +10,7 @@ namespace DTOs
 {
     public class BadanieDTO
     {
+        public int Id { get; set; }
         [Required]
         public string Nazwa { get; set; }
 
@@ -19,6 +20,10 @@ namespace DTOs
         [Required]
         public string Specjalizacja { get; set; }
 
-        public ICollection<WykonaneBadaniaDTO> Wykonane { get; set; }
+        // public ICollection<WykonaneBadaniaDTO> Wykonane { get; set; }
+        [System.Text.Json.Serialization.JsonIgnore]
+        public ICollection<WykonaneBadaniaDTO>? Wykonane { get; set; }
+
+
     }
 }

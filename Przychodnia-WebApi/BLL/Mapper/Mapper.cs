@@ -305,6 +305,7 @@ namespace Models.Mapper
 
             return new BadanieDTO
             {
+               
                 Nazwa = badanie.Nazwa,
                 Cennik = badanie.Cennik,
                 Specjalizacja = badanie.Specjalizacja,
@@ -328,11 +329,42 @@ namespace Models.Mapper
 
             return new Badanie
             {
+                Id = dto.Id,
                 Nazwa = dto.Nazwa,
                 Cennik = dto.Cennik,
                 Specjalizacja = dto.Specjalizacja,
                 Wykonane = wykonaneBadania
             };
         }
+
+        public HarmonogramDTO HarmonogramToDTO(Harmonogram harmonogram)
+        {
+            if (harmonogram == null) return null;
+
+            return new HarmonogramDTO
+            {
+                Id = harmonogram.Id,
+                LekarzId = harmonogram.LekarzId,
+                DataOd = harmonogram.DataOd,
+                DataDo = harmonogram.DataDo,
+                Opis = harmonogram.Opis
+            };
+        }
+
+        public Harmonogram HarmonogramToEntity(HarmonogramDTO dto)
+        {
+            if (dto == null) return null;
+
+            return new Harmonogram
+            {
+                Id = dto.Id,
+                LekarzId = dto.LekarzId,
+                DataOd = dto.DataOd,
+                DataDo = dto.DataDo,
+                Opis = dto.Opis
+            };
+        }
+
+
     }
 }

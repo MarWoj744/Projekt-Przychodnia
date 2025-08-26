@@ -12,8 +12,8 @@ using Models;
 namespace Models.Migrations
 {
     [DbContext(typeof(DbPrzychodnia))]
-    [Migration("20250730182240_NewMigrationName")]
-    partial class NewMigrationName
+    [Migration("20250826114355_PoprawyBadania")]
+    partial class PoprawyBadania
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -37,6 +37,9 @@ namespace Models.Migrations
                         .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Nazwa")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -50,6 +53,40 @@ namespace Models.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Badania");
+                });
+
+            modelBuilder.Entity("Models.Harmonogram", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("DataDo")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DataOd")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("LekarzId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Opis")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LekarzId", "DataOd", "DataDo")
+                        .IsUnique()
+                        .HasDatabaseName("IX_Harmonogram_Lekarz_Range");
+
+                    b.ToTable("Harmonogramy", t =>
+                        {
+                            t.HasCheckConstraint("CK_Harmonogram_DataZakres", "[DataDo] > [DataOd]");
+                        });
                 });
 
             modelBuilder.Entity("Models.Osoba", b =>
@@ -135,6 +172,9 @@ namespace Models.Migrations
                     b.Property<int>("RecepcjonistkaId")
                         .HasColumnType("int");
 
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("LekarzId");
@@ -167,6 +207,10 @@ namespace Models.Migrations
                         .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("Zalecenia")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -214,6 +258,17 @@ namespace Models.Migrations
                     b.HasBaseType("Models.Osoba");
 
                     b.HasDiscriminator().HasValue(1);
+                });
+
+            modelBuilder.Entity("Models.Harmonogram", b =>
+                {
+                    b.HasOne("Models.Lekarz", "Lekarz")
+                        .WithMany("Harmonogramy")
+                        .HasForeignKey("LekarzId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Lekarz");
                 });
 
             modelBuilder.Entity("Models.Wizyta", b =>
@@ -274,6 +329,8 @@ namespace Models.Migrations
 
             modelBuilder.Entity("Models.Lekarz", b =>
                 {
+                    b.Navigation("Harmonogramy");
+
                     b.Navigation("Wizyty");
                 });
 

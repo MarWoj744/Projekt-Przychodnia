@@ -13,6 +13,10 @@ namespace IDAL_
         //Task DodajWizyteAsync(Wizyta wizyta);
         //Task<List<Wizyta>> PobierzWszystkieAsync();
         IQueryable<Wizyta> PobierzWszystkie();
+        IQueryable<Wizyta> PobierzWizytyLekarza(int lekarzId, DateTime start, DateTime end);
+        IQueryable<Wizyta> PobierzWizytyAnulowane();
+        IQueryable<Wizyta> PobierzWizytyAnulowaneLekarza(int lekarzId);
+
         Wizyta getWizytaById(int id);
         void dodaj(Wizyta wizyta);
         void delete(int id);

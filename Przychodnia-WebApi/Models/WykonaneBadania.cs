@@ -5,11 +5,14 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Models
 {
     public class WykonaneBadania
     {
+        
+
         [Key]
         public int Id { get; set; }
 
@@ -28,5 +31,7 @@ namespace Models
         public int BadanieId { get; set; }
         [ForeignKey("BadanieId")]
         public Badanie Badanie { get; set; }
+        [AllowNull]
+        public string Zalecenia {  get; set; }
     }
 }

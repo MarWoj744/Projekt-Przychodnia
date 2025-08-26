@@ -11,11 +11,13 @@ namespace BLLTests
 {
     class MockWizytaRepository:IWizytaRepository
     {
+        private List<Wizyta> _wizyty = new List<Wizyta>();
         public bool AddCalled { get; private set; } = false;
         public bool SaveCalled { get; private set; } = false;
+        public bool DeleteCalled { get; private set; } = false;
         public void delete(int id)
         {
-          
+          DeleteCalled = true;
         }
 
         public void dodaj(Wizyta wizyta)
@@ -33,6 +35,13 @@ namespace BLLTests
             return null;
         }
 
+        public IQueryable<Wizyta> PobierzWizytyLekarza(int lekarzId, DateTime start, DateTime end)
+        {
+            return _wizyty
+                .Where(w => w.LekarzId == lekarzId && w.Data >= start && w.Data <= end)
+                .AsQueryable();
+        }
+
         public void save()
         {
             SaveCalled = true;
@@ -41,6 +50,16 @@ namespace BLLTests
         public void update(Wizyta wizyta)
         {
             
+        }
+
+        public IQueryable<Wizyta> PobierzWizytyAnulowane()
+        {
+            return null;
+        }
+
+        public IQueryable<Wizyta> PobierzWizytyAnulowaneLekarza(int lekarzId)
+        {
+            return null;
         }
     }
 }

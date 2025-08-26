@@ -7,12 +7,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Models;
+using PdfSharp.Fonts;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+GlobalFontSettings.UseWindowsFontsUnderWindows = true;
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
@@ -61,10 +62,14 @@ builder.Services.AddScoped<IPacjentService, PacjentService>();
 builder.Services.AddScoped<IRecepcjonistkaService, RecepcjonistkaService>();
 builder.Services.AddScoped<IWizytaService, WizytaService>();
 builder.Services.AddScoped<IWykonaneBadanieService, WykonaneBadaniaService>();
+builder.Services.AddScoped<IHarmonogramService, HarmonogramService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
-
+builder.Services.AddScoped<PdfGeneratorService>();
 builder.Services.AddDbContext<DbPrzychodnia>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddScoped<IHarmonogramRepository, HarmonogramRepository>();
+
+
 
 
 

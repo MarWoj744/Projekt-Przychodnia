@@ -1,0 +1,56 @@
+<h2>Harmonogram lekarza</h2>
+
+<div *ngIf="error" class="error">{{ error }}</div>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Lekarz Id</th>
+      <th>Data Od</th>
+      <th>Data Do</th>
+      <th>Opis</th>
+      <th>Akcje</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let h of harmonogram">
+      <td>{{ h.id }}</td>
+      <td>{{ h.lekarzId }}</td>
+      <td>{{ h.dataOd | date:'short' }}</td>
+      <td>{{ h.dataDo | date:'short' }}</td>
+      <td>{{ h.opis }}</td>
+      <td>
+        <button (click)="rozpocznijEdycje(h)">Edytuj</button>
+        <button (click)="usun(h.id)">Usuń</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>{{ edycjaTryb ? 'Edytuj harmonogram' : 'Dodaj nowy harmonogram' }}</h3>
+
+<form (ngSubmit)="zapisz()">
+  <label>
+    Lekarz Id:
+    <input type="number" [(ngModel)]="aktualnyHarmonogram.lekarzId" name="lekarzId" required />
+  </label><br />
+
+  <label>
+    Data Od:
+    <input type="datetime-local" [(ngModel)]="aktualnyHarmonogram.dataOd" name="dataOd" required />
+  </label><br />
+
+  <label>
+    Data Do:
+    <input type="datetime-local" [(ngModel)]="aktualnyHarmonogram.dataDo" name="dataDo" required />
+  </label><br />
+
+  <label>
+    Opis:
+    <input type="text" [(ngModel)]="aktualnyHarmonogram.opis" name="opis" required />
+  </label><br />
+
+  <button type="submit">{{ edycjaTryb ? 'Zapisz zmiany' : 'Dodaj' }}</button>
+  <button type="button" (click)="anulujEdycje()" *ngIf="edycjaTryb">Anuluj</button>
+</form>

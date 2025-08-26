@@ -2,6 +2,7 @@
 using DTOs;
 using IBLL;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Models;
 using Models.Mapper;
 using System.Threading.Tasks;
@@ -13,11 +14,17 @@ namespace Przychodnia.API.Controllers
     public class WykonaneBadaniaController : Controller
     {
         private readonly IWykonaneBadanieService _service;
+        private readonly IWizytaService _wizytaService;
+        private readonly IPacjentService _pacjentService;
+        private readonly PdfGeneratorService _pdfGenerator;
         private readonly Mapper map;
 
-        public WykonaneBadaniaController(IWykonaneBadanieService service)
+        public WykonaneBadaniaController(IWykonaneBadanieService service, IWizytaService wizytaService, IPacjentService pacjentService, PdfGeneratorService pdfGenerator)
         {
             _service = service;
+            _wizytaService = wizytaService;
+            _pacjentService = pacjentService;
+            _pdfGenerator = pdfGenerator;
             map = new Mapper();
         }
 
@@ -36,6 +43,36 @@ namespace Przychodnia.API.Controllers
                 return NotFound();
 
             return Ok(badanie);
+        }
+        [HttpGet("pobierz-pdf/{id}")]
+        public IActionResult GenerujPdf(int id)
+        {
+            var badanie = _service.GetById(id);
+            if (badanie == null)
+                return NotFound($"Nie znaleziono wykonanego badania o ID {id}.");
+
+           
+            var wizyta = _wizytaService.GetWizytaById(badanie.WizytaId);
+            if (wizyta == null)
+                return BadRequest($"Nie znaleziono wizyty o ID {badanie.WizytaId}.");
+
+            
+            var pacjent = _pacjentService.GetPacjentById(wizyta.PacjentId);
+            if (pacjent == null)
+                return BadRequest($"Nie znaleziono pacjenta o ID {wizyta.PacjentId}.");
+
+          
+            var zalecenia = string.IsNullOrWhiteSpace(badanie.Zalecenia)
+                ? "Brak zaleceń"
+                : badanie.Zalecenia;
+
+            var pdfBytes = _pdfGenerator.GeneratePrescriptionPdf(
+                pacjent: $"{pacjent.Imie} {pacjent.Nazwisko}",
+                zalecenia: zalecenia,
+                qrText: $"BadanieID:{badanie.Id}"
+            );
+
+            return File(pdfBytes, "application/pdf", $"Recepta_{badanie.Id}.pdf");
         }
 
         [HttpPost]

@@ -18,6 +18,12 @@ namespace DAL
             return _context.Wizyty;
         }
 
+        public IQueryable<Wizyta> PobierzWizytyLekarza(int lekarzId, DateTime start, DateTime end)
+        {
+            return _context.Wizyty
+                .Where(w => w.LekarzId == lekarzId && w.Data >= start && w.Data <= end);
+        }
+
         public Wizyta getWizytaById(int id)
         {
             return _context.Wizyty.FirstOrDefault(w => w.Id == id);
@@ -46,5 +52,17 @@ namespace DAL
         {
             _context.SaveChanges();
         }
+
+        public IQueryable<Wizyta> PobierzWizytyAnulowane()
+        {
+            return _context.Wizyty.Where(w => w.Status == StatusWizyty.Anulowana);
+        }
+
+        public IQueryable<Wizyta> PobierzWizytyAnulowaneLekarza(int lekarzId)
+        {
+            return _context.Wizyty
+                .Where(w => w.Status == StatusWizyty.Anulowana && w.LekarzId == lekarzId);
+        }
+
     }
 }

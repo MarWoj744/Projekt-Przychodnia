@@ -22,7 +22,9 @@ namespace DAL
             var badanie =GetBadanieById(id);
             if (badanie != null)
             {
-                _context.Remove(badanie);
+                //_context.Remove(badanie);
+                badanie.IsDeleted = true;
+                _context.Badania.Update(badanie); 
             }
         }
 
