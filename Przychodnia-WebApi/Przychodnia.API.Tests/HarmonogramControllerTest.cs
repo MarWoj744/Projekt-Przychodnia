@@ -23,25 +23,32 @@ public class HarmonogramControllerTests
     [Fact]
     public void GetAll_ReturnsOk_WithList()
     {
-        var list = new List<Harmonogram> { new Harmonogram { Id = 1 } }.AsQueryable();
+    var list = new List<HarmonogramDTO>
+    {
+        new HarmonogramDTO { Id = 1, LekarzId = 2, DataOd = DateTime.Now, DataDo = DateTime.Now.AddHours(2), Opis = "test" }
+    };
+        
         _mockService.Setup(s => s.PobierzWszystkie()).Returns(list);
 
         var result = _controller.GetAll();
 
         var okResult = Assert.IsType<OkObjectResult>(result.Result);
-        var returnValue = Assert.IsAssignableFrom<IQueryable<Harmonogram>>(okResult.Value);
+        var returnValue = Assert.IsAssignableFrom<IQueryable<HarmonogramDTO>>(okResult.Value);
         Assert.Single(returnValue);
     }
 
-    [Fact]
-    public void GetById_ReturnsNotFound_WhenNull()
-    {
-        _mockService.Setup(s => s.GetHarmonogramById(It.IsAny<int>())).Returns((Harmonogram)null);
 
-        var result = _controller.GetById(5);
+     [Fact]
+     public void GetById_ReturnsNotFound_WhenNull()
+     {
+    _mockService.Setup(s => s.PobierzPoId(It.IsAny<int>())).Returns((HarmonogramDTO)null);
+        
 
-        Assert.IsType<NotFoundResult>(result.Result);
-    }
+         var result = _controller.GetById(5);
+
+         Assert.IsType<NotFoundResult>(result.Result);
+     }
+    
 
     [Fact]
     public void Create_ReturnsCreatedAtAction()
@@ -73,10 +80,13 @@ public class HarmonogramControllerTests
     [Fact]
     public void Delete_ReturnsNotFound_WhenNotExists()
     {
-        _mockService.Setup(s => s.GetHarmonogramById(It.IsAny<int>())).Returns((Harmonogram)null);
+        
+          _mockService.Setup(s => s.PobierzPoId(It.IsAny<int>())).Returns((HarmonogramDTO)null);
+         
 
-        var result = _controller.Delete(1);
+         var result = _controller.Delete(1);
 
-        Assert.IsType<NotFoundResult>(result);
+         Assert.IsType<NotFoundResult>(result);
     }
+
 }

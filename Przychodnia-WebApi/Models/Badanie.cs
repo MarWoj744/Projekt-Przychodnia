@@ -24,6 +24,8 @@ namespace Models
         [StringLength(50)]
         public string Specjalizacja { get; set; }
 
+        public bool IsDeleted { get; set; } = false;
+
         public ICollection<WykonaneBadania> Wykonane { get; set; }
     }
 }

@@ -4,6 +4,7 @@ import { Badanie } from '../../models/badanie.model';
 import { BadanieService } from '../../services/badanie.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { catchError, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-badanie-edit',
@@ -32,13 +33,55 @@ export class BadanieEditComponent implements OnInit {
   }
   }
 
-  submitForm(): void {
 
-   console.log('Dane do wysłania: ', this.badanie);
-    if (this.badanie.id) {
-      this.badanieService.update(this.badanie).subscribe(() => this.save.emit());
-    } else {
-      this.badanieService.create(this.badanie).subscribe(() => this.save.emit());
-    }
+
+submitForm(): void {
+  console.log('Dane do wysłania przed modyfikacją: ', this.badanie);
+
+ 
+  const { wykonane, ...dataDoWyslania } = this.badanie;  
+
+  console.log('Dane po usunięciu wykonanego: ', dataDoWyslania);
+
+ 
+  if (this.badanie.id && this.badanie.id > 0) {
+    this.badanieService.update(dataDoWyslania)  
+      .pipe(
+        catchError(error => {
+          console.error('Błąd odpowiedzi z serwera:', error); 
+          if (error.error && error.error.errors) {
+            console.error('Błędy walidacji:', error.error.errors); 
+          }
+          return throwError(error); 
+        })
+      )
+      .subscribe({
+        next: () => {
+          this.save.emit();  
+        },
+        error: err => {
+          console.error('Wystąpił błąd podczas aktualizacji badania:', err);
+        }
+      });
+  } else {
+    
+    this.badanieService.create(dataDoWyslania)  
+      .pipe(
+        catchError(error => {
+          console.error('Błąd odpowiedzi z serwera:', error);
+          if (error.error && error.error.errors) {
+            console.error('Błędy walidacji:', error.error.errors); 
+          }
+          return throwError(error); 
+        })
+      )
+      .subscribe({
+        next: () => {
+          this.save.emit();  
+        },
+        error: err => {
+          console.error('Wystąpił błąd podczas tworzenia badania:', err);
+        }
+      });
   }
-}
+}}

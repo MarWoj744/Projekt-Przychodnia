@@ -14,7 +14,9 @@
 <div *ngIf="specjalizacja.invalid && specjalizacja.touched">Specjalizacja jest wymagana!</div>
     
 <div class="actions">
-      <button type="submit" [disabled]="badanieForm.invalid">Zapisz</button>
+      <button type="submit" [disabled]="badanieForm.invalid">
+        {{ badanie.id ? 'Zapisz zmiany' : 'Dodaj badanie' }}
+      </button>
       <button type="button" (click)="cancel.emit()">Anuluj</button>
     </div>
   </form>

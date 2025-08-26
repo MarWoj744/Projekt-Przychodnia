@@ -3,4 +3,5 @@ export interface Badanie {
   nazwa: string;
   cennik: number;
   specjalizacja: string;
+  wykonane?: boolean;
 }

@@ -53,22 +53,26 @@ namespace WebAPI.Controllers
         }
 
 
-        [HttpPut("{id}")]
-        public ActionResult Update(int id, [FromBody] BadanieDTO badanie)
-        {
-            Badanie badanie1 = map.BadanieToEntity(badanie);
-            if (id != badanie1.Id)
-                return BadRequest("Id nie pasuje do obiektu");
+         [HttpPut("{id}")]
+         public ActionResult Update(int id, [FromBody] BadanieDTO dto)
+          {
+               if (id != dto.Id)
+                  return BadRequest("Id nie pasuje do obiektu");
 
-            var istnieje = _badanieService.GetBadanieById(id);
-            if (istnieje == null)
-                return NotFound();
+              var istnieje = _badanieService.GetBadanieById(id);
+              if (istnieje == null)
+                  return NotFound();
+         istnieje.Nazwa = dto.Nazwa;
+            istnieje.Cennik = dto.Cennik;
+            istnieje.Specjalizacja = dto.Specjalizacja;
 
-            _badanieService.Update(badanie1);
-            _badanieService.save();
+             
+              _badanieService.save();
 
-            return NoContent();
-        }
+              return NoContent();
+          }
+       
+
 
 
         [HttpDelete("{id}")]

@@ -88,6 +88,7 @@ namespace Models
                 .HasIndex(h => new { h.LekarzId, h.DataOd, h.DataDo })
                 .HasDatabaseName("IX_Harmonogram_Lekarz_Range")
                 .IsUnique();
+            modelBuilder.Entity<Badanie>().HasQueryFilter(b => !b.IsDeleted);
         }
     }
 }

@@ -20,6 +20,10 @@ namespace DTOs
         [Required]
         public string Specjalizacja { get; set; }
 
-        public ICollection<WykonaneBadaniaDTO> Wykonane { get; set; }
+        // public ICollection<WykonaneBadaniaDTO> Wykonane { get; set; }
+        [System.Text.Json.Serialization.JsonIgnore]
+        public ICollection<WykonaneBadaniaDTO>? Wykonane { get; set; }
+
+
     }
 }

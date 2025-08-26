@@ -27,7 +27,13 @@ export class BadaniaComponent implements OnInit {
       this.badania = data;
     });
   }
-  
+  add(): void {
+    this.selectedBadanie = 
+    { id: 0, 
+      nazwa: '', 
+      cennik: 0, 
+      specjalizacja: '' };
+  }
 
   edit(b: Badanie): void {
     this.selectedBadanie = { ...b };
