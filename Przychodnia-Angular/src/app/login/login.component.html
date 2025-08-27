@@ -1,0 +1,19 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+  <div class="form-group">
+    <label for="login">Login:</label>
+    <input id="login" formControlName="login" />
+    <div *ngIf="loginForm.get('login')?.invalid && loginForm.get('login')?.touched" class="error-message">
+      Login jest wymagany.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="haslo">Hasło:</label>
+    <input id="haslo" type="password" formControlName="haslo" />
+    <div *ngIf="loginForm.get('haslo')?.invalid && loginForm.get('haslo')?.touched" class="error-message">
+      Hasło jest wymagane.
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="loginForm.invalid" class="submit-btn">Zaloguj się</button>
+</form>

@@ -1,5 +1,5 @@
-.register-form {
-  max-width: 400px;
+.login-form {
+  max-width: 350px;
   margin: 20px auto;
   padding: 15px;
   border: 1px solid #ddd;
@@ -21,8 +21,7 @@ label {
   color: #333;
 }
 
-input,
-select {
+input {
   padding: 8px 10px;
   font-size: 14px;
   border: 1px solid #ccc;
@@ -30,8 +29,7 @@ select {
   box-sizing: border-box;
 }
 
-input:focus,
-select:focus {
+input:focus {
   outline: none;
   border-color: #007bff;
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);

@@ -14,6 +14,10 @@ export class HomeComponent {
     this.router.navigate(['/register']);
   }
 
+  goToLogin() {
+    this.router.navigate(['/login']);
+  }
+
   goToLekarz() {
   this.router.navigate(['/lekarz']);
 }

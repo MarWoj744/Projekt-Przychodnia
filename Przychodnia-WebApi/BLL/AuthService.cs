@@ -3,11 +3,13 @@ using IBLL;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Models;
+using System;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
-
+using System.Threading.Tasks;
 
 namespace BLL
 {
@@ -87,8 +89,8 @@ namespace BLL
                     Haslo = PasswordHasher.HashPassword(registerDto.Haslo),
                     Rola = registerDto.Rola,
                     IsActive = true,
-                    Tytul = "dr", // domyślne
-                    Specjalizacja = "Ogólna" // domyślne
+                    Tytul = "dr",
+                    Specjalizacja = "Ogólna"
                 },
                 Rola.Recepcjonistka => new Recepcjonistka
                 {
