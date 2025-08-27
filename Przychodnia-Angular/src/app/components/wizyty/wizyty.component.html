@@ -7,16 +7,19 @@
     <thead>
       <tr>
         <th>Pacjent</th>
+        <th>Lekarz</th>
         <th>Data</th>
         <th>Godzina</th>
         <th>Status</th>
         <th>Badanie</th>
+        <th>Akcje</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let w of wizyty">
         <td>{{ w.pacjent }}</td>
-        <td>{{ w.data }}</td>
+       <td>{{ w.lekarz }}</td>
+        <td>{{ w.data | date: 'yyyy-MM-dd'}}</td>
         <td>{{ w.godzina }}</td>
         <td>{{ w.status }}</td>
         <td>{{ w.badanie || '-' }}</td>

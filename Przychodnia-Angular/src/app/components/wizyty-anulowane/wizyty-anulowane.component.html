@@ -12,7 +12,7 @@
   <tbody>
     <tr *ngFor="let w of wizytyAnulowane">
         <td>{{ w.pacjent }}</td>
-        <td>{{ w.data }}</td>
+        <td>{{ w.data | date:'yyyy-MM-dd' }}</td>
         <td>{{ w.godzina }}</td>
         <td>{{ w.badanie || '-' }}</td>
     </tr>

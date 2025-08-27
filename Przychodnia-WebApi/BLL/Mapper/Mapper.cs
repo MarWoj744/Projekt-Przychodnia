@@ -364,6 +364,22 @@ namespace Models.Mapper
                 Opis = dto.Opis
             };
         }
+        public WizytaWidokDTO WizytaToWidokDTO(Wizyta wizyta)
+        {
+            if (wizyta == null) return null;
+
+            return new WizytaWidokDTO
+            {
+                Id = wizyta.Id,
+                Pacjent = wizyta.Pacjent != null ? $"{wizyta.Pacjent.Imie} {wizyta.Pacjent.Nazwisko}" : "-",
+                Lekarz = wizyta.Lekarz != null ? $"{wizyta.Lekarz.Imie} {wizyta.Lekarz.Nazwisko}" : "-",
+                Badanie = wizyta.Badania != null && wizyta.Badania.Any()
+                    ? string.Join(", ", wizyta.Badania.Select(b => b.Badanie?.Nazwa))
+                    : "-",
+                Data = wizyta.Data,
+                Status = wizyta.Status.ToString()
+            };
+        }
 
 
     }

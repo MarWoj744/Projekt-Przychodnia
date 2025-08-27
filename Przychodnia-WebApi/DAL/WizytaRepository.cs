@@ -13,11 +13,15 @@ namespace DAL
             _context = context;
         }
 
-        public IQueryable<Wizyta> PobierzWszystkie()
-        {
-            return _context.Wizyty;
-        }
-
+         public IQueryable<Wizyta> PobierzWszystkie()
+         {
+             return _context.Wizyty
+        .Include(w => w.Pacjent)
+                .Include(w => w.Lekarz)
+                .Include(w => w.Badania)
+                    .ThenInclude(b => b.Badanie);
+         }
+        
         public IQueryable<Wizyta> PobierzWizytyLekarza(int lekarzId, DateTime start, DateTime end)
         {
             return _context.Wizyty
@@ -55,13 +59,25 @@ namespace DAL
 
         public IQueryable<Wizyta> PobierzWizytyAnulowane()
         {
-            return _context.Wizyty.Where(w => w.Status == StatusWizyty.Anulowana);
+            return _context.Wizyty
+         .Include(w => w.Pacjent)
+                .Include(w => w.Lekarz)
+                .Include(w => w.Badania)
+                    .ThenInclude(b => b.Badanie)
+        .Where(w => w.Status == StatusWizyty.Anulowana);
         }
+       
+
 
         public IQueryable<Wizyta> PobierzWizytyAnulowaneLekarza(int lekarzId)
         {
             return _context.Wizyty
-                .Where(w => w.Status == StatusWizyty.Anulowana && w.LekarzId == lekarzId);
+             .Include(w => w.Pacjent)
+            .Include(w => w.Lekarz)
+            .Include(w => w.Badania)
+                .ThenInclude(b => b.Badanie)
+            .Where(w => w.Status == StatusWizyty.Anulowana && w.LekarzId == lekarzId);
+           
         }
 
     }

@@ -1,6 +1,6 @@
 export interface Wizyta {
   id: number;
-  lekarzId: number;
+  lekarz: string;
   pacjent: string;
   data: string; 
   godzina:  string, 

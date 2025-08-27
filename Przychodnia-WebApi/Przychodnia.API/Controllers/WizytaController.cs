@@ -21,12 +21,15 @@ namespace Przychodnia.API.Controllers
             map = new Mapper();
         }
 
+       
         [HttpGet]
         public IActionResult GetAll()
         {
-            var wizyty = _service.GetAll();
-            return Ok(wizyty);
+            var wizyty = _service.GetAll().ToList();
+            var result = wizyty.Select(w => map.WizytaToWidokDTO(w)).ToList();
+            return Ok(result);
         }
+
 
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
@@ -86,16 +89,21 @@ namespace Przychodnia.API.Controllers
         [HttpGet("anulowane")]
         public IActionResult GetAnulowane()
         {
-            var result = _service.GetWizytyAnulowane().ToList();
+            var wizyty = _service.GetWizytyAnulowane().ToList();
+            var result = wizyty.Select(w => map.WizytaToWidokDTO(w)).ToList();
             return Ok(result);
         }
 
-        [HttpGet("anulowane/lekarz/{lekarzId}")]
-        public IActionResult GetAnulowaneByLekarz(int lekarzId)
-        {
-            var result = _service.GetWizytyAnulowaneLekarza(lekarzId).ToList();
-            return Ok(result);
-        }
+
+         [HttpGet("anulowane/lekarz/{lekarzId}")]
+         public IActionResult GetAnulowaneByLekarz(int lekarzId)
+         {
+             var wizyty = _service.GetWizytyAnulowaneLekarza(lekarzId).ToList();
+         var result = wizyty.Select(w => map.WizytaToWidokDTO(w)).ToList();
+             return Ok(result);
+         }
+      
+
 
         [HttpPost("{id}/anuluj")]
         public async Task<IActionResult> AnulujWizyte(int id)
