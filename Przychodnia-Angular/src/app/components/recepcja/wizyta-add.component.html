@@ -1,0 +1,25 @@
+<div class="wizyty-container">
+  <h2>Dodaj nową wizytę</h2>
+
+  <div *ngIf="error" class="error">{{ error }}</div>
+  <div *ngIf="success" class="success">{{ success }}</div>
+
+  <form (ngSubmit)="onSubmit()">
+    <label>Pacjent:</label>
+    <input type="text" [(ngModel)]="wizyta.pacjent" name="pacjent" required />
+
+    <label>Lekarz:</label>
+    <input type="text" [(ngModel)]="wizyta.lekarz" name="lekarz" required />
+
+    <label>Data:</label>
+    <input type="date" [(ngModel)]="wizyta.data" name="data" required />
+
+    <label>Godzina:</label>
+    <input type="time" [(ngModel)]="wizyta.godzina" name="godzina" required />
+
+    <label>Badanie (opcjonalne):</label>
+    <input type="text" [(ngModel)]="wizyta.badanie" name="badanie" />
+
+    <button type="submit">Dodaj wizytę</button>
+  </form>
+</div>

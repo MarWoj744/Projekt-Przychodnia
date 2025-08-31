@@ -1,6 +1,11 @@
 <h2>Twoje wizyty</h2>
 <div class="wizyty-container">
   <h2>Lista wizyt</h2>
+
+  <a routerLink="/recepcja/wizyty/dodaj">
+    <button class="add-button">Dodaj wizytę</button>
+  </a>
+
   <div *ngIf="error" class="error">{{ error }}</div>
   <table *ngIf="wizyty.length > 0">
     

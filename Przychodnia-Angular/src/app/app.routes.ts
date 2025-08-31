@@ -10,13 +10,21 @@ import { BadaniaComponent } from './components/badania/badania.component';
 import { LekarzHomeComponent } from './components/lekarz-home/lekarz-home.component';
 import { HistoriaBadanComponent } from './components/historia-badan/historia-badan.component';
 import { LoginComponent } from './login/login.component';
+import { WizytaAddComponent } from './components/recepcja/wizyta-add.component';
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
 
- 
+ {
+  path: 'recepcja',
+  children: [
+    { path: 'wizyty', component: WizytyComponent },
+    { path: 'wizyty/dodaj', component: WizytaAddComponent }
+  ]
+},
+
  {
   path: 'lekarz',
   component: LekarzComponent,

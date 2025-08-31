@@ -23,6 +23,10 @@
       <td>
         <button (click)="rozpocznijEdycje(h)">Edytuj</button>
         <button (click)="usun(h.id)">Usuń</button>
+
+        <a [routerLink]="['/recepcja/wizyty/dodaj']" [queryParams]="{ lekarzId: h.lekarzId, dataOd: h.dataOd }">
+          <button>Umów wizytę</button>
+        </a>
       </td>
     </tr>
   </tbody>
