@@ -12,8 +12,8 @@ using Models;
 namespace Models.Migrations
 {
     [DbContext(typeof(DbPrzychodnia))]
-    [Migration("20250818140211_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20250901163608_localdb")]
+    partial class localdb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -36,6 +36,9 @@ namespace Models.Migrations
                     b.Property<decimal>("Cennik")
                         .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Nazwa")
                         .IsRequired()
