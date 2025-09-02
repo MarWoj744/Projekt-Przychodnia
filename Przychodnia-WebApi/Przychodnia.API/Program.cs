@@ -104,8 +104,8 @@ using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<DbPrzychodnia>();
 
-    db.Database.Migrate();
-    DbInit.Seed(db);
+   /* db.Database.Migrate();
+    DbInit.Seed(db);*/
 }
 
 // Configure the HTTP request pipeline.

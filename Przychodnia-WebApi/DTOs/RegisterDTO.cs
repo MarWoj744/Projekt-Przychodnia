@@ -51,6 +51,6 @@ namespace DTOs
         public string PotwierdzHaslo { get; set; }
 
         [Required]
-        public Rola Rola { get; set; }
+        public string Rola { get; set; }
     }
 }

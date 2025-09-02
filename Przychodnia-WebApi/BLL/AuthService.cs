@@ -65,7 +65,7 @@ namespace BLL
 
             Osoba newUser = registerDto.Rola switch
             {
-                Rola.Pacjent => new Pacjent
+                "Pacjent" => new Pacjent
                 {
                     Imie = registerDto.Imie,
                     Nazwisko = registerDto.Nazwisko,
@@ -75,10 +75,10 @@ namespace BLL
                     Email = registerDto.Email,
                     Login = registerDto.Login,
                     Haslo = PasswordHasher.HashPassword(registerDto.Haslo),
-                    Rola = registerDto.Rola,
+                    Rola = Rola.Pacjent,
                     IsActive = true
                 },
-                Rola.Lekarz => new Lekarz
+                "Lekarz" => new Lekarz
                 {
                     Imie = registerDto.Imie,
                     Nazwisko = registerDto.Nazwisko,
@@ -87,12 +87,12 @@ namespace BLL
                     Email = registerDto.Email,
                     Login = registerDto.Login,
                     Haslo = PasswordHasher.HashPassword(registerDto.Haslo),
-                    Rola = registerDto.Rola,
+                    Rola = Rola.Lekarz,
                     IsActive = true,
                     Tytul = "dr",
                     Specjalizacja = "Ogólna"
                 },
-                Rola.Recepcjonistka => new Recepcjonistka
+                "Recepcjonistka"=> new Recepcjonistka
                 {
                     Imie = registerDto.Imie,
                     Nazwisko = registerDto.Nazwisko,
@@ -101,7 +101,7 @@ namespace BLL
                     Email = registerDto.Email,
                     Login = registerDto.Login,
                     Haslo = PasswordHasher.HashPassword(registerDto.Haslo),
-                    Rola = registerDto.Rola,
+                    Rola = Rola.Recepcjonistka,
                     IsActive = true
                 },
                 _ => throw new ArgumentException("Nieprawidłowa rola")
