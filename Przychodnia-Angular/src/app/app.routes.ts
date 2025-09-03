@@ -11,6 +11,9 @@ import { LekarzHomeComponent } from './components/lekarz-home/lekarz-home.compon
 import { HistoriaBadanComponent } from './components/historia-badan/historia-badan.component';
 import { LoginComponent } from './login/login.component';
 import { WizytaAddComponent } from './components/recepcja/wizyta-add.component';
+import { RecepcjaComponent } from './components/recepcja/recepcja.component';
+import { RecepcjaHomeComponent } from './components/recepcja-home/recepcja-home.component';
+
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
@@ -19,9 +22,13 @@ export const routes: Routes = [
 
  {
   path: 'recepcja',
+  component: RecepcjaComponent,
   children: [
-    { path: 'wizyty', component: WizytyComponent },
-    { path: 'wizyty/dodaj', component: WizytaAddComponent }
+    { path: '', redirectTo: 'strona-glowna', pathMatch: 'full' },
+      { path: 'strona-glowna', component: RecepcjaHomeComponent },
+      { path: 'wizyty', component: WizytyComponent },
+      { path: 'wizyty/dodaj', component: WizytaAddComponent },
+      { path: 'wizyty-anulowane', component: WizytyAnulowaneComponent },
   ]
 },
 

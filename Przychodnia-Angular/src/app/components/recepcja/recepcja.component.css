@@ -1,0 +1,108 @@
+.panel-recepcji {
+  display: flex;
+  height: 100vh;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background-color: #f5f9fc;
+}
+
+.menu {
+  width: 230px;
+  background: linear-gradient(180deg, #006d77, #83c5be);
+  display: flex;
+  flex-direction: column;
+  padding: 20px 15px;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
+}
+
+.menu a {
+  color: #ffffff;
+  padding: 12px 15px;
+  text-decoration: none;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.menu a.active {
+  background-color: #edf6f9;
+  color: #006d77;
+  font-weight: bold;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.menu a:hover {
+  background-color: #edf6f9;
+  color: #006d77;
+  transform: translateX(5px);
+}
+.recepcja-info {
+  margin-top: auto; 
+  padding: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+.recepcja-info p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.logout-btn {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background-color: #ff6b6b;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+  background-color: #ff4c4c;
+}
+
+.content {
+  flex-grow: 1;
+  padding: 25px;
+  background-color: #ffffff;
+  overflow-y: auto;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.05);
+}
+
+.content h1, 
+.content h2, 
+.content h3 {
+  color: #006d77;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #83c5be;
+  padding-bottom: 5px;
+}
+
+.content table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #f8fafc;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.content table th {
+  background-color: #83c5be;
+  color: white;
+  padding: 10px;
+  text-align: left;
+}
+
+.content table td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.content table tr:hover {
+  background-color: #edf6f9;
+}

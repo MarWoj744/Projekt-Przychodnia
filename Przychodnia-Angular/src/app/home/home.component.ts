@@ -20,5 +20,9 @@ export class HomeComponent {
 
   goToLekarz() {
   this.router.navigate(['/lekarz']);
-}
+  }
+
+  goToRecepcja() {
+  this.router.navigate(['/recepcja']);
+  }
 }
