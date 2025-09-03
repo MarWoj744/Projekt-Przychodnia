@@ -5,27 +5,36 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-wizyty-anulowane',
+  standalone : true,
   imports: [CommonModule],
   templateUrl: './wizyty-anulowane.component.html',
   styleUrls: ['./wizyty-anulowane.component.css']
 })
+
 export class WizytyAnulowaneComponent implements OnInit {
-[x: string]: any;
-    wizytyAnulowane: Wizyta[] = [];
+  wizytyAnulowane: Wizyta[] = [];
   error: string | null = null;
-  lekarzId = 1; 
 
   constructor(private wizytyService: WizytaService) {}
 
-  
-   ngOnInit(): void {
+  ngOnInit(): void {
     this.loadWizytyAnulowane();
   }
 
-  loadWizytyAnulowane() {
-    this.wizytyService.getWizytyAnulowane().subscribe({
+   loadWizytyAnulowane() {
+    const userRole = localStorage.getItem('rola');
+    const userId = Number(localStorage.getItem('userId'));
+
+    if (userRole === 'Lekarz') {
+    this.wizytyService.getAnulowaneByLekarzId(userId).subscribe({
       next: data => this.wizytyAnulowane = data,
       error: err => this.error = 'Błąd wczytywania anulowanych wizyt'
     });
+    } else {
+      this.wizytyService.getWizytyAnulowane().subscribe({
+        next: data => this.wizytyAnulowane = data,
+        error: err => this.error = 'Błąd wczytywania anulowanych wizyt'
+      });
+    }
   }
 }

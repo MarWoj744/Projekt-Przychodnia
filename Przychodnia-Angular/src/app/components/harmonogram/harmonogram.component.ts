@@ -16,7 +16,7 @@ import { RouterModule } from '@angular/router';
 export class HarmonogramComponent implements OnInit {
   harmonogram: Harmonogram[] = [];
   error: string | null = null;
-
+  isLekarz: boolean = false;
   
   aktualnyHarmonogram: Harmonogram = {
     id: 0,
@@ -31,14 +31,32 @@ export class HarmonogramComponent implements OnInit {
   constructor(private harmonogramService: HarmonogramService) {}
 
   ngOnInit(): void {
+    const userRole = localStorage.getItem('rola');
+    const userId = Number(localStorage.getItem('userId'));
+    this.isLekarz = (userRole === 'Lekarz');
+  
+    if (userRole === 'Lekarz') {
+      this.aktualnyHarmonogram.lekarzId = userId;
+    }
+
     this.loadHarmonogram();
   }
 
   loadHarmonogram() {
-    this.harmonogramService.getAll().subscribe({
+  const userRole = localStorage.getItem('rola');
+  const userId = Number(localStorage.getItem('userId'));
+
+  if (userRole === 'Lekarz') {
+    this.harmonogramService.getByLekarzId(userId).subscribe({
       next: (data) => this.harmonogram = data,
       error: () => this.error = 'Błąd ładowania harmonogramu'
     });
+  } else {
+      this.harmonogramService.getAll().subscribe({
+        next: (data) => this.harmonogram = data,
+        error: () => this.error = 'Błąd ładowania harmonogramu'
+      });
+    }
   }
 
   rozpocznijEdycje(h: Harmonogram) {
@@ -57,37 +75,33 @@ export class HarmonogramComponent implements OnInit {
     };
   }
 
-
-    zapisz() {
-  if (this.edycjaTryb) {
-   
-    this.harmonogramService.update(this.aktualnyHarmonogram.id, this.aktualnyHarmonogram).subscribe({
-      next: (response) => {
-        console.log('Odpowiedź z serwera podczas aktualizacji:', response); 
-        this.loadHarmonogram();
-        this.anulujEdycje();
-      },
-      error: (error) => {
-        console.error('Błąd podczas aktualizacji:', error); 
-        this.error = 'Błąd podczas aktualizacji';
-      }
-    });
-  } else {
-  
-    this.harmonogramService.create(this.aktualnyHarmonogram).subscribe({
-      next: (response) => {
-        console.log('Odpowiedź z serwera podczas tworzenia:', response); 
-        this.loadHarmonogram();
-        this.anulujEdycje();
-      },
-      error: (error) => {
-        console.error('Błąd podczas tworzenia:', error); 
-        this.error = 'Błąd podczas tworzenia';
-      }
-    });
+  zapisz() {
+    if (this.edycjaTryb) {
+      this.harmonogramService.update(this.aktualnyHarmonogram.id, this.aktualnyHarmonogram).subscribe({
+        next: (response) => {
+          console.log('Odpowiedź z serwera podczas aktualizacji:', response); 
+          this.loadHarmonogram();
+          this.anulujEdycje();
+        },
+        error: (error) => {
+          console.error('Błąd podczas aktualizacji:', error); 
+          this.error = 'Błąd podczas aktualizacji';
+        }
+      });
+    } else {
+      this.harmonogramService.create(this.aktualnyHarmonogram).subscribe({
+        next: (response) => {
+          console.log('Odpowiedź z serwera podczas tworzenia:', response); 
+          this.loadHarmonogram();
+          this.anulujEdycje();
+        },
+        error: (error) => {
+          console.error('Błąd podczas tworzenia:', error); 
+          this.error = 'Błąd podczas tworzenia';
+        }
+      });
+    }
   }
-}
-
 
   usun(id: number) {
     if (confirm('Na pewno chcesz usunąć ten harmonogram?')) {
@@ -97,6 +111,4 @@ export class HarmonogramComponent implements OnInit {
       });
     }
   }
-
-  
 }

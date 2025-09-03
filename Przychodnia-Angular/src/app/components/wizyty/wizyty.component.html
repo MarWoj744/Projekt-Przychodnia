@@ -2,9 +2,9 @@
 <div class="wizyty-container">
   <h2>Lista wizyt</h2>
 
-  <a routerLink="/recepcja/wizyty/dodaj">
-    <button class="add-button">Dodaj wizytę</button>
-  </a>
+  <button class="add-button" [routerLink]="['/recepcja/wizyty/dodaj']">
+    Dodaj wizytę
+  </button>
 
   <div *ngIf="error" class="error">{{ error }}</div>
   <table *ngIf="wizyty.length > 0">
