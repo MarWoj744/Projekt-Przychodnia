@@ -13,6 +13,7 @@ namespace BLL
     public class HarmonogramService : IHarmonogramService
     {
         private readonly IHarmonogramRepository _repo;
+        private readonly ILekarzRepository _lekarzRepository;
 
         public HarmonogramService(IHarmonogramRepository repo)
         {
@@ -64,6 +65,9 @@ namespace BLL
 
         public void Dodaj(HarmonogramDTO dto)
         {
+            var lekarz = _lekarzRepository.GetLekarzById(dto.LekarzId);
+            if (lekarz == null)
+                throw new Exception("Nie ma takiego lekarza!");
             var h = new Harmonogram
             {
                 LekarzId = dto.LekarzId,

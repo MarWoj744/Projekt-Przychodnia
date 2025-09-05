@@ -20,7 +20,7 @@ namespace Models
         public DateTime DataOd { get; set; }
         [Required]
         public DateTime DataDo { get; set; }
-        [StringLength(200)]
-        public string Opis { get; set; }
+
+        public string? Opis { get; set; }
     }
 }

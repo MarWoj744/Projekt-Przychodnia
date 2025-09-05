@@ -12,7 +12,7 @@ using Models;
 namespace Models.Migrations
 {
     [DbContext(typeof(DbPrzychodnia))]
-    [Migration("20250901163608_localdb")]
+    [Migration("20250905105332_localdb")]
     partial class localdb
     {
         /// <inheritdoc />
@@ -73,7 +73,6 @@ namespace Models.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Opis")
-                        .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
@@ -244,7 +243,8 @@ namespace Models.Migrations
 
                     b.Property<string>("PESEL")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(11)
+                        .HasColumnType("nvarchar(11)");
 
                     b.HasIndex("PESEL")
                         .IsUnique()

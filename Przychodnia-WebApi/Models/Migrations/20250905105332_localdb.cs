@@ -45,7 +45,7 @@ namespace Models.Migrations
                     RefreshToken = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
                     Tytul = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: true),
                     Specjalizacja = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
-                    PESEL = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    PESEL = table.Column<string>(type: "nvarchar(11)", maxLength: 11, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -61,7 +61,7 @@ namespace Models.Migrations
                     LekarzId = table.Column<int>(type: "int", nullable: false),
                     DataOd = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DataDo = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Opis = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false)
+                    Opis = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true)
                 },
                 constraints: table =>
                 {

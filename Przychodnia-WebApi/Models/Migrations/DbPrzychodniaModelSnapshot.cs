@@ -70,7 +70,6 @@ namespace Models.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Opis")
-                        .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
@@ -241,7 +240,8 @@ namespace Models.Migrations
 
                     b.Property<string>("PESEL")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(11)
+                        .HasColumnType("nvarchar(11)");
 
                     b.HasIndex("PESEL")
                         .IsUnique()
@@ -301,7 +301,7 @@ namespace Models.Migrations
                         .WithMany("Wykonane")
                         .HasForeignKey("BadanieId")
                         .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .IsRequired(false);
 
                     b.HasOne("Models.Wizyta", "Wizyta")
                         .WithMany("Badania")

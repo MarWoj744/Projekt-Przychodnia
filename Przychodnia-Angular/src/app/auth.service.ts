@@ -16,6 +16,11 @@ export interface RegisterDTO {
   rola: string; 
 }
 
+export interface LoginDto {
+  login:string;
+  haslo:string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -26,5 +31,9 @@ export class AuthService {
 
   register(userData: RegisterDTO): Observable<any> {
     return this.http.post(`${this.apiUrl}/register`, userData);
+  }
+
+  login(userData: LoginDto): Observable<any> {
+    return this.http.post(`${this.apiUrl}/login`, userData);
   }
 }

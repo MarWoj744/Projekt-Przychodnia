@@ -34,8 +34,8 @@ namespace Models
                 .HasValue<Recepcjonistka>(Rola.Recepcjonistka);
 
             modelBuilder.Entity<Pacjent>()
-                .HasIndex(p => p.PESEL)
-                .IsUnique();
+                .Property(p => p.PESEL)
+                .HasMaxLength(11);
 
             modelBuilder.Entity<Wizyta>()
                 .HasOne(w => w.Pacjent)
@@ -72,8 +72,9 @@ namespace Models
                 .HasPrecision(18, 2);
 
             modelBuilder.Entity<Harmonogram>()
-               .Property(h => h.Opis)
-               .HasMaxLength(200);
+                .Property(h => h.Opis)
+                .HasMaxLength(200)
+                .IsRequired(false);
 
             modelBuilder.Entity<Harmonogram>()
                 .HasOne(h => h.Lekarz)

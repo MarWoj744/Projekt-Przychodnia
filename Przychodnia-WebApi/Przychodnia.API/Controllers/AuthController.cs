@@ -17,6 +17,19 @@ namespace Przychodnia.API.Controllers
             _authService = authService;
         }
 
+        [HttpPost("login")]
+        public async Task<IActionResult> login([FromBody] LoginDTO loginDTO)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var result = await _authService.LoginAsync(loginDTO);
+            if (result == null)
+                return BadRequest("Logowanie sie nie powiodlo. Złe hasło lub login");
+
+            return Ok(result);
+        }
+
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterDTO registerDto)
         {

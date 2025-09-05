@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AuthService } from '../auth.service';
+import { CommonModule } from '@angular/common';
 
 interface AuthResponse {
   token: string;
@@ -19,7 +21,7 @@ interface AuthResponse {
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule, FormsModule],
+  imports: [ReactiveFormsModule, FormsModule,CommonModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
@@ -30,7 +32,8 @@ export class LoginComponent {
   constructor(
     private fb: FormBuilder, 
     private http: HttpClient, 
-    private router: Router
+    private router: Router,
+    private authService: AuthService,
   ) {
     this.loginForm = this.fb.group({
       login: ['', Validators.required],
@@ -49,8 +52,13 @@ export class LoginComponent {
       haslo: this.loginForm.value.haslo
     };
 
-    this.http.post<AuthResponse>('api/auth/login', loginData).subscribe({
+    this.authService.login(loginData).subscribe({
       next: (response) => {
+        console.log('Logowanie nie udane:', response);
+        alert(
+          'Zalogowany'
+        );
+
         if (response && response.token) {
           localStorage.setItem('jwtToken', response.token);
           localStorage.setItem('refreshToken', response.refreshToken);
@@ -62,9 +70,13 @@ export class LoginComponent {
           this.errorMessage = 'Niepoprawna odpowiedź z serwera.';
         }
       },
-      error: (err) => {
-        this.errorMessage = err.error || 'Błąd podczas logowania. Sprawdź dane.';
-      }
+      error: (error) => {
+        console.error('Błąd podczas Logowania:', error);
+        alert(
+          'Wystąpił błąd podczas Logowania: ' +
+            (error.error || error.message || 'Nieznany błąd')
+        );
+      },
     });
   }
 }
