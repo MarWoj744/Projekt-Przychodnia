@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { WizytaService } from '../../services/wizyty.service';
+import { WizytyService } from '../../services/wizyty.service';
 import { Wizyta } from '../../models/wizyta.model';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -17,7 +17,7 @@ export class WizytyComponent  implements OnInit {
   wizyty: Wizyta[] = [];
   error: string = '';
 
-  constructor(private wizytaService: WizytaService) {}
+  constructor(private wizytaService: WizytyService) {}
 
   ngOnInit(): void {
     this.loadWizyty();

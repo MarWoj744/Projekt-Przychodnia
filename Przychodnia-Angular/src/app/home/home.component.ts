@@ -25,4 +25,7 @@ export class HomeComponent {
   goToRecepcja() {
   this.router.navigate(['/recepcja']);
   }
+  goToPacjent(){
+    this.router.navigate(['/pacjent']);
+  }
 }

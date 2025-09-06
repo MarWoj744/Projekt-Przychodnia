@@ -1,0 +1,21 @@
+<h2>Wykonane badania</h2>
+
+<table *ngIf="badania.length; else brak">
+  <thead>
+    <tr>
+      <th>Data</th>
+      <th>Wyniki</th>
+      <th>Zalecenia</th>
+      <th>Akcje</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let b of badania">
+      <td>{{ b.data | date:'short' }}</td>
+      <td>{{ b.wyniki || '—' }}</td>
+      <td>{{ b.zalecenia || '—' }}</td>
+      <td><button class="btn" (click)="pobierzPdf(b)">Pobierz PDF</button></td>
+    </tr>
+  </tbody>
+</table>
+<ng-template #brak><p class="muted">Brak wykonanych badań.</p></ng-template>

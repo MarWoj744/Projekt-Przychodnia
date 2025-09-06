@@ -66,7 +66,11 @@ namespace Models
                 .WithMany(b => b.Wykonane)
                 .HasForeignKey(wb => wb.BadanieId)
                 .OnDelete(DeleteBehavior.Restrict);
-
+            modelBuilder.Entity<WykonaneBadania>()
+                .HasOne(wb=> wb.Pacjent)
+                .WithMany(b=>b.WykonaneBadania)
+                .HasForeignKey(wb => wb.PacjentId)
+                .OnDelete(DeleteBehavior.Restrict);
             modelBuilder.Entity<Badanie>()
                 .Property(b => b.Cennik)
                 .HasPrecision(18, 2);

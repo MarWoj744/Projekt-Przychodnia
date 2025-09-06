@@ -138,35 +138,40 @@ namespace DAL
                     Wyniki = "Wyniki w normie",
                     WizytaId = wizyty[0].Id,
                     BadanieId = badania[0].Id,
-                    Zalecenia = "ograniczyć zbędny wysiłek"
+                    Zalecenia = "ograniczyć zbędny wysiłek",
+                    PacjentId=pacjent1.Id
                 },
                 new WykonaneBadania {
                     Data = DateTime.Now.AddDays(-8),
                     Wyniki = "Wyniki dobre",
                     WizytaId = wizyty[1].Id,
                     BadanieId = badania[1].Id,
-                    Zalecenia = "cieszyć się życiem"
+                    Zalecenia = "cieszyć się życiem",
+                    PacjentId=pacjent2.Id
                 },
                 new WykonaneBadania {
                     Data = DateTime.Now.AddDays(-7),
                     Wyniki = "Nieprawidłowości niewielkie",
                     WizytaId = wizyty[2].Id,
                     BadanieId = badania[1].Id,
-                    Zalecenia = "wykonać dodatkowe prześwietlenie"
+                    Zalecenia = "wykonać dodatkowe prześwietlenie",
+                    PacjentId=pacjent1.Id
                 },
                 new WykonaneBadania {
                     Data = DateTime.Now.AddDays(-3),
                     Wyniki = "Brak zmian patologicznych",
                     WizytaId = wizyty[3].Id,
                     BadanieId = badania[3].Id,
-                    Zalecenia = "kontrolować co miesiąc przez rok na badaniu"
+                    Zalecenia = "kontrolować co miesiąc przez rok na badaniu",
+                    PacjentId=pacjent2.Id
                 },
                 new WykonaneBadania {
                     Data = DateTime.Now.AddDays(-1),
                     Wyniki = "Delikatne odchylenia",
                     WizytaId = wizyty[4].Id,
                     BadanieId = badania[4].Id,
-                    Zalecenia = "paracetamol dwa razy dziennie"
+                    Zalecenia = "paracetamol dwa razy dziennie",
+                    PacjentId=pacjent1.Id
                 }
             };
             context.WykonaneBadania.AddRange(wykonaneBadania);

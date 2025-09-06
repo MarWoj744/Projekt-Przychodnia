@@ -13,6 +13,7 @@ namespace IDAL_
         //Task<Badanie?> GetBadanieByIdAsync(int id);
         //Task DodajAsync(WykonaneBadania wykonaneBadania);
         IQueryable<WykonaneBadania> GetAll();
+        IQueryable<WykonaneBadania> getByPacjentId(int pacjentId);
         WykonaneBadania GetWykonaneBadaniaById(int id);
         void dodaj(WykonaneBadania badania);
         void update(WykonaneBadania badania);

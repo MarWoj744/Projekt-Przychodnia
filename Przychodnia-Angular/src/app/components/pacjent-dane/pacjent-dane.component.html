@@ -1,0 +1,11 @@
+<h2>Moje dane</h2>
+<table class="details" *ngIf="(pacjent$ | async) as p; else brak">
+  <tbody>
+    <tr><th>Imię</th><td>{{ p.imie }}</td></tr>
+    <tr><th>Nazwisko</th><td>{{ p.nazwisko }}</td></tr>
+    <tr><th>PESEL</th><td>{{ p.pesel }}</td></tr>
+    <tr><th>Telefon</th><td>{{ p.telefon }}</td></tr>
+    <tr><th>Adres</th><td>{{ p.adres }}</td></tr>
+  </tbody>
+</table>
+<ng-template #brak><p class="muted">Brak zalogowanego pacjenta.</p></ng-template>

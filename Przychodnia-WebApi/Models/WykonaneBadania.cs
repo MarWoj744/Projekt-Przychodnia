@@ -31,6 +31,10 @@ namespace Models
         public int BadanieId { get; set; }
         [ForeignKey("BadanieId")]
         public Badanie Badanie { get; set; }
+        [Required]
+        [ForeignKey("PacjentId")]
+        public int PacjentId { get; set; }
+        public Pacjent Pacjent { get; set; }
         [AllowNull]
         public string Zalecenia {  get; set; }
     }

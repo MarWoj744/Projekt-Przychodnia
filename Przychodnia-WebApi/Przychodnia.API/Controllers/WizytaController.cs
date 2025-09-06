@@ -21,7 +21,7 @@ namespace Przychodnia.API.Controllers
             map = new Mapper();
         }
 
-       
+
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -85,7 +85,12 @@ namespace Przychodnia.API.Controllers
             var wizyty = _service.GetWizytyLekarza(lekarzId, start, end);
             return Ok(wizyty);
         }
-
+        [HttpGet("pacjent/{pacjentId}")]
+        public IActionResult getWizytyPacjenta(int id) 
+        {
+        var wizyty =_service.GetWizytyPacjenta(id);
+            return Ok(wizyty);
+        }
         [HttpGet("anulowane")]
         public IActionResult GetAnulowane()
         {

@@ -23,6 +23,11 @@ namespace DAL
             return _context.WykonaneBadania.FirstOrDefault(b => b.Id == id);
         }
 
+        public IQueryable<WykonaneBadania> getByPacjentId(int pacjentId)
+        {
+            return _context.WykonaneBadania
+                .Where(w => w.PacjentId == pacjentId);
+        }
         public void dodaj(WykonaneBadania badania)
         {
             _context.WykonaneBadania.Add(badania);

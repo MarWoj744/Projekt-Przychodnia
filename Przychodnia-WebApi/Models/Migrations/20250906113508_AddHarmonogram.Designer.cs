@@ -12,8 +12,8 @@ using Models;
 namespace Models.Migrations
 {
     [DbContext(typeof(DbPrzychodnia))]
-    [Migration("20250905105332_localdb")]
-    partial class localdb
+    [Migration("20250906113508_AddHarmonogram")]
+    partial class AddHarmonogram
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -199,6 +199,9 @@ namespace Models.Migrations
                     b.Property<DateTime>("Data")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("PacjentId")
+                        .HasColumnType("int");
+
                     b.Property<int>("WizytaId")
                         .HasColumnType("int");
 
@@ -214,6 +217,8 @@ namespace Models.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("BadanieId");
+
+                    b.HasIndex("PacjentId");
 
                     b.HasIndex("WizytaId");
 
@@ -306,6 +311,12 @@ namespace Models.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("Models.Pacjent", "Pacjent")
+                        .WithMany("WykonaneBadania")
+                        .HasForeignKey("PacjentId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.HasOne("Models.Wizyta", "Wizyta")
                         .WithMany("Badania")
                         .HasForeignKey("WizytaId")
@@ -313,6 +324,8 @@ namespace Models.Migrations
                         .IsRequired();
 
                     b.Navigation("Badanie");
+
+                    b.Navigation("Pacjent");
 
                     b.Navigation("Wizyta");
                 });
@@ -337,6 +350,8 @@ namespace Models.Migrations
             modelBuilder.Entity("Models.Pacjent", b =>
                 {
                     b.Navigation("Wizyty");
+
+                    b.Navigation("WykonaneBadania");
                 });
 
             modelBuilder.Entity("Models.Recepcjonistka", b =>

@@ -41,7 +41,10 @@ namespace BLLTests
                 .Where(w => w.LekarzId == lekarzId && w.Data >= start && w.Data <= end)
                 .AsQueryable();
         }
-
+        public IQueryable<Wizyta> GetWizytyPacjenta(int pacjentId)
+        {
+            return null;
+        }
         public void save()
         {
             SaveCalled = true;

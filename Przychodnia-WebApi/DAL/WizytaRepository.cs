@@ -27,7 +27,11 @@ namespace DAL
             return _context.Wizyty
                 .Where(w => w.LekarzId == lekarzId && w.Data >= start && w.Data <= end);
         }
-
+        public IQueryable<Wizyta> GetWizytyPacjenta(int pacjentId)
+        {
+            return _context.Wizyty
+                .Where(w => w.PacjentId == pacjentId);
+        }
         public Wizyta getWizytaById(int id)
         {
             return _context.Wizyty.FirstOrDefault(w => w.Id == id);

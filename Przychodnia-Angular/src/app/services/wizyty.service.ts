@@ -6,7 +6,7 @@ import { Wizyta } from '../models/wizyta.model';
 @Injectable({
   providedIn: 'root'
 })
-export class WizytaService {
+export class WizytyService {
   private apiUrl = 'http://localhost:5120/api/Wizyta'; 
 
   constructor(private http: HttpClient) {}
@@ -14,7 +14,9 @@ export class WizytaService {
   getWizytyByLekarzId(lekarzId: number): Observable<Wizyta[]> {
     return this.http.get<Wizyta[]>(`${this.apiUrl}/Lekarz/${lekarzId}`);
   }
-
+getWizytyByPacjentId(pacjentId: number): Observable<Wizyta[]> {
+  return this.http.get<Wizyta[]>(`${this.apiUrl}/pacjent/${pacjentId}`);
+}
   getAnulowaneByLekarzId(lekarzId: number): Observable<Wizyta[]> {
     return this.http.get<Wizyta[]>(`${this.apiUrl}/anulowane/Lekarz/${lekarzId}`);
   }

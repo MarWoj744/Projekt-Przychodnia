@@ -60,7 +60,10 @@ namespace BLL
             _wizytaRepo.save();
             return true;
         }
-
+        public IQueryable<Wizyta> GetWizytyPacjenta(int pacjentId)
+        {
+            return _wizytaRepo.GetWizytyPacjenta(pacjentId);
+        }
         public IQueryable<Wizyta> GetWizytyLekarza(int lekarzId, DateTime start, DateTime end)
         {
             return _wizytaRepo.PobierzWizytyLekarza(lekarzId, start, end);

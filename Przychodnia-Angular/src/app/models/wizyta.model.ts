@@ -5,5 +5,5 @@ export interface Wizyta {
   data: string; 
   godzina:  string, 
  status: 'Zaplanowana' | 'Zrealizowana' | 'Anulowana';
-  badanie?: string;
+  opis?: string;
 }

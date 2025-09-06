@@ -27,7 +27,8 @@ namespace BLL
                     BadanieId = b.BadanieId,
                     Data = b.Data,
                     Wyniki = b.Wyniki,
-                    Zalecenia = b.Zalecenia
+                    Zalecenia = b.Zalecenia,
+                    PacjentId=b.PacjentId
                 });
         }
 
@@ -42,10 +43,14 @@ namespace BLL
                 BadanieId = badanie.BadanieId,
                 Data = badanie.Data,
                 Wyniki = badanie.Wyniki,
-                Zalecenia = badanie.Zalecenia
+                Zalecenia = badanie.Zalecenia,
+                PacjentId = badanie.PacjentId
             };
         }
-
+        public IEnumerable<WykonaneBadania> GetByPacjentId(int id)
+        {
+            return _badaniaRepo.getByPacjentId(id);
+        }
         public void Dodaj(WykonaneBadania dto)
         {
             var badanie = new WykonaneBadania
@@ -54,7 +59,9 @@ namespace BLL
                 BadanieId = dto.BadanieId,
                 Data = dto.Data,
                 Wyniki = dto.Wyniki,
-                Zalecenia = dto.Zalecenia
+                Zalecenia = dto.Zalecenia,
+                PacjentId = dto.PacjentId
+
             };
             _badaniaRepo.dodaj(badanie);
         }

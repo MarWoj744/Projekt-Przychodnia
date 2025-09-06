@@ -13,6 +13,11 @@ import { LoginComponent } from './login/login.component';
 import { WizytaAddComponent } from './components/wizyty/wizyta-add.component';
 import { RecepcjaComponent } from './components/recepcja/recepcja.component';
 import { RecepcjaHomeComponent } from './components/recepcja-home/recepcja-home.component';
+import { PacjentShellComponent } from './components/pacjent-shell/pacjent-shell.component';
+import { PacjentHomeComponent } from './components/pacjent-home/pacjent-home.component';
+import { PacjentDaneComponent } from './components/pacjent-dane/pacjent-dane.component';
+import { PacjentWizytyComponent } from './components/pacjent-wizyty/pacjent-wizyty.component';
+import { PacjentBadaniaComponent } from './components/pacjent-badania/pacjent-badania.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -46,6 +51,17 @@ export const routes: Routes = [
     { path: 'historia-badan', component: HistoriaBadanComponent }
   ]
 },
+{
+    path: 'pacjent',
+    component: PacjentShellComponent,
+    children: [
+      { path: '', redirectTo: 'strona-glowna', pathMatch: 'full' },
+      { path: 'strona-glowna', component: PacjentHomeComponent },
+      { path: 'dane',           component: PacjentDaneComponent },
+      { path: 'wizyty',         component: PacjentWizytyComponent },
+      { path: 'badania',        component: PacjentBadaniaComponent },
+    ]
+  },
 { path: '**', redirectTo: '/home' }
 
 ];

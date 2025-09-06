@@ -44,6 +44,12 @@ namespace Przychodnia.API.Controllers
 
             return Ok(badanie);
         }
+        [HttpGet("pacjent/{pacjentId}")]
+        public IActionResult getByPacjentId(int pacjentId)
+        {
+            var wyniki = _service.GetByPacjentId(pacjentId);
+            return Ok(wyniki);
+        }
         [HttpGet("pobierz-pdf/{id}")]
         public IActionResult GenerujPdf(int id)
         {
@@ -51,15 +57,9 @@ namespace Przychodnia.API.Controllers
             if (badanie == null)
                 return NotFound($"Nie znaleziono wykonanego badania o ID {id}.");
 
-           
-            var wizyta = _wizytaService.GetWizytaById(badanie.WizytaId);
-            if (wizyta == null)
-                return BadRequest($"Nie znaleziono wizyty o ID {badanie.WizytaId}.");
-
-            
-            var pacjent = _pacjentService.GetPacjentById(wizyta.PacjentId);
+            var pacjent = _pacjentService.GetPacjentById(badanie.PacjentId);
             if (pacjent == null)
-                return BadRequest($"Nie znaleziono pacjenta o ID {wizyta.PacjentId}.");
+                return BadRequest($"Nie znaleziono pacjenta o ID {badanie.PacjentId}.");
 
           
             var zalecenia = string.IsNullOrWhiteSpace(badanie.Zalecenia)

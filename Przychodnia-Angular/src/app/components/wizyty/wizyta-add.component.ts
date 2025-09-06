@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { WizytaService } from '../../services/wizyty.service';
+import { WizytyService } from '../../services/wizyty.service';
 import { Wizyta } from '../../models/wizyta.model';
 import { ActivatedRoute } from '@angular/router';
 
@@ -20,13 +20,13 @@ export class WizytaAddComponent implements OnInit {
     data: '',
     godzina: '',
     status: 'Zaplanowana',
-    badanie: ''
+    opis: ''
   };
 
   error = '';
   success = '';
 
-  constructor(private wizytaService: WizytaService, private router: Router, private route: ActivatedRoute) {}
+  constructor(private wizytaService: WizytyService, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params: any) => {

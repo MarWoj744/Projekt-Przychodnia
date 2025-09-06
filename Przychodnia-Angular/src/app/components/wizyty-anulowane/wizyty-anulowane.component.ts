@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Wizyta } from '../../models/wizyta.model';
-import { WizytaService } from '../../services/wizyty.service';
+import { WizytyService } from '../../services/wizyty.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -15,7 +15,7 @@ export class WizytyAnulowaneComponent implements OnInit {
   wizytyAnulowane: Wizyta[] = [];
   error: string | null = null;
 
-  constructor(private wizytyService: WizytaService) {}
+  constructor(private wizytyService: WizytyService) {}
 
   ngOnInit(): void {
     this.loadWizytyAnulowane();

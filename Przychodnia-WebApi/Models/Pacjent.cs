@@ -17,5 +17,6 @@ namespace Models
         public string PESEL { get; set; }
 
         public ICollection<Wizyta> Wizyty { get; set; } = new List<Wizyta>();
+        public ICollection<WykonaneBadania> WykonaneBadania { get; set; } = new List<WykonaneBadania>();
     }
 }

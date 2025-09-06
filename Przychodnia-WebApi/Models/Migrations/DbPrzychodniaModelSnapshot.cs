@@ -196,6 +196,9 @@ namespace Models.Migrations
                     b.Property<DateTime>("Data")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("PacjentId")
+                        .HasColumnType("int");
+
                     b.Property<int>("WizytaId")
                         .HasColumnType("int");
 
@@ -211,6 +214,8 @@ namespace Models.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("BadanieId");
+
+                    b.HasIndex("PacjentId");
 
                     b.HasIndex("WizytaId");
 
@@ -301,7 +306,13 @@ namespace Models.Migrations
                         .WithMany("Wykonane")
                         .HasForeignKey("BadanieId")
                         .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired(false);
+                        .IsRequired();
+
+                    b.HasOne("Models.Pacjent", "Pacjent")
+                        .WithMany("WykonaneBadania")
+                        .HasForeignKey("PacjentId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.HasOne("Models.Wizyta", "Wizyta")
                         .WithMany("Badania")
@@ -310,6 +321,8 @@ namespace Models.Migrations
                         .IsRequired();
 
                     b.Navigation("Badanie");
+
+                    b.Navigation("Pacjent");
 
                     b.Navigation("Wizyta");
                 });
@@ -334,6 +347,8 @@ namespace Models.Migrations
             modelBuilder.Entity("Models.Pacjent", b =>
                 {
                     b.Navigation("Wizyty");
+
+                    b.Navigation("WykonaneBadania");
                 });
 
             modelBuilder.Entity("Models.Recepcjonistka", b =>

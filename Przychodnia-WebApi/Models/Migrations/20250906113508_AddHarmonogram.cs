@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Models.Migrations
 {
     /// <inheritdoc />
-    public partial class localdb : Migration
+    public partial class AddHarmonogram : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -121,6 +121,7 @@ namespace Models.Migrations
                     Wyniki = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
                     WizytaId = table.Column<int>(type: "int", nullable: false),
                     BadanieId = table.Column<int>(type: "int", nullable: false),
+                    PacjentId = table.Column<int>(type: "int", nullable: false),
                     Zalecenia = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -130,6 +131,12 @@ namespace Models.Migrations
                         name: "FK_WykonaneBadania_Badania_BadanieId",
                         column: x => x.BadanieId,
                         principalTable: "Badania",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_WykonaneBadania_Osoby_PacjentId",
+                        column: x => x.PacjentId,
+                        principalTable: "Osoby",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
@@ -172,6 +179,11 @@ namespace Models.Migrations
                 name: "IX_WykonaneBadania_BadanieId",
                 table: "WykonaneBadania",
                 column: "BadanieId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_WykonaneBadania_PacjentId",
+                table: "WykonaneBadania",
+                column: "PacjentId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_WykonaneBadania_WizytaId",

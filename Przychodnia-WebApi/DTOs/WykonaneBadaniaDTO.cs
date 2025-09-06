@@ -24,5 +24,8 @@ namespace DTOs
 
         [AllowNull]
         public string Zalecenia { get; set; }
+
+        [Required]
+        public int PacjentId { get; set; }
     }
 }

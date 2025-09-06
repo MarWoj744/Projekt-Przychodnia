@@ -13,6 +13,7 @@ namespace IBLL
         Task<bool> UpdateWizytaAsync(Wizyta wizyta);
         Task<bool> DeleteWizytaAsync(int id);
         IQueryable<Wizyta> GetWizytyLekarza(int lekarzId, DateTime start, DateTime end);
+        IQueryable<Wizyta> GetWizytyPacjenta(int pacjentId);
         IQueryable<Wizyta> GetWizytyAnulowane();
         IQueryable<Wizyta> GetWizytyAnulowaneLekarza(int lekarzId);
         Task<bool> AnulujWizyteAsync(int id);

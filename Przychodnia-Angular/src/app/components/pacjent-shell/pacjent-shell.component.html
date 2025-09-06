@@ -1,0 +1,30 @@
+<div class="panel-pacjenta">
+  <nav class="menu">
+    <a
+      routerLink="strona-glowna"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      >Strona główna</a
+    >
+
+    <a
+      routerLink="dane"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      >Moje dane</a
+    >
+
+    <a routerLink="wizyty" routerLinkActive="active">Wizyty</a>
+
+    <a routerLink="badania" routerLinkActive="active">Wykonane badania</a>
+
+    <div class="pacjent-info" *ngIf="(pacjent$ | async) as pacjent">
+      <p><strong>{{ pacjent.imie }} {{ pacjent.nazwisko }}</strong></p>
+      <p class="muted">{{ pacjent.pesel }}</p>
+    </div>
+  </nav>
+
+  <section class="content">
+    <router-outlet></router-outlet>
+  </section>
+</div>

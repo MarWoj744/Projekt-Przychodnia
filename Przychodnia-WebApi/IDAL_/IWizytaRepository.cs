@@ -16,7 +16,7 @@ namespace IDAL_
         IQueryable<Wizyta> PobierzWizytyLekarza(int lekarzId, DateTime start, DateTime end);
         IQueryable<Wizyta> PobierzWizytyAnulowane();
         IQueryable<Wizyta> PobierzWizytyAnulowaneLekarza(int lekarzId);
-
+        IQueryable<Wizyta> GetWizytyPacjenta(int pacjentId);
         Wizyta getWizytaById(int id);
         void dodaj(Wizyta wizyta);
         void delete(int id);

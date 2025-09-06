@@ -1,0 +1,27 @@
+<h2>Wizyty</h2>
+
+<h3>Nadchodzące</h3>
+<table *ngIf="wizytyNadchodzace.length; else brakUpcoming">
+  <thead><tr><th>Data</th><th>Opis</th><th>ID</th></tr></thead>
+  <tbody>
+    <tr *ngFor="let w of wizytyNadchodzace">
+      <td>{{ w.data | date:'short' }}</td>
+      <td>{{ w.opis || 'Wizyta' }}</td>
+      <td>{{ w.id }}</td>
+    </tr>
+  </tbody>
+</table>
+<ng-template #brakUpcoming><p class="muted">Brak nadchodzących wizyt.</p></ng-template>
+
+<h3>Wszystkie</h3>
+<table *ngIf="wizyty.length; else brakAll">
+  <thead><tr><th>Data</th><th>Opis</th><th>ID</th></tr></thead>
+  <tbody>
+    <tr *ngFor="let w of wizyty">
+      <td>{{ w.data | date:'short' }}</td>
+      <td>{{ w.opis || 'Wizyta' }}</td>
+      <td>{{ w.id }}</td>
+    </tr>
+  </tbody>
+</table>
+<ng-template #brakAll><p class="muted">Brak wizyt.</p></ng-template>
