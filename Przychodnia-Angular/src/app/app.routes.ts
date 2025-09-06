@@ -10,7 +10,7 @@ import { BadaniaComponent } from './components/badania/badania.component';
 import { LekarzHomeComponent } from './components/lekarz-home/lekarz-home.component';
 import { HistoriaBadanComponent } from './components/historia-badan/historia-badan.component';
 import { LoginComponent } from './login/login.component';
-import { WizytaAddComponent } from './components/recepcja/wizyta-add.component';
+import { WizytaAddComponent } from './components/wizyty/wizyta-add.component';
 import { RecepcjaComponent } from './components/recepcja/recepcja.component';
 import { RecepcjaHomeComponent } from './components/recepcja-home/recepcja-home.component';
 
@@ -40,6 +40,7 @@ export const routes: Routes = [
      { path: 'strona-glowna', component: LekarzHomeComponent },
     { path: 'harmonogram', component: HarmonogramComponent },
     { path: 'wizyty', component: WizytyComponent },
+    { path: 'wizyty/dodaj', component: WizytaAddComponent },
     { path: 'wizyty-anulowane', component: WizytyAnulowaneComponent },
     { path: 'badania', component: BadaniaComponent },
     { path: 'historia-badan', component: HistoriaBadanComponent }
