@@ -1,8 +1,56 @@
 <div class="home-container">
-  <h1>Witamy na stronie głównej</h1>
-  <button (click)="goToRegister()" type="button" class="btn btn-primary">Zarejestruj się</button>
-  <button (click)="goToLogin()" type="button" class="btn btn-primary">Zaloguj się</button>
-  <button (click)="goToLekarz()" class="btn btn-success">Panel lekarza</button>
-  <button (click)="goToRecepcja()" class="btn btn-success">Panel recepcji</button>
-  <button (click)="goToPacjent()" class="btn btn-success">Panel pacjenta</button>
+  <header class="header">
+    <h1 class="logo">🏥 Przychodnia</h1>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h2>Twoja przychodnia w zasięgu ręki</h2>
+      <p>
+        Umawiaj wizyty, zarządzaj badaniami i harmonogramem – wszystko w jednym miejscu.
+      </p>
+    </div>
+    <div class="hero-images">
+      <img src="assets/images/termometr.png" alt="termometr" />
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="feature-card">
+      <h3>👩‍⚕️ Dla lekarzy</h3>
+      <p>Zarządzaj wizytami, badaj historię pacjentów, kontroluj harmonogram.</p>
+    </div>
+    <div class="feature-card">
+      <h3>🏥 Dla recepcji</h3>
+      <p>Umawiaj pacjentów na wizyty i dbaj o przejrzystość terminarza.</p>
+    </div>
+    <div class="feature-card">
+      <h3>🧑‍🤝‍🧑 Dla pacjentów</h3>
+      <p>Rezerwuj terminy online i miej dostęp do swoich badań.</p>
+    </div>
+  </section>
+
+  <section class="actions">
+    <div class="button-group">
+      <button (click)="goToRegister()" type="button" class="btn btn-primary">
+        Zarejestruj się
+      </button>
+      <button (click)="goToLogin()" type="button" class="btn btn-primary">
+        Zaloguj się
+      </button>
+      <button (click)="goToLekarz()" class="btn btn-success">
+        Panel lekarza
+      </button>
+      <button (click)="goToRecepcja()" class="btn btn-success">
+        Panel recepcji
+      </button>
+      <button (click)="goToPacjent()" class="btn btn-success">
+        Panel pacjenta
+      </button>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>Przychodnia © 2025 – aplikacja stworzona w ramach projektu</p>
+  </footer>
 </div>
