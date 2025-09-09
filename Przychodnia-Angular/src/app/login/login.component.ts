@@ -65,7 +65,19 @@ export class LoginComponent {
           localStorage.setItem('userLogin', response.login);
           localStorage.setItem('userRole', response.rola);
 
-          this.router.navigate(['/']);
+           switch (response.rola) {
+          case 'Pacjent':
+            this.router.navigate(['/pacjent']);
+            break;
+          case 'Lekarz':
+            this.router.navigate(['/lekarz']);
+            break;
+          case 'Recepcjonistka':
+            this.router.navigate(['/recepcja']);
+            break;
+          default:
+            this.router.navigate(['/home']);
+        }
         } else {
           this.errorMessage = 'Niepoprawna odpowiedź z serwera.';
         }
