@@ -31,24 +31,40 @@
   </section>
 
   <section class="actions">
-    <div class="button-group">
+  <div class="button-group">
+    <ng-container *ngIf="!isLoggedIn">
       <button (click)="goToRegister()" type="button" class="btn btn-primary">
         Zarejestruj się
       </button>
       <button (click)="goToLogin()" type="button" class="btn btn-primary">
         Zaloguj się
       </button>
+    </ng-container>
+    <ng-container *ngIf="isLoggedIn && userRole === 'Lekarz'">
       <button (click)="goToLekarz()" class="btn btn-success">
-        Panel lekarza
+        Panel Lekarza
       </button>
+      <button (click)="logout()" class="btn btn-danger">Wyloguj</button>
+    </ng-container>
+    <ng-container *ngIf="isLoggedIn && userRole === 'Recepcjonistka'">
       <button (click)="goToRecepcja()" class="btn btn-success">
-        Panel recepcji
+        Panel Recepcji
       </button>
+      <button (click)="logout()" class="btn btn-danger">Wyloguj</button>
+    </ng-container>
+    <ng-container *ngIf="isLoggedIn && userRole === 'Pacjent'">
       <button (click)="goToPacjent()" class="btn btn-success">
-        Panel pacjenta
+        Panel Pacjenta
       </button>
-    </div>
-  </section>
+      <button (click)="logout()" class="btn btn-danger">Wyloguj</button>
+    </ng-container>
+    <ng-container *ngIf="isLoggedIn">
+      <button (click)="logout()" class="btn btn-success">
+        Wyloguj
+      </button>
+    </ng-container>
+  </div>
+</section>
 
   <footer class="footer">
     <p>Przychodnia © 2025 – aplikacja stworzona w ramach projektu</p>

@@ -8,7 +8,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
+  isLoggedIn = false;
+  userRole: string | null = null;
   constructor(private router: Router) {}
+
+  ngOnInit(): void {
+    const token = localStorage.getItem('jwtToken');
+    const role = localStorage.getItem('userRole');
+
+    if (token && role) {
+      this.isLoggedIn = true;
+      this.userRole = role;
+    }
+  }
 
   goToRegister() {
     this.router.navigate(['/register']);
@@ -27,5 +39,12 @@ export class HomeComponent {
   }
   goToPacjent(){
     this.router.navigate(['/pacjent']);
+  }
+
+  logout() {
+    localStorage.clear();
+    this.isLoggedIn = false;
+    this.userRole = null;
+    this.router.navigate(['/home']);
   }
 }
