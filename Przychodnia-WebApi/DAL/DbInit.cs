@@ -25,70 +25,80 @@ namespace DAL
             var osoby = new Osoba[]
             {
                 new Pacjent {
-                    Imie = "Jan",
+                    Imie = "Adam",
                     Nazwisko = "Kowalski",
-                    Adres = "ul. Kwiatowa 10",
-                    Email = "jan.kowalski@example.com",
+                    Adres = "Pacjentowa 1",
+                    Email = "adam@example.com",
                     Telefon = "123456789",
-                    Login = "janek",
-                    Haslo = "haslo123",
+                    Login = "adam",
+                    Haslo = "$2a$11$VUsWRqKsyWP8FO6G5Fn6G.28T7vpktRw4jLYqYizpUnYeFYZ3FqwC",
                     Rola = Rola.Pacjent,
-                    PESEL = "90010112345"
+                    PESEL = "12345678901",
+                    IsActive= true,
+                    RefreshToken="CnXKb7n++Z+9w+2Wc6qQnQ9TaUx5aIw94Nx2qb5rVRI="
                 },
                 new Pacjent {
                     Imie = "Anna",
                     Nazwisko = "Nowak",
-                    Adres = "ul. Lipowa 5",
-                    Email = "anna.nowak@example.com",
-                    Telefon = "987654321",
-                    Login = "annaN",
-                    Haslo = "haslo456",
+                    Adres = "kwiatowa 5",
+                    Email = "anna@example.com",
+                    Telefon = "123456789",
+                    Login = "ania",
+                    Haslo = "$2a$11$91RUzTQDdLSaIdJfK8grF.wM0dXpcjOZrsGKgHRtxTbpWCKxr9kIq",
                     Rola = Rola.Pacjent,
-                    PESEL = "89020254321"
+                    PESEL = "12345678902",
+                    IsActive= true,
+                    RefreshToken="xY1M/9wmF7DCN8fbQTI6FBFjgdmDGFg3q+WS91tX1MU="
                 },
                 new Lekarz {
-                    Imie = "Piotr",
+                    Imie = "Jerzy",
                     Nazwisko = "Zieliński",
-                    Adres = "ul. Szpitalna 3",
-                    Email = "piotr.zielinski@example.com",
-                    Telefon = "555666777",
-                    Login = "drpiotr",
-                    Haslo = "lek123",
+                    Adres = "Lekarska",
+                    Email = "jerzy@exmaple.com",
+                    Telefon = "123456789",
+                    Login = "drjerzy",
+                    Haslo = "$2a$11$S8NIAjUQNl8W.6C10XDIYeRzuWh.WbXQG9s/uhGtZqtSp7Y5GPg8a",
                     Rola = Rola.Lekarz,
                     Tytul = "dr",
-                    Specjalizacja = "Kardiologia"
+                    Specjalizacja = "Kardiologia",
+                    IsActive= true,
+                    RefreshToken="tYoznL25WOGBbFTgWOlhrGrNZkDk9gHV7kmP/p5QDsY="
                 },
                 new Lekarz {
-                    Imie = "Marta",
-                    Nazwisko = "Wiśniewska",
-                    Adres = "ul. Zdrowa 7",
-                    Email = "marta.wisniewska@example.com",
-                    Telefon = "444555666",
-                    Login = "drmarta",
-                    Haslo = "lek456",
+                    Imie = "Ewa",
+                    Nazwisko = "Wysoka",
+                    Adres = "Lekarska",
+                    Email = "ewa@example.com",
+                    Telefon = "123456789",
+                    Login = "drewa",
+                    Haslo = "$2a$11$Ol0pKHYDB1DPoV4pKBlftuAm2Yg9/4cp4Sw4Qsry427g8FcjCnSYO",
                     Rola = Rola.Lekarz,
                     Tytul = "dr",
-                    Specjalizacja = "Radiologia"
+                    Specjalizacja = "Radiologia",
+                    IsActive= true,
+                    RefreshToken="S2VodzT333l4q6L3gm5ANbg0bElGHe+RTMVqQX30dzM="
                 },
                 new Recepcjonistka {
-                    Imie = "Ewa",
-                    Nazwisko = "Kaczmarek",
-                    Adres = "ul. Recepcji 1",
-                    Email = "ewa.kaczmarek@example.com",
-                    Telefon = "333444555",
-                    Login = "ewaR",
-                    Haslo = "recep123",
-                    Rola = Rola.Recepcjonistka
+                    Imie = "Jolanta",
+                    Nazwisko = "Bryk",
+                    Adres = "Recepcycjna",
+                    Email = "jola@example.com",
+                    Telefon = "123456789",
+                    Login = "jolaR",
+                    Haslo = "$2a$11$gBQyZK7Icp.LW9yZyCh5oe5aTAl1GWqFPMQMky82pKMyUYbwx88Uy",
+                    Rola = Rola.Recepcjonistka,
+                    IsActive= true,
+                    RefreshToken="nqTJzd0nXHJO2QxOy0pKzLzaGSdMNKURCHGAt4h/bJs="
                 }
             };
             context.Osoby.AddRange(osoby);
             context.SaveChanges();
 
-            var pacjent1 = osoby.OfType<Pacjent>().FirstOrDefault(p => p.Login == "janek");
-            var pacjent2 = osoby.OfType<Pacjent>().FirstOrDefault(p => p.Login == "annaN");
-            var lekarz1 = osoby.OfType<Lekarz>().FirstOrDefault(l => l.Login == "drpiotr");
-            var lekarz2 = osoby.OfType<Lekarz>().FirstOrDefault(l => l.Login == "drmarta");
-            var recepcjonistka = osoby.OfType<Recepcjonistka>().FirstOrDefault(r => r.Login == "ewaR");
+            var pacjent1 = osoby.OfType<Pacjent>().FirstOrDefault(p => p.Login == "adam");
+            var pacjent2 = osoby.OfType<Pacjent>().FirstOrDefault(p => p.Login == "ania");
+            var lekarz1 = osoby.OfType<Lekarz>().FirstOrDefault(l => l.Login == "drjerzy");
+            var lekarz2 = osoby.OfType<Lekarz>().FirstOrDefault(l => l.Login == "drewa");
+            var recepcjonistka = osoby.OfType<Recepcjonistka>().FirstOrDefault(r => r.Login == "jolaR");
 
             var wizyty = new Wizyta[]
             {

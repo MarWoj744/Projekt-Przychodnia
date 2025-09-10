@@ -64,16 +64,16 @@ export class LoginComponent {
           localStorage.setItem('refreshToken', response.refreshToken);
           localStorage.setItem('userLogin', response.login);
           localStorage.setItem('userRole', response.rola);
-
+          localStorage.setItem('userId',String(response.userId));
            switch (response.rola) {
-          case 'Pacjent':
+          case 0://'Pacjent':
             this.router.navigate(['/pacjent']);
             break;
-          case 'Lekarz':
-            this.router.navigate(['/lekarz']);
-            break;
-          case 'Recepcjonistka':
+            case 1://'Recepcjonistka':
             this.router.navigate(['/recepcja']);
+            break;
+          case 2://'Lekarz':
+            this.router.navigate(['/lekarz']);
             break;
           default:
             this.router.navigate(['/home']);

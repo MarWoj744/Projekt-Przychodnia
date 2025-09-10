@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-recepcja-home',
@@ -10,5 +10,24 @@ import { RouterModule } from '@angular/router';
   styleUrl: './recepcja-home.component.css'
 })
 export class RecepcjaHomeComponent {
+  isLoggedIn = true;
+  userRole: string | null = null;
+  constructor(private router: Router) {}
 
+  ngOnInit(): void {
+    const token = localStorage.getItem('jwtToken');
+    const role = localStorage.getItem('userRole');
+
+    if (token && role) {
+      this.isLoggedIn = true;
+      this.userRole = role;
+    }
+  }
+  
+logout() {
+    localStorage.clear();
+    this.isLoggedIn = false;
+    this.userRole = null;
+    this.router.navigate(['/home']);
+  }
 }
