@@ -1,34 +1,59 @@
 <div class="badania-container"></div>
-<h2>Badania</h2>
- <button type="button" (click)="add()" class="add-button">Dodaj badanie</button>
 
- <table>
-    <thead>
-      <tr>
-        <th>Nazwa</th>
-        <th>Cennik</th>
-        <th>Specjalizacja</th>
-        <th>Akcje</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let b of badania">
-        <td>{{ b.nazwa }}</td>
-        <td>{{ b.cennik | currency:'PLN' }}</td>
-        <td>{{ b.specjalizacja }}</td>
-        <td>
+<h2>Badania</h2>
+
+<!-- Dodawanie tylko dla nie-pacjenta -->
+<button
+  type="button"
+  (click)="add()"
+  class="add-button"
+  *ngIf="!isPacjent"
+>
+  Dodaj badanie
+</button>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nazwa</th>
+      <th>Cennik</th>
+      <th>Specjalizacja</th>
+      <th>Akcje</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let b of badania">
+      <td>{{ b.nazwa }}</td>
+      <td>{{ b.cennik | currency:'PLN' }}</td>
+      <td>{{ b.specjalizacja }}</td>
+      <td>
+        <!-- Tryb administracyjny/lekarz/recepcja: edycja/usuwanie -->
+        <ng-container *ngIf="!isPacjent; else tylkoUmow">
           <button (click)="edit(b)">Edytuj</button>
           <button (click)="delete(b.id)">Usuń</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+        </ng-container>
 
-  <div *ngIf="selectedBadanie">
-    <app-badanie-edit
-      [badanie]="selectedBadanie"
-      (save)="onSave()"
-      (cancel)="onCancel()">
-    </app-badanie-edit>
-  </div>
+        <!-- Tryb pacjenta: tylko umawianie -->
+        <ng-template #tylkoUmow>
+          <!-- routerLink zamiast navigate (mniej kapryśne) -->
+          <a
+            [routerLink]="['/recepcja/wizyty/dodaj']"
+            [queryParams]="{ badanieId: b.id, pacjentId: userId }"
+          >
+            <button type="button">Umów wizytę</button>
+          </a>
+        </ng-template>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
+<!-- Edytor tylko dla nie-pacjenta -->
+<div *ngIf="selectedBadanie && !isPacjent">
+  <app-badanie-edit
+    [badanie]="selectedBadanie"
+    (save)="onSave()"
+    (cancel)="onCancel()"
+  >
+  </app-badanie-edit>
+</div>

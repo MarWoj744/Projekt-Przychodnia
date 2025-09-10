@@ -18,7 +18,7 @@ export class HomeComponent {
     const role = localStorage.getItem('userRole');
 
     if (token && role) {
-      this.isLoggedIn = true;
+      this.isLoggedIn = false;
       this.userRole = role;
     }
   }

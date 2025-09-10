@@ -54,7 +54,7 @@ export class LoginComponent {
 
     this.authService.login(loginData).subscribe({
       next: (response) => {
-        console.log('Logowanie nie udane:', response);
+        console.log('Logowanie udane:', response);
         alert(
           'Zalogowany'
         );

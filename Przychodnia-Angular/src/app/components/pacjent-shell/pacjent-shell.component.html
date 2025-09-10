@@ -17,7 +17,7 @@
     <a routerLink="wizyty" routerLinkActive="active">Wizyty</a>
 
     <a routerLink="badania" routerLinkActive="active">Wykonane badania</a>
-
+    <a routerLink="oferta" routerLinkActive="active"> Oferta</a>
     <div class="pacjent-info" *ngIf="(pacjent$ | async) as pacjent">
       <p><strong>{{ pacjent.imie }} {{ pacjent.nazwisko }}</strong></p>
       <p class="muted">{{ pacjent.pesel }}</p>

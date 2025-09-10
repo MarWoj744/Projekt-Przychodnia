@@ -1,23 +1,59 @@
-// src/app/components/pacjent-dane/pacjent-dane.component.ts
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { catchError, of } from 'rxjs';
 import { Pacjent } from '../../models/pacjent.model';
-import { PacjentService } from '../../services/pacjent.service';
 
 @Component({
   selector: 'app-pacjent-dane',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, HttpClientModule],
   templateUrl: './pacjent-dane.component.html',
   styleUrls: ['./pacjent-dane.component.css'],
 })
 export class PacjentDaneComponent implements OnInit {
-  pacjent$!: Observable<Pacjent | null>; // <- bez inicjalizatora
+  // ustaw tu swój baseUrl (albo użyj environment)
+  private apiUrl = 'http://localhost:5120/api';
 
-  constructor(private pacjentSvc: PacjentService) {}
+  loading = false;
+  error?: string;
+  pacjent: Pacjent | null = null;
+
+  constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.pacjent$ = this.pacjentSvc.pacjent$; // <- inicjalizacja po DI
+    const role = localStorage.getItem('userRole');
+    const idStr = localStorage.getItem('userId');
+
+    if (!idStr) {
+      this.error = 'Brak identyfikatora pacjenta w localStorage.';
+      return;
+    }
+    // Jeśli chcesz twardo sprawdzać rolę:
+    // if (role !== 'Pacjent') {
+    //   this.error = 'Zalogowana rola nie jest pacjentem.';
+    //   return;
+    // }
+
+    const id = Number(idStr);
+    if (!Number.isFinite(id) || id <= 0) {
+      this.error = 'Nieprawidłowy identyfikator pacjenta.';
+      return;
+    }
+
+    this.loading = true;
+    this.http
+      .get<Pacjent>(`${this.apiUrl}/Pacjent/${id}`)
+      .pipe(
+        catchError(err => {
+          console.error(err);
+          this.error = 'Nie udało się pobrać danych pacjenta.';
+          return of(null);
+        })
+      )
+      .subscribe(p => {
+        this.pacjent = p;
+        this.loading = false;
+      });
   }
 }

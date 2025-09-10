@@ -60,6 +60,7 @@ export const routes: Routes = [
       { path: 'dane',           component: PacjentDaneComponent },
       { path: 'wizyty',         component: PacjentWizytyComponent },
       { path: 'badania',        component: PacjentBadaniaComponent },
+      {path: 'oferta', component: BadaniaComponent}
     ]
   },
 { path: '**', redirectTo: '/home' }

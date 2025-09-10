@@ -1,67 +1,151 @@
+// src/app/components/pacjent-wizyty/pacjent-wizyty.component.ts
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { CommonModule, DatePipe } from '@angular/common';
-import { Subscription } from 'rxjs';
-
+import { CommonModule } from '@angular/common';
 import { WizytyService } from '../../services/wizyty.service';
 import { Wizyta } from '../../models/wizyta.model';
+import { Observable, Subscription, of } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
+
+type WizytaVM = Omit<Wizyta, 'data'> & { data: Date };
 
 @Component({
   standalone: true,
   selector: 'app-pacjent-wizyty',
-  imports: [CommonModule, DatePipe],
-  templateUrl: './pacjent-wizyty.component.html'
+  imports: [CommonModule],
+  templateUrl: './pacjent-wizyty.component.html',
+  styleUrl: './pacjent-wizyty.component.css'
 })
 export class PacjentWizytyComponent implements OnInit, OnDestroy {
   loading = false;
   error?: string;
 
-  wizyty: Wizyta[] = [];
-  wizytyNadchodzace: Wizyta[] = [];
+  wizyty: WizytaVM[] = [];
+  wizytyNadchodzace: WizytaVM[] = [];
 
   private sub?: Subscription;
 
   constructor(private wizytySvc: WizytyService) {}
 
   ngOnInit(): void {
-    const pacjentId = this.readPatientIdFromLS();
-    if (pacjentId == null) {
+    const userId = Number(localStorage.getItem('userId'));
+    if (!userId) {
       this.error = 'Brak identyfikatora pacjenta w localStorage.';
       return;
     }
 
     this.loading = true;
-    this.sub = this.wizytySvc.getWizytyByPacjentId(pacjentId).subscribe({
-      next: (list) => {
-        const sorted = [...(list ?? [])].sort(
-          (a, b) => +new Date(a.data) - +new Date(b.data)
-        );
+    this.sub = this.wizytySvc.getWizytyByPacjentId(userId)
+      .pipe(
+        map(list =>
+          (list ?? []).map(w => ({
+            ...w,
+            data: new Date((w as any).data) // konwersja na Date
+          })) as WizytaVM[]
+        ),
+        catchError(err => {
+          console.error(err);
+          this.error = 'Nie udało się pobrać wizyt.';
+          return of([] as WizytaVM[]);
+        })
+      )
+      .subscribe(list => {
+        this.loading = false;
+        const sorted = [...list].sort((a, b) => +a.data - +b.data);
         this.wizyty = sorted;
 
         const now = Date.now();
-        this.wizytyNadchodzace = sorted.filter(
-          (w) => +new Date(w.data) >= now
-        );
-
-        this.loading = false;
-      },
-      error: (err) => {
-        console.error(err);
-        this.error = 'Nie udało się pobrać wizyt.';
-        this.loading = false;
-      },
-    });
+        this.wizytyNadchodzace = sorted.filter(w => +w.data >= now);
+      });
   }
 
   ngOnDestroy(): void {
     this.sub?.unsubscribe();
   }
 
-  trackById = (_: number, w: Wizyta) => w.id;
+  // --- UI helpers ---
 
-  private readPatientIdFromLS(): number | null {
-    const raw = localStorage.getItem('userId'); // upewnij się, że tak nazywasz klucz po logowaniu
-    if (!raw) return null;
-    const n = Number(raw);
-    return Number.isFinite(n) ? n : null;
+  statusText(status: Wizyta['status']): string {
+    switch (status) {
+      case 'Zaplanowana': return 'Zaplanowana';
+      case 'Zrealizowana': return 'Zrealizowana';
+      case 'Anulowana':   return 'Anulowana';
+      default:            return String(status);
+    }
+  }
+
+  statusClass(status: Wizyta['status']): string {
+    switch (status) {
+      case 'Zaplanowana': return 'badge badge--plan';
+      case 'Zrealizowana': return 'badge badge--done';
+      case 'Anulowana':   return 'badge badge--cancel';
+      default:            return 'badge';
+    }
+  }
+
+  /** czy można anulować (>=24h do wizyty i status Zaplanowana) */
+  canCancel(w: WizytaVM): boolean {
+    if (w.status !== 'Zaplanowana') return false;
+    const hoursToVisit = (+w.data - Date.now()) / (1000 * 60 * 60);
+    return hoursToVisit >= 24;
+  }
+
+  /** powód dlaczego nie można anulować */
+  cancelReason(w: WizytaVM): string {
+    if (w.status !== 'Zaplanowana') return 'Wizyta nie jest zaplanowana.';
+    const hoursToVisit = (+w.data - Date.now()) / (1000 * 60 * 60);
+    if (hoursToVisit < 24) return 'Mniej niż 24 godziny do wizyty.';
+    return '';
+  }
+
+  // ALIASY dla istniejącego HTML
+  isCancelable(w: WizytaVM): boolean { return this.canCancel(w); }
+  cantCancelReason(w: WizytaVM): string { return this.cancelReason(w); }
+
+  /** trackBy dla *ngFor — usuwa błędy i przyspiesza render */
+  trackById(index: number, item: WizytaVM): number {
+    return item.id;
+  }
+doctorName(w: any): string {
+  // 1) jeśli już jest gotowy string
+  if (typeof w.lekarz === 'string' && w.lekarz.trim()) return w.lekarz;
+
+  // 2) jeśli przyszły osobne pola
+  const fromSplit = [w.lekarzImie, w.lekarzNazwisko].filter(Boolean).join(' ').trim();
+  if (fromSplit) return fromSplit;
+
+  // 3) jeśli przyszło jako zagnieżdżony obiekt
+  const fromObj = [w?.lekarz?.imie, w?.lekarz?.nazwisko].filter(Boolean).join(' ').trim();
+  if (fromObj) return fromObj;
+
+  // nic sensownego – pokaż myślnik
+  return '-';
+}
+  anuluj(w: WizytaVM): void {
+    if (!this.canCancel(w)) return;
+    if (!confirm('Czy na pewno chcesz anulować tę wizytę?')) return;
+
+    this.wizytySvc.anulujWizyte(w.id).subscribe({
+      next: () => {
+        const userId = Number(localStorage.getItem('userId'));
+        if (!userId) return;
+
+        this.loading = true;
+        this.wizytySvc
+          .getWizytyByPacjentId(userId)
+          .pipe(map(list => (list ?? []).map(x => ({ ...x, data: new Date((x as any).data) })) as WizytaVM[]))
+          .subscribe(fresh => {
+            this.loading = false;
+            const sorted = [...fresh].sort((a, b) => +a.data - +b.data);
+            this.wizyty = sorted;
+
+            const now = Date.now();
+            this.wizytyNadchodzace = sorted.filter(v => +v.data >= now);
+          });
+      },
+      error: err => {
+        console.error(err);
+        alert('Nie udało się anulować wizyty.');
+      }
+    });
   }
 }

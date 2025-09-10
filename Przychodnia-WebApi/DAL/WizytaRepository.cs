@@ -30,7 +30,10 @@ namespace DAL
         public IQueryable<Wizyta> GetWizytyPacjenta(int pacjentId)
         {
             return _context.Wizyty
-                .Where(w => w.PacjentId == pacjentId);
+                .Where(w => w.PacjentId == pacjentId).Include(w => w.Pacjent)
+                .Include(w => w.Lekarz)
+                .Include(w => w.Badania)
+                    .ThenInclude(b => b.Badanie);
         }
         public Wizyta getWizytaById(int id)
         {

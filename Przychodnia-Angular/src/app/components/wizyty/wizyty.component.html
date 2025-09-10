@@ -27,7 +27,7 @@
         <td>{{ w.data | date: 'yyyy-MM-dd'}}</td>
         <td>{{ w.godzina }}</td>
         <td>{{ w.status }}</td>
-        <td>{{ w.opis || '-' }}</td>
+        <td>{{ w.badanie || '-' }}</td>
         <td>
       <button (click)="anulujWizyte(w.id)">Anuluj</button>
     </td>

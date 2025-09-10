@@ -88,8 +88,9 @@ namespace Przychodnia.API.Controllers
         [HttpGet("pacjent/{pacjentId}")]
         public IActionResult getWizytyPacjenta(int pacjentId) 
         {
-        var wizyty =_service.GetWizytyPacjenta(pacjentId);
-            return Ok(wizyty);
+        var wizyty =_service.GetWizytyPacjenta(pacjentId).ToList();
+        var result = wizyty.Select(w => map.WizytaToWidokDTO(w)).ToList();
+            return Ok(result);
         }
         [HttpGet("anulowane")]
         public IActionResult GetAnulowane()

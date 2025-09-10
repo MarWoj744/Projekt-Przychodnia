@@ -15,9 +15,10 @@ namespace BLL
         private readonly IHarmonogramRepository _repo;
         private readonly ILekarzRepository _lekarzRepository;
 
-        public HarmonogramService(IHarmonogramRepository repo)
+        public HarmonogramService(IHarmonogramRepository repo, ILekarzRepository lekarzRepo)
         {
             _repo = repo;
+            _lekarzRepository = lekarzRepo;
         }
 
 

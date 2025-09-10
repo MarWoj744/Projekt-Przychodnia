@@ -20,7 +20,7 @@ export class WizytaAddComponent implements OnInit {
     data: '',
     godzina: '',
     status: 'Zaplanowana',
-    opis: ''
+    badanie: ''
   };
 
   error = '';

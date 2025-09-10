@@ -1,0 +1,96 @@
+/* ——— utilsy ——— */
+.muted { color: #6b7280; }
+.text-danger { color: #dc3545; }
+
+/* ——— tabela (działa na każdy <table> w widoku) ——— */
+table {
+  --bord: #dbe7ea;
+  --bg: #ffffff;
+  --bg-alt: #f6fbfd;
+  --head: #006d77;
+  --head-text: #ffffff;
+
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--bg);
+  border: 1px solid var(--bord);
+  border-radius: 12px;
+  overflow: hidden;           /* zaokrąglone rogi */
+  box-shadow: 0 8px 18px rgba(0,0,0,.06);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 24px;        /* odstęp między tabelami */
+}
+
+thead th {
+  position: sticky; top: 0; z-index: 1;
+  background: var(--head);
+  color: var(--head-text);
+  padding: 14px 16px;
+  text-align: left;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  font-size: .85rem;
+}
+
+th, td {
+  border-bottom: 1px solid var(--bord);
+}
+th + th, td + td {
+  border-left: 1px solid var(--bord);
+}
+
+tbody td {
+  padding: 14px 16px;
+  vertical-align: middle;
+}
+
+tbody tr:nth-child(odd) { background: var(--bg-alt); }
+tbody tr:hover { background: #e8f6f8; }
+
+/* kolumny: data/godzina wąskie, akcje wyrównane do prawej */
+td:nth-child(1), th:nth-child(1),
+td:nth-child(2), th:nth-child(2) {
+  white-space: nowrap;
+}
+td:nth-child(2) {
+  font-variant-numeric: tabular-nums;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  text-align: center;
+  width: 110px;
+}
+td:nth-child(6), th:nth-child(6) {
+  text-align: right;
+  width: 120px;
+}
+
+/* ——— przyciski (plain <button>) ——— */
+button {
+  border: 1px solid #cbd5e1;
+  background: #fff;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: .2s;
+  font: inherit;
+}
+button:hover       { background: #f1f5f9; border-color: #94a3b8; }
+
+/* „Anuluj” jest destrukcyjne – lekko czerwony ton */
+td:last-child button {
+  color: #b91c1c;
+  border-color: #ef9a9a;
+  background: #fff5f5;
+}
+td:last-child button:hover { background: #fee2e2; }
+
+button:disabled {
+  opacity: .5; cursor: not-allowed; filter: saturate(.6);
+}
+
+/* responsywka */
+@media (max-width: 768px) {
+  table { font-size: 0.9rem; }
+}

@@ -1,0 +1,108 @@
+/* ——— kontent + nagłówek ——— */
+.content h2 {
+  margin: 0 0 16px;
+  color: #006d77;
+  border-bottom: 2px solid #83c5be;
+  padding-bottom: 6px;
+}
+
+/* ——— stany: info / error / muted ——— */
+.info {
+  margin: 8px 0 16px;
+  padding: 10px 12px;
+  border: 1px solid #bfe3ea;
+  background: #e8f6f8;
+  color: #0f766e;
+  border-radius: 8px;
+}
+
+.error {
+  margin: 8px 0 16px;
+  padding: 10px 12px;
+  border: 1px solid #f5b4b4;
+  background: #fee2e2;
+  color: #991b1b;
+  border-radius: 8px;
+}
+
+.muted { color: #6b7280; }
+
+/* ——— tabela (tylko ta z klasą .table) ——— */
+.table {
+  --bord: #dbe7ea;
+  --bg: #ffffff;
+  --bg-alt: #f6fbfd;
+  --head: #006d77;
+  --head-text: #ffffff;
+
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--bg);
+  border: 1px solid var(--bord);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 18px rgba(0,0,0,.06);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-top: 12px;
+}
+
+.table thead th {
+  position: sticky; top: 0; z-index: 1;
+  background: var(--head);
+  color: var(--head-text);
+  padding: 14px 16px;
+  text-align: left;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  font-size: .85rem;
+}
+
+.table th, .table td { border-bottom: 1px solid var(--bord); }
+.table th + th, .table td + td { border-left: 1px solid var(--bord); }
+
+.table tbody td {
+  padding: 14px 16px;
+  vertical-align: middle;
+}
+
+.table tbody tr:nth-child(odd) { background: var(--bg-alt); }
+.table tbody tr:hover { background: #e8f6f8; }
+
+/* ostatnia kolumna (Akcje) wąska i wyrównana do prawej */
+.table th:last-child,
+.table td:last-child {
+  width: 1%;
+  white-space: nowrap;
+  text-align: right;
+}
+
+/* ——— przycisk „Pobierz PDF” ——— */
+.table button {
+  border: 1px solid #cbd5e1;
+  background: #fff;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: .2s;
+  font: inherit;
+}
+
+.table button:hover {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+}
+
+.table button:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+  filter: saturate(.6);
+}
+
+/* ——— responsywka ——— */
+@media (max-width: 768px) {
+  .table { font-size: 0.9rem; }
+  .table tbody td { padding: 12px; }
+}
