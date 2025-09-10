@@ -35,11 +35,6 @@
 <h3>{{ edycjaTryb ? 'Edytuj harmonogram' : 'Dodaj nowy harmonogram' }}</h3>
 
 <form (ngSubmit)="zapisz()">
-  <label *ngIf="!isLekarz">
-    Lekarz:
-    <input type="number" [(ngModel)]="aktualnyHarmonogram.lekarzId" name="lekarzId" required />
-  </label><br />
-
   <label>
     Data Od:
     <input type="datetime-local" [(ngModel)]="aktualnyHarmonogram.dataOd" name="dataOd" required />

@@ -78,6 +78,10 @@ export class HarmonogramComponent implements OnInit {
   }
 
   zapisz() {
+    if (this.isLekarz) {
+    this.aktualnyHarmonogram.lekarzId = Number(localStorage.getItem('userId'));
+    }
+
     if (this.edycjaTryb) {
       this.harmonogramService.update(this.aktualnyHarmonogram.id, this.aktualnyHarmonogram).subscribe({
         next: (response) => {
