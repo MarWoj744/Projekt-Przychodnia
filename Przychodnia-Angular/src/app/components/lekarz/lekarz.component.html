@@ -9,6 +9,9 @@
     <a routerLink="badania" routerLinkActive="active">Badania</a>
   <a routerLink="historia-badan" routerLinkActive="active">Historia badań</a>
   
+  <div class="lekarz-info">
+      <button class="logout-btn" (click)="logout()">Wyloguj</button>
+  </div>
 </nav>
   <section class="content">
     <router-outlet></router-outlet>

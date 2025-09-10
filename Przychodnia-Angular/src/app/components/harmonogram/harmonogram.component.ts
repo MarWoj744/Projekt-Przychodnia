@@ -17,13 +17,14 @@ export class HarmonogramComponent implements OnInit {
   harmonogram: Harmonogram[] = [];
   error: string | null = null;
   isLekarz: boolean = false;
+  lekarzName: string | null = null;
   
   aktualnyHarmonogram: Harmonogram = {
     id: 0,
     lekarzId: 0,
     dataOd: '',
-  dataDo: '',
-  opis: ''
+    dataDo: '',
+    opis: ''
   };
 
   edycjaTryb: boolean = false; 
@@ -34,6 +35,7 @@ export class HarmonogramComponent implements OnInit {
     const userRole = localStorage.getItem('rola');
     const userId = Number(localStorage.getItem('userId'));
     this.isLekarz = (userRole === 'Lekarz');
+    this.lekarzName = localStorage.getItem('userName');
   
     if (userRole === 'Lekarz') {
       this.aktualnyHarmonogram.lekarzId = userId;

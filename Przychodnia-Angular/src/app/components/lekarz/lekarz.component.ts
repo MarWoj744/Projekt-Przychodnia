@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterModule } from "@angular/router";
+import { Router, RouterModule } from "@angular/router";
 import { LekarzService } from '../../services/lekarz.service';
 import { Observable } from 'rxjs';
+
 @Component({
   selector: 'app-lekarz',
   templateUrl: './lekarz.component.html',
@@ -10,10 +11,14 @@ import { Observable } from 'rxjs';
   standalone: true,
   imports: [RouterModule, CommonModule],
 })
-export class LekarzComponent {
-  logout() {
-  
-  console.log('Wylogowano (symulacja)');
-}
 
+export class LekarzComponent {
+  constructor(private router: Router) {}
+  
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['/home']);
+  
+    console.log('Wylogowano (symulacja)');
+  }
 }
