@@ -29,7 +29,10 @@ namespace BLLTests
         {
             return AddedEntities.AsQueryable(); ;
         }
-
+        public IQueryable<WykonaneBadania> getByPacjentId(int pacjentId)
+        {
+            return AddedEntities.AsQueryable(); ;
+        }
         public WykonaneBadania GetWykonaneBadaniaById(int id)
         {
             return AddedEntities.FirstOrDefault(e => e.Id == id);
