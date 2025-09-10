@@ -86,9 +86,9 @@ namespace Przychodnia.API.Controllers
             return Ok(wizyty);
         }
         [HttpGet("pacjent/{pacjentId}")]
-        public IActionResult getWizytyPacjenta(int id) 
+        public IActionResult getWizytyPacjenta(int pacjentId) 
         {
-        var wizyty =_service.GetWizytyPacjenta(id);
+        var wizyty =_service.GetWizytyPacjenta(pacjentId);
             return Ok(wizyty);
         }
         [HttpGet("anulowane")]
