@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { catchError, of } from 'rxjs';
-import { Pacjent } from '../../../models/pacjent.model';
+import { Pacjent } from '../../models/pacjent.model';
 
 @Component({
   selector: 'app-pacjent-dane',
@@ -12,6 +12,7 @@ import { Pacjent } from '../../../models/pacjent.model';
   styleUrls: ['./pacjent-dane.component.css'],
 })
 export class PacjentDaneComponent implements OnInit {
+  // ustaw tu swój baseUrl (albo użyj environment)
   private apiUrl = 'https://przychodniaap-ghhbcfgzgtbjgdgt.polandcentral-01.azurewebsites.net/api';
 
   loading = false;
@@ -28,10 +29,6 @@ export class PacjentDaneComponent implements OnInit {
       this.error = 'Brak identyfikatora pacjenta w localStorage.';
       return;
     }
-    // if (role !== 'Pacjent') {
-    //   this.error = 'Zalogowana rola nie jest pacjentem.';
-    //   return;
-    // }
 
     const id = Number(idStr);
     if (!Number.isFinite(id) || id <= 0) {

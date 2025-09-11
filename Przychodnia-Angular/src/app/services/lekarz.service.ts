@@ -11,7 +11,7 @@ import { Lekarz } from '../models/lekarz.model';
   providedIn: 'root'
 })
 export class LekarzService {
-  private apiUrl = 'http://localhost:5120/api/Lekarz';
+  private apiUrl = 'https://przychodniaap-ghhbcfgzgtbjgdgt.polandcentral-01.azurewebsites.net/api/Lekarz';
   private lekarzSubject = new BehaviorSubject<Lekarz | null>(null);
   lekarz$: Observable<Lekarz | null> = this.lekarzSubject.asObservable();
 

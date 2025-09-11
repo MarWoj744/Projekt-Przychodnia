@@ -25,7 +25,7 @@ import { Harmonogram } from '../models/harmonogram.model';
   providedIn: 'root'
 })
 export class HarmonogramService {
-  private apiUrl = 'http://localhost:5120/api/Harmonogram'; 
+  private apiUrl = 'https://przychodniaap-ghhbcfgzgtbjgdgt.polandcentral-01.azurewebsites.net/api/Harmonogram'; 
 
   constructor(private http: HttpClient) {}
 

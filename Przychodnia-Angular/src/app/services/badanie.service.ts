@@ -7,7 +7,7 @@ import { Badanie } from '../models/badanie.model';
   providedIn: 'root'
 })
 export class BadanieService {
-  private apiUrl = 'http://localhost:5120/api/Badanie'; 
+  private apiUrl = 'https://przychodniaap-ghhbcfgzgtbjgdgt.polandcentral-01.azurewebsites.net/api/Badanie'; 
 
   constructor(private http: HttpClient) {}
  getAll(): Observable<Badanie[]> {

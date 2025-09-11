@@ -8,7 +8,7 @@ import { Wizyta } from '../models/wizyta.model';
 })
 
 export class WizytyService {
-  private apiUrl = 'http://localhost:5120/api/Wizyta'; 
+  private apiUrl = 'https://przychodniaap-ghhbcfgzgtbjgdgt.polandcentral-01.azurewebsites.net/api/Wizyta'; 
 
   constructor(private http: HttpClient) {}
 

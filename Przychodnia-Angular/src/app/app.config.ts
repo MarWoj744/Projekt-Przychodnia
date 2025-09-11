@@ -4,7 +4,8 @@ import { routes } from './app.routes';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 export const AppConfig = {
-  apiUrl: 'https://localhost:7132/api' 
+  //apiUrl: 'https://localhost:7132/api' 
+  apiUrl: 'https://przychodniaap-ghhbcfgzgtbjgdgt.polandcentral-01.azurewebsites.net/api'
 };
 
 

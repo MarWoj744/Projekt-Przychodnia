@@ -25,7 +25,7 @@ export interface LoginDto {
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:5120/api/auth'; 
+  private apiUrl = 'https://przychodniaap-ghhbcfgzgtbjgdgt.polandcentral-01.azurewebsites.net/api/auth'; 
 
   constructor(private http: HttpClient) {}
 

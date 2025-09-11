@@ -10,7 +10,7 @@ import { Pacjent } from '../models/pacjent.model';
   providedIn: 'root'
 })
 export class PacjentService {
-  private apiUrl = 'http://localhost:5120/api';
+  private apiUrl = 'https://przychodniaap-ghhbcfgzgtbjgdgt.polandcentral-01.azurewebsites.net/api';
   private pacjentSubject = new BehaviorSubject<Pacjent | null>(null);
   pacjent$: Observable<Pacjent | null> = this.pacjentSubject.asObservable();
 

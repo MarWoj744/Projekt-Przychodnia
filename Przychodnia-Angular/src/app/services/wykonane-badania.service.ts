@@ -6,7 +6,7 @@ import { WykonaneBadania } from '../models/wykonane-badania.model';
 @Injectable({ providedIn: 'root' })
 export class WykonaneBadaniaService {
 
-  private readonly apiBase = 'http://localhost:5120/api';
+  private readonly apiBase = 'https://przychodniaap-ghhbcfgzgtbjgdgt.polandcentral-01.azurewebsites.net/api';
   private readonly url = `${this.apiBase}/WykonaneBadania`;
 
   constructor(private http: HttpClient) {}
