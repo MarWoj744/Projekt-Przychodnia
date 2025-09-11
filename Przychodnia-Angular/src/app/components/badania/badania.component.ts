@@ -17,7 +17,6 @@ export class BadaniaComponent implements OnInit {
   badania: Badanie[] = [];
   selectedBadanie: Badanie | null = null;
 
-  // >>> ROLE/ID z localStorage
   isPacjent = false;
   userId?: number;
 

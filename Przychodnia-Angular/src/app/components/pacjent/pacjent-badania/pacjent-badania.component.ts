@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { WykonaneBadania } from '../../models/wykonane-badania.model';
-import { WykonaneBadaniaService } from '../../services/wykonane-badania.service';
+import { WykonaneBadania } from '../../../models/wykonane-badania.model';
+import { WykonaneBadaniaService } from '../../../services/wykonane-badania.service';
 import { CommonModule } from '@angular/common';
 
 @Component({

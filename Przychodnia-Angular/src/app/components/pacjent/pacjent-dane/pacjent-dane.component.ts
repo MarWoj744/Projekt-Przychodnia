@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { catchError, of } from 'rxjs';
-import { Pacjent } from '../../models/pacjent.model';
+import { Pacjent } from '../../../models/pacjent.model';
 
 @Component({
   selector: 'app-pacjent-dane',
@@ -12,7 +12,6 @@ import { Pacjent } from '../../models/pacjent.model';
   styleUrls: ['./pacjent-dane.component.css'],
 })
 export class PacjentDaneComponent implements OnInit {
-  // ustaw tu swój baseUrl (albo użyj environment)
   private apiUrl = 'http://localhost:5120/api';
 
   loading = false;
@@ -29,7 +28,6 @@ export class PacjentDaneComponent implements OnInit {
       this.error = 'Brak identyfikatora pacjenta w localStorage.';
       return;
     }
-    // Jeśli chcesz twardo sprawdzać rolę:
     // if (role !== 'Pacjent') {
     //   this.error = 'Zalogowana rola nie jest pacjentem.';
     //   return;

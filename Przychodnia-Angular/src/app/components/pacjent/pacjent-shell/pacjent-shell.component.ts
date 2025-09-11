@@ -4,8 +4,8 @@ import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Observable } from 'rxjs';
 
-import { Pacjent } from '../../models/pacjent.model';          
-import { PacjentService } from '../../services/pacjent.service';
+import { Pacjent } from '../../../models/pacjent.model';          
+import { PacjentService } from '../../../services/pacjent.service';
 
 @Component({
   selector: 'app-pacjent-shell',

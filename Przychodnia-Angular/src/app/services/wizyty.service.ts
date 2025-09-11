@@ -6,6 +6,7 @@ import { Wizyta } from '../models/wizyta.model';
 @Injectable({
   providedIn: 'root'
 })
+
 export class WizytyService {
   private apiUrl = 'http://localhost:5120/api/Wizyta'; 
 
@@ -14,9 +15,11 @@ export class WizytyService {
   getWizytyByLekarzId(lekarzId: number): Observable<Wizyta[]> {
     return this.http.get<Wizyta[]>(`${this.apiUrl}/Lekarz/${lekarzId}`);
   }
-getWizytyByPacjentId(pacjentId: number): Observable<Wizyta[]> {
-  return this.http.get<Wizyta[]>(`${this.apiUrl}/pacjent/${pacjentId}`);
-}
+
+  getWizytyByPacjentId(pacjentId: number): Observable<Wizyta[]> {
+    return this.http.get<Wizyta[]>(`${this.apiUrl}/pacjent/${pacjentId}`);
+  }
+
   getAnulowaneByLekarzId(lekarzId: number): Observable<Wizyta[]> {
     return this.http.get<Wizyta[]>(`${this.apiUrl}/anulowane/Lekarz/${lekarzId}`);
   }
@@ -34,7 +37,7 @@ getWizytyByPacjentId(pacjentId: number): Observable<Wizyta[]> {
   }
 
   addWizyta(wizyta: Wizyta): Observable<Wizyta> {
-    return this.http.post<Wizyta>(this.apiUrl, wizyta);
+    return this.http.post<Wizyta>(`${this.apiUrl}/zarejestruj`, wizyta);
   }
 }
 

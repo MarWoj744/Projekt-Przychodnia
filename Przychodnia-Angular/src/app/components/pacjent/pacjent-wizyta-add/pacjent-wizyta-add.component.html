@@ -1,0 +1,30 @@
+<div class="wizyty-container">
+  <h2>Umów wizytę</h2>
+
+  <div *ngIf="error" class="error">{{ error }}</div>
+  <div *ngIf="success" class="success">{{ success }}</div>
+
+  <form (ngSubmit)="onSubmit()">
+    <label>Pacjent:</label>
+    <input type="text" [(ngModel)]="wizyta.pacjent" name="pacjent" readonly />
+
+    <label>Lekarz:</label>
+    <select [(ngModel)]="wizyta.lekarz" name="lekarz" required>
+      <option value="" disabled selected>-- wybierz lekarza --</option>
+      <option *ngFor="let l of lekarze" [value]="l.id">
+        {{ l.imie }} {{ l.nazwisko }}
+      </option>
+    </select>
+
+    <label>Data:</label>
+    <input type="date" [(ngModel)]="wizyta.data" name="data" required />
+
+    <label>Godzina:</label>
+    <input type="time" [(ngModel)]="wizyta.godzina" name="godzina" required />
+
+    <label>Badanie (opcjonalne):</label>
+    <input type="text" [(ngModel)]="wizyta.badanie" name="badanie" readonly />
+
+    <button type="submit">Umów wizytę</button>
+  </form>
+</div>

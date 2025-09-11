@@ -16,28 +16,31 @@ export class LekarzService {
   lekarz$: Observable<Lekarz | null> = this.lekarzSubject.asObservable();
 
   constructor(private http: HttpClient) {}
- setLekarz(lekarz: Lekarz) {
-    this.lekarzSubject.next(lekarz);
-  }
+    setLekarz(lekarz: Lekarz) {
+      this.lekarzSubject.next(lekarz);
+    }
 
-  getLekarz(): Lekarz | null {
-    return this.lekarzSubject.value;
-  }
-  getBadanieById(id: number): Observable<Badanie> {
-    return this.http.get<Badanie>(`${this.apiUrl}/Badanie/${id}`);
-  }
+    getAll(): Observable<Lekarz[]> {
+      return this.http.get<Lekarz[]>(`${this.apiUrl}`);
+    }
 
-  getHarmonogramByLekarzId(lekarzId: number): Observable<Harmonogram[]> {
-    return this.http.get<Harmonogram[]>(`${this.apiUrl}/${lekarzId}/Harmonogram`);
-  }
+    getLekarz(): Lekarz | null {
+      return this.lekarzSubject.value;
+    }
 
-  getAnulowaneWizytyByLekarzId(lekarzId: number): Observable<Wizyta[]> {
-    return this.http.get<Wizyta[]>(`${this.apiUrl}/${lekarzId}/Wizyty/Anulowane`);
-  }
+    getBadanieById(id: number): Observable<Badanie> {
+      return this.http.get<Badanie>(`${this.apiUrl}/Badanie/${id}`);
+    }
 
+    getHarmonogramByLekarzId(lekarzId: number): Observable<Harmonogram[]> {
+      return this.http.get<Harmonogram[]>(`${this.apiUrl}/${lekarzId}/Harmonogram`);
+    }
 
-getWizytyByLekarzId(lekarzId: number): Observable<Wizyta[]> {
-  return this.http.get<Wizyta[]>(`${this.apiUrl}/${lekarzId}/Wizyty`);
-}
+    getAnulowaneWizytyByLekarzId(lekarzId: number): Observable<Wizyta[]> {
+      return this.http.get<Wizyta[]>(`${this.apiUrl}/${lekarzId}/Wizyty/Anulowane`);
+    }
 
+    getWizytyByLekarzId(lekarzId: number): Observable<Wizyta[]> {
+      return this.http.get<Wizyta[]>(`${this.apiUrl}/${lekarzId}/Wizyty`);
+    }
 }
