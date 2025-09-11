@@ -1,84 +1,93 @@
-<form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="register-form">
-  <div class="form-group">
-    <label for="imie">Imię:</label>
-    <input id="imie" formControlName="imie" />
-    <div *ngIf="registerForm.get('imie')?.invalid && registerForm.get('imie')?.touched" class="error-message">
-      Imię jest wymagane.
+<div class="register-container">
+  <div class="decor-circle"></div>
+  <div class="decor-circle"></div>
+
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="register-form">
+    <h2>Rejestracja</h2>
+
+    <div class="form-group">
+      <label for="imie">Imię:</label>
+      <input id="imie" formControlName="imie" />
+      <div *ngIf="registerForm.get('imie')?.invalid && registerForm.get('imie')?.touched" class="error-message">
+        Imię jest wymagane.
+      </div>
     </div>
-  </div>
 
-  <div class="form-group">
-    <label for="nazwisko">Nazwisko:</label>
-    <input id="nazwisko" formControlName="nazwisko" />
-    <div *ngIf="registerForm.get('nazwisko')?.invalid && registerForm.get('nazwisko')?.touched" class="error-message">
-      Nazwisko jest wymagane.
+    <div class="form-group">
+      <label for="nazwisko">Nazwisko:</label>
+      <input id="nazwisko" formControlName="nazwisko" />
+      <div *ngIf="registerForm.get('nazwisko')?.invalid && registerForm.get('nazwisko')?.touched" class="error-message">
+        Nazwisko jest wymagane.
+      </div>
     </div>
-  </div>
 
-  <div class="form-group">
-    <label for="pesel">PESEL:</label>
-    <input id="pesel" formControlName="pesel" />
-    <div *ngIf="registerForm.get('pesel')?.invalid && registerForm.get('pesel')?.touched" class="error-message">
-      PESEL musi mieć 11 cyfr.
+    <div class="form-group">
+      <label for="pesel">PESEL:</label>
+      <input id="pesel" formControlName="pesel" />
+      <div *ngIf="registerForm.get('pesel')?.invalid && registerForm.get('pesel')?.touched" class="error-message">
+        PESEL musi mieć 11 cyfr.
+      </div>
     </div>
-  </div>
 
-  <div class="form-group">
-    <label for="adres">Adres:</label>
-    <input id="adres" formControlName="adres" />
-    <div *ngIf="registerForm.get('adres')?.invalid && registerForm.get('adres')?.touched" class="error-message">
-      Adres jest wymagany.
+    <div class="form-group">
+      <label for="adres">Adres:</label>
+      <input id="adres" formControlName="adres" />
+      <div *ngIf="registerForm.get('adres')?.invalid && registerForm.get('adres')?.touched" class="error-message">
+        Adres jest wymagany.
+      </div>
     </div>
-  </div>
 
-  <div class="form-group">
-    <label for="telefon">Telefon:</label>
-    <input id="telefon" formControlName="telefon" />
-    <div *ngIf="registerForm.get('telefon')?.invalid && registerForm.get('telefon')?.touched" class="error-message">
-      Telefon musi mieć 9 cyfr.
+    <div class="form-group">
+      <label for="telefon">Telefon:</label>
+      <input id="telefon" formControlName="telefon" />
+      <div *ngIf="registerForm.get('telefon')?.invalid && registerForm.get('telefon')?.touched" class="error-message">
+        Telefon musi mieć 9 cyfr.
+      </div>
     </div>
-  </div>
 
-  <div class="form-group">
-    <label for="email">Email:</label>
-    <input id="email" formControlName="email" />
-    <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="error-message">
-      Wprowadź poprawny adres email.
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input id="email" formControlName="email" />
+      <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="error-message">
+        Wprowadź poprawny adres email.
+      </div>
     </div>
-  </div>
 
-  <div class="form-group">
-    <label for="login">Login:</label>
-    <input id="login" formControlName="login" />
-    <div *ngIf="registerForm.get('login')?.invalid && registerForm.get('login')?.touched" class="error-message">
-      Login jest wymagany.
+    <div class="form-group">
+      <label for="login">Login:</label>
+      <input id="login" formControlName="login" />
+      <div *ngIf="registerForm.get('login')?.invalid && registerForm.get('login')?.touched" class="error-message">
+        Login jest wymagany.
+      </div>
     </div>
-  </div>
 
-  <div class="form-group">
-    <label for="haslo">Hasło:</label>
-    <input id="haslo" type="password" formControlName="haslo" />
-    <div *ngIf="registerForm.get('haslo')?.invalid && registerForm.get('haslo')?.touched" class="error-message">
-      Hasło jest wymagane, minimum 6 znaków.
+    <div class="form-group">
+      <label for="haslo">Hasło:</label>
+      <input id="haslo" type="password" formControlName="haslo" />
+      <div *ngIf="registerForm.get('haslo')?.invalid && registerForm.get('haslo')?.touched" class="error-message">
+        Hasło jest wymagane, minimum 6 znaków.
+      </div>
     </div>
-  </div>
 
-  <div class="form-group">
-    <label for="potwierdzHaslo">Potwierdź hasło:</label>
-    <input id="potwierdzHaslo" type="password" formControlName="potwierdzHaslo" />
-    <div *ngIf="registerForm.hasError('mismatch') && registerForm.get('potwierdzHaslo')?.touched" class="error-message">
-      Hasła muszą być takie same.
+    <div class="form-group">
+      <label for="potwierdzHaslo">Potwierdź hasło:</label>
+      <input id="potwierdzHaslo" type="password" formControlName="potwierdzHaslo" />
+      <div *ngIf="registerForm.hasError('mismatch') && registerForm.get('potwierdzHaslo')?.touched" class="error-message">
+        Hasła muszą być takie same.
+      </div>
     </div>
-  </div>
 
-  <div class="form-group">
-    <label for="rola">Rola:</label>
-    <select id="rola" formControlName="rola">
-      <option value="Pacjent">Pacjent</option>
-      <option value="Lekarz">Lekarz</option>
-      <option value="Recepcjonistka">Recepcjonistka</option>
-    </select>
-  </div>
+    <div class="form-group">
+      <label for="rola">Rola:</label>
+      <select id="rola" formControlName="rola">
+        <option value="Pacjent">Pacjent</option>
+        <option value="Lekarz">Lekarz</option>
+        <option value="Recepcjonistka">Recepcjonistka</option>
+      </select>
+    </div>
 
-  <button type="submit" [disabled]="registerForm.invalid" class="submit-btn">Zarejestruj się</button>
-</form>
+    <button type="submit" [disabled]="registerForm.invalid" class="submit-btn">Zarejestruj się</button>
+
+    <div class="bottom-bar"></div>
+  </form>
+</div>

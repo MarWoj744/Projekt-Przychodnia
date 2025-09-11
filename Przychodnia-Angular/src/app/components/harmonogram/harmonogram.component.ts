@@ -32,12 +32,14 @@ export class HarmonogramComponent implements OnInit {
   constructor(private harmonogramService: HarmonogramService) {}
 
   ngOnInit(): void {
-    const userRole = localStorage.getItem('rola');
+    const userRole = localStorage.getItem('userRole');
     const userId = Number(localStorage.getItem('userId'));
-    this.isLekarz = (userRole === 'Lekarz');
+    this.isLekarz = (userRole === 'Lekarz' || userRole === '2');
     this.lekarzName = localStorage.getItem('userName');
+
+    console.log('userRole', userRole, 'userId', userId, 'isLekarz', this.isLekarz);
   
-    if (userRole === 'Lekarz') {
+    if (this.isLekarz) {
       this.aktualnyHarmonogram.lekarzId = userId;
     }
 
@@ -45,10 +47,10 @@ export class HarmonogramComponent implements OnInit {
   }
 
   loadHarmonogram() {
-  const userRole = localStorage.getItem('rola');
+  const userRole = localStorage.getItem('userRole');
   const userId = Number(localStorage.getItem('userId'));
 
-  if (userRole === 'Lekarz') {
+  if (this.isLekarz) {
     this.harmonogramService.getByLekarzId(userId).subscribe({
       next: (data) => this.harmonogram = data,
       error: () => this.error = 'Błąd ładowania harmonogramu'
@@ -72,9 +74,9 @@ export class HarmonogramComponent implements OnInit {
       id: 0,
       lekarzId: 0,
       dataOd: '',
-  dataDo: '',
-  opis: ''
-    };
+    dataDo: '',
+    opis: ''
+      };
   }
 
   zapisz() {
