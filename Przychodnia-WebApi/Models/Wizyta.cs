@@ -37,7 +37,6 @@ namespace Models
         [ForeignKey("LekarzId")]
         public Lekarz Lekarz { get; set; }
 
-        [Required]
         public int RecepcjonistkaId { get; set; }
         [ForeignKey("RecepcjonistkaId")]
         public Recepcjonistka Recepcjonistka { get; set; }
