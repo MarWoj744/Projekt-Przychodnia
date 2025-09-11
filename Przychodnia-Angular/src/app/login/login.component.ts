@@ -65,19 +65,24 @@ export class LoginComponent {
           localStorage.setItem('userLogin', response.login);
           localStorage.setItem('userRole', response.rola);
           localStorage.setItem('userId',String(response.userId));
-           switch (response.rola) {
-          case 0://'Pacjent':
-            this.router.navigate(['/pacjent']);
-            break;
-            case 1://'Recepcjonistka':
-            this.router.navigate(['/recepcja']);
-            break;
-          case 2://'Lekarz':
-            this.router.navigate(['/lekarz']);
-            break;
-          default:
-            this.router.navigate(['/home']);
-        }
+
+          const fullName = `${response.imie} ${response.nazwisko}`;
+          localStorage.setItem('userName', fullName);
+          localStorage.setItem('userEmail', response.email);
+
+          switch (response.rola) {
+            case 0://'Pacjent':
+              this.router.navigate(['/pacjent']);
+              break;
+              case 1://'Recepcjonistka':
+              this.router.navigate(['/recepcja']);
+              break;
+            case 2://'Lekarz':
+              this.router.navigate(['/lekarz']);
+              break;
+            default:
+              this.router.navigate(['/home']);
+          }
         } else {
           this.errorMessage = 'Niepoprawna odpowiedź z serwera.';
         }

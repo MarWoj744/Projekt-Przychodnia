@@ -29,14 +29,23 @@
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
+.button-group {
+  position: absolute; 
+  top: 46px; 
+  right: 24px; 
+  display: flex;
+  gap: 10px; 
+  z-index: 10; 
+}
+
 .btn-primary {
-  background-color: #006d77;
-  color: #ffffff;
+  background-color: #ffffff;
+  color: #006d77;
 }
 
 .btn-primary:hover {
-  background-color: #045f68;
-  transform: translateY(-2px);
+  background-color: #ffffff;
+  transform: translateY(-4px);
 }
 
 .btn-success {

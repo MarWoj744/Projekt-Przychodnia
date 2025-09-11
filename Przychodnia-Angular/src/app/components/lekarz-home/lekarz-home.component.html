@@ -1,2 +1,15 @@
-<h2>Witaj na stronie głównej lekarza</h2>
-<p>Tutaj będą wyświetlane dane lekarza.</p>
+<div *ngIf="isLoggedIn; else notLogged">
+    <h2>Zalogowano: Lekarz</h2>
+  <h2>Witaj, {{ userName }} 👨‍⚕️</h2>
+  <div class="card">
+    <p><strong>ID:</strong> {{ userId }}</p>
+    <p><strong>Email:</strong> {{ userEmail }}</p>
+    <p><strong>Rola:</strong> {{ userRole }}</p>
+  </div>
+
+  <button (click)="logout()">Wyloguj się</button>
+</div>
+
+<ng-template #notLogged>
+  <p>Nie jesteś zalogowany. <a routerLink="/login">Zaloguj się</a></p>
+</ng-template>
