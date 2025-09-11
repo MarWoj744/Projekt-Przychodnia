@@ -1,15 +1,45 @@
 .logout-btn {
   margin-top: 20px;
-  padding: 10px 16px;
-  background-color: #ff6b6b;
+  padding: 12px 18px;
+  background: linear-gradient(135deg, #ff6b6b, #ff8787);
   color: white;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
   font-weight: bold;
-  transition: background-color 0.3s ease;
+  font-size: 16px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.logout-btn::before,
+.logout-btn::after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 0;
+  top: 0;
+  left: 0;
+  background: rgba(255,255,255,0.6);
+  transition: width 0.3s ease;
+}
+
+.logout-btn::after {
+  top: auto;
+  bottom: 0;
+  left: auto;
+  right: 0;
 }
 
 .logout-btn:hover {
-  background-color: #ff4c4c;
+  background: linear-gradient(135deg, #ff4c4c, #ff6b6b);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+}
+
+.logout-btn:hover::before,
+.logout-btn:hover::after {
+  width: 100%;
 }
