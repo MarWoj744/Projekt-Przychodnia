@@ -259,7 +259,8 @@ namespace Models.Mapper
                 Opis = dto.Opis,
                 PacjentId = dto.PacjentId,
                 LekarzId = dto.LekarzId,
-                RecepcjonistkaId = dto.RecepcjonistkaId
+                RecepcjonistkaId = dto.RecepcjonistkaId,
+                Status = StatusWizyty.Zaplanowana
             };
         }
 
