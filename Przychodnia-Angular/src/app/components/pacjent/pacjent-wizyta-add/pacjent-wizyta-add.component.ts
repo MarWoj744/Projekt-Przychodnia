@@ -6,6 +6,7 @@ import { WizytyService } from '../../../services/wizyty.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Lekarz } from '../../../models/lekarz.model';
 import { LekarzService } from '../../../services/lekarz.service';
+import { RejestracjaWizytyDTO } from '../../../models/rejestracja-wizyty-dto.model';
 
 @Component({
   selector: 'app-pacjent-wizyta-add',
@@ -62,7 +63,7 @@ export class PacjentWizytaAddComponent implements OnInit {
       return;
     }
 
-    this.wizytaService.addWizyta(this.wizyta as Wizyta).subscribe({
+    this.wizytaService.addWizyta(this.wizyta as RejestracjaWizytyDTO).subscribe({
       next: () => {
         this.success = 'Wizyta została dodana!';
         setTimeout(() => this.router.navigate(['/pacjent/wizyty']), 1000);
