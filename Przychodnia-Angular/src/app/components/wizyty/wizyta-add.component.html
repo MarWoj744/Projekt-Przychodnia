@@ -4,21 +4,24 @@
   <div *ngIf="error" class="error">{{ error }}</div>
   <div *ngIf="success" class="success">{{ success }}</div>
 
-  <form (ngSubmit)="onSubmit()">
-    <label>Pacjent:</label>
-    <input type="text" [(ngModel)]="wizyta.pacjent" name="pacjent" required />
+  <form (ngSubmit)="onSubmit()" #form="ngForm">
+    <label>Pacjent (ID):</label>
+    <input type="number" [(ngModel)]="formModel.pacjentId" name="pacjentId" required />
 
-    <label>Lekarz:</label>
-    <input type="text" [(ngModel)]="wizyta.lekarz" name="lekarz" required />
+    <label>Lekarz (ID):</label>
+    <input type="number" [(ngModel)]="formModel.lekarzId" name="lekarzId" required />
+
+    <label>Recepcjonistka (ID, opcjonalnie):</label>
+    <input type="number" [(ngModel)]="formModel.recepcjonistkaId" name="recepcjonistkaId" />
 
     <label>Data:</label>
-    <input type="date" [(ngModel)]="wizyta.data" name="data" required />
+    <input type="date" [(ngModel)]="formModel.data" name="data" required />
 
     <label>Godzina:</label>
-    <input type="time" [(ngModel)]="wizyta.godzina" name="godzina" required />
+    <input type="time" [(ngModel)]="formModel.godzina" name="godzina" required />
 
-    <label>Badanie (opcjonalne):</label>
-    <input type="text" [(ngModel)]="wizyta.badanie" name="badanie" />
+    <label>Opis (opcjonalnie):</label>
+    <input type="text" [(ngModel)]="formModel.opis" name="opis" maxlength="500" />
 
     <button type="submit">Dodaj wizytę</button>
   </form>

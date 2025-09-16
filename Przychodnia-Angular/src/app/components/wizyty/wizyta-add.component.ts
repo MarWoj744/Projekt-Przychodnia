@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { WizytyService } from '../../services/wizyty.service';
 import { Wizyta } from '../../models/wizyta.model';
 import { ActivatedRoute } from '@angular/router';
+import { RejestracjaWizytyDTO } from '../../models/rejestracja-wizyty-dto.model';
 
 @Component({
   selector: 'app-wizyta-add',
@@ -14,44 +15,78 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./wizyta-add.component.css']
 })
 export class WizytaAddComponent implements OnInit {
-  wizyta: Partial<Wizyta> = {
-    pacjent: '',
-    lekarz: '',
+  formModel: {
+    pacjentId?: number | null;
+    lekarzId?: number | null;
+    recepcjonistkaId?: number | null;
+    data?: string;
+    godzina?: string;
+    opis?: string | null;
+  } = {
+    pacjentId: null,
+    lekarzId: null,
+    recepcjonistkaId: null,
     data: '',
     godzina: '',
-    status: 'Zaplanowana',
-    badanie: ''
+    opis: ''
   };
 
   error = '';
   success = '';
 
-  constructor(private wizytaService: WizytyService, private router: Router, private route: ActivatedRoute) {}
+  constructor(
+    private wizytaService: WizytyService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params: any) => {
       if (params['lekarzId']) {
-        this.wizyta.lekarz = params['lekarzId'];
+        this.formModel.lekarzId = Number(params['lekarzId']);
       }
       if (params['dataOd']) {
-        this.wizyta.data = params['dataOd'];
+        this.formModel.data = params['dataOd'];
       }
     });
+  }
 
+  private buildIsoDateTime(date: string | undefined, time: string | undefined): string {
+    if (!date || !time) return new Date().toISOString();
+    const dt = new Date(`${date}T${time}`);
+    return dt.toISOString();
   }
 
   onSubmit() {
-    if (!this.wizyta.pacjent || !this.wizyta.lekarz || !this.wizyta.data || !this.wizyta.godzina) {
-      this.error = 'Wszystkie pola oprócz badania są wymagane';
+    this.error = '';
+    this.success = '';
+    if (!this.formModel.pacjentId || !this.formModel.lekarzId || !this.formModel.data || !this.formModel.godzina) {
+      this.error = 'Wszystkie pola oprócz recepcjonistki i opisu są wymagane';
       return;
     }
 
-    this.wizytaService.addWizyta(this.wizyta as Wizyta).subscribe({
+    const dto: RejestracjaWizytyDTO = {
+      pacjentId: Number(this.formModel.pacjentId),
+      lekarzId: Number(this.formModel.lekarzId),
+      recepcjonistkaId: this.formModel.recepcjonistkaId ? Number(this.formModel.recepcjonistkaId) : null,
+      dataWizyty: this.buildIsoDateTime(this.formModel.data, this.formModel.godzina),
+      opis: this.formModel.opis ? this.formModel.opis : null
+    };
+
+    this.wizytaService.addWizyta(dto).subscribe({
       next: () => {
         this.success = 'Wizyta została dodana!';
-        setTimeout(() => this.router.navigate(['/wizyty']), 1000);
+        setTimeout(() => this.router.navigate(['/wizyty']), 800);
       },
-      error: () => this.error = 'Nie udało się dodać wizyty'
+      error: (err) => {
+        console.error(err);
+        if (err?.error) {
+          const msg = typeof err.error === 'string' ? err.error : err.error.title || JSON.stringify(err.error);
+          this.error = `Błąd serwera: ${msg}`;
+        } else {
+          this.error = 'Nie udało się dodać wizyty';
+        }
+      }
     });
   }
 }

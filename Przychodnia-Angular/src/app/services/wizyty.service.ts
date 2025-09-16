@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Wizyta } from '../models/wizyta.model';
+import { RejestracjaWizytyDTO } from '../models/rejestracja-wizyty-dto.model';
 
 @Injectable({
   providedIn: 'root'
@@ -36,8 +37,8 @@ export class WizytyService {
     return this.http.post(`${this.apiUrl}/${id}/anuluj`, {});
   }
 
-  addWizyta(wizyta: Wizyta): Observable<Wizyta> {
-    return this.http.post<Wizyta>(`${this.apiUrl}/zarejestruj`, wizyta);
+  addWizyta(wizyta: RejestracjaWizytyDTO): Observable<RejestracjaWizytyDTO> {
+    return this.http.post<RejestracjaWizytyDTO>(`${this.apiUrl}/zarejestruj`, wizyta);
   }
 }
 
