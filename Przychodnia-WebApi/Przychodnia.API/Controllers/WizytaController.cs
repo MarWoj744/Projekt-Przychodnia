@@ -47,13 +47,18 @@ namespace Przychodnia.API.Controllers
         {
             Wizyta wiz = map.WizytaToEntity(dto);
             if (!ModelState.IsValid)
+            {
                 return BadRequest(ModelState);
-
+            }
             var result = await _service.ZarejestrujWizyteAsync(wiz);
             if (!result)
+            {
                 return BadRequest("Nie udało się zarejestrować wizyty.");
-
-            return Ok("Wizyta zarejestrowana.");
+            }
+            else
+            {
+                return Ok("Wizyta zarejestrowana.");
+            }
         }
 
         [HttpPut("{id}")]

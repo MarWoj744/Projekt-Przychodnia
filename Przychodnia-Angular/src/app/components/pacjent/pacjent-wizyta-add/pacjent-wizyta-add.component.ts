@@ -16,13 +16,13 @@ import { RejestracjaWizytyDTO } from '../../../models/rejestracja-wizyty-dto.mod
   styleUrls: ['./pacjent-wizyta-add.component.css']
 })
 export class PacjentWizytaAddComponent implements OnInit {
-  // model formularza — przechowuje ID i osobno datę/godzinę
+ 
   formModel: {
     pacjentId?: number | null;
     lekarzId?: number | null;
     badanieId?: number | null;
-    data?: string;   // "YYYY-MM-DD"
-    godzina?: string; // "HH:MM"
+    data?: string;   
+    godzina?: string; 
   } = {
     pacjentId: null,
     lekarzId: null,
@@ -44,7 +44,7 @@ export class PacjentWizytaAddComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // pobierz userId z localStorage (jeśli zapisane)
+   
     const idStr = localStorage.getItem('userId') ?? localStorage.getItem('pacjentId') ?? '';
     this.userId = idStr ? Number(idStr) : undefined;
 
@@ -52,7 +52,7 @@ export class PacjentWizytaAddComponent implements OnInit {
       this.formModel.pacjentId = this.userId;
     }
 
-    // opcjonalne parametry (np. badanieId)
+    
     this.route.queryParams.subscribe((params: any) => {
       if (params['badanieId']) {
         this.formModel.badanieId = Number(params['badanieId']);
@@ -61,11 +61,11 @@ export class PacjentWizytaAddComponent implements OnInit {
         this.formModel.lekarzId = Number(params['lekarzId']);
       }
       if (params['data']) {
-        this.formModel.data = params['data']; // oczekujemy "YYYY-MM-DD"
+        this.formModel.data = params['data']; 
       }
     });
 
-    // pobierz listę lekarzy
+    
     this.lekarzService.getAll().subscribe({
       next: (list) => (this.lekarze = list),
       error: () => (this.error = 'Nie udało się pobrać listy lekarzy')
@@ -90,7 +90,7 @@ export class PacjentWizytaAddComponent implements OnInit {
     const dto: RejestracjaWizytyDTO = {
       pacjentId: Number(this.formModel.pacjentId),
       lekarzId: Number(this.formModel.lekarzId),
-      recepcjonistkaId: null, // jeśli nie masz tej informacji, zostaw null
+      recepcjonistkaId: null, 
       dataWizyty: this.buildIsoDateTime(this.formModel.data, this.formModel.godzina),
       opis: this.formModel.badanieId ? String(this.formModel.badanieId) : null
     };
