@@ -38,7 +38,7 @@ export class WizytyService {
   }
 
   addWizyta(wizyta: RejestracjaWizytyDTO): Observable<RejestracjaWizytyDTO> {
-    return this.http.post<RejestracjaWizytyDTO>(`${this.apiUrl}/zarejestruj`, wizyta);
+    return this.http.post<RejestracjaWizytyDTO>(`${this.apiUrl}`, wizyta);
   }
 }
 

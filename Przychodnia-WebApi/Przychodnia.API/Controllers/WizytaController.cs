@@ -42,7 +42,7 @@ namespace Przychodnia.API.Controllers
             return Ok(wizyta);
         }
 
-        [HttpPost("zarejestruj")]
+        [HttpPost]
         public async Task<IActionResult> Register([FromBody] RejestracjaWizytyDTO dto)
         {
             Wizyta wiz = map.WizytaToEntity(dto);
