@@ -15,5 +15,6 @@ namespace DTOs
         public DateTime Data { get; set; }
         public string Godzina => Data.ToString("HH:mm");
         public string Status { get; set; }
+
     }
 }

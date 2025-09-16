@@ -53,7 +53,8 @@ namespace Models
                 .HasOne(w => w.Recepcjonistka)
                 .WithMany(r => r.WizytyZarejestrowane)
                 .HasForeignKey(w => w.RecepcjonistkaId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Restrict)
+                .IsRequired(false);
 
             modelBuilder.Entity<WykonaneBadania>()
                 .HasOne(wb => wb.Wizyta)

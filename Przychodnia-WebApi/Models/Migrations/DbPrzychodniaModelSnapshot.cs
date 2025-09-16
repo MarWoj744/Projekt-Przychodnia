@@ -165,7 +165,7 @@ namespace Models.Migrations
                     b.Property<int>("PacjentId")
                         .HasColumnType("int");
 
-                    b.Property<int>("RecepcjonistkaId")
+                    b.Property<int?>("RecepcjonistkaId")
                         .HasColumnType("int");
 
                     b.Property<int>("Status")
@@ -290,8 +290,7 @@ namespace Models.Migrations
                     b.HasOne("Models.Recepcjonistka", "Recepcjonistka")
                         .WithMany("WizytyZarejestrowane")
                         .HasForeignKey("RecepcjonistkaId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("Lekarz");
 

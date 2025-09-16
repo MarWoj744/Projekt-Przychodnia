@@ -239,7 +239,7 @@ namespace Models.Mapper
 
             return new RejestracjaWizytyDTO
             {
-                Id = wizyta.Id,
+                //Id = wizyta.Id,
                 DataWizyty = wizyta.Data,
                 Opis = wizyta.Opis,
                 PacjentId = wizyta.PacjentId,
@@ -254,7 +254,7 @@ namespace Models.Mapper
 
             return new Wizyta
             {
-                Id = dto.Id,
+               // Id = dto.Id,
                 Data = dto.DataWizyty,
                 Opis = dto.Opis,
                 PacjentId = dto.PacjentId,

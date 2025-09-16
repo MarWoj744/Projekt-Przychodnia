@@ -12,8 +12,8 @@ using Models;
 namespace Models.Migrations
 {
     [DbContext(typeof(DbPrzychodnia))]
-    [Migration("20250911132048_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20250915231259_initialCreate")]
+    partial class initialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -168,7 +168,7 @@ namespace Models.Migrations
                     b.Property<int>("PacjentId")
                         .HasColumnType("int");
 
-                    b.Property<int>("RecepcjonistkaId")
+                    b.Property<int?>("RecepcjonistkaId")
                         .HasColumnType("int");
 
                     b.Property<int>("Status")
@@ -293,8 +293,7 @@ namespace Models.Migrations
                     b.HasOne("Models.Recepcjonistka", "Recepcjonistka")
                         .WithMany("WizytyZarejestrowane")
                         .HasForeignKey("RecepcjonistkaId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("Lekarz");
 

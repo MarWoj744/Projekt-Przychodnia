@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Models.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class initialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -85,7 +85,7 @@ namespace Models.Migrations
                     Opis = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
                     PacjentId = table.Column<int>(type: "int", nullable: false),
                     LekarzId = table.Column<int>(type: "int", nullable: false),
-                    RecepcjonistkaId = table.Column<int>(type: "int", nullable: false),
+                    RecepcjonistkaId = table.Column<int>(type: "int", nullable: true),
                     Status = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>

@@ -9,8 +9,8 @@ namespace DTOs
 {
     public class RejestracjaWizytyDTO
     {
-        [Key]
-        public int Id { get; set; }
+        //[Key]
+        //public int Id { get; set; }
 
         [Required]
         public int PacjentId { get; set; }
@@ -18,8 +18,7 @@ namespace DTOs
         [Required]
         public int LekarzId { get; set; }
 
-        [Required]
-        public int RecepcjonistkaId { get; set; }
+        public int? RecepcjonistkaId { get; set; }
 
         [Required]
         public DateTime DataWizyty { get; set; }

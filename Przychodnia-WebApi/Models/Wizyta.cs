@@ -37,9 +37,9 @@ namespace Models
         [ForeignKey("LekarzId")]
         public Lekarz Lekarz { get; set; }
 
-        public int RecepcjonistkaId { get; set; }
+        public int? RecepcjonistkaId { get; set; }
         [ForeignKey("RecepcjonistkaId")]
-        public Recepcjonistka Recepcjonistka { get; set; }
+        public Recepcjonistka? Recepcjonistka { get; set; }
 
         [Required]
         public StatusWizyty Status { get; set; } = StatusWizyty.Zaplanowana;
