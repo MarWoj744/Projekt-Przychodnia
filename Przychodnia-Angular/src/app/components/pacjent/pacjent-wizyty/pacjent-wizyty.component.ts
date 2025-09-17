@@ -4,6 +4,7 @@ import { WizytyService } from '../../../services/wizyty.service';
 import { Wizyta } from '../../../models/wizyta.model';
 import { Observable, Subscription, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 type WizytaVM = Omit<Wizyta, 'data'> & { data: Date };
 
@@ -23,7 +24,7 @@ export class PacjentWizytyComponent implements OnInit, OnDestroy {
 
   private sub?: Subscription;
 
-  constructor(private wizytySvc: WizytyService) {}
+  constructor(private wizytySvc: WizytyService,private router: Router) {}
 
   ngOnInit(): void {
     const userId = Number(localStorage.getItem('userId'));
@@ -133,7 +134,8 @@ doctorName(w: any): string {
       },
       error: err => {
         console.error(err);
-        alert('Nie udało się anulować wizyty.');
+        alert('udało się anulować wizytę.');
+        this.ngOnInit();
       }
     });
   }

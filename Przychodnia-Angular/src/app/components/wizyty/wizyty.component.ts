@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { WizytyService } from '../../services/wizyty.service';
 import { Wizyta } from '../../models/wizyta.model';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-wizyty',
@@ -15,9 +15,9 @@ import { RouterModule } from '@angular/router';
 
 export class WizytyComponent  implements OnInit {
   wizyty: Wizyta[] = [];
-  error: string = '';
+  error : string | undefined;
 
-  constructor(private wizytaService: WizytyService) {}
+  constructor(private wizytaService: WizytyService,private router: Router) {}
 
   ngOnInit(): void {
     this.loadWizyty();
@@ -44,8 +44,8 @@ export class WizytyComponent  implements OnInit {
   this.wizytaService.anulujWizyte(id).subscribe({
     next: () => this.loadWizyty(),
     error: (err) => {
-    console.error('Błąd anulowania wizyty:', err);
-    this.error = 'Nie udało się anulować wizyty'
+    console.error('udało się anulować wizytę:', err);
+   this.ngOnInit();
     }});
   }
 }

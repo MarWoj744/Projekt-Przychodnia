@@ -31,7 +31,7 @@ export class WizytaAddComponent implements OnInit {
     opis: ''
   };
 
-  error = '';
+ error : string | undefined;
   success = '';
 
   constructor(
@@ -58,8 +58,7 @@ export class WizytaAddComponent implements OnInit {
   }
 
   onSubmit() {
-    this.error = '';
-    this.success = '';
+ 
     if (!this.formModel.pacjentId || !this.formModel.lekarzId || !this.formModel.data || !this.formModel.godzina) {
       this.error = 'Wszystkie pola oprócz recepcjonistki i opisu są wymagane';
       return;
@@ -76,12 +75,14 @@ export class WizytaAddComponent implements OnInit {
     this.wizytaService.addWizyta(dto).subscribe({
       next: () => {
         this.success = 'Wizyta została dodana!';
+        this.router.navigate(['/wizyty']);
         setTimeout(() => this.router.navigate(['/wizyty']), 800);
       },
       error: (err) => {
         console.error(err);
         if (err?.error) {
           const msg = typeof err.error === 'string' ? err.error : err.error.title || JSON.stringify(err.error);
+          this.router.navigate(['/pacjent/wizyty']);
           this.error = `Błąd serwera: ${msg}`;
         } else {
           this.error = 'Nie udało się dodać wizyty';

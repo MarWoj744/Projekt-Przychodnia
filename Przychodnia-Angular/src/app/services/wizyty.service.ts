@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Wizyta } from '../models/wizyta.model';
 import { RejestracjaWizytyDTO } from '../models/rejestracja-wizyty-dto.model';
@@ -37,9 +37,9 @@ export class WizytyService {
     return this.http.post(`${this.apiUrl}/${id}/anuluj`, {});
   }
 
-  addWizyta(wizyta: RejestracjaWizytyDTO): Observable<RejestracjaWizytyDTO> {
-    return this.http.post<RejestracjaWizytyDTO>(`${this.apiUrl}`, wizyta);
-  }
+  addWizyta(wizyta: RejestracjaWizytyDTO): Observable<HttpResponse<any>> {
+  return this.http.post<any>(`${this.apiUrl}`, wizyta, { observe: 'response' });
+}
 }
 
 

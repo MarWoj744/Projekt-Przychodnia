@@ -4,7 +4,7 @@
   <div *ngIf="error" class="error">{{ error }}</div>
   <div *ngIf="success" class="success">{{ success }}</div>
 
-  <form (ngSubmit)="onSubmit()" #form="ngForm">
+  <form #form="ngForm">
     <label>Pacjent (ID):</label>
     <input type="number" [(ngModel)]="formModel.pacjentId" name="pacjentId" required />
 
@@ -23,6 +23,12 @@
     <label>Opis (opcjonalnie):</label>
     <input type="text" [(ngModel)]="formModel.opis" name="opis" maxlength="500" />
 
-    <button type="submit">Dodaj wizytę</button>
+    <button 
+      type="button" 
+      (click)="onSubmit()" 
+      [disabled]="form.invalid"
+    >
+      Dodaj wizytę
+    </button>
   </form>
 </div>

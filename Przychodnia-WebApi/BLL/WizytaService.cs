@@ -19,8 +19,11 @@ namespace BLL
 
         public async Task<bool> ZarejestrujWizyteAsync(Wizyta dto)
         {
-            if (dto.Data < DateTime.Now) 
-                throw new Exception("Podano błędną datę");
+            if (dto.Data < DateTime.Now)
+                return false;
+
+            if (dto.PacjentId <= 0 || dto.LekarzId <= 0)
+                return false;
 
             var wizyta = new Wizyta
             {

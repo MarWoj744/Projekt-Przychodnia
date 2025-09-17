@@ -32,7 +32,7 @@ export class PacjentWizytaAddComponent implements OnInit {
   };
 
   lekarze: Lekarz[] = [];
-  error = '';
+  error:string |undefined;
   success = '';
   userId?: number;
 
@@ -79,8 +79,6 @@ export class PacjentWizytaAddComponent implements OnInit {
   }
 
   onSubmit() {
-    this.error = '';
-    this.success = '';
 
     if (!this.formModel.pacjentId || !this.formModel.lekarzId || !this.formModel.data || !this.formModel.godzina) {
       this.error = 'Wszystkie pola oprócz badania są wymagane';
@@ -96,19 +94,19 @@ export class PacjentWizytaAddComponent implements OnInit {
     };
 
     this.wizytaService.addWizyta(dto).subscribe({
-      next: () => {
-        this.success = 'Wizyta została dodana!';
-        setTimeout(() => this.router.navigate(['/pacjent/wizyty']), 800);
-      },
-      error: (err) => {
-        console.error(err);
-        if (err?.error) {
-          const msg = typeof err.error === 'string' ? err.error : err.error.title || JSON.stringify(err.error);
-          this.error = `Błąd serwera: ${msg}`;
-        } else {
-          this.error = 'Nie udało się dodać wizyty';
-        }
-      }
-    });
+  next: (res) => {
+    if (res.status === 200) {  // ignoruje 204 OPTIONS
+      this.success = 'Wizyta została dodana!';
+      this.router.navigate(['/pacjent/wizyty']);
+      setTimeout(() => this.router.navigate(['/wizyty']), 800);
+      
+    }
+  },
+  error: (err) => {
+    console.error(err);
+    this.router.navigate(['/pacjent/wizyty']);
+    this.error = 'Nie udało się dodać wizyty';
+  }
+}); 
   }
 }

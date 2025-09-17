@@ -75,7 +75,9 @@ builder.Services.AddScoped<IHarmonogramRepository, HarmonogramRepository>();
 
 builder.Services.AddCors(corsBuilder =>
     corsBuilder.AddPolicy("PolitykaCORS", policyBuilder =>
-        policyBuilder.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod().Build()));
+        policyBuilder.WithOrigins("https://przychodnia-gzczdwdqbkd5gcgz.polandcentral-01.azurewebsites.net")
+                     .AllowAnyHeader()
+                     .AllowAnyMethod()));
 
 var jwtSettings = builder.Configuration.GetSection("JWT");
 var signingKey = Encoding.ASCII.GetBytes(jwtSettings["Key"]);
