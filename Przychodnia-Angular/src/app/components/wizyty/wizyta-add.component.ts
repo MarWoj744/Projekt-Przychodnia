@@ -54,6 +54,7 @@ export class WizytaAddComponent implements OnInit {
   private buildIsoDateTime(date: string | undefined, time: string | undefined): string {
     if (!date || !time) return new Date().toISOString();
     const dt = new Date(`${date}T${time}`);
+    dt.setHours(dt.getHours()+2);
     return dt.toISOString();
   }
 
